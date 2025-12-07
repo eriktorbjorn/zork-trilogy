@@ -3,6 +3,7 @@
 	(c) Copyright 1983 Infocom, Inc.  All Rights Reserved."
 
 <VERSION ZIP>
+<CONSTANT RELEASEID 200>
 
 <SETG ZORK-NUMBER 1>
 

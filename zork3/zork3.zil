@@ -2,6 +2,9 @@
 		     Zork III: The Dungeon Master
 	(c) Copyright 1982 Infocom, Inc.  All Rights Reserved."
 
+<VERSION ZIP>
+<CONSTANT RELEASEID 200>
+
 <SETG ZORK-NUMBER 3>
 
 <SNAME "ZORK3">
