@@ -1,0 +1,14 @@
+ZAPS := $(GAME).zap $(GAME)_data.zap $(GAME)_freq.zap $(GAME)_str.zap
+
+# As of ZILF 1.0, there is no need to invoke ZAPF manually, and for Zork I-III
+# optimizing abbreviations seems to do little or no difference.
+
+$(GAME).z3: $(ZILS)
+	zilf $(GAME).zil
+
+.PHONY: all clean
+
+all: $(GAME).z3
+
+clean:
+	$(RM) $(ZAPS) $(GAME).z3
