@@ -49,13 +49,6 @@
 
 "old ACTIONS.ZIL"
 
-<GLOBAL YUKS
-	<LTABLE
-	 "A valiant attempt."
-	 "You can't be serious."
-	 "An interesting idea..."
-	 "What a concept!">>
-
 <ROUTINE FIND-WEAPON (O "AUX" W)
 	 <SET W <FIRST? .O>>
 	 <COND (<NOT .W>
