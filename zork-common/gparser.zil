@@ -105,7 +105,7 @@
    If the input is <direction> or <walk> <direction>, fall out immediately
    setting PRSA to ,V?WALK and PRSO to <direction>.  Otherwise, perform
    all required orphaning, syntax checking, and noun clause lookup."
-
+
 <ROUTINE PARSER ("AUX" (PTR ,P-LEXSTART) WRD (VAL 0) (VERB <>) (OF-FLAG <>)
 		       OWINNER OMERGED LEN (DIR <>) (NW 0) (LW 0) (CNT -1))
 	<REPEAT ()
@@ -426,7 +426,7 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
    The second argument is the part of speech (,PS?<part of speech>).  The
    3rd argument (,P1?<part of speech>), if given, causes the value
    for that part of speech to be returned."
-
+
 <ROUTINE WT? (PTR BIT "OPTIONAL" (B1 5) "AUX" (OFFS ,P-P1OFF) TYP)
 	<COND (<BTST <SET TYP <GETB .PTR ,P-PSOFF>> .BIT>
 	       <COND (<G? .B1 4> <RTRUE>)
@@ -537,7 +537,6 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 
 <GLOBAL P-DIRECTION 0>
 
-
 ;"New ORPHAN-MERGE for TRAP Retrofix 6/21/84"
 
 <ROUTINE ORPHAN-MERGE ("AUX" (CNT -1) TEMP VERB BEG END (ADJ <>) WRD)
@@ -654,7 +653,7 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 
 ;"Print undefined word in input.
    PTR points to the unknown word in P-LEXV"
-
+
 <ROUTINE WORD-PRINT (CNT BUF)
 	 <REPEAT ()
 		 <COND (<DLESS? CNT 0> <RETURN>)
@@ -778,7 +777,6 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 	 <TELL "\"I don't understand! What are you referring to?\"" CR>
 	 <RFALSE>>
 
-
 <ROUTINE ORPHAN (D1 D2 "AUX" (CNT -1))
 	<COND (<NOT ,P-MERGED>
 	       <PUT ,P-OCLAUSE ,P-MATCHLEN 0>)>
@@ -878,7 +876,6 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 		       <CLAUSE-ADD <GET .BEG 0>>)>
 		<SET BEG <REST .BEG ,P-WORDLEN>>>>
 
-
 <ROUTINE CLAUSE-ADD (WRD "AUX" PTR)
 	<SET PTR <+ <GET ,P-OCLAUSE ,P-MATCHLEN> 2>>
 	<PUT ,P-OCLAUSE <- .PTR 1> .WRD>
@@ -941,7 +938,7 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 				<EQUAL? .L <GET ,P-PRSO ,P-MATCHLEN>>>>
 		       <SETG P-PRSI <BUT-MERGE ,P-PRSI>>)>)>
 	 <RTRUE>>
-
+
 <ROUTINE BUT-MERGE (TBL "AUX" LEN BUTLEN (CNT 1) (MATCHES 0) OBJ NTBL)
 	<SET LEN <GET .TBL ,P-MATCHLEN>>
 	<PUT ,P-MERGE ,P-MATCHLEN 0>
@@ -971,7 +968,6 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 <CONSTANT P-ALL 1>
 <CONSTANT P-ONE 2>
 <CONSTANT P-INHIBIT 4>
-
 
 <GLOBAL P-AND <>>
 
@@ -1165,7 +1161,6 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 		        <TELL "?" CR>
 		        <RETURN>)>>>
 
-
 <ROUTINE GLOBAL-CHECK (TBL "AUX" LEN RMG RMGL (CNT 0) OBJ OBITS FOO)
 	<SET LEN <GET .TBL ,P-MATCHLEN>>
 	<SET OBITS ,P-SLOCBITS>
@@ -1244,7 +1239,7 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 <ROUTINE TAKE-CHECK ()
 	<AND <ITAKE-CHECK ,P-PRSO <GETB ,P-SYNTAX ,P-SLOC1>>
 	     <ITAKE-CHECK ,P-PRSI <GETB ,P-SYNTAX ,P-SLOC2>>>>
-
+
 <ROUTINE ITAKE-CHECK (TBL IBITS "AUX" PTR OBJ TAKEN)
 	 #DECL ((TBL) TABLE (IBITS PTR) FIX (OBJ) OBJECT
 		(TAKEN) <OR FALSE FIX ATOM>)
@@ -1320,7 +1315,7 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 		<COND (<EQUAL? .ITM <GET .TBL .CNT>>
 		       <RETURN <REST .TBL <* .CNT 2>>>)
 		      (<IGRTR? CNT .SIZE> <RFALSE>)>>>
-
+
 <ROUTINE ZMEMQB (ITM TBL SIZE "AUX" (CNT 0))
 	<REPEAT ()
 		<COND (<EQUAL? .ITM <GETB .TBL .CNT>>

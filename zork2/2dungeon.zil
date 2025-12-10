@@ -171,8 +171,6 @@
 	(SIZE 0) ;"P?NORTH"
 	(ACTION SCOLWALL)>
 
-\
-
 "SUBTITLE ROOMS"
 
 <ROOM INSIDE-BARROW
@@ -699,8 +697,6 @@ lying amidst the debris.")
 	(ACTION COLLAR-FCN)
 	(VALUE 15)>
 
-\
-
 "SUBTITLE DIAMOND MAZE"
 
 <OBJECT BAT
@@ -949,8 +945,6 @@ Keeper of the Dungeon for amazing untastefulness.\"")>
       (DESC "Landing")
       (FLAGS RLANDBIT ONBIT)
       (ACTION ZORK3-FCN)>
-
-\
 
 "SUBTITLE WIZARD'S WORKSHOP"
 
@@ -1295,8 +1289,6 @@ else.")
 	(WEST TO RIDDLE-ROOM)
 	(FLAGS RLANDBIT)>
 
-\
-
 ;"SUBTITLE VOLCANO AREA"
 
 <ROOM VOLCANO-BOTTOM
@@ -1412,8 +1404,6 @@ There are exits here to the east and the south.")
        (FLAGS RLANDBIT)>
 
 <GLOBAL BLOC VOLCANO-BOTTOM>
-
-\
 
 "SUBTITLE ALICE IN WONDERLAND"
 
@@ -1551,8 +1541,6 @@ from a large leak in the ceiling. The only exit is to the west.")
        (OUT TO POSTS-ROOM)
        (WEST TO POSTS-ROOM)
        (FLAGS RLANDBIT)>
-
-\
 
 ; "SUBTITLE BANK OF ZORK"
 
@@ -1695,8 +1683,6 @@ computer store for more details.\"")
 	(SIZE 2)>
 
 
-\
-
 "SUBTITLE PALANTIR ROOMS"
 
 <ROOM DREARY-ROOM
@@ -1720,8 +1706,6 @@ computer store for more details.\"")
       (ACTION TINY-ROOM-FCN)
       (GLOBAL PDOOR PWINDOW CHASM)>
 	
-\
-
 ; "SUBTITLE OBJECTS"
 
 <OBJECT GNOME

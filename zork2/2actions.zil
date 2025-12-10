@@ -743,8 +743,6 @@ become the master of his domain, but the final challenge awaits!|
 something. One by one your possessions glow bright green. Finally, you
 are attacked by these magical wardens, and destroyed!">)>)>>
 
-\
-
 ;"SUBTITLE A DROP IN THE BUCKET"
 
 <GLOBAL BUCKET-TOP-FLAG <>>
@@ -878,8 +876,6 @@ are attacked by these magical wardens, and destroyed!">)>)>>
     <MOVE ,BUCKET .R>
     <COND (<IN? ,WINNER ,BUCKET>
 	   <GOTO .R>)>>
-
-\
 
 ;"SUBTITLE CHOMPERS IN WONDERLAND"
 
@@ -1305,8 +1301,6 @@ say, but the robot appears to be smiling." CR CR>
 disintegrates before your eyes." CR>
 	       <REMOVE <COND (<VERB? THROW> ,PRSI) (,PRSO)>>)>>
 
-\
-
 ;"SUBTITLE BANK OF ZORK"
 
 <GLOBAL BANK-SOLVE-FLAG <>>
@@ -1519,8 +1513,6 @@ leaving you alone." CR>)>>
 		    <NOT <0? <GET <INT I-FUSE> ,C-ENABLED?>>>>
 	       <RTRUE>)
 	      (T <RFALSE>)>>
-
-\
 
 "PALANTIRS, ETC."
 
@@ -2167,8 +2159,6 @@ Maybe it's after you! ">
 D .V " instead." CR>
 	 <PERFORM ,V?ATTACK .V .W>>
 
-\
-
 "SUBTITLE DIAMOND MAZE"
 
 <GLOBAL DIAMOND-SOLVE <>> ;"T if solved"
@@ -2289,8 +2279,6 @@ taunts you: \"Fool! You'll never get past ">
 
 <GLOBAL DIDIRS <TABLE P?SE P?NE P?NW P?SW>>
 
-\
-
 "SUBTITLE CERBERUS"
 
 <GLOBAL CERBERUS-LEASHED <>>
@@ -2362,8 +2350,6 @@ and then its three fang-crammed mouths rend you into little doggy biscuits.">)
 	       (<AND <VERB? ENCHANT> <EQUAL? ,SPELL-USED ,W?FLOAT>>
 		<PERFORM ,V?ENCHANT ,CERBERUS>
 		<RTRUE>)>>
-
-\
 
 "SUBTITLE DRAGON AND GLACIER"
 
@@ -2841,8 +2827,6 @@ and rides off into the gloom." CR>
 		<REMOVE ,PRINCESS>
 		<MOVE ,ROSE ,GAZEBO-ROOM>
 		<RFALSE>)>>
-
-\
 
 "SUBTITLE WIZARD WORKSHOP AND ENVIRONS"
 

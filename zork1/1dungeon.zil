@@ -1216,8 +1216,6 @@ crystal window below its left wing you can see the remains of
 intricate machinery. It is not clear what result winding it would
 have, as the mainspring seems sprung.")>
 
-\
-
 "SUBTITLE ROOMS"
 
 "SUBTITLE CONDITIONAL EXIT FLAGS"
@@ -1422,8 +1420,6 @@ extends to the east and west.")
       (FLAGS RLANDBIT ONBIT SACREDBIT)
       (GLOBAL TREE SONGBIRD WHITE-HOUSE FOREST)>
 
-\
-
 "SUBTITLE HOUSE"
 
 <ROOM KITCHEN
@@ -1458,8 +1454,6 @@ extends to the east and west.")
       (FLAGS RLANDBIT ONBIT SACREDBIT)
       (GLOBAL STAIRS)
       (PSEUDO "NAILS" NAILS-PSEUDO "NAIL" NAILS-PSEUDO)>
-
-\
 
 "SUBTITLE CELLAR AND VICINITY"
 
@@ -1530,8 +1524,6 @@ you could get back down.")
       (FLAGS RLANDBIT)
       (GLOBAL CHIMNEY)
       (PSEUDO "DOOR" DOOR-PSEUDO "PAINT" PAINT-PSEUDO)>
-
-\
 
 "SUBTITLE MAZE"
 
@@ -1721,8 +1713,6 @@ A skeleton, probably the remains of a luckless adventurer, lies here.")
       (SE TO CYCLOPS-ROOM)
       (FLAGS RLANDBIT MAZEBIT)>
 
-\
-
 "SUBTITLE CYCLOPS AND HIDEAWAY"
 
 <ROOM CYCLOPS-ROOM
@@ -1761,8 +1751,6 @@ on the floor. There is an exit down a staircase.")
       (FLAGS RLANDBIT ;"CANT-HAVE-ONBIT")
       (VALUE 25)
       (GLOBAL STAIRS)>
-
-\
 
 "SUBTITLE RESERVOIR AREA"
 
@@ -1831,8 +1819,6 @@ walls. There is a narrow beach to land on.")
       (FLAGS NONLANDBIT )
       (GLOBAL GLOBAL-WATER)
       (PSEUDO "STREAM" STREAM-PSEUDO)>
-
-\
 
 "SUBTITLE MIRROR ROOMS AND VICINITY"
 
@@ -1931,8 +1917,6 @@ the south and a staircase leading up.")
       (FLAGS RLANDBIT)
       (GLOBAL STAIRS)>
 
-\
-
 "SUBTITLE ROUND ROOM AND VICINITY"
 
 <ROOM EW-PASSAGE
@@ -2020,8 +2004,6 @@ on the south side of the chasm, where a crack opens into a passage.")
       (GLOBAL CRACK STAIRS)
       (PSEUDO "CHASM" CHASM-PSEUDO)>
 
-\
-
 "SUBTITLE HADES ET AL"
 
 <ROOM ENTRANCE-TO-HADES
@@ -2049,8 +2031,6 @@ A passage exits to the north.")
       (NORTH TO ENTRANCE-TO-HADES)
       (FLAGS RLANDBIT ONBIT)
       (GLOBAL BODIES)>
-
-\
 
 "SUBTITLE DOME, TEMPLE, EGYPT"
 
@@ -2128,8 +2108,6 @@ which leads into darkness. You probably could not get back up it.")
       (FLAGS RLANDBIT ONBIT SACREDBIT)
       (ACTION SOUTH-TEMPLE-FCN)>
 
-\
-
 "SUBTITLE FLOOD CONTROL DAM #3"
 
 <ROOM DAM-ROOM	;"was DAM"
@@ -2168,8 +2146,6 @@ the west and south.")
       (SOUTH TO DAM-LOBBY)
       (WEST TO DAM-LOBBY)
       (FLAGS RLANDBIT)>
-
-\
 
 "SUBTITLE RIVER AREA"
 
@@ -2411,8 +2387,6 @@ the canyon from here.")
 		<RTRUE>)>>
 	       
 
-\
-
 "SUBTITLE COAL MINE AREA"
 
 <ROOM MINE-ENTRANCE	;"was ENTRA"
@@ -2558,8 +2532,6 @@ passage. In the shaft can be seen a heavy iron chain.")
       (ACTION MACHINE-ROOM-FCN)
       (FLAGS RLANDBIT)>
 
-\
-
 "SUBTITLE COAL MINE"
 
 <ROOM MINE-1	;"was MINE1"
@@ -2612,8 +2584,6 @@ a small opening.")
       (DOWN TO CELLAR)
       (FLAGS RLANDBIT)
       (GLOBAL SLIDE)>
-
-\
 
 ;"RANDOM TABLES FOR WALK-AROUND"
 

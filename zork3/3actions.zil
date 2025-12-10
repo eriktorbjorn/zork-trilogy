@@ -165,8 +165,6 @@
 		<RTRUE>)
 	       (T <PATH-OBJECT>)>>
 
-\
-
 "SUBTITLE CHINESE PUZZLE SECTION (COURTESY OF WILL WENG)"
 
 <GLOBAL CPHERE 1>
@@ -1307,8 +1305,6 @@ hammer the contents of the box to pulp. That includes you.">)>)>
 		       <SETG POLEUP-FLAG 1>
 		       <TELL "The pole now rests on the stone floor." CR>)>)>>
 
-\
-
 <ROUTINE DUNGEON-MASTER-F ("OPTIONAL" (RARG <>)) 
 	 <COND (<==? .RARG ,M-OBJDESC> <RFALSE>)
 	       (<==? ,WINNER ,DUNGEON-MASTER>
@@ -1522,8 +1518,6 @@ quotes!\" A moment later, you find yourself in the Button Room." CR>
 		<MOVE ,DUNGEON-MASTER ,HERE>
 		<RTRUE>)>>
 
-\
-
 ;"SUBTITLE
  'The end had come, and this was it; he dropped her in the Flaming Pit.'"
 
@@ -1709,8 +1703,6 @@ into a larger area." CR>
 <ROUTINE LOCKED-DOOR-F ()
 	 <COND (<VERB? OPEN UNLOCK>
 	        <TELL "The door is securely fastened." CR>)>>
-
-\
 
 "========== The Ultimate Winnage =========="
 
@@ -2073,8 +2065,6 @@ moment, you are awakening, as if from a deep slumber." CR>)>
 	 <COND (<1? ,MOVES> <TELL " move.">) (ELSE <TELL " moves.">)>
 	 <CRLF>
 	 ,SCORE>
-
-\
 
 "old TM.ZIL"
 
@@ -3168,8 +3158,6 @@ nonworking models of existing state-of-the-art machinery." CR>)
 "The Royal Jewels are on the pedestal." CR>)>)
 	       (<AND <VERB? PUT PUT-ON TAKE> <NOT <FSET? ,CAGE ,INVISIBLE>>>
 		<TELL "You can't reach it through the cage." CR>)>>
-
-\
 
 "old SHADOW.ZIL"
 

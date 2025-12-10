@@ -705,8 +705,6 @@ the Frobozz Magic Boat Co., etc.|
       (ACTION NIRVANA-F)
       (FLAGS RLANDBIT ONBIT)>
 
-\
-
 <OBJECT RUNES
 	(IN MSTAIRS)
 	(DESC "runes")

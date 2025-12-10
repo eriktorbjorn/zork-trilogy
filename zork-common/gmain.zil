@@ -30,7 +30,6 @@
 
 ;"GO now lives in SPECIAL.ZIL"    
 
-
 <ROUTINE MAIN-LOOP ("AUX" TRASH)
 	 <REPEAT ()
 		 <SET TRASH <MAIN-LOOP-1>>>>
@@ -174,8 +173,6 @@
 <GLOBAL P-MULT <>>
 
 <GLOBAL P-NOT-HERE 0>
-
-
 
 %<COND (<GASSIGNED? PREDGEN>
 

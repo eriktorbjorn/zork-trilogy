@@ -437,8 +437,6 @@ ZORK: The Great Underground Empire.|" CR>)>
 	 <COND (<VERB? THROUGH>
 		<DO-WALK ,P?WEST>)>>
 
-\
-
 <ROUTINE TROPHY-CASE-FCN ()
     <COND (<AND <VERB? TAKE> <EQUAL? ,PRSO ,TROPHY-CASE>>
 	   <TELL
@@ -615,8 +613,6 @@ uncomfortable, you stand up again." CR>)
 		(ELSE
 		 <TELL "I suppose you think it's a magic carpet?" CR>)>)>>
 
-\
-
 "SUBTITLE TROLL"
 
 <ROUTINE AXE-F ()
@@ -762,8 +758,6 @@ rather barbarous accent." CR>)
 his guttural tongue." CR>)
 		     (<AND ,TROLL-FLAG <VERB? HELLO>>
 		      <TELL "Unfortunately, the troll can't hear you." CR>)>)>>
-
-\
 
 "SUBTITLE GRATING/MAZE"
 
@@ -939,8 +933,6 @@ muttering obscenities." CR>
 	 	<ROB ,ADVENTURER ,LAND-OF-LIVING-DEAD>
 	 	T)>>
 
-\
-
 <ROUTINE TORCH-OBJECT ()
     <COND (<VERB? EXAMINE>
 	   <TELL "The torch is burning." CR>)
@@ -950,8 +942,6 @@ muttering obscenities." CR>
 	  (<AND <VERB? LAMP-OFF> <FSET? ,PRSO ,ONBIT>>
 	   <TELL
 "You nearly burn your hand trying to extinguish the flame." CR>)>>
-
-\
 
 "SUBTITLE MIRROR, MIRROR, ON THE WALL"
 
@@ -1011,8 +1001,6 @@ on the other three sides of the room." CR>
 "You have broken the mirror. I hope you have a seven years' supply of
 good luck handy." CR>)>)>>
 
-\
-
 "SUBTITLE THE DOME"
 
 <ROUTINE TORCH-ROOM-FCN (RARG)
@@ -1050,8 +1038,6 @@ drawing you over the railing and down." CR>
 "I'm afraid that the leap you attempted has done you in.">)>)>>
 
 ;<GLOBAL EGYPT-FLAG <>>	;"no longer used?"
-
-\
 
 "SUBTITLE LAND OF THE DEAD"
 
@@ -1145,8 +1131,6 @@ shaken at your clumsy attempt, resume their hideous jeering." CR>>>
 	 <MOVE ,BELL ,ENTRANCE-TO-HADES>
 	 <COND (<EQUAL? ,HERE ,ENTRANCE-TO-HADES>
 		<TELL "The bell appears to have cooled down." CR>)>>
-
-\
 
 "SUBTITLE FLOOD CONTROL DAM #3"
 
@@ -1484,8 +1468,6 @@ that before long it will be impossible to cross to the other side.">)
 	       <TELL
 "There is a slimy stairway leaving the room to the north." CR>)>>
 
-\
-
 "SUBTITLE WATER, WATER EVERYWHERE..."
 
 <ROUTINE BOTTLE-FUNCTION ("AUX" (E? <>))
@@ -1505,8 +1487,6 @@ that before long it will be impossible to cross to the other side.">)
 	 <REMOVE-CAREFULLY ,WATER>
 	 T)
 	(.E? <RTRUE>)>>
-
-\
 
 "SUBTITLE CYCLOPS"
 
@@ -1651,8 +1631,6 @@ condiments for his upcoming snack."
 	  "The cyclops is moving toward you in an unfriendly manner."
 	  "You have two choices: 1. Leave  2. Become dinner.">>
 
-\
-
 "SUBTITLE LOUD LOUD LOUD"
 
 <GLOBAL LOUD-FLAG <>>
@@ -1747,15 +1725,11 @@ below.">)
 
 <GLOBAL EGG-SOLVE <>>
 
-\
-
 "SUBTITLE A SEEDY LOOKING GENTLEMAN..."
 
 <GLOBAL THIEF-HERE <>>
 
 ;"I-THIEF moved to DEMONS"
-
-\
 
 "SUBTITLE THINGS THIEF MIGHT DO"
 
@@ -1937,8 +1911,6 @@ this fine " D .X " is doing here.\"" CR>
 "DROP SOME JUNK - moved to DEMONS"
 
 
-
-\
 
 "ROBBER-FUNCTION -- more prosaic thiefly occupations"
 
@@ -2171,8 +2143,6 @@ suddenly vanish." CR CR>)>
 	       (<VERB? LOOK-BEHIND>
 		<TELL "It won't open." CR>)>>
 
-\
-
 "SUBTITLE RANDOM FUNCTIONS"
 
 <ROUTINE BODY-FUNCTION ()
@@ -2212,8 +2182,6 @@ turned into a pile of dust. How, I can't imagine.">)>>
 		<TELL
 "Congratulations! Unlike the other vandals, who merely stole the
 artist's masterpieces, you have destroyed one." CR>)>>
-
-\
 
 "SUBTITLE LET THERE BE LIGHT SOURCES"
 
@@ -2425,8 +2393,6 @@ burn." CR>)
 		<COND (<NOT <SETG LIT <LIT? ,HERE>>>
 		       <TELL "It is now completely dark." CR>)>)>)>>
 
-\
-
 "SUBTITLE ASSORTED WEAPONS"
 
 <ROUTINE SWORD-FCN ("AUX" G)
@@ -2577,8 +2543,6 @@ excitement abates." CR>
 
 <GLOBAL LIGHT-SHAFT 13>
 <GDECL (LIGHT-SHAFT) FIX>
-
-\
 
 "SUBTITLE OLD MAN RIVER, THAT OLD MAN RIVER..."
 
@@ -2873,8 +2837,6 @@ The boat deflates to the sounds of hissing, sputtering, and cursing." CR>
 	       "The hole is getting deeper, but that's about it."
 	       "You are surrounded by a wall of sand on all sides.">>
 
-\
-
 "SUBTITLE TOITY POIPLE BOIDS A CHOIPIN' AN' A BOIPIN' ... "
 
 <ROUTINE TREE-ROOM (RARG "AUX" F)
@@ -3022,8 +2984,6 @@ down, the songbird flies away." CR>
 		       <TELL
 "The " D ,PRSO " tumbles into the river and is seen no more." CR>
 		       <REMOVE-CAREFULLY ,PRSO>)>)>>
-
-\
 
 "SUBTITLE CHUTES AND LADDERS"
 
@@ -3239,8 +3199,6 @@ teeth ache to touch it." CR>)>>
 <CONSTANT F-CONSCIOUS 4>	;"rise and shine"
 <CONSTANT F-FIRST? 5>		;"strike first?"
 
-\
-
 "blow results"
 
 <CONSTANT MISSED 1>		;"attacker misses"
@@ -3316,15 +3274,11 @@ teeth ache to touch it." CR>)>>
 	       0 ;<REST ,DEF3B 2>
 	       DEF3C>>
 
-\
-
 "useful constants"
 
 <CONSTANT STRENGTH-MAX 7>
 <CONSTANT STRENGTH-MIN 2>
 <CONSTANT CURE-WAIT 30>
-
-\
 
 "I-FIGHT moved to DEMONS"
 
@@ -3355,8 +3309,6 @@ teeth ache to touch it." CR>)>>
 			    <SET OUT <- .OUT 1>>
 			    <COND (<0? .OUT> <RETURN>)>)>)
 		    (T <RETURN>)>>>
-
-\
 
 "takes a remark, defender, and good-guy's weapon"
 
@@ -3407,8 +3359,6 @@ property, which is normally 0"
 			    <EQUAL? .W ,KNIFE ,RUSTY-KNIFE>>
 			<RETURN .W>)
 		       (<NOT <SET W <NEXT? .W>>> <RFALSE>)>>>
-
-\
 
 <ROUTINE VILLAIN-BLOW (OO OUT?
 		       "AUX" (VILLAIN <GET .OO ,V-VILLAIN>)
@@ -3547,8 +3497,6 @@ ineffective." CR>
 		<THIS-IS-IT .DWEAPON>)>
 	 <VILLAIN-RESULT ,PRSO .DEF .RES>>
 
-\
-
 <ROUTINE WINNER-RESULT (DEF RES OD)
 	 <PUTP ,WINNER
 	       ,P?STRENGTH
@@ -3578,8 +3526,6 @@ carcass has disappeared." CR>
 		<APPLY <GETP .VILLAIN ,P?ACTION> ,F-UNCONSCIOUS>
 		.RES)
 	       (T .RES)>>
-
-\
 
 <ROUTINE WINNING? (V "AUX" VS PS)
 	 <SET VS <GETP .V ,P?STRENGTH>>
@@ -3647,8 +3593,6 @@ carcass has disappeared." CR>
    <LTABLE (PURE) "The " F-DEF "'s weapon is knocked to the floor, leaving him unarmed.">
    <LTABLE (PURE) "The " F-DEF " is disarmed by a subtle feint past his guard.">>>>
 
-\
-
 "messages for cyclops (note that he has no weapon"
 
 <GLOBAL CYCLOPS-MELEE
@@ -3681,8 +3625,6 @@ ground in disgust.">
 dinner.">>
   <LTABLE (PURE)
    <LTABLE (PURE) "The Cyclops, no sportsman, dispatches his unconscious victim.">>>>
-
-\
 
 "messages for troll"
 
@@ -3727,8 +3669,6 @@ broadside into your head.">
 protected, he wonders?">>
  <LTABLE (PURE)
   <LTABLE (PURE) "Conquering his fears, the troll puts you to death.">>>>
-
-\
 
 "messages for thief"
 
