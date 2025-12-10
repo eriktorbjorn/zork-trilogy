@@ -21,8 +21,9 @@ What we have here are:
 | zork1 | The latest version of Zork I, with bugfixes and buildable with ZILF. |
 | zork2 | The latest version of Zork II, with bugfixes and buildable with ZILF. |
 | zork3 | The latest version of Zork II, with bugfixes and buildable with ZILF. |
+| zork-common | Common library files for Zork I-III. |
 
-The Makefiles are written for ZILF 1.0 or later, where it is no longer necessary to invoke ZAPF manually.
+The Makefiles are written for ZILF 1.0 or later, where it is no longer necessary to invoke ZAPF manually. The source code itself should compile with earlier versions.
 
 By "last published version", I mean the versions included on the Masterpieces of Infocom CD and the digital Zork Anthology sold on GOG and Steam. But it's hard to say for certain if they're exact matches to those. The last known snapshots shows that there was an effort to build a common library for all Zork games, with parts of it conditionally compiled depending on `ZORK-NUMBER`. They're known to contain several bugs compared to the official versions, but also some new features. For instance, the Wizard of Frobozz interacts better with dark rooms.
 

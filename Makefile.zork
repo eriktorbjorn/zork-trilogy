@@ -1,8 +1,12 @@
 GAME := zork$(ZORK_NUMBER)
 
+VPATH = ../zork-common
+
 ZILS := $(GAME).zil $(ZORK_NUMBER)actions.zil $(ZORK_NUMBER)dungeon.zil \
-	gclock.zil gglobals.zil gmacros.zil gmain.zil gparser.zil gsyntax.zil \
-	gverbs.zil
+	gclock.zil gglobals.zil gmacros.zil gmain.zil gparser.zil \
+	gsyntax.zil gverbs.zil
+
+ZFLAGS := -I ../zork-common
 
 _DIR := $(dir $(lastword $(MAKEFILE_LIST)))
 
