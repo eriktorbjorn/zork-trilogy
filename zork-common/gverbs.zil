@@ -1463,7 +1463,7 @@ CR>)
 	 <TELL "You can't throw anything off of that!" CR>>
 
 <ROUTINE V-TIE ()
-	 <COND (<EQUAL? ,PRSI ,WINNER>
+	 <COND (<EQUAL? ,PRSI ,ME>
 		<TELL "You can't tie anything to yourself." CR>)
 	       (T
 		<TELL "You can't tie the " D ,PRSO " to that." CR>)>>
