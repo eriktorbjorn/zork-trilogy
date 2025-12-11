@@ -1011,10 +1011,12 @@ by knocking down the wall on the east of the room." CR>
 <ROUTINE V-PICK () <TELL "You can't pick that." CR>>
 
 <ROUTINE V-PLAY ()
-    <COND (<FSET? ,PRSO ,ACTORBIT>
+    <COND (<EQUAL? ,PRSO ,ME>
+	   <TELL "It's the role you were born to play." CR>)
+	  (<FSET? ,PRSO ,ACTORBIT>
 	   <TELL
 "You become so engrossed in the role of the " D ,PRSO " that
-you kill yourself, just as he might have done!" CR>
+you kill yourself, just as he might have done!">
 	   <JIGS-UP "">)
 	  (ELSE <TELL "That's silly!" CR>)>>
 
