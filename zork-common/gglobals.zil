@@ -13,8 +13,7 @@
 	(IN GLOBAL-OBJECTS)
 	(SYNONYM ZZMGCK)
 	(DESCFCN PATH-OBJECT)
-        (GLOBAL GLOBAL-OBJECTS)
-	(ADVFCN 0)
+	(GLOBAL GLOBAL-OBJECTS)
 	(FDESC "F")
 	(LDESC "F")
 	(PSEUDO "FOOBAR" V-WALK)
@@ -49,7 +48,7 @@
 	(DESC "such thing" ;"[not here]")
 	(ACTION NOT-HERE-OBJECT-F)>
 
-<ROUTINE NOT-HERE-OBJECT-F ("AUX" TBL (PRSO? T) OBJ)
+<ROUTINE NOT-HERE-OBJECT-F ("AUX" TBL (PRSO? T))
 	 ;"This COND is game independent (except the TELL)"
 	 <COND (<AND <EQUAL? ,PRSO ,NOT-HERE-OBJECT>
 		     <EQUAL? ,PRSI ,NOT-HERE-OBJECT>>
@@ -82,10 +81,8 @@
        (T
 	<BUFFER-PRINT <GET ,P-ITBL ,P-NC2> <GET ,P-ITBL ,P-NC2L> <>>)>>
 
-<ROUTINE NULL-F ("OPTIONAL" A1 A2)
+<ROUTINE NULL-F ()
 	 <RFALSE>>
-
-/^L
 
 "Objects shared by all three Zorks go here"
 

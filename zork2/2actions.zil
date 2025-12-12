@@ -2191,7 +2191,7 @@ D .V " instead." CR>
 	       (<VERB? EXAMINE LOOK-INSIDE>
 		<DWINDOW-DESC>)>>
 
-<ROUTINE DIAMOND-MOTION (RARG "AUX" DC DIR RM)
+<ROUTINE DIAMOND-MOTION (RARG "AUX" DIR RM)
 	 <COND (<EQUAL? .RARG ,M-LOOK>
 		<TELL
 "This is a room with oddly angled walls and passages in all directions.
@@ -3158,7 +3158,7 @@ wall, and contents himself with splashing you with water." CR>)
 		<TELL
 "This may only be a baby sea serpent, but it's as big as a small whale." CR>)>>
 
-<ROUTINE GENIE-FCN ("OPTIONAL" (RARG ,M-OBJECT) "AUX" V HOARD)
+<ROUTINE GENIE-FCN ("OPTIONAL" (RARG ,M-OBJECT) "AUX" HOARD)
 	<COND (<VERB? HELLO>
 	       <TELL
 "The genie grins demonically, but says nothing." CR>)
@@ -3894,8 +3894,6 @@ The rose almost seemed to move its thorns into your path." CR>)>>
 		"bulging chest" "yellow sphere" "grue"
 		"convention of wizards" "copy of ZORK I">>
 
-^/L
-
 ;"special-cased routines"
 
 <ROUTINE V-DIAGNOSE ()
@@ -3976,7 +3974,7 @@ up completely, but you can't have everything." CR CR>
 		 <KILL-INTERRUPTS>
 		 <RFATAL>>>
 
-<ROUTINE RANDOMIZE-OBJECTS ("AUX" (R <>) F N L)
+<ROUTINE RANDOMIZE-OBJECTS ("AUX" (R <>) F N)
 	 <COND (<IN? ,LAMP ,WINNER>
 		<MOVE ,LAMP ,INSIDE-BARROW>)>
 	 <SET N <FIRST? ,WINNER>>

@@ -2,8 +2,6 @@
 			    The ZORK Trilogy
 		       started on 7/25/83 by SEM"
 
-^L
-
 "Verb Functions for Game Commands"
 
 <GLOBAL VERBOSE <>>
@@ -52,7 +50,7 @@ game position, or end this session of the game?|
 		       (<EQUAL? .WRD ,W?QUIT ,W?Q>
 			<QUIT>)>>>
 
-<ROUTINE V-QUIT ("AUX" SCOR)
+<ROUTINE V-QUIT ()
 	 <V-SCORE>
 	 <TELL 
 "Do you wish to leave the game? (Y is affirmative): ">
@@ -146,8 +144,6 @@ Release ">
 	 <DIROUT -4>
 	 <RTRUE>>
 
-^L
-
 "Real Verb Functions"
 
 <ROUTINE V-ADVENT ()
@@ -221,7 +217,7 @@ Release ">
 "You have a theory on how to board a " D ,PRSO ", perhaps?" CR>)>
 	 <RFATAL>>
 
-<ROUTINE V-BOARD ("AUX" AV)
+<ROUTINE V-BOARD ()
 	 <TELL "You are now in the " D ,PRSO "." CR>
 	 <MOVE ,WINNER ,PRSO>
 	 <APPLY <GETP ,PRSO ,P?ACTION> ,M-ENTER>
@@ -1619,8 +1615,6 @@ direction." CR>
 
 <ROUTINE V-ZORK () <TELL "At your service!" CR>>
 
-^L
-
 "Verb-Associated Routines"
 
 "Descriptions"
@@ -1899,8 +1893,8 @@ for the final secret.\"" CR>)>)
 
 <GLOBAL FUMBLE-PROB 8>
 
-<ROUTINE ITAKE ("OPTIONAL" (VB T) "AUX" CNT OBJ)
-	 #DECL ((VB) <OR ATOM FALSE> (CNT) FIX (OBJ) OBJECT)
+<ROUTINE ITAKE ("OPTIONAL" (VB T) "AUX" CNT)
+	 #DECL ((VB) <OR ATOM FALSE> (CNT) FIX)
 	 <COND %<COND (<==? ,ZORK-NUMBER 1>
 		       '(,DEAD
 		         <COND (.VB

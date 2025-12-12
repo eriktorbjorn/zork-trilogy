@@ -2,8 +2,6 @@
 			    The ZORK Trilogy
 		       started on 7/21/83 by SEM"
 
-^L
-
 "Buzzwords, Prepositions and Directions"
 
 <BUZZ AGAIN G OOPS>
@@ -32,8 +30,6 @@
 <SYNONYM NE NORTHE>
 <SYNONYM SW SOUTHWEST>
 <SYNONYM SE SOUTHE>
-
-^L
 
 "Game Commands"
 
@@ -75,8 +71,6 @@
 <SYNTAX \#RECORD = V-RECORD>
 
 <SYNTAX \#UNRECORD = V-UNRECORD>
-
-^L
 
 "Real Verbs"
 
