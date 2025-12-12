@@ -247,7 +247,9 @@ you!" CR>)
 		<TELL "How romantic!" CR>)
 	       (<VERB? EXAMINE>
 		<COND %<COND (<==? ,ZORK-NUMBER 1>
-			      '(<EQUAL? ,HERE <LOC ,MIRROR-1> <LOC ,MIRROR-2>>
+			      '(<AND <NOT ,MIRROR-MUNG>
+				     <EQUAL? ,HERE
+					     <LOC ,MIRROR-1> <LOC ,MIRROR-2>>>
 		                <TELL
 "Your image in the mirror looks tired." CR>))
 			     (<==? ,ZORK-NUMBER 3>
