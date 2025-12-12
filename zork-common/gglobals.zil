@@ -123,7 +123,7 @@
 		 <TELL "You can't talk to the sailor that way." CR>)
 		(<VERB? EXAMINE>
 		 %<COND (<==? ,ZORK-NUMBER 3>
-			 '<COND (<NOT <FSET? ,VIKING-SHIP ,INVISIBLE>>
+			 '<COND (<ACCESSIBLE? ,VIKING-SHIP>
 				 <TELL
 "He looks like a sailor." CR>
 				 <RTRUE>)>)
@@ -133,14 +133,15 @@
 		(<VERB? HELLO>
 		 <SETG HS <+ ,HS 1>>
 		 %<COND (<==? ,ZORK-NUMBER 3>
-			 '<COND (<NOT <FSET? ,VIKING-SHIP ,INVISIBLE>>
+			 '<COND (<AND <NOT ,SHIP-GONE>
+				      <ACCESSIBLE? ,VIKING-SHIP>>
 		                 <TELL
 "The seaman looks up and maneuvers the boat toward shore. He cries out \"I
 have waited three ages for someone to say those words and save me from
 sailing this endless ocean. Please accept this gift. You may find it
 useful!\" He throws something which falls near you in the sand, then sails
 off toward the west, singing a lively, but somewhat uncouth, sailor song." CR>
-		                 <FSET ,VIKING-SHIP ,INVISIBLE>
+				 <SETG SHIP-GONE T>
 		                 <MOVE ,VIAL ,HERE>)
 		                (<==? ,HERE ,FLATHEAD-OCEAN>
 		                 <COND (,SHIP-GONE
