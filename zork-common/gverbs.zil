@@ -1492,10 +1492,10 @@ CR>)
 			 <RTRUE>)>)
 		(ELSE T)>
 	 <COND (%<COND (<==? ,ZORK-NUMBER 1>
-			'<AND <EQUAL? ,PRSI <> ,ROOMS>
+			'<AND <EQUAL? ,PRSI <> ,ROOMS, HANDS>
 			      <NOT <EQUAL? ,PRSO ,BOOK>>>)
 		       (ELSE
-			'<EQUAL? ,PRSI <> ,ROOMS>)>
+			'<EQUAL? ,PRSI <> ,ROOMS ,HANDS>)>
 		<TELL "Your bare hands don't appear to be enough." CR>)
 	       (<NOT <FSET? ,PRSO ,TURNBIT>>
 		<TELL "You can't turn that!" CR>)>>
