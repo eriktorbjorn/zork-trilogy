@@ -1364,8 +1364,11 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 	<RFALSE>)>
  <RTRUE>>
 
-<ROUTINE ACCESSIBLE? (OBJ "AUX" (L <LOC .OBJ>)) ;"can player TOUCH object?"
+<ROUTINE ACCESSIBLE? (OBJ "AUX" L) ;"can player TOUCH object?"
 	 ;"revised 5/2/84 by SEM and SWG"
+	 <COND (<NOT .OBJ>
+		<RFALSE>)>
+	 <SET L <LOC .OBJ>>
 	 <COND (<FSET? .OBJ ,INVISIBLE>
 		<RFALSE>)
 	       ;(<EQUAL? .OBJ ,PSEUDO-OBJECT>
