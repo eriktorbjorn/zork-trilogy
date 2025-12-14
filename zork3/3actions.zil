@@ -3482,10 +3482,7 @@ down the figure's arm!"
                 <QUEUE I-SHADOW-REPLY 0>
 		<SETG ATTACK-MODE <>>
 		<RFALSE>)>
-	 <COND (<NOT <IN? ,SWORD ,WINNER>>
-		<MOVE ,SWORD ,WINNER>
-		<TELL
-"Your sword, glowing wildly, leaps into your hand!" CR>)>
+	 <RECOVER-SWORD>
 	 <COND (<AND <PROB <+ <* ,S-STRENGTH 10> 10>> <G? ,S-STRENGTH 1>>
 		<COND (<PROB 90>
 		       <COND (<L? <SETG P-STRENGTH <- ,P-STRENGTH 1>> 1>
@@ -3596,21 +3593,31 @@ brightly glowing sword." CR>
 		       <SHADOW-ARRIVAL>
 		       <RTRUE>)>)>>
 
+<ROUTINE RECOVER-SWORD ()
+	<COND (<IN? ,SWORD ,WINNER>
+	       <RTRUE>)
+	      (,SWORD-IN-STONE?
+	       <TELL
+"From nowhere, the sword from the junction appears in your hand, wildly
+glowing!" CR>
+	       <SETG SWORD-IN-STONE? <>>)
+	      (T
+	       <TELL "Your sword, glowing wildly, ">
+	       <COND (<ACCESSIBLE? ,SWORD>
+		      <TELL "leaps into">)
+		     (T
+		      <TELL "appears in">)>
+	       <TELL " your hand!" CR>)>
+	<MOVE ,SWORD ,WINNER>
+	<SETG SWORD-STATE 2>
+	<ENABLE <QUEUE I-SWORD -1>>>
+
 <ROUTINE SHADOW-ARRIVAL ()
 	 <MOVE ,SHADOW ,HERE>
 	 <COND (<NOT ,SHADOW-POINT-1>
 		<SETG SCORE <+ ,SCORE 1>>
 		<SETG SHADOW-POINT-1 T>)>
-	 <COND (<NOT <IN? ,SWORD ,WINNER>>
-		<MOVE ,SWORD ,WINNER>
-		<COND (,SWORD-IN-STONE?
-		       <TELL
-"From nowhere, the sword from the junction appears in your hand, wildly
-glowing!" CR>)
-		      (T
-		       <TELL
-"Your sword, glowing wildly, appears in your hand!" CR>)>
-		<SETG SWORD-IN-STONE? <>>)>>
+	 <RECOVER-SWORD>>
 
 <GLOBAL SHADOW-POINT-1 <>>
 <GLOBAL SHADOW-POINT-2 <>>
