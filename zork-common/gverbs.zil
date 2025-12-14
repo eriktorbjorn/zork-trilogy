@@ -925,7 +925,7 @@ killing yourself." CR CR>
 	       (<OR <NOT ,PRSI>
 		    <NOT <FSET? ,PRSI ,WEAPONBIT>>>
 		<TELL "Trying to destroy the " D ,PRSO " with ">
-		<COND (<NOT ,PRSI>
+		<COND (<EQUAL? ,PRSI <> ,HANDS>
 		       <TELL "your bare hands">)
 		      (T
 		       <TELL "a " D ,PRSI>)>
