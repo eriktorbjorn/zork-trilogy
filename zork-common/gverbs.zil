@@ -1213,13 +1213,15 @@ you kill yourself, just as he might have done!">
 		<TELL "This seems to have no effect." CR>)
 	       (<NOT <FSET? ,PRSO ,TAKEBIT>>
 		<TELL "You can't take it; thus, you can't shake it!" CR>)
+	       (<NOT <HELD? ,PRSO>>
+		     <TELL "You don't have the " D ,PRSO "." CR>)
 	       (<FSET? ,PRSO ,CONTBIT>
 		<COND (<FSET? ,PRSO ,OPENBIT>
 		       <COND (<FIRST? ,PRSO>
 			      <SHAKE-LOOP>
 			      <TELL "The contents of the " D, PRSO " spill ">
 	                      <COND (%<COND (<==? ,ZORK-NUMBER 3>
-					     '<FSET? ,HERE ,NONLANDBIT>)
+					     '<EQUAL? ,HERE ,ON-LAKE>)
 					    (ELSE
 					     '<NOT <FSET? ,HERE ,RLANDBIT>>)>
 		                     <TELL "out and disappears">)
