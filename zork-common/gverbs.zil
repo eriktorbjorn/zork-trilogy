@@ -1455,8 +1455,7 @@ merciful in the Great Underground Empire.">)
 		       <TELL
 "The " D ,PRSI " ducks as the " D ,PRSO " flies by and crashes to the ground."
 CR>)
-		      (T <TELL "Thrown." CR>)>)
-	       (ELSE <TELL "Huh?" CR>)>>
+		      (T <TELL "Thrown." CR>)>)>>
 
 <ROUTINE V-THROW-OFF ()
 	 <TELL "You can't throw anything off of that!" CR>>
