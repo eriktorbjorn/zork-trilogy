@@ -1967,7 +1967,7 @@ for the final secret.\"" CR>)>)
 		<RFALSE>)
 	       (<AND <NOT <IN? ,PRSO ,WINNER>>
 		     <NOT <FSET? <LOC ,PRSO> ,OPENBIT>>>
-		<TELL "The " D ,PRSO " is closed." CR>
+		<TELL "The " D <LOC ,PRSO> " is closed." CR>
 		<RFALSE>)
 	       (T
 		<MOVE ,PRSO <LOC ,WINNER>>
