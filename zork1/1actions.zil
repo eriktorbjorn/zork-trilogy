@@ -154,6 +154,9 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		<TELL "Don't you believe me? The mountains are impassable!"
 		      CR>)>>
 
+<GLOBAL SWIMYUKS
+	<LTABLE 0 "You can't swim in the dungeon.">>
+
 <ROUTINE WATER-F ("AUX" AV W PI?)
 	 <COND (<VERB? SGIVE> <RFALSE>)
 	       (<VERB? THROUGH BOARD>
