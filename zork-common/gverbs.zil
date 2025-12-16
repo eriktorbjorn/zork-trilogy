@@ -1326,7 +1326,7 @@ D ,PRSO " with a weapon." CR>)
 			   <==? ,ZORK-NUMBER 2>>
 		       '(<GLOBAL-IN? ,GLOBAL-WATER ,HERE>
 		         <TELL "Swimming isn't usually allowed in the ">
-		         <COND (<NOT <EQUAL? ,PRSO ,WATER ,GLOBAL-WATER>>
+		         <COND (<NOT <EQUAL? ,PRSO <> ,WATER ,GLOBAL-WATER>>
 	                        <TELL D ,PRSO ".">)
 		               (T
 		                <TELL "dungeon.">)>
