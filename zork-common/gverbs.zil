@@ -1173,7 +1173,6 @@ you kill yourself, just as he might have done!">
 		              <EQUAL? <GET ,P-LEXV <+ ,P-CONT 2>> ,W?OZMOO>>
 		         <SETG P-CONT <>>
 		         <COND (<EQUAL? ,HERE ,MSTAIRS>
-		                <CRLF>
 		                <GOTO ,FRONT-DOOR>)
 		               (T
 		                <TELL "Nothing happens." CR>)>
