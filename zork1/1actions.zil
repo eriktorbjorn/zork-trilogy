@@ -234,7 +234,7 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		       <TELL
 "The water spills to the floor and evaporates immediately." CR>
 		       <REMOVE-CAREFULLY ,WATER>)>)
-	       (<VERB? THROW>
+	       (<VERB? THROW OVERBOARD>
 		<TELL
 "The water splashes on the walls and evaporates immediately." CR>
 		<REMOVE-CAREFULLY ,WATER>)>>
