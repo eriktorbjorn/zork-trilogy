@@ -904,7 +904,8 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 	<COND (<GET-OBJECT ,P-MERGE <>>
 	       <SETG P-GWIMBIT 0>
 	       <COND (<EQUAL? <GET ,P-MERGE ,P-MATCHLEN> 1>
-		      <SET OBJ <GET ,P-MERGE 1>>
+		      <COND (<EQUAL? <SET OBJ <GET ,P-MERGE 1>> ,ME>
+			     <RFALSE>)>
 		      <TELL "(">
 		      <COND (<AND <NOT <ZERO? .PREP>>
 				  <NOT ,P-END-ON-PREP>>
