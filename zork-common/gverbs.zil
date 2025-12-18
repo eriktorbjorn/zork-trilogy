@@ -330,8 +330,7 @@ Release ">
 	        <TELL "You can't do that!" CR>)>>
 
 <ROUTINE V-CLOSE ()
-	 <COND (<AND <NOT <FSET? ,PRSO ,CONTBIT>>
-		     <NOT <FSET? ,PRSO ,DOORBIT>>>
+	 <COND (<NOT <FSET? ,PRSO ,CONTBIT>>
 		<TELL "You must tell me how to do that to a " D ,PRSO "." CR>)
 	       (<AND <NOT <FSET? ,PRSO ,SURFACEBIT>>
 		     <NOT <EQUAL? <GETP ,PRSO ,P?CAPACITY> 0>>>
@@ -960,8 +959,9 @@ by knocking down the wall on the east of the room." CR>
 	 <TELL "You probably put spinach in your gas tank, too." CR>>
 
 <ROUTINE V-OPEN ("AUX" F STR)
-	 <COND (<AND <FSET? ,PRSO ,CONTBIT>
-		     <NOT <EQUAL? <GETP ,PRSO ,P?CAPACITY> 0>>>
+	 <COND (<NOT <FSET? ,PRSO ,CONTBIT>>
+		<TELL "You must tell me how to do that to a " D ,PRSO "." CR>)
+	       (<NOT <EQUAL? <GETP ,PRSO ,P?CAPACITY> 0>>
 		<COND (<FSET? ,PRSO ,OPENBIT>
 		       <TELL "It is already open." CR>)
 		      (T
@@ -986,8 +986,7 @@ by knocking down the wall on the east of the room." CR>
 		       <TELL "The " D ,PRSO " opens." CR>
 		       <FSET ,PRSO ,OPENBIT>)>)
 	       (T
-		<TELL
-"You must tell me how to do that to a " D ,PRSO "." CR>)>>
+		<TELL "The " D ,PRSO " fails to open." CR>)>>
 
 <ROUTINE V-OVERBOARD ("AUX" LOCN)
 	 <COND %<COND (<==? ,ZORK-NUMBER 1>
