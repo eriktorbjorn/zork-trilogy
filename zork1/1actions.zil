@@ -2842,14 +2842,13 @@ The boat deflates to the sounds of hissing, sputtering, and cursing." CR>
 
 "SUBTITLE TOITY POIPLE BOIDS A CHOIPIN' AN' A BOIPIN' ... "
 
-<ROUTINE TREE-ROOM (RARG "AUX" F)
+<ROUTINE TREE-ROOM (RARG)
 	 <COND (<EQUAL? .RARG ,M-LOOK>
 		<TELL
 "You are about 10 feet above the ground nestled among some large
 branches. The nearest branch above you is above your reach." CR>
-		<COND (<AND <SET F <FIRST? ,PATH>>
-			    <NEXT? .F>>
-		       <TELL "On the ground below you can see:  ">
+		<COND (<FIRST? ,PATH>
+		       <TELL "On the ground below you can see: ">
 		       <PRINT-CONTENTS ,PATH>
 		       <TELL "." CR>)>)
 	       (<EQUAL? .RARG ,M-BEG>
