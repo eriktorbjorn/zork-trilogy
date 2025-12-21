@@ -1428,6 +1428,9 @@ the manual." CR>)>)
 				    (T
 				     <SCOL-THROUGH 0 ,DEPOSITORY>)>
 			      <RTRUE>)
+			     (.OBJ
+			      <TELL "You can't do that!" CR>
+			      <RTRUE>)
 			     (<EQUAL? ,PRSO ,CURTAIN>
 			      <TELL
 "You can't go more than part way through the curtain." CR>
