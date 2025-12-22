@@ -139,7 +139,8 @@ It is clear that the owners must have been extremely wealthy." CR>)
 			       ,WEST-OF-HOUSE ,NORTH-OF-HOUSE
 			       ,SOUTH-OF-HOUSE>
 			   <EQUAL? ,HERE ,EAST-OF-HOUSE>>
-		       <TELL "You aren't even in the forest." CR>)>
+		       <TELL "You aren't even in the forest." CR>
+		       <RTRUE>)>
 		<GO-NEXT ,FOREST-AROUND>)
 	       (<VERB? DISEMBARK>
 		<TELL "You will have to specify a direction." CR>)
