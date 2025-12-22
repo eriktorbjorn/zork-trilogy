@@ -93,9 +93,14 @@ to brush them with." CR>)
     <COND (<EQUAL? ,HERE ,KITCHEN ,LIVING-ROOM ,ATTIC>
 	   <COND (<VERB? FIND>
 		  <TELL "Why not find your brains?" CR>)
+		 (<VERB? THROUGH OPEN>
+		  <TELL <PICK-ONE ,DUMMY> CR>)
 		 (<VERB? WALK-AROUND>
-		  <GO-NEXT ,IN-HOUSE-AROUND>
-		  T)>)
+		  <COND (<EQUAL? ,HERE ,KITCHEN>
+			 <GOTO <PICK-ONE ,KITCHEN-AROUND>>)
+			(T
+			 <GO-NEXT ,IN-HOUSE-AROUND>
+			 T)>)>)
 	  (<NOT <OR <EQUAL? ,HERE ,EAST-OF-HOUSE ,WEST-OF-HOUSE>
 		    <EQUAL? ,HERE ,NORTH-OF-HOUSE ,SOUTH-OF-HOUSE>>>
 	   <COND (<VERB? FIND>
