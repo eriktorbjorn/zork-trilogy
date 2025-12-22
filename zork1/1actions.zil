@@ -2185,6 +2185,7 @@ turned into a pile of dust. How, I can't imagine.">)>>
 
 <ROUTINE PAINTING-FCN ()
 	 <COND (<VERB? MUNG>
+		<FSET ,PRSO ,TOUCHBIT>
 		<PUTP ,PRSO ,P?TVALUE 0>
 		<PUTP ,PRSO ,P?LDESC
 "There is a worthless piece of canvas here.">
