@@ -5086,10 +5086,13 @@ collapse of one of the water-bearing arches." CR>)>)>>
 
 <ROUTINE COVER-F ()
 	 <COND (<VERB? MOVE RAISE OPEN>
-		<TELL
+		<COND (,COVER-MOVED
+		       <TELL <PICK-ONE ,DUMMY> CR>)
+		      (T
+		       <TELL
 "The cover is moved a bit to one side, revealing a small hole leading into
 darkness." CR>
-		<SETG COVER-MOVED T>)
+		       <SETG COVER-MOVED T>)>)
 	       (<VERB? TAKE>
 		<TELL
 "The cover is far too heavy to take." CR>)>>
