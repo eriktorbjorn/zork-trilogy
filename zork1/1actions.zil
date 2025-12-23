@@ -406,7 +406,7 @@ window which is ">
 	      (<==? .RARG ,M-BEG>
 	       <COND (<AND <VERB? CLIMB-UP> <EQUAL? ,PRSO ,STAIRS>>
 		      <DO-WALK ,P?UP>)
-		     (<AND <VERB? CLIMB-UP> <EQUAL? ,PRSO ,STAIRS>>
+		     (<AND <VERB? CLIMB-DOWN> <EQUAL? ,PRSO ,STAIRS>>
 		      <TELL "There are no stairs leading down." CR>)>)>>
 
 <ROUTINE STONE-BARROW-FCN (RARG)
