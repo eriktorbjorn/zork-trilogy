@@ -1824,10 +1824,12 @@ beard and is snoring quite loudly." CR>)>)
 		       <TELL
 "He is sleeping soundly and does not respond." CR>)>)
 	       (<VERB? SHAKE ALARM>
+		<TELL "The old man ">
+		<COND (<NOT ,OLD-MAN-AWAKE>
+		       <TELL "is roused to consciousness. He ">)>
 		<TELL
-"The old man is roused to consciousness. He peers at you through eyes which
-appear much younger and stronger than his frail body and waits, as if expecting
-something to happen." CR>
+"peers at you through eyes which appear much younger and stronger than his
+frail body and waits, as if expecting something to happen." CR>
 		<SETG OLD-MAN-AWAKE T>
 		<ENABLE <QUEUE I-OLD-MAN-SLEEPS 3>>)
 	       (<VERB? ATTACK MUNG>
