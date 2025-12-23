@@ -528,7 +528,7 @@ darkness."
 		       <NOT <FSET? ,TRAP-DOOR ,OPENBIT>>>
 		  <TELL
 "The door is locked from above." CR>)
-		 (<AND <VERB? CLOSE> <NOT <FSET? ,TRAP-DOOR ,OPENBIT>>>
+		 (<AND <VERB? CLOSE> <FSET? ,TRAP-DOOR ,OPENBIT>>
 		  <FCLEAR ,TRAP-DOOR ,TOUCHBIT>
 		  <FCLEAR ,TRAP-DOOR ,OPENBIT>
 		  <TELL "The door closes and locks." CR>)
