@@ -3567,7 +3567,8 @@ difficult to remove." CR>)>>
 <ROUTINE SHADOW-ROOMS (RARG)
 	 <COND (<AND <==? .RARG ,M-BEG>
 		     <VERB? WALK>
-		     <==? ,PRSO ,BLOCKED-DIR>>
+		     <==? ,PRSO ,BLOCKED-DIR>
+		     <G? ,S-STRENGTH 3>>
 		<TELL "Your way is blocked by the hooded figure." CR>)
 	       (<==? .RARG ,M-END>
 		<COND (<NOT <IN? ,SHADOW ,HERE>>
