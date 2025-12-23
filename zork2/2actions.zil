@@ -3854,10 +3854,10 @@ spaceship."
 never survive." CR>)
 	       (<VERB? CROSS>
 		<TELL "You'll have to find a bridge." CR>)
-	       (<AND <VERB? PUT> <EQUAL? ,PRSI ,PSEUDO-OBJECT>>
+	       (<AND <VERB? PUT> <EQUAL? ,PRSI ,CHASM>>
 		<TELL
 "The " D ,PRSO " drops out of sight into the chasm." CR>
-		<REMOVE ,PRSO>)>>
+		<REMOVE-CAREFULLY ,PRSO>)>>
 
 <ROUTINE TUNNEL-OBJECT ()
 	 <COND (<AND <VERB? THROUGH> <GETPT ,HERE ,P?IN>>
