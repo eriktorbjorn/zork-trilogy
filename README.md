@@ -17,7 +17,7 @@ What we have here are:
 | zork3-r17 | This probably corresponds to the last published version of Zork III, serial number 840727 |
 | zork1-r119 | This is the last known snapshot of the Zork I source code. |
 | zork2-r63 | This is the last known snapshot of the Zork II source code. |
-| zork3-r25 | This is the last known snapshot of the Zork III source code. |
+| zork3-r25 | This is the last known snapshot of the Zork III source code, and also partial sources for a different version by the looks of it? |
 | zork1 | The latest version of Zork I, with bugfixes and buildable with ZILF. |
 | zork2 | The latest version of Zork II, with bugfixes and buildable with ZILF. |
 | zork3 | The latest version of Zork II, with bugfixes and buildable with ZILF. |
