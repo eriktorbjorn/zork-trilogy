@@ -3057,13 +3057,13 @@ down, the songbird flies away." CR>
 		       <DO-WALK ,P?WEST>
 		       <RTRUE>)
 		      (T
-		       <TELL "You tumble down the slide...." CR>
+		       <TELL "You tumble down the slide...." CR CR>
 		       <GOTO ,CELLAR>)>)
 	       (<VERB? PUT>
 		<SLIDER ,PRSO>)>>
 
 <ROUTINE SLIDER (OBJ)
-	 <COND (<FSET? .OBJ ,TAKEBIT>
+	 <COND (<AND <EQUAL? ,HERE ,SLIDE-ROOM> <FSET? .OBJ ,TAKEBIT>>
 		<TELL "The " D .OBJ " falls into the slide and is gone." CR>
 		<COND (<EQUAL? .OBJ ,WATER> <REMOVE-CAREFULLY .OBJ>)
 		      (T
