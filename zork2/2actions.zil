@@ -2940,9 +2940,9 @@ then tries repeatedly to swallow it whole, with disappointing results.
 Finally, he spits it on the ground." CR>
 		       <MOVE ,PRSO ,HERE>)
 		      (T
-		       <REMOVE ,PRSO>
 		       <TELL
-"The lizard wolfs down the " D ,PRSO ", crunching greedily." CR>)>)
+"The lizard wolfs down the " D ,PRSO ", crunching greedily." CR>
+		       <REMOVE-CAREFULLY ,PRSO>)>)
 	       (<VERB? ATTACK MUNG>
 		<TELL
 "The guardian seems impervious to your attack. In fact, your blows
