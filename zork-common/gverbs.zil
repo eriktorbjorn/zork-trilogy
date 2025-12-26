@@ -337,9 +337,7 @@ Release ">
 		<COND (<FSET? ,PRSO ,OPENBIT>
 		       <FCLEAR ,PRSO ,OPENBIT>
 		       <TELL "Closed." CR>
-		       <COND (<AND ,LIT <NOT <SETG LIT <LIT? ,HERE>>>>
-			      <TELL "It is now pitch black." CR>)>
-		       <RTRUE>)
+		       <NOW-DARK?>)
 		      (T
 	 	       <TELL "It is already closed." CR>)>)
 	       (<FSET? ,PRSO ,DOORBIT>
@@ -769,11 +767,8 @@ D ,PRSO "." CR>)>)
 		       <TELL "It is already off." CR>)
 		      (T
 		       <FCLEAR ,PRSO ,ONBIT>
-		       <COND (,LIT
-			      <SETG LIT <LIT? ,HERE>>)>
 		       <TELL "The " D ,PRSO " is now off." CR>
-		       <COND (<NOT ,LIT>
-			      <TELL "It is now pitch black." CR>)>)>)
+		       <NOW-DARK?>)>)
 	       (T
 		<TELL "You can't turn that off." CR>)>
 	 <RTRUE>>

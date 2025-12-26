@@ -304,9 +304,7 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		       <TELL
 "The basket is lowered to the bottom of the shaft." CR>
 		       <SETG CAGE-TOP <>>
-		       <COND (<AND ,LIT <NOT <SETG LIT <LIT? ,HERE>>>>
-			      <TELL "It is now pitch black." CR>)>
-		       T)>)
+		       <NOW-DARK?>)>)
 	       (<OR <EQUAL? ,PRSO ,LOWERED-BASKET>
 		    <EQUAL? ,PRSI ,LOWERED-BASKET>>
 		<TELL "The basket is at the other end of the chain." CR>)
