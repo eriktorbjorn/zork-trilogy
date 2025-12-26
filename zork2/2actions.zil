@@ -2564,6 +2564,7 @@ leading west." CR>
 			      <SETG UNICORN-FRIGHTENED <>>
 			      <RFALSE>)>
 		       <MOVE ,UNICORN ,GARDEN-NORTH>
+		       <FSET ,UNICORN ,TOUCHBIT>
 		       <COND (<EQUAL? ,HERE ,GARDEN-NORTH>
 			      <TELL <RANDOM-ELEMENT ,UNICORN-MSGS> CR>)
 			     (T <TELL
@@ -2812,6 +2813,7 @@ the debris. She must be magically protected.">)>
 		<MOVE ,GOLD-KEY ,WINNER>
 		<SCORE-OBJ ,GOLD-KEY>
 		<PUTP ,GOLD-KEY ,P?ACTION 0>
+		<FSET ,UNICORN ,TOUCHBIT>
 		<TELL
 "Shyly, a unicorn peeks out of the hedges. It notices the princess and
 seems captivated. It approaches her and bows its head as though curtseying
