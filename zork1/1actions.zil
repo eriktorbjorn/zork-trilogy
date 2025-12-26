@@ -3067,7 +3067,8 @@ down, the songbird flies away." CR>
 		<TELL "The " D .OBJ " falls into the slide and is gone." CR>
 		<COND (<EQUAL? .OBJ ,WATER> <REMOVE-CAREFULLY .OBJ>)
 		      (T
-		       <MOVE .OBJ ,CELLAR>)>)
+		       <MOVE .OBJ ,CELLAR>
+		       <NOW-DARK?>)>)
 	       (T <TELL <PICK-ONE ,YUKS> CR>)>>
 
 <ROUTINE SANDWICH-BAG-FCN ()
