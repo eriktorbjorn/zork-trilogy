@@ -307,3 +307,10 @@ you!" CR>)
 	(ADJECTIVE BARE)
 	(DESC "pair of hands")
 	(FLAGS NDESCBIT TOOLBIT)>
+
+<ROUTINE NOW-DARK? ()
+	<COND (<AND ,LIT
+		    <NOT <LIT? ,HERE>>>
+	       <SETG LIT <>>
+	       <TELL "It is now pitch black." CR>)>
+	<RTRUE>>
