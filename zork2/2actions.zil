@@ -1880,7 +1880,8 @@ Unfortunately, wishing makes the coin go...." CR>
     	<COND (<AND <FSET? ,PRSO ,TAKEBIT> <VERB? THROW PUT DROP>>
 	       <TELL "The " D ,PRSO
 		     " is now sitting at the bottom of the well." CR>
-	       <MOVE ,PRSO ,WELL-BOTTOM>)
+	       <MOVE ,PRSO ,WELL-BOTTOM>
+	       <NOW-DARK?>)
 	      (<VERB? CLIMB-UP CLIMB-DOWN CLIMB-FOO>
 	       <TELL "You can't climb the well." CR>)>>
 
