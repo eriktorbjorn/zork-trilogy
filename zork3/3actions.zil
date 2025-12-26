@@ -4469,7 +4469,9 @@ your head. \"We're wasting time now. Be a good fellow and tie the rope!\"" CR>
 	       (<AND <==? .RARG ,M-BEG>
 		     <VERB? TAKE>
 		     <NOT <EQUAL? ,PRSO ,SHINY-OBJECT>>>
-		<COND (<G? <WEIGHT ,WINNER> 25>
+		<COND (<EQUAL? ,PRSO ,SAND>
+		       <RFALSE>)
+		      (<G? <WEIGHT ,WINNER> 25>
 		       <TELL "You can't carry that much underwater." CR>)
 		      (<NOT <FSET? ,PRSO ,TAKEBIT>>
 		       <TELL "You can't take that!" CR>)
