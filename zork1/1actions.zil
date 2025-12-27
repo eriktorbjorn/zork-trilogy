@@ -1332,11 +1332,12 @@ touch them." CR>)
 		<TELL "The chests are already open." CR>)>>
 
 <ROUTINE I-MAINT-ROOM ("AUX" HERE?)
-	 <SET HERE? <EQUAL? ,HERE ,MAINTENANCE-ROOM>>
+	 <SET HERE? <AND <EQUAL? ,HERE ,MAINTENANCE-ROOM>
+			 <NOT <IN? ,WINNER ,INFLATED-BOAT>>>>
 	 <COND (.HERE? <TELL "The water level here is now "> <TELL <GET
 		,DROWNINGS </ ,WATER-LEVEL 2>>> <CRLF>)>
 	 <SETG WATER-LEVEL <+ 1 ,WATER-LEVEL>>
-	 <COND (<NOT <L? ,WATER-LEVEL 14>>
+	 <COND (<G? ,WATER-LEVEL 16>
 		<MUNG-ROOM ,MAINTENANCE-ROOM
 "The room is full of water and cannot be entered.">
 		<QUEUE I-MAINT-ROOM 0>
