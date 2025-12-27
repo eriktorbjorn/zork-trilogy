@@ -947,6 +947,7 @@ muttering obscenities." CR>
     <COND (<VERB? EXAMINE>
 	   <TELL "The torch is burning." CR>)
 	  (<AND <VERB? POUR-ON>
+		<EQUAL? ,PRSO ,WATER>
 		<EQUAL? ,PRSI ,TORCH>>
 	   <TELL "The water evaporates before it gets close." CR>)
 	  (<AND <VERB? LAMP-OFF> <FSET? ,PRSO ,ONBIT>>
