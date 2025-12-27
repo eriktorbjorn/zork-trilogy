@@ -1036,9 +1036,8 @@ from the floor below." CR>)>)
 		<COND (,DEAD
 		       <TELL
 "As you enter the dome you feel a strong pull as if from a wind
-drawing you over the railing and down." CR>
-		       <MOVE ,WINNER ,TORCH-ROOM>
-		       <SETG HERE ,TORCH-ROOM>
+drawing you over the railing and down." CR CR>
+		       <GOTO ,TORCH-ROOM>
 		       <RTRUE>)
 		      (<VERB? LEAP>
 		       <JIGS-UP
