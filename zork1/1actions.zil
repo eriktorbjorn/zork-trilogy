@@ -1323,7 +1323,7 @@ pipe)." CR>
 <ROUTINE TOOL-CHEST-FCN ()
 	 <COND (<VERB? EXAMINE>
 		<TELL "The chests are all empty." CR>)
-	       (<VERB? TAKE OPEN PUT>
+	       (<VERB? TAKE CLOSE PUT>
 		<REMOVE-CAREFULLY ,TOOL-CHEST>
 <TELL
 "The chests are so rusty and corroded that they crumble when you
