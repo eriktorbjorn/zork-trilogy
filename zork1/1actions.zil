@@ -48,12 +48,15 @@ which is ">
 <ROUTINE TEETH-F ()
 	 <COND (<AND <VERB? BRUSH>
 		     <EQUAL? ,PRSO ,TEETH>>
-		<COND (<AND <EQUAL? ,PRSI ,PUTTY>
-			    <IN? ,PRSI ,WINNER>>
-		       <JIGS-UP
+		<COND (<EQUAL? ,PRSI ,PUTTY>
+		       <COND (<HELD? ,PUTTY>
+			      <JIGS-UP
 "Well, you seem to have been brushing your teeth with some sort of
 glue. As a result, your mouth gets glued together (with your nose)
 and you die of respiratory failure.">)
+			     (T
+			      <TELL
+"You aren't even holding the " D ,PRSI "." CR>)>)
 		      (<NOT ,PRSI>
 		       <TELL
 "Dental hygiene is highly recommended, but I'm not sure what you want
