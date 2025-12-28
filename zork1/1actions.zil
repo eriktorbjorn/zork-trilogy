@@ -2572,14 +2572,15 @@ excitement abates." CR>
 		<COND (<OR <EQUAL? ,HERE ,ARAGAIN-FALLS>
 			   <EQUAL? ,HERE ,END-OF-RAINBOW>>
 		       <COND (<NOT ,RAINBOW-FLAG>
-			      <FCLEAR ,POT-OF-GOLD ,INVISIBLE>
 			      <TELL
 "Suddenly, the rainbow appears to become solid and, I venture,
 walkable (I think the giveaway was the stairs and bannister)." CR>
-			      <COND (<AND <EQUAL? ,HERE ,END-OF-RAINBOW>
+			      <COND (<AND <FSET? ,POT-OF-GOLD ,INVISIBLE>
 					  <IN? ,POT-OF-GOLD ,END-OF-RAINBOW>>
-				     <TELL
-"A shimmering pot of gold appears at the end of the rainbow." CR>)>
+				     <FCLEAR ,POT-OF-GOLD ,INVISIBLE>
+				     <COND (<EQUAL? ,HERE ,END-OF-RAINBOW>
+					    <TELL
+"A shimmering pot of gold appears at the end of the rainbow." CR>)>)>
 			      <SETG RAINBOW-FLAG T>)
 			     (T
 			      <ROB ,ON-RAINBOW ,WALL>
