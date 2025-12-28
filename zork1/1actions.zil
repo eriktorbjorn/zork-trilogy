@@ -275,8 +275,8 @@ It is clear that the owners must have been extremely wealthy." CR>)
 
 <ROUTINE GHOSTS-F ()
 	 <COND (<VERB? TELL>
-		<TELL "The spirits jeer loudly and ignore you." CR>
-		<SETG P-CONT <>>)
+		<SETG P-CONT <>>
+		<TELL "The spirits jeer loudly and ignore you." CR>)
 	       (<VERB? EXORCISE>
 		<TELL "Only the ceremony itself has any effect." CR>)
 	       (<AND <VERB? ATTACK MUNG> <EQUAL? ,PRSO ,GHOSTS>>
