@@ -1042,8 +1042,10 @@ from the floor below." CR>)>)
 "As you enter the dome you feel a strong pull as if from a wind
 drawing you over the railing and down." CR CR>
 		       <GOTO ,TORCH-ROOM>
-		       <RTRUE>)
-		      (<VERB? LEAP>
+		       <RTRUE>)>)
+	       (<EQUAL? .RARG ,M-BEG>
+		<COND (<AND <VERB? LEAP>
+			    <EQUAL? ,PRSO <> ,RAILING>>
 		       <JIGS-UP
 "I'm afraid that the leap you attempted has done you in.">)>)>>
 
