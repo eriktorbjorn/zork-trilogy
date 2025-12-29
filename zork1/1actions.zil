@@ -2831,15 +2831,19 @@ The boat deflates to the sounds of hissing, sputtering, and cursing." CR>
 
 <GDECL (BEACH-DIG) FIX>
 
-<ROUTINE SAND-FUNCTION ()
+<ROUTINE SAND-FUNCTION ("AUX" SCARAB?)
+	 <SET .SCARAB? <AND <IN? ,SCARAB ,HERE>
+			    <FSET? ,SCARAB ,INVISIBLE>>>
 	 <COND (<AND <VERB? DIG> <==? ,PRSI ,SHOVEL>>
 		<SETG BEACH-DIG <+ 1 ,BEACH-DIG>>
-		<COND (<G? ,BEACH-DIG 3>
+		<COND (<OR <AND <NOT .SCARAB?>
+				<EQUAL? ,BEACH-DIG 3>>
+			   <G? ,BEACH-DIG 3>>
 		       <SETG BEACH-DIG -1>
 		       <AND <IN? ,SCARAB ,HERE> <FSET ,SCARAB ,INVISIBLE>>
 		       <JIGS-UP "The hole collapses, smothering you.">)
 		      (<EQUAL? ,BEACH-DIG 3>
-		       <COND (<FSET? ,SCARAB ,INVISIBLE>
+		       <COND (.SCARAB?
 			      <TELL
 "You can see a scarab here in the sand." CR>
 			      <THIS-IS-IT ,SCARAB>
