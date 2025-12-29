@@ -369,7 +369,7 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		       <TELL "The bell is too hot to touch." CR>)
 		      (T
 		       <TELL "The heat from the bell is too intense." CR>)>)
-	       (<VERB? POUR-ON>
+	       (<AND <VERB? POUR-ON> <EQUAL? ,PRSO ,WATER>>
 		<REMOVE-CAREFULLY ,PRSO>
 		<TELL "The water cools the bell and is evaporated." CR>
 		<QUEUE I-XBH 0>
