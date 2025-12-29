@@ -362,10 +362,10 @@ It is clear that the owners must have been extremely wealthy." CR>)
 	 <COND (<VERB? TAKE>
 		<TELL "The bell is very hot and cannot be taken." CR>)
 	       (<OR <VERB? RUB> <AND <VERB? RING> ,PRSI>>
-		<COND (<FSET? ,PRSI ,BURNBIT>
+		<COND (<AND ,PRSI <FSET? ,PRSI ,BURNBIT>>
 		       <TELL "The " D ,PRSI " burns and is consumed." CR>
 		       <REMOVE-CAREFULLY ,PRSI>)
-		      (<EQUAL? ,PRSI ,HANDS>
+		      (<EQUAL? ,PRSI <> ,HANDS>
 		       <TELL "The bell is too hot to touch." CR>)
 		      (T
 		       <TELL "The heat from the bell is too intense." CR>)>)
