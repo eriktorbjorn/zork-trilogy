@@ -1206,11 +1206,7 @@ glowing serenely">)>
 		      <TELL
 "The bolt won't turn using the " D ,PRSI "." CR>)>)
 	      (<VERB? TAKE>
-	       <INTEGRAL-PART>)
-	      (<VERB? OIL>
-	       <TELL
-"Hmm. It appears the tube contained glue, not oil. Turning the bolt
-won't get any easier...." CR>)>>
+	       <INTEGRAL-PART>)>>
 
 <ROUTINE BUBBLE-F ()
 	 <COND (<VERB? TAKE>
@@ -1379,7 +1375,12 @@ leak in the dam." CR>>
 			 <EQUAL? ,PRSI ,PUTTY>>
 		    <AND <VERB? PUT>
 			 <EQUAL? ,PRSO ,PUTTY>>>
-		<TELL "The all-purpose gunk isn't a lubricant." CR>)>>
+		<COND (<EQUAL? ,PRSO ,BOLT>
+		       <TELL
+"Hmm. It appears the tube contained glue, not oil. Turning the bolt
+won't get any easier...." CR>)
+		      (T
+		       <TELL "The all-purpose gunk isn't a lubricant." CR>)>)>>
 
 <ROUTINE TUBE-FUNCTION ()
 	 <COND (<AND <VERB? PUT>
