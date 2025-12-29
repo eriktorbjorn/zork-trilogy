@@ -1013,6 +1013,15 @@ you kill yourself, just as he might have done!">
 <ROUTINE V-PLUG ()
 	 <TELL "This has no effect." CR>>
 
+<ROUTINE PRE-POUR-ON ()
+	 %<COND (<==? ,ZORK-NUMBER 1>
+		 '<COND (<AND <EQUAL? ,PRSO ,WATER>
+			      <IN? ,WATER ,BOTTLE>
+			      <NOT <FSET? ,BOTTLE ,OPENBIT>>>
+			 <TELL
+"You'll have to open the " D ,BOTTLE " first." CR>)>)
+		(ELSE '<NULL-F>)>>
+
 <ROUTINE V-POUR-ON ()
 	 <COND (<EQUAL? ,PRSO ,WATER>
 		<REMOVE-CAREFULLY ,PRSO>
