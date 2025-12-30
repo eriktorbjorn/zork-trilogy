@@ -781,8 +781,13 @@ his guttural tongue." CR>)
 	       <COND (<VERB? MOVE TAKE>
 		      <TELL
 "In disturbing the pile of leaves, a grating is revealed." CR>)
-		     (T <TELL
-"With the leaves moved, a grating is revealed." CR>)>
+		     (T
+		      <TELL "With the leaves ">
+		      <COND (<VERB? BURN>
+			     <TELL "gone">)
+			    (T
+			     <TELL "moved">)>
+		      <TELL ", a grating is revealed." CR>)>
 	       <FCLEAR ,GRATE ,INVISIBLE>
 	       <SETG GRATE-REVEALED T>)>
 	<>>
@@ -791,14 +796,14 @@ his guttural tongue." CR>)
 	<COND (<VERB? COUNT>
 	       <TELL "There are 69,105 leaves here." CR>)
 	      (<VERB? BURN>
-	       <LEAVES-APPEAR>
-	       <REMOVE-CAREFULLY ,PRSO>
-	       <COND (<IN? ,PRSO ,HERE>
+	       <COND (<NOT <HELD? ,LEAVES>>
 		      <TELL
 "The leaves burn." CR>)
 		     (T
 		      <JIGS-UP
-"The leaves burn, and so do you.">)>)
+"The leaves burn, and so do you.">)>
+	       <LEAVES-APPEAR>
+	       <REMOVE-CAREFULLY ,PRSO>)
 	      (<VERB? CUT>
 	       <TELL "You rustle the leaves around, making quite a mess." CR>
 	       <LEAVES-APPEAR>
