@@ -1309,7 +1309,8 @@ pipe)." CR>
 		       <TELL "The lights within the room ">
 		       <COND (<FSET? ,HERE ,ONBIT>
 			      <FCLEAR ,HERE ,ONBIT>
-			      <TELL "shut off." CR>)
+			      <TELL "shut off." CR>
+			      <NOW-DARK?>)
 			     (T
 			      <FSET ,HERE ,ONBIT>
 			      <TELL "come on." CR>)>)
