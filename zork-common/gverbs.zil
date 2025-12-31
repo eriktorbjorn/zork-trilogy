@@ -1654,7 +1654,7 @@ detect a dim light from the east." CR>)>)
 		<SET V? T>)>
 	 %<COND (<==? ,ZORK-NUMBER 1>
 		 '<COND (<FSET? ,HERE ,MAZEBIT>
-		         <FCLEAR ,HERE ,TOUCHBIT>)>)
+		         <SET V? T>)>)
 		(T
 		 '<NULL-F>)>
 	 <COND (<IN? ,HERE ,ROOMS>
