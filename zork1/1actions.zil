@@ -861,44 +861,67 @@ in the immediate vicinity." CR>
     	 <COND (<AND <VERB? OPEN> <EQUAL? ,PRSI ,KEYS>>
 		<PERFORM ,V?UNLOCK ,GRATE ,KEYS>
 		<RTRUE>)
-	       (<VERB? LOCK>
+	       (<AND <VERB? LOCK>
+		     <EQUAL? ,PRSO ,GRATE>>
+		<COND (<NOT <EQUAL? ,PRSI ,KEYS>>
+		       <TELL "Can you lock a grating with a " D ,PRSI "?" CR>
+		       <RTRUE>)>
+		<COND (<FSET? ,GRATE ,OPENBIT>
+		       <TELL "The grate is open." CR>
+		       <RTRUE>)>
 		<COND (<EQUAL? ,HERE ,GRATING-ROOM>
+		       <TELL "The grate is ">
+		       <COND (<NOT ,GRUNLOCK>
+			      <TELL "already ">)>
+		       <TELL "locked." CR>
 		       <SETG GRUNLOCK <>>
-		       <TELL "The grate is locked." CR>)
+		       <RTRUE>)
 	              (<EQUAL? ,HERE ,GRATING-CLEARING>
 		       <TELL "You can't lock it from this side." CR>)>)
-	       (<AND <VERB? UNLOCK> <EQUAL? ,PRSO ,GRATE>>
-		<COND (<AND <EQUAL? ,HERE ,GRATING-ROOM> <EQUAL? ,PRSI ,KEYS>>
-		       <SETG GRUNLOCK T>
-		       <TELL "The grate is unlocked." CR>)
-		      (<AND <EQUAL? ,HERE ,GRATING-CLEARING>
-			    <EQUAL? ,PRSI ,KEYS>>
-		       <TELL "You can't reach the lock from here." CR>)
-		      (T
-		       <TELL
-"Can you unlock a grating with a " D ,PRSI "?" CR>)>)
+	       (<AND <VERB? UNLOCK>
+		     <EQUAL? ,PRSO ,GRATE>>
+		<COND (<NOT <EQUAL? ,PRSI ,KEYS>>
+		       <TELL "Can you unlock a grating with a " D ,PRSI "?" CR>
+		       <RTRUE>)>
+		<COND (<EQUAL? ,HERE ,GRATING-ROOM>
+		       <TELL "The grate is ">
+		       <COND (,GRUNLOCK
+			      <TELL "already ">)>
+		       <COND (<FSET? ,GRATE ,OPENBIT>
+			      <TELL "open">)
+			     (T
+			      <TELL "unlocked">)>
+		       <TELL "." CR>
+		       <SETG GRUNLOCK T>)
+		      (<EQUAL? ,HERE ,GRATING-CLEARING>
+		       <TELL "You can't reach the lock from here." CR>)>)
                (<VERB? PICK>
 		<TELL "You can't pick the lock." CR>)
                (<VERB? OPEN CLOSE>
 		<COND (,GRUNLOCK
 		       <OPEN-CLOSE ,GRATE
-				   <COND (<EQUAL? ,HERE ,CLEARING>
+				   <COND (<EQUAL? ,HERE ,GRATING-CLEARING>
 					  "The grating opens.")
 					 (T
 "The grating opens to reveal trees above you.")>
 				   "The grating is closed.">
 		       <COND (<FSET? ,GRATE ,OPENBIT>
-			      <COND (<AND <NOT <EQUAL? ,HERE ,CLEARING>>
+			      <COND (<AND <NOT <EQUAL? ,HERE ,GRATING-CLEARING>>
 					  <NOT ,GRATE-REVEALED>>
 				     <TELL
 "A pile of leaves falls onto your head and to the ground." CR>
 				     <SETG GRATE-REVEALED T>
 				     <MOVE ,LEAVES ,HERE>)>
 			      <FSET ,GRATING-ROOM ,ONBIT>)
-			     (T <FCLEAR ,GRATING-ROOM ,ONBIT>)>)
+			     (T
+			      <FCLEAR ,GRATING-ROOM ,ONBIT>
+			      <NOW-DARK?>)>)
 		      (T <TELL "The grating is locked." CR>)>)
 	       (<AND <VERB? PUT> <EQUAL? ,PRSI ,GRATE>>
-		<COND (<G? <GETP ,PRSO ,P?SIZE> 20>
+		<COND (<NOT <EQUAL? ,HERE ,GRATING-CLEARING>>
+		       <TELL <PICK-ONE ,YUKS> CR>)
+		      (<AND <NOT <FSET? ,GRATE ,OPENBIT>>
+			    <G? <GETP ,PRSO ,P?SIZE> 20>>
 		       <TELL "It won't fit through the grating." CR>)
 		      (T
 		       <MOVE ,PRSO ,GRATING-ROOM>
