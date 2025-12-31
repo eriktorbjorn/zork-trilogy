@@ -318,7 +318,8 @@ It is clear that the owners must have been extremely wealthy." CR>)
 <ROUTINE BAT-F ()
 	 <COND (<VERB? TELL>
 		<FWEEP 6>
-		<SETG P-CONT <>>)
+		<SETG P-CONT <>>
+		<RTRUE>)
 	       (<VERB? TAKE ATTACK MUNG>
 		<COND (<EQUAL? <LOC ,GARLIC> ,WINNER ,HERE>
 		       <TELL "You can't reach him; he's on the ceiling." CR>)
@@ -326,6 +327,7 @@ It is clear that the owners must have been extremely wealthy." CR>)
 
 <ROUTINE FLY-ME ()
 	 <FWEEP 4>
+	 <CRLF>
 	 <TELL
 "The bat grabs you by the scruff of your neck and lifts you away...." CR CR>
 	 <GOTO <PICK-ONE ,BAT-DROPS> <>>
@@ -336,8 +338,7 @@ It is clear that the owners must have been extremely wealthy." CR>)
 <ROUTINE FWEEP (N)
 	 <REPEAT ()
 		 <COND (<L? <SET N <- .N 1>> 1> <RETURN>)
-		       (T <TELL "    Fweep!" CR>)>>
-	 <CRLF>>
+		       (T <TELL "    Fweep!" CR>)>>>
 
 <GLOBAL BAT-DROPS
       <LTABLE 0
