@@ -4040,7 +4040,7 @@ valueless." CR>
 		<TELL "|
 It takes a talented person to be killed while already dead. YOU are such
 a talent. Unfortunately, it takes a talented person to deal with it.
-I am not such a talent. Sorry." CR>
+I am not such a talent. Sorry.|" CR>
 		<FINISH>)>
 	 <TELL .DESC CR>
 	 <COND (<NOT ,LUCKY>
@@ -4059,7 +4059,7 @@ I am not such a talent. Sorry." CR>
 "You clearly are a suicidal maniac.  We don't allow psychotics in the
 cave, since they may harm other adventurers.  Your remains will be
 installed in the Land of the Living Dead, where your fellow
-adventurers may gloat over them." CR>
+adventurers may gloat over them.|" CR>
 		 <FINISH>)
 		(T
 		 <SETG DEATHS <+ ,DEATHS 1>>
