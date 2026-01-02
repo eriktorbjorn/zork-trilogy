@@ -574,6 +574,7 @@ probably)." CR>>
 		       <SETG SPELL-HANDLED? T>
 		       <COND (<FSET? ,PRSO ,TAKEBIT>
 			      <MOVE ,PRSO ,WINNER>
+			      <FSET ,PRSO ,TOUCHBIT>
 			      <SCORE-OBJ ,PRSO>
 			      <TELL "Filched!" CR>)
 			     (ELSE
@@ -583,6 +584,7 @@ probably)." CR>>
 		       <COND (<AND <EQUAL? ,SPELL-VICTIM ,COLLAR>
 				   <IN? ,COLLAR ,CERBERUS>>
 			      <SETG SPELL-VICTIM ,CERBERUS>)>
+		       <FSET ,PRSO ,TOUCHBIT>
 		       <TELL
 "The " D ,PRSO " floats serenely in midair." CR>)
 		      (<AND <EQUAL? ,SPELL-USED ,W?FRY>
