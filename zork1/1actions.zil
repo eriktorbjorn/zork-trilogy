@@ -2277,6 +2277,12 @@ artist's masterpieces, you have destroyed one." CR>)>>
 <GLOBAL MATCH-COUNT 6>
 
 <ROUTINE MATCH-FUNCTION ("AUX" CNT)
+	 <COND (<AND <VERB? POUR-ON>
+		     <EQUAL? ,PRSO ,WATER>
+		     <EQUAL? ,PRSI ,MATCH>
+		     <FSET? ,MATCH ,ONBIT>>
+		<DISABLE <INT I-MATCH>>
+		<RFALSE>)>
 	 <COND (<AND <VERB? LAMP-ON BURN> <EQUAL? ,PRSO ,MATCH>>
 		<COND (<G? ,MATCH-COUNT 0>
 		       <SETG MATCH-COUNT <- ,MATCH-COUNT 1>>)>
@@ -2323,7 +2329,7 @@ artist's masterpieces, you have destroyed one." CR>)>>
 	 <TELL "The match has gone out." CR>
 	 <FCLEAR ,MATCH ,FLAMEBIT>
 	 <FCLEAR ,MATCH ,ONBIT>
-	 <SETG LIT <LIT? ,HERE>>
+	 <NOW-DARK?>
 	 <RTRUE>>
 
 <ROUTINE I-LANTERN ("AUX" TICK (TBL <VALUE LAMP-TABLE>))
@@ -2357,6 +2363,13 @@ artist's masterpieces, you have destroyed one." CR>)>>
 <ROUTINE CANDLES-FCN ()
 	 <COND (<NOT <FSET? ,CANDLES ,TOUCHBIT>>
 		<ENABLE <INT I-CANDLES>>)>
+	 <COND (<AND <VERB? POUR-ON>
+		     <EQUAL? ,PRSO ,WATER>
+		     <EQUAL? ,PRSI ,CANDLES>
+		     <FSET? ,CANDLES ,ONBIT>>
+		<FSET ,CANDLES ,TOUCHBIT>
+		<DISABLE <INT I-CANDLES>>
+		<RFALSE>)>
 	 <COND (<EQUAL? ,CANDLES ,PRSI> <RFALSE>)
 	       (T
 		<COND (<VERB? LAMP-ON BURN>
