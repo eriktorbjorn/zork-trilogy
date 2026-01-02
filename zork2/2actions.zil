@@ -1888,6 +1888,12 @@ Unfortunately, wishing makes the coin go...." CR>
 <GLOBAL MATCH-COUNT 6>
 
 <ROUTINE MATCH-FCN ( "AUX" CNT)
+	 <COND (<AND <VERB? POUR-ON>
+		     <EQUAL? ,PRSO ,WATER>
+		     <EQUAL? ,PRSI ,MATCH>
+		     <FSET? ,MATCH ,ONBIT>>
+		<DISABLE <INT I-MATCH>>
+		<RFALSE>)>
 	 <COND (<AND <VERB? LAMP-ON BURN> <EQUAL? ,PRSO ,MATCH>>
 		<COND (<G? ,MATCH-COUNT 0>
 		       <SETG MATCH-COUNT <- ,MATCH-COUNT 1>>)>
@@ -1921,7 +1927,8 @@ Unfortunately, wishing makes the coin go...." CR>
 <ROUTINE I-MATCH ()
 	 <TELL "The match has gone out." CR>
 	 <FCLEAR ,MATCH ,FLAMEBIT>
-	 <FCLEAR ,MATCH ,ONBIT>>
+	 <FCLEAR ,MATCH ,ONBIT>
+	 <NOW-DARK?>>
 
 
 <GLOBAL LAMP-TABLE
