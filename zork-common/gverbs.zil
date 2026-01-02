@@ -1227,7 +1227,7 @@ you kill yourself, just as he might have done!">
 					     '<EQUAL? ,HERE ,ON-LAKE>)
 					    (ELSE
 					     '<NOT <FSET? ,HERE ,RLANDBIT>>)>
-		                     <TELL "out and disappears">)
+		                     <TELL "out and disappear">)
 	                            (T
 		                     <TELL "to the ground">)>
 	                      <TELL "." CR>)
