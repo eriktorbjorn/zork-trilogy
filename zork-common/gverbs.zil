@@ -1032,7 +1032,8 @@ you kill yourself, just as he might have done!">
 				       <SETG BINF-FLAG <>>)>)
 			      (ELSE '<NULL-F>)>
 		       <FCLEAR ,PRSI ,ONBIT>
-		       <FCLEAR ,PRSI ,FLAMEBIT>)
+		       <FCLEAR ,PRSI ,FLAMEBIT>
+		       <NOW-DARK?>)
 	              (T
 		       <TELL
 "The water spills over the " D ,PRSI ", to the floor, and evaporates." CR>)>)
