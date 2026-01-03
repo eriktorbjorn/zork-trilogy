@@ -477,7 +477,7 @@ Release ">
 	 <COND (<SET EAT? <FSET? ,PRSO ,FOODBIT>>
 		<COND (<AND <NOT <IN? ,PRSO ,WINNER>>
 			    <NOT <IN? <LOC ,PRSO> ,WINNER>>>
-		       <TELL "You're not holding that." CR>)
+		       <TELL "You're not holding that.">)
 		      (<VERB? DRINK>
 		       <TELL "How can you drink that?">)
 		      (T
