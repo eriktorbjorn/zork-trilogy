@@ -307,4 +307,3 @@
 	<COND (,DEBUG <TELL "[" D .OBJ "=]">)>
 	<D-APPLY .STR .FCN .FOO>>
 >)>
-

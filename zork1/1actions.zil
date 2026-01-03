@@ -25,22 +25,6 @@ which is ">
 		      (T <TELL "slightly ajar.">)>
 		<CRLF>)>>
 
-<ROUTINE OPEN-CLOSE (OBJ STROPN STRCLS)
-	 <COND (<VERB? OPEN>
-		<COND (<FSET? .OBJ ,OPENBIT>
-		       <TELL <PICK-ONE ,DUMMY>>)
-		      (T
-		       <TELL .STROPN>
-		       <FSET .OBJ ,OPENBIT>)>
-		<CRLF>)
-	       (<VERB? CLOSE>
-		<COND (<FSET? .OBJ ,OPENBIT>
-		       <TELL .STRCLS>
-		       <FCLEAR .OBJ ,OPENBIT>
-		       T)
-		      (T <TELL <PICK-ONE ,DUMMY>>)>
-		<CRLF>)>>
-
 <ROUTINE BOARD-F ()
 	 <COND (<VERB? TAKE EXAMINE>
 		<TELL "The boards are securely fastened." CR>)>>

@@ -5389,4 +5389,3 @@ but invisible liquid.">)>
 		      (T
 		       <TELL
 "The arch before you is broken. The others show signs of decay." CR>)>)>>
-

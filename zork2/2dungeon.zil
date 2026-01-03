@@ -2715,4 +2715,3 @@ compass directions. Simple, but effective." CR>)
 	       (T
 		<TELL
 "You can't do that. And don't bother to ask why." CR>)>>
-

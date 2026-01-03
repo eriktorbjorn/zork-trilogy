@@ -90,23 +90,6 @@ room is very disorienting." CR CR>)>
 
 <GLOBAL MUNGED-ROOM <>>
 
-<ROUTINE OPEN-CLOSE (OBJ STROPN STRCLS)
-	 #DECL ((OBJ) OBJECT (STROPN STRCLS) STRING)
-	 <COND (<VERB? OPEN>
-		<COND (<FSET? .OBJ ,OPENBIT>
-		       <TELL <RANDOM-ELEMENT ,DUMMY>>)
-		      (T
-		       <TELL .STROPN>
-		       <FSET .OBJ ,OPENBIT>)>
-		<CRLF>)
-	       (<VERB? CLOSE>
-		<COND (<FSET? .OBJ ,OPENBIT>
-		       <TELL .STRCLS>
-		       <FCLEAR .OBJ ,OPENBIT>
-		       T)
-		      (T <TELL <RANDOM-ELEMENT ,DUMMY> CR>)>
-		<CRLF>)>>
-
 ;"SUBTITLE THE VOLCANO"
 
 <GLOBAL BTIE-FLAG <>>
@@ -1636,7 +1619,7 @@ dust rises from beneath it." CR>
 <ROUTINE PLID-FCN ()
     <COND (<VERB? OPEN RAISE MOVE>
 	   <COND (<FSET? ,PRSO ,OPENBIT>
-		  <TELL <RANDOM-ELEMENT ,DUMMY> CR>)
+		  <TELL <PICK-ONE ,DUMMY> CR>)
 		 (T <TELL "The lid is now open." CR>)>
 	   <FSET ,PRSO ,OPENBIT>)
 	  (<VERB? CLOSE LOWER>
@@ -2052,11 +2035,6 @@ quietly swings open to reveal a passageway beyond." CR>
 		       <TELL "Not a chance. The door weighs many tons." CR>)
 		      (T
 		       <TELL "It is closed!" CR>)>)>>
-
-<GLOBAL DUMMY
-	<LTABLE "Look around."
-	       "You think it isn't?"
-	       "I think you've already done that.">>
 
 <ROUTINE RIDDLE-PSEUDO ()
 	 <COND (<VERB? EXAMINE>

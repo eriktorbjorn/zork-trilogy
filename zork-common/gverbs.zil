@@ -2175,6 +2175,23 @@ stumbled into an authentic grue lair!">))
 		 <COND (<NOT .CAN> <RFALSE>)
 		       (<EQUAL? .CAN ,WINNER> <RTRUE>)>>>
 
+<ROUTINE OPEN-CLOSE (OBJ STROPN STRCLS)
+	 #DECL ((OBJ) OBJECT (STROPN STRCLS) STRING)
+	 <COND (<VERB? OPEN>
+		<COND (<FSET? .OBJ ,OPENBIT>
+		       <TELL <PICK-ONE ,DUMMY>>)
+		      (T
+		       <TELL .STROPN>
+		       <FSET .OBJ ,OPENBIT>)>
+		<CRLF>)
+	       (<VERB? CLOSE>
+		<COND (<FSET? .OBJ ,OPENBIT>
+		       <TELL .STRCLS>
+		       <FCLEAR .OBJ ,OPENBIT>
+		       T)
+		      (T <TELL <PICK-ONE ,DUMMY>>)>
+		<CRLF>)>>
+
 <ROUTINE OTHER-SIDE (DOBJ "AUX" (P 0) TX) ;"finds room beyond given door"
 	 <REPEAT ()
 		 <COND (<L? <SET P <NEXTP ,HERE .P>> ,LOW-DIRECTION>
@@ -2215,4 +2232,5 @@ stumbled into an authentic grue lair!">))
 	<LTABLE 0 
 		"Look around."
 	        "Too late for that."
+		"You think it isn't?"
 	        "Have your eyes checked.">>
