@@ -418,7 +418,7 @@ prepared to undertake an even greater adventure that will severely test your
 skill and bravery!|
 |
 The ZORK trilogy continues with \"ZORK II: The Wizard of Frobozz\" and
-is completed in \"ZORK III: The Dungeon Master.\"" CR>)
+is completed in \"ZORK III: The Dungeon Master.\"|" CR>)
 		      (T
 		       <TELL "
 ZORK: The Great Underground Empire.|" CR>)>
