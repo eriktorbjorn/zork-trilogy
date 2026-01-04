@@ -3878,7 +3878,7 @@ The rose almost seemed to move its thorns into your path." CR>)>>
 	 <SETG SPELL-VICTIM <>>>
 
 <GLOBAL FANTASIES
-	<LTABLE "pile of jewels" "gold ingot" "basilisk"
+	<LTABLE 0 "pile of jewels" "gold ingot" "basilisk"
 		"bulging chest" "yellow sphere" "grue"
 		"convention of wizards" "copy of ZORK I">>
 
