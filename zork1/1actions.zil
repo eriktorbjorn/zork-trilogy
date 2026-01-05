@@ -3076,6 +3076,7 @@ down, the songbird flies away." CR>
 		      (T
 		       <TELL "It is not tied to anything." CR>)>)
 	       (<AND <VERB? DROP>
+		     <EQUAL? ,PRSO ,ROPE>
 		     <EQUAL? ,HERE ,DOME-ROOM>
 		     <NOT ,DOME-FLAG>>
 		<MOVE ,ROPE ,TORCH-ROOM>
