@@ -3061,7 +3061,7 @@ down, the songbird flies away." CR>
 		<COND (<FSET? ,PRSO ,ACTORBIT>
 		       <COND (<L? <GETP ,PRSO ,P?STRENGTH> 0>
 			      <TELL
-"Your attempt to tie up the " D ,PRSO " awakens him.">
+"Your attempt to tie up the " D ,PRSO " awakens him." CR>
 			      <AWAKEN ,PRSO>)
 			     (T
 			      <TELL
