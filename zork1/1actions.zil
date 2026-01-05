@@ -3036,10 +3036,8 @@ down, the songbird flies away." CR>
 
 <ROUTINE ROPE-FUNCTION ("AUX" RLOC)
 	 <COND (<NOT <EQUAL? ,HERE ,DOME-ROOM>>
-		<SETG DOME-FLAG <>>
-		<COND (<VERB? TIE>
-		       <TELL "You can't tie the rope to that." CR>)>)
-	       (<VERB? TIE>
+		<SETG DOME-FLAG <>>)>
+	 <COND (<VERB? TIE>
 		<COND (<EQUAL? ,PRSI ,RAILING>
 		       <COND (,DOME-FLAG
 			      <TELL
@@ -3053,7 +3051,9 @@ down, the songbird flies away." CR>
 			      <COND (<OR <NOT .RLOC>
 					 <NOT <IN? .RLOC ,ROOMS>>>
 				     <MOVE ,ROPE ,HERE>)>
-			      T)>)>)
+			      T)>)
+		      (T
+		       <TELL "You can't tie the rope to that." CR>)>)
 	       (<AND <VERB? CLIMB-DOWN> <EQUAL? ,PRSO ,ROPE ,ROOMS> ,DOME-FLAG>
 		<DO-WALK ,P?DOWN>)
 	       (<AND <VERB? TIE-UP>
