@@ -2537,7 +2537,7 @@ lid, which is ">
 		       <PERFORM ,V?TURN ,MACHINE-SWITCH ,PRSI>
 		       <RTRUE>)>)>>
 
-<ROUTINE MSWITCH-FUNCTION ("AUX" O)
+<ROUTINE MSWITCH-FUNCTION ("AUX" O (COAL? <>) (JUNK? <>))
 	 <COND (<VERB? TURN>
 		<COND (<EQUAL? ,PRSI ,SCREWDRIVER>
 		       <COND (<FSET? ,MACHINE ,OPENBIT>
@@ -2547,15 +2547,19 @@ lid, which is ">
 "The machine comes to life (figuratively) with a dazzling display of
 colored lights and bizarre noises. After a few moments, the
 excitement abates." CR>
-			      <COND (<IN? ,COAL ,MACHINE>
-				     <REMOVE-CAREFULLY ,COAL>
-				     <MOVE ,DIAMOND ,MACHINE>)
-				    (T
-				     <REPEAT ()
-					     <COND (<SET O <FIRST? ,MACHINE>>
-						    <REMOVE-CAREFULLY .O>)
-						   (T <RETURN>)>>
-				     <MOVE ,GUNK ,MACHINE>)>)>)
+			      <SET O <FIRST? ,MACHINE>>
+			      <REPEAT ()
+				      <COND (<SET O <FIRST? ,MACHINE>>
+					     <COND (<EQUAL? .O ,COAL>
+						    <SET COAL? T>)
+						   (T
+						    <SET JUNK? T>)>
+					     <REMOVE-CAREFULLY .O>)
+					    (T <RETURN>)>>
+			      <COND (.JUNK?
+				     <MOVE ,GUNK ,MACHINE>)
+				    (.COAL?
+				     <MOVE ,DIAMOND ,MACHINE>)>)>)
 		      (T
 		       <TELL "It seems that a " D ,PRSI " won't do." CR>)>)>>
 
