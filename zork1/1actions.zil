@@ -2282,6 +2282,7 @@ artist's masterpieces, you have destroyed one." CR>)>>
 		       <TELL "One of the matches starts to burn." CR>
 		       <COND (<NOT ,LIT>
 			      <SETG LIT T>
+			      <CRLF>
 			      <V-LOOK>)>
 		       <RTRUE>)>)
 	       (<AND <VERB? LAMP-OFF> <FSET? ,MATCH ,FLAMEBIT>>
