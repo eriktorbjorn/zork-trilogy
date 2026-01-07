@@ -2041,7 +2041,9 @@ retrieves his stiletto." CR>)>
 		       <REPEAT ()
 			       <COND
 				(<NOT .X>
-				 <TELL "The chalice is now safe to take." CR>
+				 <COND (<IN? ,CHALICE ,HERE>
+					<TELL
+"The chalice is now safe to take." CR>)>
 				 <RETURN>)
 				(<NOT <EQUAL? .X ,CHALICE ,THIEF ,ADVENTURER>>
 				 <FCLEAR .X ,INVISIBLE>
