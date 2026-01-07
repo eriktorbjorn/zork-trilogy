@@ -2525,6 +2525,7 @@ lid, which is ">
 	        <COND (<FSET? ,MACHINE ,OPENBIT>
 		       <TELL "The lid closes." CR>
 		       <FCLEAR ,MACHINE ,OPENBIT>
+		       <NOW-DARK?>
 		       T)
 		      (T
 		       <TELL <PICK-ONE ,DUMMY> CR>)>)
