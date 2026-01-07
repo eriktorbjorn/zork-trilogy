@@ -2150,17 +2150,20 @@ Using passages unknown to you, he rushes to its defense." CR>
 		<FCLEAR ,THIEF ,INVISIBLE>
 		<THIEF-IN-TREASURE>)>>
 
-<ROUTINE THIEF-IN-TREASURE ("AUX" F)
+<ROUTINE THIEF-IN-TREASURE ("AUX" F (FLG <>))
 	 <SET F <FIRST? ,HERE>>
-	 <COND (<AND .F <NEXT? .F>>
-		<TELL
-"The thief gestures mysteriously, and the treasures in the room
-suddenly vanish." CR CR>)>
 	 <REPEAT ()
 		 <COND (<NOT .F> <RETURN>)
-		       (<NOT <EQUAL? .F ,CHALICE ,THIEF>>
-			<FSET .F ,INVISIBLE>)>
-		 <SET F <NEXT? .F>>>>
+		       (<NOT <EQUAL? .F ,CHALICE ,THIEF ,ADVENTURER>>
+			<FSET .F ,INVISIBLE>
+			<COND (<NOT .FLG>
+			       <SET FLG T>
+			       <TELL
+"The thief gestures mysteriously, and the treasures in the room
+suddenly vanish." CR>)>)>
+		 <SET F <NEXT? .F>>>
+	 <CRLF>>
+
 
 <ROUTINE FRONT-DOOR-FCN ()
 	 <COND (<VERB? OPEN>
