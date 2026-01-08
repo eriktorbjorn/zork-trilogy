@@ -1282,7 +1282,9 @@ say, but the robot appears to be smiling." CR CR>
 	       <TELL
 "The robot falls to the ground and (being of shoddy construction)
 disintegrates before your eyes." CR>
-	       <REMOVE <COND (<VERB? THROW> ,PRSI) (,PRSO)>>)>>
+	       <COND (<VERB? THROW>
+		      <MOVE ,PRSO ,HERE>)>
+	       <REMOVE ,ROBOT>)>>
 
 ;"SUBTITLE BANK OF ZORK"
 
