@@ -1889,11 +1889,18 @@ Unfortunately, wishing makes the coin go...." CR>
 		       <FSET ,MATCH ,FLAMEBIT>
 		       <FSET ,MATCH ,ONBIT>
 		       <ENABLE <QUEUE I-MATCH 2>>
-		       <TELL "One of the matches starts to burn." CR>)>)
+		       <TELL "One of the matches starts to burn." CR>
+		       <COND (<NOT ,LIT>
+			      <SETG LIT T>
+			      <CRLF>
+			      <V-LOOK>)>
+		       <RTRUE>)>)
 	       (<AND <VERB? LAMP-OFF> <FSET? ,MATCH ,FLAMEBIT>>
 		<TELL "The match is out." CR>
 		<FCLEAR ,MATCH ,FLAMEBIT>
 		<FCLEAR ,MATCH ,ONBIT>
+		<SETG LIT <LIT? ,HERE>>
+		<COND (<NOT ,LIT> <TELL "It's pitch black in here!" CR>)>
 		<QUEUE I-MATCH 0>
 		T)
 	       (<VERB? COUNT>
