@@ -1930,7 +1930,7 @@ Unfortunately, wishing makes the coin go...." CR>
 		<TELL
 "The lamp has smashed into the floor, and the light has gone out." CR>
 		<DISABLE <INT I-LANTERN>>
-		<REMOVE ,LAMP>
+		<REMOVE-CAREFULLY ,LAMP>
 		<MOVE ,BROKEN-LAMP ,HERE>)
 	       (<VERB? LAMP-ON>
 		<COND (<FSET? ,LAMP ,RMUNGBIT>
