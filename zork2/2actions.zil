@@ -1349,7 +1349,7 @@ sign which reads  \"Viewing Room\". On the ">
 		 (T <TELL "east">)>
 	   <TELL " side of the room, above an open door, is a sign reading:|
 |
-          BANK PERSONNEL ONLY|
+          BANK PERSONNEL ONLY
 " CR>)>>
 
 <ROUTINE SCOL-OBJECT ("OPTIONAL" (OBJ <>))
