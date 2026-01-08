@@ -1715,7 +1715,7 @@ room.">
 		       <TELL
 " The room is empty. A huge face looks down on you from outside and
 laughs sardonically. It doesn't look like you're getting out of this
-predicament!" CR>
+predicament!" CR CR>
 		       <FINISH>)>
 		<TELL
 " As you enter, a huge and horrible face materializes out of the
@@ -1728,7 +1728,7 @@ it asks. Hearing no immediate answer, it studies you for a moment." CR>
 		       <TELL
 "\"Not you again! This is getting tedious. You'll obviously never
 be much help to me. Better luck next time, oh wondrous
-adventurer.\" The face disappears and everything goes black." CR>
+adventurer.\" The face disappears and everything goes black." CR CR>
 		       <FINISH>)
 		      (T
 		       <TELL
@@ -1736,7 +1736,7 @@ adventurer.\" The face disappears and everything goes black." CR>
 this place. Return to your foolish quest! I shall not destroy you
 this time. Mayhap you will repay this favor in kind someday.\" The
 face vanishes and the mist begins to swirl. When it clears you are
-returned to the world of life." CR>
+returned to the world of life." CR CR>
 		<SETG DEAD <>>
 		<GOTO ,INSIDE-BARROW>
 		;<GOTO ,INSIDE-BARROW <>>
