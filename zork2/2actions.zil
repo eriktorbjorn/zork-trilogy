@@ -1906,7 +1906,9 @@ Unfortunately, wishing makes the coin go...." CR>
 	       (<VERB? COUNT>
 		<TELL "You have ">
 		<SET CNT <- ,MATCH-COUNT 1>>
-		<TELL N .CNT " match">
+		<COND (<NOT <G? .CNT 0>> <TELL "no">)
+		      (T <TELL N .CNT>)>
+		<TELL " match">
 		<COND (<NOT <1? .CNT>> <TELL "es.">) (T <TELL ".">)>
 		<CRLF>)
 	       (<VERB? EXAMINE>
