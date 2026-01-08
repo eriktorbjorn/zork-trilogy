@@ -1052,7 +1052,7 @@ c    W  E   L  L    y|
 "You enter the pool, thrash around for a good while, and then drown.
 Sad, but true.">)>>
 
-<ROUTINE FLASK-FCN ()
+<ROUTINE FLASK-FCN ("AUX" (MUNG? <>))
 	 <COND (<VERB? LOOK-INSIDE>
 		<TELL
 "You notice that objects behind the flask appear to be magnified.
@@ -1063,12 +1063,16 @@ You might try looking at something through the flask." CR>)
 not noticed earlier." CR>
 		<RFALSE>)
 	       (<VERB? OPEN>
-		<MUNG-ROOM ,HERE "Noxious vapors prevent your entry.">
+		<MUNG-ROOM ,HERE ,NOXIOUS-VAPORS>
 		<JIGS-UP ,FATAL-VAPORS>)
 	       (<VERB? MUNG THROW>
 		<TELL "The flask breaks into pieces." CR>
 		<REMOVE ,PRSO>
+		<MUNG-ROOM ,HERE ,NOXIOUS-VAPORS>
 		<JIGS-UP ,FATAL-VAPORS>)>>
+
+<GLOBAL NOXIOUS-VAPORS
+"Noxious vapors prevent your entry.">
 
 <GLOBAL FATAL-VAPORS
 "As you pass out, you realize that the vapors from the
