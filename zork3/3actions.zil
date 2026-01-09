@@ -4363,7 +4363,12 @@ doesn't seem to hear you." CR>)
 		<TELL
 "The man is stocky and of medium height, with several days' growth of stubble
 on his face. He is carrying a number of valuables under his arm, presumably
-from the now-open chest." CR>)
+from the now-">
+		<COND (<FSET? ,CHEST ,OPENBIT>
+		       <TELL "open">)
+		      (T
+		       <TELL "closed">)>
+		<TELL " chest." CR>)
 	       (<VERB? ATTACK>
 		<COND (<==? ,PRSI ,SWORD>
 		       <TELL
