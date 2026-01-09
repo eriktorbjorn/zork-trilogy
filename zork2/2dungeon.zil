@@ -1132,7 +1132,7 @@ Frobozz (me), and are the fruits of diligent labor and study over
 many years. He who touches anything will regret it.|
 |
 (signed)|
-Frobozz|")>
+Frobozz")>
 
 <OBJECT GLOBAL-WIZARD-CASE
 	(IN LOCAL-GLOBALS)
