@@ -3952,7 +3952,6 @@ The rose almost seemed to move its thorns into your path." CR>)>>
 	 <COND (<NOT <EQUAL? ,ADVENTURER ,WINNER>>
 		<TELL "
 |    ****  The " D ,WINNER " has died  ****
-|
 |">
 		<REMOVE ,WINNER>
 		<SETG WINNER ,ADVENTURER>
