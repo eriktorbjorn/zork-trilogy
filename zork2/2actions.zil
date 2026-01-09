@@ -401,6 +401,8 @@ than weight, namely the ability to blow you to smithereens.">
 		   <AND <VERB? LAMP-ON>
 			<IN? ,MATCH ,WINNER>
 			<FSET? ,MATCH ,ONBIT>>>
+	       <COND (<VERB? LAMP-ON>
+		      <TELL "(with the match)" CR>)>
 	       <TELL "The string starts to burn." CR>
 	       <ENABLE <QUEUE I-FUSE 2>>)>>
 
