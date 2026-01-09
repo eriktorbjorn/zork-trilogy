@@ -1983,7 +1983,6 @@ A legend beneath the picture says \"The Dungeon and Treasury of Zork.\"" CR>)
 	 <COND (<NOT <==? ,ADVENTURER ,WINNER>>
 		<TELL "
 |    ****  The " D ,WINNER " has died  ****
-|
 |">
 		<REMOVE ,WINNER>
 		<SETG WINNER ,ADVENTURER>
