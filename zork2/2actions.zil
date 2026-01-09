@@ -2962,7 +2962,10 @@ handle." CR>)
 		       <TELL
 "The lizard door keeper comes awake and bites at your hand. You
 jerk away just in time.">
-		       <COND (<AND <EQUAL? ,PRSI ,GOLD-KEY> <PROB 5>>
+		       <COND (<OR <NOT <EQUAL? ,PRSI ,GOLD-KEY>>
+				  <NOT <HELD? ,PRSI>>>
+			      <CRLF>)
+			     (<PROB 5>
 			      <REMOVE ,GOLD-KEY>
 			      <TELL " The guardian does get the
 key, though. It grins maniacally." CR>)
