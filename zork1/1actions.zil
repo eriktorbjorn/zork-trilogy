@@ -1499,7 +1499,15 @@ that before long it will be impossible to cross to the other side.">)
 "SUBTITLE WATER, WATER EVERYWHERE..."
 
 <ROUTINE BOTTLE-FUNCTION ("AUX" (E? <>))
-  <COND (<AND <VERB? THROW> <==? ,PRSO ,BOTTLE>>
+  <COND (<VERB? DRINK-FROM>
+	 <COND (<NOT <FSET? ,PRSO ,OPENBIT>>
+		<TELL "The " D ,PRSO " is closed." CR>
+		<RTRUE>)
+	       (<IN? ,WATER ,PRSO>
+		<HIT-SPOT>
+		<REMOVE-CAREFULLY ,WATER>
+		<RTRUE>)>)
+	(<AND <VERB? THROW> <==? ,PRSO ,BOTTLE>>
 	 <REMOVE-CAREFULLY ,PRSO>
 	 <SET E? T>
 	 <TELL "The bottle hits the far wall and shatters." CR>)
