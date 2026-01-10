@@ -5270,9 +5270,11 @@ the vial, seeming to permeate the air briefly before fading entirely." CR>
 
 <ROUTINE VIAL-F ()
 	 <COND (<VERB? FILL> <TELL "You can't seem to put anything in it." CR>)
-	       (<AND <VERB? DRINK-FROM> <IN? ,POTION ,VIAL>>
-		<PERFORM ,V?DRINK ,POTION>
-		<RTRUE>)
+	       (<VERB? DRINK-FROM>
+		<COND (<NOT <FSET? ,VIAL ,OPENBIT>>
+		       <TELL "You'll have to open the " D ,VIAL " first." CR>)
+		      (<IN? ,POTION ,VIAL>
+		       <PERFORM ,V?DRINK ,POTION>)>)
 	       (<AND <VERB? SMELL> <IN? ,POTION ,VIAL>>
 		<PERFORM ,V?SMELL ,POTION>
 		<RTRUE>)
@@ -5281,6 +5283,8 @@ the vial, seeming to permeate the air briefly before fading entirely." CR>
 "Nothing seems to come out, although the vial is lighter now." CR>
 		<REMOVE ,POTION>)
 	       (<VERB? OPEN>
+		<COND (<FSET? ,VIAL ,OPENBIT>
+		       <RFALSE>)>
 		<FSET ,VIAL ,OPENBIT>
 		<TELL
 "The vial is open.">
