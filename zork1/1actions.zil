@@ -1254,7 +1254,7 @@ at its base.">)>)
 	       (<EQUAL? ,HERE ,LOUD-ROOM>
 		<TELL
 "All of a sudden, an alarmingly loud roaring sound fills the room.
-Filled with fear, you scramble away." CR>
+Filled with fear, you scramble away." CR CR>
 		<GOTO <PICK-ONE ,LOUD-RUNS>>)
 	       (<EQUAL? ,HERE ,RESERVOIR-NORTH ,RESERVOIR-SOUTH>
 		<TELL
