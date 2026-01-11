@@ -2533,7 +2533,16 @@ Blank, and is (c) Copyright 1981, 1982, 1983 by Infocom, Inc.")>
 	(ACTION TEAPOT-F)>
 
 <ROUTINE TEAPOT-F ()
-	 <COND (<VERB? CLOSE>
+	 <COND (<VERB? DRINK-FROM>
+		<COND (<IN? ,WATER ,PRSO>
+		       <PERFORM ,V?DRINK ,WATER>
+		       <REMOVE ,WATER>
+		       <RTRUE>)
+		      (<IN? ,SALTY-WATER ,PRSO>
+		       <PERFORM ,V?DRINK ,SALTY-WATER>
+		       <RTRUE>)>
+		<RFALSE>)
+	       (<VERB? CLOSE>
 		<TELL "The teapot has no lid." CR>)>>
 
 <OBJECT WATER
