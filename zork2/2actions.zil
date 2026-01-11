@@ -1115,7 +1115,7 @@ know, but in any event, smoke pours from its ears and it has stopped moving.")>>
 		      <COND (<NOT ,COMPASS-KLUDGE>
 			     <TELL
 "What compass, you ask? The one which allows you to specify compass directions
-for movement.">
+for movement." CR>
 			     <SETG COMPASS-KLUDGE T>)>
 		      <CRLF>)>)>>
 
