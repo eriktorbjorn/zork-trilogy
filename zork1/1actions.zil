@@ -1610,9 +1610,9 @@ falls fast asleep (what did you put in that drink, anyway?)." CR>
 "You can hear his stomach rumbling." CR>)>>
 
 <ROUTINE I-CYCLOPS ()
-	 <COND (<OR ,CYCLOPS-FLAG ,DEAD> <RTRUE>)
-	       (<NOT <EQUAL? ,HERE ,CYCLOPS-ROOM>>
+	 <COND (<NOT <EQUAL? ,HERE ,CYCLOPS-ROOM>>
 		<DISABLE <INT I-CYCLOPS>>)
+	       (<OR ,CYCLOPS-FLAG ,DEAD> <RTRUE>)
 	       (T
 		<COND (<G? <ABS ,CYCLOWRATH> 5>
 		       <DISABLE <INT I-CYCLOPS>>
