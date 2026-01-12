@@ -945,6 +945,7 @@ killing yourself." CR CR>
 "The cyclops, hearing the name of his father's deadly nemesis, flees the room
 by knocking down the wall on the east of the room." CR>
 		        <SETG MAGIC-FLAG T>
+			<SETG CYCLOWRATH 0>
 		        <FCLEAR ,CYCLOPS ,FIGHTBIT>
 		        <REMOVE-CAREFULLY ,CYCLOPS>))
 		      (T
