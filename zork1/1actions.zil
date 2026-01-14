@@ -634,7 +634,9 @@ uncomfortable, you stand up again." CR>)
 		<TELL "The troll isn't much of a conversationalist." CR>)
 	       (<EQUAL? .MODE ,F-BUSY?>
 		<COND (<IN? ,AXE ,TROLL> <>)
-		      (<AND <IN? ,AXE ,HERE> <PROB 75 90>>
+		      (<AND <EQUAL? <LOC ,AXE>
+				    <LOC ,TROLL>>
+			    <PROB 75 90>>
 		       <FSET ,AXE ,NDESCBIT>
 		       <FCLEAR ,AXE ,WEAPONBIT>
 		       <MOVE ,AXE ,TROLL>
