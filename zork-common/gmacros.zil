@@ -153,3 +153,6 @@
 <DEFMAC ABS ('NUM)
 	<FORM COND (<FORM L? .NUM 0> <FORM - 0 .NUM>)
 	           (T .NUM)>>
+
+<DEFMAC HELD? ('OBJ)
+	<FORM ULTIMATELY-IN? .OBJ>>

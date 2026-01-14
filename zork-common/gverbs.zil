@@ -2168,11 +2168,13 @@ stumbled into an authentic grue lair!">))
 		       (<NOT <SET W <NEXT? .W>>>
 			<RETURN <>>)>>>
 
-<ROUTINE HELD? (CAN)
+<ROUTINE ULTIMATELY-IN? (CAN "OPT" (CONT <>))
+	 <COND (<NOT .CONT>
+		<SET CONT ,WINNER>)>
 	 <REPEAT ()
 		 <SET CAN <LOC .CAN>>
 		 <COND (<NOT .CAN> <RFALSE>)
-		       (<EQUAL? .CAN ,WINNER> <RTRUE>)>>>
+		       (<EQUAL? .CAN .CONT> <RTRUE>)>>>
 
 <ROUTINE OPEN-CLOSE (OBJ STROPN STRCLS)
 	 #DECL ((OBJ) OBJECT (STROPN STRCLS) STRING)
