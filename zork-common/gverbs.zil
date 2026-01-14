@@ -1084,6 +1084,11 @@ you kill yourself, just as he might have done!">
 		      (T
 		       '(<NULL-F>
 			 <RFALSE>))>
+	       (<AND <HELD? ,PRSO>
+		     <FSET? <LOC ,PRSO> ,CONTBIT>
+		     <NOT <FSET? <LOC ,PRSO> ,OPENBIT>>>
+		<TELL
+"You'll have to open the " D <LOC ,PRSO> " first." CR>)
 	       (T
 		<PRE-GIVE>)>> ;"That's easy for you to say..."
 
