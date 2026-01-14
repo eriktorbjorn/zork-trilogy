@@ -30,3 +30,5 @@ By "last published version", I mean the versions included on the Masterpieces of
 I am aware that some older versions of the source code have also been preserved, but these were the only ones (that I know of) that have been explicitly been relicensed under the MIT license.
 
 I'm only including the ZIL code. Of course the other files, usually generated as part of the build process, have historical value, but they're preserved elsewhere.
+
+A lot of the bugs fixed here are ones I've discovered (or, more likely, rediscovered) during my own testing. But I've also made frequent use of Graeme Cree's [Upgraded, Consolidated, Infocom Bugs List](http://graeme.50webs.com/infobugs/index.htm), as well as Nathan Simpson's [More bugs in Infocom games](https://www.microheaven.com/InfocomBugs/). There are still known bugs in there, but I've tried to fix as many as I sensibly could.
