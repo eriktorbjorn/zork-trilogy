@@ -2853,7 +2853,8 @@ The boat deflates to the sounds of hissing, sputtering, and cursing." CR>
 		      (<EQUAL? ,PRSI ,PUMP>
 		       <TELL
 "The boat inflates and appears seaworthy." CR>
-		       <COND (<NOT <FSET? ,BOAT-LABEL ,TOUCHBIT>>
+		       <COND (<AND <IN? ,BOAT-LABEL ,INFLATED-BOAT>
+				   <NOT <FSET? ,BOAT-LABEL ,TOUCHBIT>>>
 			      <TELL
 "A tan label is lying inside the boat." CR>)>
 		       <SETG DEFLATE <>>
