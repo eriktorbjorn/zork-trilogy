@@ -1102,7 +1102,8 @@ you kill yourself, just as he might have done!">
 	 <COND (<NOT <FSET? ,PRSI ,OPENBIT>>
 		<TELL "The " D ,PRSI " isn't open." CR>
 		<THIS-IS-IT ,PRSI>)
-	       (<EQUAL? ,PRSI ,PRSO>
+	       (<OR <EQUAL? ,PRSI ,PRSO>
+		    <ULTIMATELY-IN? ,PRSI ,PRSO>>
 		<TELL "How can you do that?" CR>)
 	       (<IN? ,PRSO ,PRSI>
 		<TELL "The " D ,PRSO " is already in the " D ,PRSI "." CR>)
