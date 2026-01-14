@@ -2474,18 +2474,26 @@ burn." CR>)
 
 "SUBTITLE COAL MINE"
 
+<ROUTINE HELD-FLAME? (OBJ)
+	 <COND (<NOT <FSET? .OBJ ,ONBIT>>
+		<RFALSE>)
+	       (<OR <HELD? .OBJ>
+		    <AND <OR <HELD? ,INFLATABLE-BOAT>
+			     <HELD? ,PUNCTURED-BOAT>>
+			 <ULTIMATELY-IN? .OBJ ,INFLATED-BOAT>>>
+		<RTRUE>)
+	       (T
+		<RFALSE>)>>
+
 <ROUTINE BOOM-ROOM (RARG "AUX" (DUMMY? <>))
          <COND (<EQUAL? .RARG ,M-END>
 		<COND (<AND <EQUAL? .RARG ,M-END>
 			    <VERB? LAMP-ON BURN>
 			    <EQUAL? ,PRSO ,CANDLES ,TORCH ,MATCH>>
 		       <SET DUMMY? T>)>
-		<COND (<OR <AND <HELD? ,CANDLES>
-				<FSET? ,CANDLES ,ONBIT>>
-			   <AND <HELD? ,TORCH>
-				<FSET? ,TORCH ,ONBIT>>
-			   <AND <HELD? ,MATCH>
-				<FSET? ,MATCH ,ONBIT>>>
+		<COND (<OR <HELD-FLAME? ,CANDLES>
+			   <HELD-FLAME? ,TORCH>
+			   <HELD-FLAME? ,MATCH>>
 		       <COND (.DUMMY?
 			      <TELL
 "How sad for an aspiring adventurer to light a " D ,PRSO " in a room which
