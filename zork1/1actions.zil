@@ -2929,7 +2929,8 @@ branches. The nearest branch above you is above your reach." CR>
 "The nest falls to the ground, and the egg spills out of it, seriously
 damaged." CR>
 			      <REMOVE-CAREFULLY ,EGG>
-			      <MOVE ,BROKEN-EGG ,PATH>)
+			      <MOVE ,BROKEN-EGG ,PATH>
+			      <MOVE ,NEST ,PATH>)
 			     (<EQUAL? ,PRSO ,EGG>
 			      <TELL
 "The egg falls to the ground and springs open, seriously damaged.">
