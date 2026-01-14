@@ -2066,7 +2066,7 @@ ascending staircase to the west.")
 <ROOM TORCH-ROOM
       (IN ROOMS)
       (DESC "Torch Room")
-      (UP "You cannot reach the rope.")
+      (UP PER UP-ROPE-FUNCTION)
       (SOUTH TO NORTH-TEMPLE)
       (DOWN TO NORTH-TEMPLE)
       (ACTION TORCH-ROOM-FCN)

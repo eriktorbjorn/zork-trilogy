@@ -1040,6 +1040,13 @@ sits a white marble pedestal." CR>
 "A piece of rope descends from the railing above, ending some
 five feet above your head." CR>)>)>>
 
+<ROUTINE UP-ROPE-FUNCTION ()
+	 <COND (,DOME-FLAG
+		<TELL "You cannot reach the rope." CR>)
+	       (T
+		<TELL "You can't go that way." CR>)>
+	 <RFALSE>>
+
 <ROUTINE DOME-ROOM-FCN (RARG)
 	 <COND (<EQUAL? .RARG ,M-LOOK>
 		<TELL
