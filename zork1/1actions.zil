@@ -924,12 +924,12 @@ when it gets to the next room." CR CR>
 	       (<EQUAL? ,HERE ,MAZE-12> ,MAZE-5)>>
 
 <ROUTINE RUSTY-KNIFE-FCN ()
-	<COND (<VERB? TAKE>
+	<COND (<VERB? TAKE RUB>
 	       <AND <IN? ,SWORD ,WINNER>
 		    <TELL
 "As you touch the rusty knife, your sword gives a single pulse of blinding
 blue light." CR>>
-	       <>)
+	       <RETURN <VERB? RUB>>)
 	      (<OR <AND <EQUAL? ,PRSI ,RUSTY-KNIFE>
 			<VERB? ATTACK>>
 		   <AND <VERB? SWING>
