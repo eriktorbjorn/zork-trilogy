@@ -2943,10 +2943,11 @@ branches. The nearest branch above you is above your reach." CR>
 			     (<AND <EQUAL? ,PRSO ,NEST> <IN? ,EGG ,NEST>>
 			      <TELL
 "The nest falls to the ground, and the egg spills out of it, seriously
-damaged." CR>
-			      <REMOVE-CAREFULLY ,EGG>
+damaged.">
 			      <MOVE ,BROKEN-EGG ,PATH>
-			      <MOVE ,NEST ,PATH>)
+			      <MOVE ,NEST ,PATH>
+			      <BAD-EGG>
+			      <CRLF>)
 			     (<EQUAL? ,PRSO ,EGG>
 			      <TELL
 "The egg falls to the ground and springs open, seriously damaged.">
