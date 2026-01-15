@@ -771,9 +771,14 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 		      (<AND .AV <NOT ,PRSI> <NOT <IN? .W .AV>>>
 		       <PUDDLE .AV>)
 		      (<AND ,PRSI <NOT <EQUAL? ,PRSI ,TEAPOT>>>
-		       <TELL "The water leaks out of the " D ,PRSI
-			     " and evaporates immediately." CR>
-		       <REMOVE .W>)
+		       <COND (<EQUAL? ,PRSO ,PRSI>
+			      <TELL <PICK-ONE ,YUKS> CR>)
+			     (<EQUAL? ,PRSI ,ME>
+			      <PERFORM ,V?DRINK ,PRSO>)
+			     (T
+			      <TELL "The water leaks out of the " D ,PRSI
+				    " and evaporates immediately." CR>
+			      <REMOVE .W>)>)
 		      (<IN? ,TEAPOT ,WINNER>
 		       <COND (<NOT <FIRST? ,TEAPOT>>
 			      <COND (<EQUAL? ,HERE ,POOL-ROOM>
