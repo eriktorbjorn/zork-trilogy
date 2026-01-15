@@ -1034,8 +1034,12 @@ you kill yourself, just as he might have done!">
 			       '<COND (<EQUAL? ,PRSI ,BINF-FLAG>
 				       <SETG BINF-FLAG <>>)>)
 			      (ELSE '<NULL-F>)>
+		       %<COND (<OR <==? ,ZORK-NUMBER 1>
+				   <==? ,ZORK-NUMBER 2>>
+			       '<COND (<EQUAL? ,PRSI ,MATCH>
+				       <FCLEAR ,PRSI ,FLAMEBIT>)>)
+			       (ELSE '<NULL-F>)>
 		       <FCLEAR ,PRSI ,ONBIT>
-		       <FCLEAR ,PRSI ,FLAMEBIT>
 		       <NOW-DARK?>)
 	              (T
 		       <TELL
