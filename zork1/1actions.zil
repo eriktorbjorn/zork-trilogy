@@ -185,9 +185,14 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		       <REMOVE-CAREFULLY ,PRSO>
 		       <MOVE ,PRSO .AV>)
 		      (<AND ,PRSI <NOT <EQUAL? ,PRSI ,BOTTLE>>>
-		       <TELL "The water leaks out of the " D ,PRSI
-			     " and evaporates immediately." CR>
-		       <REMOVE-CAREFULLY .W>)
+		       <COND (<EQUAL? ,PRSO ,PRSI>
+			      <TELL <PICK-ONE ,YUKS> CR>)
+			     (<EQUAL? ,PRSI ,ME>
+			      <PERFORM ,V?DRINK ,PRSO>)
+			     (T
+			      <TELL "The water leaks out of the " D ,PRSI
+				    " and evaporates immediately." CR>
+			      <REMOVE-CAREFULLY .W>)>)
 		      (<IN? ,BOTTLE ,WINNER>
 		       <COND (<NOT <FSET? ,BOTTLE ,OPENBIT>>
 			      <TELL "The bottle is closed." CR>
