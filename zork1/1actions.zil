@@ -2228,6 +2228,7 @@ turned into a pile of dust. How, I can't imagine.">)>>
 	 <COND (<VERB? MUNG>
 		<COND (<GETP ,PRSO ,P?TVALUE>
 		       <FSET ,PRSO ,TOUCHBIT>
+		       <PUTP ,PRSO ,P?VALUE 0>
 		       <PUTP ,PRSO ,P?TVALUE 0>
 		       <PUTP ,PRSO ,P?LDESC
 "There is a worthless piece of canvas here.">
