@@ -1148,6 +1148,7 @@ will provide many months of trouble-free operation.")>
 	(ADJECTIVE BIRDS)
 	(DESC "bird's nest")
 	(FLAGS TAKEBIT BURNBIT CONTBIT OPENBIT SEARCHBIT)
+	(ACTION DUMB-CONTAINER)
 	(FDESC "Beside you on the branch is a small bird's nest.")
 	(CAPACITY 20)>
 
