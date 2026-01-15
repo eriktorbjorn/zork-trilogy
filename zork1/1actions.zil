@@ -2226,13 +2226,16 @@ turned into a pile of dust. How, I can't imagine.">)>>
 
 <ROUTINE PAINTING-FCN ()
 	 <COND (<VERB? MUNG>
-		<FSET ,PRSO ,TOUCHBIT>
-		<PUTP ,PRSO ,P?TVALUE 0>
-		<PUTP ,PRSO ,P?LDESC
+		<COND (<GETP ,PRSO ,P?TVALUE>
+		       <FSET ,PRSO ,TOUCHBIT>
+		       <PUTP ,PRSO ,P?TVALUE 0>
+		       <PUTP ,PRSO ,P?LDESC
 "There is a worthless piece of canvas here.">
-		<TELL
+		       <TELL
 "Congratulations! Unlike the other vandals, who merely stole the
-artist's masterpieces, you have destroyed one." CR>)>>
+artist's masterpieces, you have destroyed one." CR>)
+		      (T
+		       <TELL <PICK-ONE ,DUMMY> CR>)>)>>
 
 "SUBTITLE LET THERE BE LIGHT SOURCES"
 
