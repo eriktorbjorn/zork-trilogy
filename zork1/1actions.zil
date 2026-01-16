@@ -495,7 +495,8 @@ nailed shut, ">)>
 	 <SET F <FIRST? .O>>
 	 <REPEAT ()
 		 <COND (<NOT .F> <RETURN .SCORE>)>
-		 <SET SCORE <+ .SCORE <GETP .F ,P?TVALUE>>>
+		 <COND (<NOT <EQUAL? .F ,SWORD>>
+			<SET SCORE <+ .SCORE <GETP .F ,P?TVALUE>>>)>
 		 <COND (<FIRST? .F> <OTVAL-FROB .F>)>
 		 <SET F <NEXT? .F>>>>
 
