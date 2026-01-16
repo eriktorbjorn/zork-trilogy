@@ -497,7 +497,7 @@ nailed shut, ">)>
 		 <COND (<NOT .F> <RETURN .SCORE>)>
 		 <COND (<NOT <EQUAL? .F ,SWORD>>
 			<SET SCORE <+ .SCORE <GETP .F ,P?TVALUE>>>)>
-		 <COND (<FIRST? .F> <OTVAL-FROB .F>)>
+		 <COND (<FIRST? .F> <SET SCORE <+ .SCORE <OTVAL-FROB .F>>>)>
 		 <SET F <NEXT? .F>>>>
 
 <ROUTINE TRAP-DOOR-FCN ()
