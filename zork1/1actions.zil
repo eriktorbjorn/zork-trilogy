@@ -2145,6 +2145,15 @@ inside." CR>)>>
 			<MOVE .X .TO>
 			<SET X .N>>)>>
 
+<ROUTINE MOVE-CONTENTS (FROM TO "AUX" X N)
+	 <COND (<SET X <FIRST? .FROM>>
+		<REPEAT ()
+			<COND (<NOT .X> <RETURN>)>
+			<SET N <NEXT? .X>>
+			<COND (<FSET? .X ,TAKEBIT>
+			       <MOVE .X .TO>)>
+			<SET X .N>>)>>
+
 <ROUTINE CHALICE-FCN ()
 	 <COND (<VERB? TAKE>
 		<COND (<AND <IN? ,PRSO ,TREASURE-ROOM>
@@ -2657,7 +2666,7 @@ walkable (I think the giveaway was the stairs and bannister)." CR>
 "A shimmering pot of gold appears at the end of the rainbow." CR>)>)>
 			      <SETG RAINBOW-FLAG T>)
 			     (T
-			      <ROB ,ON-RAINBOW ,WALL>
+			      <MOVE-CONTENTS ,ON-RAINBOW ,WALL>
 			      <TELL
 "The rainbow seems to have become somewhat run-of-the-mill." CR>
 			      <SETG RAINBOW-FLAG <>>
@@ -2815,7 +2824,7 @@ Including this one.">)>>
 			   <FSET? ,PRSI ,WEAPONBIT>>>
 		  <REMOVE-CAREFULLY ,INFLATED-BOAT>
 		  <MOVE ,PUNCTURED-BOAT ,HERE>
-		  <ROB ,INFLATED-BOAT ,HERE>
+		  <MOVE-CONTENTS ,INFLATED-BOAT ,HERE>
 		  <MOVE ,WINNER ,HERE>
 		  <TELL
 "It seems that the ">
