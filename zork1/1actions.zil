@@ -473,7 +473,7 @@ nailed shut, ">)>
 	       <CRLF>
 	       T)
 	      (<EQUAL? .RARG ,M-END>
-	       <COND (<OR <VERB? TAKE>
+	       <COND (<OR <VERB? TAKE MUNG>
 			  <AND <VERB? PUT>
 			       <EQUAL? ,PRSI ,TROPHY-CASE>>>
 		      <COND (<IN? ,PRSO ,TROPHY-CASE>
