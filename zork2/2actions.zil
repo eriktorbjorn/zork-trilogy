@@ -1641,7 +1641,9 @@ dust rises from beneath it." CR>
 				(T ,KEYHOLE-1)>>
 		  <TELL "The keyhole is occupied." CR>)
 		 (T
-		  <TELL "The lid covers the keyhole." CR>
+		  <COND (<NOT <FSET? ,PRSO ,OPENBIT>>
+			 <TELL <PICK-ONE ,DUMMY> CR>)
+			(T <TELL "The lid covers the keyhole." CR>)>
 		  <FCLEAR ,PRSO ,OPENBIT>)>)
 	  (<VERB? LOOK-BEHIND>
 	   <TELL "There's a keyhole behind the lid." CR>)>>
