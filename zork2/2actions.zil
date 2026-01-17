@@ -1065,9 +1065,13 @@ Sad, but true.">)>>
 "You notice that objects behind the flask appear to be magnified.
 You might try looking at something through the flask." CR>)
 	       (<AND <VERB? READ> <EQUAL? ,PRSI ,FLASK>>
-		<TELL
+		<COND (<EQUAL? ,PRSO ,FLASK>
+		       <TELL <PICK-ONE ,YUKS> CR>
+		       <RTRUE>)
+		      (T
+		       <TELL
 "The flask distorts and magnifies the " D ,PRSO ", showing details
-not noticed earlier." CR>
+not noticed earlier." CR>)>
 		<RFALSE>)
 	       (<VERB? OPEN>
 		<MUNG-ROOM ,HERE ,NOXIOUS-VAPORS>
