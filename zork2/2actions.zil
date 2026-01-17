@@ -2716,7 +2716,7 @@ me from this awful fate?\" she cries. ">
 appears, seeming to unroll himself out of nothing like a window shade.">)>
 		<TELL
 " \"Fry!\" he intones, and a massive bolt of lightning reduces you to a pile
-of smoking ashes. (Serves you right, too, if you ask me.)">
+of smoking ashes. (Serves you right, too, if you ask me.)" CR>
 		<JIGS-UP>)
 	       (<OR <HELLO? ,PRINCESS> <VERB? ALARM KISS EXAMINE RUB>>
 		<COND (<AND <IN? ,PRINCESS ,DRAGON-LAIR>
