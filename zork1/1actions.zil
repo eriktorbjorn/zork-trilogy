@@ -1979,6 +1979,8 @@ this fine " D .X " is doing here.\"" CR>
 your greeting with his usual graciousness." CR>)
 		      (<AND <EQUAL? ,PRSO ,KNIFE>
 			    <VERB? THROW>
+			    <NOT <EQUAL? <GETP ,THIEF ,P?LDESC>
+					 ,ROBBER-U-DESC>>
 			    <NOT <FSET? ,THIEF ,FIGHTBIT>>>
 		       <MOVE ,PRSO ,HERE>
 		       <COND (<PROB 10 0>
