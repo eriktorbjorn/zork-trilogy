@@ -1799,7 +1799,10 @@ a distant room, which can be described clearly...." CR CR>)>
 	   <COND (<FSET? ,PDOOR ,OPENBIT>
 		  <TELL "The door is open, dummy." CR>)
 		 (<EQUAL? ,HERE ,DREARY-ROOM>
-		  <GO&LOOK ,TINY-ROOM>)
+		  <COND (<NOT <LIT? ,TINY-ROOM>>
+			 <TELL "You see only darkness." CR>)
+			(T
+			 <GO&LOOK ,TINY-ROOM>)>)
 		 (T <GO&LOOK ,DREARY-ROOM>)>)
 	  (<VERB? THROUGH>
 	   <TELL "Perhaps if you were diced...." CR>)>>
