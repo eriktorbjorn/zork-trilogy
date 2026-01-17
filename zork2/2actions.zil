@@ -2111,7 +2111,8 @@ an invisible hand had tipped it over." CR>)>)
 			      <TELL
 "You can't reach that! It's on the ground." CR>)>)
 		      (<EQUAL? ,SPELL? ,S-FREEZE>
-		       <COND (<VERB? DIAGNOSE WAIT> <RFALSE>)
+		       <COND (<VERB? DIAGNOSE WAIT QUIT RESTART RESTORE SAVE>
+			      <RFALSE>)
 			     (T
 			      <TELL
 "You are frozen solid. You might as well wait it out, because you
