@@ -313,6 +313,8 @@ jagged cliffs of the Flathead Mountains!">)
 
 <ROUTINE BCONTENTS ()
 	 <COND (<VERB? TAKE>
+		<COND (<IN? ,PRSO ,RECEPTACLE>
+		       <RFALSE>)>
 		<TELL
 "The " D ,PRSO " is an integral part of the basket and cannot
 be removed.">
