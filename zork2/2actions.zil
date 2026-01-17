@@ -1563,8 +1563,10 @@ in the center of the room. ">
 	       <SETG MUD-FLAG <>>)> ;"HUH?"
 	<COND (,MUD-FLAG
 	       <MOVE ,PLACE-MAT ,HERE>
+	       <FSET ,PLACE-MAT ,TRYTAKEBIT>
 	       <FSET ,PLACE-MAT ,NDESCBIT>)
 	      (T
+	       <FCLEAR ,PLACE-MAT ,TRYTAKEBIT>
 	       <FCLEAR ,PLACE-MAT ,NDESCBIT>)>>
 
 <ROUTINE P-DOOR (STR LID KEYHOLE "AUX" F)
