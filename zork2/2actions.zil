@@ -3891,7 +3891,9 @@ never survive." CR>)
 once plucked from its environment." CR>)>>
 
 <ROUTINE ROSE-BUSH-FCN ()
-	 <COND (<VERB? TAKE>
+	 <COND (<VERB? SMELL>
+		<TELL "They smell nice." CR>)
+	       (<VERB? TAKE>
 		<TELL
 "You prick your finger trying to take a rose, and jump back annoyed.
 The rose almost seemed to move its thorns into your path." CR>)>>
