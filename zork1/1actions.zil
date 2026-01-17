@@ -2725,8 +2725,12 @@ drop of about 450 feet. The only path here is on the north end." CR>
 
 <ROUTINE FIX-BOAT ()
 	 <TELL "Well done. The boat is repaired." CR>
-	 <MOVE ,INFLATABLE-BOAT <LOC ,PUNCTURED-BOAT>>
-	 <REMOVE-CAREFULLY ,PUNCTURED-BOAT>>
+	 <SWAP-BOATS ,PUNCTURED-BOAT ,INFLATABLE-BOAT>>
+
+<ROUTINE SWAP-BOATS (B1 B2 "AUX" (W <WEIGHT ,INFLATED-BOAT>))
+	 <MOVE .B2 <LOC .B1>>
+	 <PUTP .B2 ,P?SIZE .W>
+	 <REMOVE-CAREFULLY .B1>>
 
 <ROUTINE RIVER-FUNCTION ()
 	 <COND (<VERB? PUT>
@@ -2822,10 +2826,9 @@ Including this one.">)>>
 			   <EQUAL? ,PRSI ,INFLATED-BOAT>>
 		      <AND <VERB? ATTACK MUNG>
 			   <FSET? ,PRSI ,WEAPONBIT>>>
-		  <REMOVE-CAREFULLY ,INFLATED-BOAT>
-		  <MOVE ,PUNCTURED-BOAT ,HERE>
 		  <MOVE-CONTENTS ,INFLATED-BOAT ,HERE>
 		  <MOVE ,WINNER ,HERE>
+		  <SWAP-BOATS ,INFLATED-BOAT ,PUNCTURED-BOAT>
 		  <TELL
 "It seems that the ">
 		  <COND (<VERB? DROP PUT> <TELL D ,PRSO>)
@@ -2856,8 +2859,7 @@ waterfall and into some nasty rocks. Ouch!">)>)>
 		  <TELL
 "Oops! Something sharp seems to have slipped and punctured the boat.
 The boat deflates to the sounds of hissing, sputtering, and cursing." CR>
-		  <REMOVE-CAREFULLY ,INFLATED-BOAT>
-		  <MOVE ,PUNCTURED-BOAT ,HERE>
+		  <SWAP-BOATS ,INFLATED-BOAT ,PUNCTURED-BOAT>
 		  <THIS-IS-IT ,PUNCTURED-BOAT>
 		  T)>)
 	  (<VERB? INFLATE FILL>
@@ -2872,8 +2874,7 @@ The boat deflates to the sounds of hissing, sputtering, and cursing." CR>
 		 (T <TELL
 "The boat deflates." CR>
 		  <SETG DEFLATE T>
-		  <REMOVE-CAREFULLY ,INFLATED-BOAT>
-		  <MOVE ,INFLATABLE-BOAT ,HERE>
+		  <SWAP-BOATS ,INFLATED-BOAT ,INFLATABLE-BOAT>
 		  <THIS-IS-IT ,INFLATABLE-BOAT>)>)>>
 
 ;<ROUTINE BREATHE ()

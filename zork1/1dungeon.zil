@@ -720,7 +720,7 @@ the far wall is a painting of unparalleled beauty.")
 	(LDESC
 "There is a folded pile of plastic here which has a small valve
 attached.")
-	(SIZE 20)>
+	(SIZE 22)>
 
 <OBJECT BAR
 	(IN LOUD-ROOM)
