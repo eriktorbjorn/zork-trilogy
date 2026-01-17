@@ -4021,6 +4021,7 @@ up completely, but you can't have everything." CR CR>
 	 <DISABLE <INT I-ZGNOME>>
 	 <DRAGON-LEAVES>
 	 <DISABLE <INT I-MATCH>>
+	 <FCLEAR ,MATCH ,ONBIT>
 	 <RTRUE>>
 
 <ROUTINE FIND-WEAPON (O "AUX" W)
