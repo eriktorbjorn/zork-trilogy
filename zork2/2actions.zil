@@ -817,14 +817,13 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 				     <MOVE ,WATER ,TEAPOT>)>
 			      <TELL "The teapot is now full of water." CR>)
 			     (T
-			      <TELL "The teapot isn't currently empty." CR>
+			      <TELL "The water slips through your fingers." CR>
 			      <RTRUE>)>)
 		      (<AND <IN? ,PRSO ,TEAPOT>
 			    <VERB? TAKE>
 			    <NOT ,PRSI>>
-		       <SETG PRSO ,TEAPOT>
-		       <ITAKE>
-		       <SETG PRSO .W>)
+		       <TELL
+"It's in the teapot. Perhaps you should take that instead." CR>)
 		      (T
 		       <TELL "The water slips through your fingers." CR>)>)
 	       (.PI? <TELL "Nice try." CR>)
