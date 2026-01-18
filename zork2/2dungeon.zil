@@ -2549,7 +2549,7 @@ Blank, and is (c) Copyright 1981, 1982, 1983 by Infocom, Inc.")>
 <OBJECT WATER
 	(SYNONYM WATER QUANTITY LIQUID H2O)
 	(DESC "quantity of water")
-	(FLAGS TAKEBIT DRINKBIT)
+	(FLAGS TRYTAKEBIT TAKEBIT DRINKBIT)
 	(ACTION WATER-FCN)
 	(LDESC "There is some water here.")
 	(SIZE 4)>
@@ -2557,7 +2557,7 @@ Blank, and is (c) Copyright 1981, 1982, 1983 by Infocom, Inc.")>
 <OBJECT SALTY-WATER
 	(SYNONYM WATER QUANTITY LIQUID H2O)
 	(DESC "quantity of salty water")
-	(FLAGS TAKEBIT DRINKBIT)
+	(FLAGS TRYTAKEBIT TAKEBIT DRINKBIT)
 	(ACTION WATER-FCN)
 	(LDESC "There is some water here.")
 	(SIZE 4)>
