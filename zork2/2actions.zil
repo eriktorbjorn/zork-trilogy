@@ -172,30 +172,10 @@ receptacle is fastened to the center of the basket">)>
 			     (T
 			      <TELL
 "You can't control the balloon this way." CR>
-			      <RTRUE>)>)
-		      (<AND <VERB? OPEN>
-			    ,BINF-FLAG
-			    <EQUAL? ,PRSO ,RECEPTACLE>
-			    <FIRST? ,RECEPTACLE>>
-		       <TELL "Opening it reveals a burning "
-			     D ,BINF-FLAG "." CR>
-		       <FSET ,RECEPTACLE ,OPENBIT>
-		       <RTRUE>)
-		      (<AND <VERB? TAKE>
-			    <EQUAL? ,BINF-FLAG ,PRSO>>
-		       <TELL "You don't really want to hold a burning "
-			     D ,PRSO "." CR>
-		       <RTRUE>)
-		      (<AND <VERB? PUT>
-			    <EQUAL? ,PRSI ,RECEPTACLE>
-			    <FIRST? ,RECEPTACLE>>
-		       <TELL "The receptacle is already occupied." CR>
-		       <RTRUE>)
-		      (<AND <VERB? PUT>
-			    <EQUAL? ,PRSI ,RECEPTACLE>>
-		       <FSET ,PRSO ,NDESCBIT>
-		       <RFALSE>)
-		      (<VERB? INFLATE>
+			      <RTRUE>)>)>)
+	       (<NOT .RARG>
+		<COND (<AND <VERB? INFLATE>
+			    <EQUAL? ,PRSO ,BALLOON>>
 		       <TELL
 "It takes more than words to inflate a balloon." CR>)>)>>
 
@@ -365,6 +345,48 @@ within the basket but cannot be removed." CR>)>>
     <REMOVE .OBJ>
     <SETG BINF-FLAG <>>
     T>
+
+<ROUTINE RECEPTACLE-FCN ("AUX" RC)
+	 <COND (<AND <VERB? LOOK-INSIDE>
+		     <FSET? ,RECEPTACLE ,OPENBIT>
+		     <SET RC <FIRST? ,RECEPTACLE>>>
+		<TELL "A " D .RC " is ">
+		<COND (<EQUAL? ,BINF-FLAG .RC>
+		       <TELL "burning">)
+		      (T
+		       <TELL "nestled">)>
+		<TELL " inside." CR>)
+	       (<AND <VERB? OPEN>
+		     <NOT <FSET? ,RECEPTACLE ,OPENBIT>>
+		     ,BINF-FLAG
+		     <FIRST? ,RECEPTACLE>>
+		<FSET ,RECEPTACLE ,OPENBIT>
+		<TELL "Opening it reveals a burning "
+		      D ,BINF-FLAG "." CR>)
+	       (<AND <VERB? PUT>
+		     <EQUAL? ,PRSI ,RECEPTACLE>
+		     <FSET? ,PRSI ,OPENBIT>>
+		<COND (<FIRST? ,RECEPTACLE>
+		       <TELL "The receptacle is already occupied." CR>)
+		      (T
+		       <COND (<NOT <L? <GETP ,RECEPTACLE ,P?CAPACITY>
+				       <GETP ,PRSO ,P?SIZE>>>
+			      <FSET ,PRSO ,NDESCBIT>)>
+		       <RFALSE>)>)
+	       (T
+		<BCONTENTS>)>>
+
+<ROUTINE RECEPTACLE-CONT ()
+	 <COND (<AND <VERB? TAKE>
+		     <NOT <FSET? ,PRSO ,TAKEBIT>>>
+		<TELL "You don't really want to hold a ">
+		<COND (<EQUAL? ,BINF-FLAG ,PRSO>
+		       <TELL "burning">)
+		      (T
+		       <TELL "charred">)>
+		<TELL " " D ,PRSO "." CR>
+		<RTRUE>)>
+	 <RFALSE>>
 
 <ROUTINE SAFE-ROOM-FCN (RARG)
 	 <COND (<EQUAL? .RARG ,M-LOOK>
