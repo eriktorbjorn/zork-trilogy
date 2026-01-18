@@ -3134,7 +3134,9 @@ food he can get.">)
 you've bled to death.">)>)>>
 
 <ROUTINE AQUARIUM-FCN ("AUX" OBJ)
-	 <COND (<VERB? BOARD THROUGH> <DO-WALK ,P?IN> <RTRUE>)
+	 <COND (<VERB? OPEN CLOSE>
+		<TELL <PICK-ONE ,YUKS> CR>)
+	       (<VERB? BOARD THROUGH> <DO-WALK ,P?IN> <RTRUE>)
 	       (<AND <VERB? LOOK-INSIDE>
 		     <IN? ,SERPENT ,AQUARIUM>>
 		<TELL
