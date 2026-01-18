@@ -698,7 +698,13 @@ glowing letter in the center of this area. It might be an \"F\"." CR>
 	 <COND (<VERB? SHAKE>
 		<COND (,SPRAY-USED? <TELL "The can seems empty." CR>)
 		      (T <TELL "There is a sloshing sound from inside." CR>)>)
-	       (<AND <VERB? SPRAY PUT> <EQUAL? ,PRSO ,REPELLENT>>
+	       (<AND <EQUAL? ,PRSO ,REPELLENT>
+		     <OR <AND <VERB? PUT-ON>
+			      <FSET? ,PRSI ,SURFACEBIT>>
+			 <AND <VERB? PUT>
+			      <FSET? ,PRSI ,CONTBIT>>>>
+		<RFALSE>)
+	       (<AND <VERB? SPRAY PUT PUT-ON> <EQUAL? ,PRSO ,REPELLENT>>
 		<COND (,SPRAY-USED?
 		       <TELL
 "The repellent is all gone." CR>)
