@@ -3941,7 +3941,7 @@ The rose almost seemed to move its thorns into your path." CR>)>>
 
 <ROUTINE I-SPELL ()
 	 <COND (<AND <NOT ,SPELL-HANDLED?> ,SPELL-VICTIM>
-		<PERFORM ,V?DISENCHANT ,SPELL-VICTIM>)>
+		<PERFORM ,V?DISENCHANT ,SPELL-VICTIM T>)>
 	 <SETG SPELL-HANDLED? <>>
 	 <SETG WAND-ON <>>
 	 <SETG SPELL-USED <>>

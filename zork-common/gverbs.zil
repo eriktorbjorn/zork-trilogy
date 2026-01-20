@@ -424,6 +424,22 @@ Release ">
 "You realize that getting out here would be fatal." CR>
 		<RFATAL>)>>
 
+<ROUTINE PRE-DISENCHANT ()
+	 %<COND (<==? ,ZORK-NUMBER 2>
+		'<COND (<NOT ,PRSI>
+			<COND (<EQUAL? ,PRSO ,SPELL-VICTIM>
+			       <COND (<NOT <IN? ,WAND ,WINNER>>
+				      <TELL
+"You have neither the tools nor the expertise." CR>)
+				     (T
+				      <TELL
+"You may know how to do that, but I don't." CR>)>)
+			      (T
+			       <TELL "Nothing happens." CR>)>)
+		       (T
+			<RFALSE>)>)
+		(ELSE '<NULL-F>)>>
+
 <ROUTINE V-DISENCHANT ()
 	 %<COND (<==? ,ZORK-NUMBER 2>
 		 '<COND (<NOT <IN? ,PRSO ,HERE>>
