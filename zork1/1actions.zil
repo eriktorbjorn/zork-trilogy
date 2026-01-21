@@ -283,19 +283,26 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		       <MOVE ,RAISED-BASKET ,SHAFT-ROOM>
 		       <MOVE ,LOWERED-BASKET ,LOWER-SHAFT>
 		       <SETG CAGE-TOP T>
-		       <THIS-IS-IT ,RAISED-BASKET>
+		       <COND (<EQUAL? ,HERE ,SHAFT-ROOM>
+			      <THIS-IS-IT ,RAISED-BASKET>)
+			     (T
+			      <THIS-IS-IT ,LOWERED-BASKET>)>
 		       <TELL
-"The basket is raised to the top of the shaft." CR>)>)
+"The basket is raised to the top of the shaft." CR>
+		       <NOW-DARK?>)>)
 	       (<VERB? LOWER>
 		<COND (<NOT ,CAGE-TOP>
 		       <TELL <PICK-ONE ,DUMMY> CR>)
 		      (T
 		       <MOVE ,RAISED-BASKET ,LOWER-SHAFT>
 		       <MOVE ,LOWERED-BASKET ,SHAFT-ROOM>
-		       <THIS-IS-IT ,LOWERED-BASKET>
+		       <SETG CAGE-TOP <>>
+		       <COND (<EQUAL? ,HERE ,LOWER-SHAFT>
+			      <THIS-IS-IT ,RAISED-BASKET>)
+			     (T
+			      <THIS-IS-IT ,LOWERED-BASKET>)>
 		       <TELL
 "The basket is lowered to the bottom of the shaft." CR>
-		       <SETG CAGE-TOP <>>
 		       <NOW-DARK?>)>)
 	       (<OR <EQUAL? ,PRSO ,LOWERED-BASKET>
 		    <EQUAL? ,PRSI ,LOWERED-BASKET>>
