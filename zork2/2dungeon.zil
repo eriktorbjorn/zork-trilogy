@@ -2624,7 +2624,7 @@ Blank, and is (c) Copyright 1981, 1982, 1983 by Infocom, Inc.")>
 	(IN INSIDE-BARROW)
 	(SYNONYM SWORD ORCRIST GLAMDRING BLADE)
 	(ADJECTIVE ELVISH OLD ANTIQUE)
-	(DESC "elvish sword")
+	(DESC "sword")
 	(FLAGS TAKEBIT WEAPONBIT TRYTAKEBIT)
 	(ACTION SWORD-FCN)
 	(LDESC "An Elvish sword of great antiquity is here.")

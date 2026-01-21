@@ -1153,7 +1153,11 @@ OOPS-INBUF, leaving the appropriate pointers in AGAIN-LEXV"
 	 <REPEAT ()
 		 <SET TLEN <+ .TLEN 1>>
 		 <SET OBJ <GET .TBL .TLEN>>
-		 <TELL "the " D .OBJ>
+		 <TELL "the ">
+		 <COND (<EQUAL? .OBJ ,SWORD>
+			<TELL "elvish sword">)
+		       (T
+			<TELL D .OBJ>)>
 		 <COND (<EQUAL? .LEN 2>
 		        <COND (<NOT <EQUAL? .RLEN 2>> <TELL ",">)>
 		        <TELL " or ">)
