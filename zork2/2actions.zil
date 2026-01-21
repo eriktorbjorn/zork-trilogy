@@ -568,10 +568,10 @@ and disappears from sight." CR>
 		  <TELL
 "\"That certainly wasn't what I had in mind,\" he says, and disappears." CR>)
 		 (T
-		  <REMOVE-CAREFULLY ,PRSO>
 		  <TELL
 "\"That wasn't quite what I had in mind,\" he says, crunching the
-" D ,PRSO " in his rock-hard hands." CR>)>)
+" D ,PRSO " in his rock-hard hands." CR>
+		  <REMOVE-CAREFULLY ,PRSO>)>)
 	  (T
 	   <TELL
 "The gnome appears increasingly nervous." CR>
