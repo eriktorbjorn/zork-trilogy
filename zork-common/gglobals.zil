@@ -188,6 +188,13 @@ off toward the west, singing a lively, but somewhat uncouth, sailor song." CR>
 	(ACTION GRUE-FUNCTION)>
 
 <ROUTINE GRUE-FUNCTION ()
+    %<COND (<==? ,ZORK-NUMBER 2>
+	    '<COND (<AND <VERB? WAVE>
+			 <EQUAL? ,PRSO ,WAND>>
+		    <TELL
+"There is no grue in sight, but a hissing sound issues forth from the
+darkness." CR>
+		    <RTRUE>)>)>
     <COND (<VERB? EXAMINE>
 	   <TELL
 "The grue is a sinister, lurking presence in the dark places of the

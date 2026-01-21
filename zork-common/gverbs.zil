@@ -1193,6 +1193,17 @@ you kill yourself, just as he might have done!">
 <ROUTINE V-RING ()
 	 <TELL "How, exactly, can you ring that?" CR>>
 
+<ROUTINE PRE-RUB ()
+	 %<COND (<==? ,ZORK-NUMBER 2>
+		 '<COND (<EQUAL? ,PRSI ,WAND>
+			 <COND (<NOT <IN? ,WAND ,WINNER>>
+				<TELL "You don't have the " D ,WAND "." CR>)
+			       (T
+				<PERFORM V?WAVE ,PRSI ,PRSO>)>)
+			(T
+			 <RFALSE>)>)
+		(ELSE '<NULL-F>)>>
+
 <ROUTINE V-RUB () <HACK-HACK "Fiddling with the ">>
 
 <ROUTINE V-SAY ("AUX" V)

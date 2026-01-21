@@ -2333,7 +2333,7 @@ taunts you: \"Fool! You'll never get past ">
 <GLOBAL CERBERUS-LEASHED <>>
 
 <ROUTINE CERBERUS-FCN ()
-	 <COND (<AND <VERB? WAVE RUB RAISE> <EQUAL? ,PRSO ,WAND>>
+	 <COND (<AND <VERB? WAVE> <EQUAL? ,PRSO ,WAND>>
 		<TELL "The dog looks puzzled." CR>
 		<RFALSE>)
 	       (<AND ,WAND-ON <VERB? SAY INCANT>> <RFALSE>)
@@ -3797,11 +3797,6 @@ way." CR>)>>
 "The Wizard snatches the wand away, muttering the word \"Float\" at the
 robot. Unfortunately he has no floating-point processor and dies in a
 vain attempt to divide 4.85 by 3.62.">)>)
-	       (<AND <VERB? WAVE>
-		     <EQUAL? ,PRSI ,GRUE>>
-	        <TELL
-"There is no grue in sight, but a hissing sound issues forth from the
-darkness." CR>)
 	       (<VERB? WAVE RUB RAISE>
 		<COND (<AND <EQUAL? ,PRSO ,WAND>
 			    <NOT <IN? ,WAND ,WINNER>>>
