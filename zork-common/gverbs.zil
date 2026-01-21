@@ -606,8 +606,8 @@ probably)." CR>>
 		      (<AND <EQUAL? ,SPELL-USED ,W?FRY>
 			    <FSET? ,PRSO ,TAKEBIT>>
 		       <SETG SPELL-HANDLED? T>
-		       <REMOVE-CAREFULLY ,PRSO>
-		       <TELL "The " D ,PRSO " goes up in a puff of smoke." CR>)
+		       <TELL "The " D ,PRSO " goes up in a puff of smoke." CR>
+		       <REMOVE-CAREFULLY ,PRSO>)
 		      (ELSE
 		       <SETG SPELL-VICTIM <>>
 		       <TELL
