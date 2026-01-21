@@ -2751,13 +2751,13 @@ drop of about 450 feet. The only path here is on the north end." CR>
 			      <TELL
 "You should get in the boat then launch it." CR>)
 			     (<FSET? ,PRSO ,BURNBIT>
-			      <REMOVE-CAREFULLY ,PRSO>
 			      <TELL
-"The " D ,PRSO " floats for a moment, then sinks." CR>)
+"The " D ,PRSO " floats for a moment, then sinks." CR>
+			      <REMOVE-CAREFULLY ,PRSO>)
 			     (T
-			      <REMOVE-CAREFULLY ,PRSO>
 			      <TELL
-"The " D ,PRSO " splashes into the water and is gone forever." CR>)>)>)
+"The " D ,PRSO " splashes into the water and is gone forever." CR>
+			      <REMOVE-CAREFULLY ,PRSO>)>)>)
 	       (<VERB? LEAP THROUGH>
 		<TELL
 "A look before leaping reveals that the river is wide and dangerous,
