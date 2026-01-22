@@ -2795,7 +2795,10 @@ the rocks and boulders one meets at the bottom of waterfalls.
 Including this one.">)>>
 
 <ROUTINE RBOAT-FUNCTION ("OPTIONAL" (RARG <>) "AUX" TMP)
-    <COND (<EQUAL? .RARG ,M-ENTER ,M-END ,M-LOOK> <>)	
+    <COND (<EQUAL? .RARG ,M-ENTER ,M-LOOK> <>)
+	  (<EQUAL? .RARG ,M-END>
+	   <RIVR4-ROOM .RARG>
+	   <RFALSE>)
 	  (<EQUAL? .RARG ,M-BEG>
 	   <COND (<VERB? WALK>
 		  <COND (<EQUAL? ,PRSO ,P?LAND ,P?EAST ,P?WEST>

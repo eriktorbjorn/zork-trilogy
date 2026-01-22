@@ -792,6 +792,7 @@ Zorkers were obscure." )>
 
 <ROUTINE TREASURE-INSIDE ()
 	 <COND (<VERB? OPEN>
+	        <SETG BUOY-FLAG <>>
 		<SCORE-OBJ ,EMERALD>
 		<RFALSE>)>>
 <OBJECT ROPE
@@ -2243,7 +2244,7 @@ area of beach can also be seen below the cliffs on the west shore.")
       (LAND "You can land either to the east or the west.")
       (WEST TO WHITE-CLIFFS-SOUTH)
       (EAST TO SANDY-BEACH)
-      (ACTION RIVR4-ROOM)
+      ;(ACTION RIVR4-ROOM)
       (FLAGS NONLANDBIT SACREDBIT)
       (GLOBAL GLOBAL-WATER RIVER)>
 
