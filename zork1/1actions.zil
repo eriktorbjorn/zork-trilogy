@@ -3201,7 +3201,7 @@ down, the songbird flies away." CR>
 		<TELL "All such attacks are vain in your condition." CR>)
 	       (<VERB? OPEN CLOSE EAT DRINK
 		       INFLATE DEFLATE TURN BURN
-		       TIE UNTIE RUB>
+		       TIE UNTIE>
 		<TELL
 "Even such an action is beyond your capabilities." CR>)
 	       (<VERB? WAIT>
