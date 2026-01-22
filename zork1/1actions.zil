@@ -2855,9 +2855,9 @@ boat deflates, leaving you without." CR>
 "In other words, fighting the fierce currents of the Frigid River. You
 manage to hold your own for a bit, but then you are carried over a
 waterfall and into some nasty rocks. Ouch!">)>)>
-		  <RTRUE>)
-		 (<VERB? LAUNCH>
-	  	   <TELL "You're not in the boat!" CR>)>)
+		  <RTRUE>)>)
+	  (<VERB? LAUNCH>
+	   <TELL "You're not in the boat!" CR>)
 	  (<VERB? BOARD>
 	   <COND (<OR <IN? ,SCEPTRE ,WINNER>
 		      <IN? ,KNIFE ,WINNER>
