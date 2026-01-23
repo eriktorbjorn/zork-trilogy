@@ -5260,7 +5260,9 @@ though the vial is transparent." CR>)
 	       (<VERB? SMELL>
 		<TELL
 "The vial (or something in it) smells sweet." CR>)
-	       (<VERB? DROP TAKE>
+	       (<OR <VERB? DROP TAKE>
+		    <AND <VERB? THROW>
+			 <EQUAL? ,PRSO ,POTION>>>
 		<TELL
 "Nothing seems to come out, although the sweet smell disappears from
 the vial, seeming to permeate the air briefly before fading entirely." CR>
