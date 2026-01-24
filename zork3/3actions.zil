@@ -3948,7 +3948,15 @@ light.")
 		       <TELL
 "The chest isn't going anywhere. The rope is tied around it!" CR>
 		       <RTRUE>)>
-		<MOVE ,PRSO ,CLIFF-BASE>
+		<COND (<EQUAL? ,PRSO ,LAMP>
+		       <REMOVE ,PRSO>
+		       <MOVE ,BROKEN-LAMP ,CLIFF-BASE>
+		       <SETG CURRENT-LAMP ,BROKEN-LAMP>)
+		      (<EQUAL? ,PRSO ,STAFF>
+		       <REMOVE ,PRSO>
+		       <MOVE ,BROKEN-STAFF ,CLIFF-BASE>)
+		      (T
+		       <MOVE ,PRSO ,CLIFF-BASE>)>
 		<TELL
 "The " D ,PRSO " falls to the base of the cliff below." CR>)>> 
 
