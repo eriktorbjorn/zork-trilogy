@@ -4234,6 +4234,7 @@ effort." CR>)
 you very much, indeed!\" He pulls on the rope and the chest is lifted
 to the top of the cliff and out of sight. With a short laugh, he
 disappears. \"I'll be back in a short while!\" are his last words." CR>
+			      <SETG CHEST-LIFTED T>
 			      <MOVE ,CHEST ,MAN>
 			      <FSET ,CHEST ,TOUCHBIT>
 			      <SETG CHEST-TIED <>>
