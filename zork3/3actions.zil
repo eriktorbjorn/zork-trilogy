@@ -3942,6 +3942,11 @@ light.")
 		     <==? ,PRSI ,LEDGE>>
 		<COND (<NOT <IN? ,PRSO ,WINNER>>
 		       <TELL "You're not holding that!" CR>
+		       <RTRUE>)
+		      (<AND <EQUAL? ,PRSO ,CHEST>
+			    ,CHEST-TIED>
+		       <TELL
+"The chest isn't going anywhere. The rope is tied around it!" CR>
 		       <RTRUE>)>
 		<MOVE ,PRSO ,CLIFF-BASE>
 		<TELL
