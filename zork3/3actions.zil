@@ -4099,7 +4099,8 @@ Then, I'll be more than happy to help you up!\" He laughs again." CR>
 		<QUEUE I-MAN-PRESENT 0>
 		<SETG MAN-FLAG <>>
 		<RFALSE>)
-	       (<G? <SETG MAN-WAITING <+ ,MAN-WAITING 1>> 10>
+	       (<OR <NOT <EQUAL? <LOC ,CHEST> ,CLIFF-LEDGE ,WINNER>>
+		    <G? <SETG MAN-WAITING <+ ,MAN-WAITING 1>> 10>>
 		<TELL
 "The man looks quite displeased. \"All right, then. I guess someone else
 can always help me! See you around, sport!\" He disappears." CR>
@@ -4212,7 +4213,12 @@ from above." CR>)
 		      (T
 		       <TELL
 "The man scowls. \"I may help you up, but not before I have that chest.\" He
-points to the chest near you on the ledge." CR>)>)
+points to the chest ">
+		       <COND (<IN? ,CHEST ,WINNER>
+			      <TELL "in your arms">)
+			     (T
+			      <TELL "near you on the ledge">)>
+		       <TELL "." CR>)>)
 	       (<VERB? CLIMB-UP>
 		<TELL
 "You try to climb the rope, but you cannot reach the top even with your best
@@ -4462,7 +4468,10 @@ broadly.">)
 		<TELL
 "The " D ,PRSO " flies upward, but not nearly far enough to hit the man. It
 does seem to amuse him, however, especially as it passes within inches of
-your head. \"We're wasting time now. Be a good fellow and tie the rope!\"" CR>
+your head. \"We're wasting time now. Be a good fellow and ">
+		<COND (<NOT ,CHEST-LIFTED> <TELL "tie">)
+		      (T <TELL "grab">)>
+		<TELL " the rope!\"" CR>
 		<MOVE ,PRSO ,HERE>)>>
 
 <ROUTINE LAKE-F ()
