@@ -186,7 +186,7 @@ when museum personnel are not present.|
 	(SYNONYM BOOK LORE TEXT)
 	(ADJECTIVE LORE OLD STRANGE)
 	(DESC "very ancient book")
-	(FLAGS TAKEBIT READBIT)
+	(FLAGS TAKEBIT READBIT BURNBIT)
 	(LDESC
 	 "There is an old book here.")
 	(FDESC
