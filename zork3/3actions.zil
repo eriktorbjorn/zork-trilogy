@@ -4814,10 +4814,17 @@ leaving the room.")
 <ROOM DEAD-END-5	;"was DEAD7"
       (IN ROOMS)
       (DESC "Dead End")
-      (LDESC "You have come to a dead end in the mine.|
-There is a small pile of coal here.")
+      (LDESC "You have come to a dead end in the mine.")
       (NORTH TO LADDER-BOTTOM)
       (FLAGS RLANDBIT)>
+
+<OBJECT COAL
+	(IN DEAD-END-5)
+	(SYNONYM COAL PILE HEAP)
+	(ADJECTIVE SMALL)
+	(DESC "small pile of coal")
+	(FLAGS TAKEBIT BURNBIT)
+	(SIZE 20)>
 
 <ROOM TIMBER-ROOM	;"was TIMBE"
       (IN ROOMS)
