@@ -162,7 +162,7 @@
 
 <GLOBAL CPHERE 1>
 
-<GLOBAL CPOBJS <ITABLE NONE <* 8 2 36>>>
+<GLOBAL CPOBJS <ITABLE NONE <* ,MAXOBJS 2 36>>>
 
 <GLOBAL CPTABLE
       <TABLE   1
@@ -386,7 +386,7 @@ and marble. The following notations will be used:|
 		      <PUT ,CPTABLE .NXT 0>
 		      <PUT ,CPTABLE .NNXT .WL>
 		      <COND (<NOT <EQUAL? .NNXT 0>>
-			     <SET TOP <* 8 <- .NNXT 1>>>
+			     <SET TOP <* ,MAXOBJS <- .NNXT 1>>>
 			     <SET CNT <GET ,CPOBJS .TOP>>
 			     <REPEAT ()
 				     <COND (<0? .CNT> <RETURN>)
@@ -410,13 +410,13 @@ and marble. The following notations will be used:|
 
 <GLOBAL CPBLOCK-FLAG <>>
 
-<CONSTANT GCARDLOC 168>	;"8*(22-1)"
+;<CONSTANT GCARDLOC 168>	;"8*(22-1)"
 
 <ROUTINE CPGOTO (FX "AUX" F X CNT TOP)
 	#DECL ((FX CNT TOP) FIX (F X) <OR FALSE OBJECT>)
 	<SETG CP-MOVED T>
 	<FCLEAR ,HERE ,TOUCHBIT>
-	<SET TOP <* 8 <- ,CPHERE 1>>>
+	<SET TOP <* ,MAXOBJS <- ,CPHERE 1>>>
 	<SET CNT <+ .TOP 1>>
 	<SET F <FIRST? ,CP>>
 	<REPEAT ()
@@ -431,7 +431,7 @@ and marble. The following notations will be used:|
 		      (T <SET F .X>)>>
 	<PUT ,CPOBJS .TOP <- <- .CNT .TOP> 1>>
 	<SETG CPHERE .FX>
-	<SET TOP <* 8 <- ,CPHERE 1>>>
+	<SET TOP <* ,MAXOBJS <- ,CPHERE 1>>>
 	<SET CNT <GET ,CPOBJS .TOP>>
 	<REPEAT ()
 		<COND (<0? .CNT> <RETURN>)
@@ -1518,10 +1518,10 @@ quotes!\" A moment later, you find yourself in the Button Room." CR>
 
 <GLOBAL PNUMB 1> ;"cell pointed at"
 
-<GLOBAL CELLOBJS <ITABLE NONE <* 8 2 8>>>
+<GLOBAL CELLOBJS <ITABLE NONE <* ,MAXOBJS 2 8>>>
 
 <ROUTINE MOVE-CELL-OBJECTS ("AUX" TOP CNT F X)
-	 <SET TOP <* 8 <- ,LCELL 1>>>
+	 <SET TOP <* ,MAXOBJS <- ,LCELL 1>>>
 	 <SET CNT <+ .TOP 1>>
 	 <SET F <FIRST? ,CELL>>
 	 <COND (.F
@@ -1535,7 +1535,7 @@ quotes!\" A moment later, you find yourself in the Button Room." CR>
 			<COND (<NOT .X> <RETURN>)
 			      (T <SET F .X>)>>)>
 	 <PUT ,CELLOBJS .TOP <- <- .CNT .TOP> 1>>
-	 <SET TOP <* 8 <- ,PNUMB 1>>>
+	 <SET TOP <* ,MAXOBJS <- ,PNUMB 1>>>
 	 <SET CNT <GET ,CELLOBJS .TOP>>
 	 <REPEAT ()
 		 <COND (<0? .CNT> <RETURN>)
