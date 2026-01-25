@@ -1979,7 +1979,7 @@ A legend beneath the picture says \"The Dungeon and Treasury of Zork.\"" CR>)
 	 <SETG P-STRENGTH 5>
 	 <SETG S-STRENGTH 5>
 	 <TELL .DESC CR>
-	 <COND (<NOT <==? ,YEAR ,YEAR-PRESENT>> <QUIT>)>
+	 <COND (<NOT <==? ,YEAR ,YEAR-PRESENT>> <CRLF> <FINISH>)>
 	 <COND (<NOT <==? ,ADVENTURER ,WINNER>>
 		<TELL "
 |    ****  The " D ,WINNER " has died  ****
@@ -1997,8 +1997,8 @@ A legend beneath the picture says \"The Dungeon and Treasury of Zork.\"" CR>)
 "You feel yourself disembodied in a deep blackness. A voice from the void
 speaks:  \"I have waited a long age for you, my friend, but perhaps it has been
 another that I have been seeking. Good night, oh worthy adventurer!\" It is
-the last you hear." CR>
-		<QUIT>)
+the last you hear.|" CR>
+		<FINISH>)
 	       (T
 		<TELL
 "You find yourself deep within the earth in a barren prison cell.
