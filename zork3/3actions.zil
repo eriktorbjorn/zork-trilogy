@@ -2376,7 +2376,7 @@ surrounded by the Crown Jewels of the Empire.")>
 	(DESC "pedestal")
 	(SYNONYM PEDESTAL)
 	(FLAGS NDESCBIT OPENBIT CONTBIT SURFACEBIT)
-	(CAPACITY 50)
+	(CAPACITY 55)
 	(ACTION PEDESTAL-F)>
 
 <OBJECT CAGE
@@ -2993,8 +2993,9 @@ indication of its purpose. A small plaque is fastened to a wall." CR>)>)>>
 		      (T
 		       <TELL
 "The jewels are inside a locked cage." CR>)>)
-	       (<AND <VERB? PUT>
+	       (<AND <VERB? PUT PUT-ON>
 		     <==? ,PRSI ,PEDESTAL>
+		     <EQUAL? ,HERE ,OLD-JEWEL-ROOM>
 		     <IN? ,PRSO ,WINNER>>
 		<TELL "The " D ,PRSO " is now resting on the pedestal." CR>
 		<MOVE ,PRSO ,PEDESTAL>
@@ -3144,11 +3145,15 @@ nonworking models of existing state-of-the-art machinery." CR>)
 		      (T <TELL "The words cannot be made out." CR>)>)>>
 
 <ROUTINE PEDESTAL-F ()
-	 <COND (<VERB? EXAMINE LOOK-ON>
-		<COND (<FIRST? ,PEDESTAL>
+	 <COND (<VERB? EXAMINE LOOK-ON LOOK-INSIDE>
+		<COND (<AND <FIRST? ,PEDESTAL>
+			    <OR <EQUAL? ,YEAR ,YEAR-BUILT>
+				<NOT <FSET? ,CAGE ,INVISIBLE>>>>
 		       <TELL
 "The Royal Jewels are on the pedestal." CR>)>)
-	       (<AND <VERB? PUT PUT-ON TAKE> <NOT <FSET? ,CAGE ,INVISIBLE>>>
+	       (<AND <VERB? PUT PUT-ON TAKE>
+		     <NOT <EQUAL? ,YEAR ,YEAR-BUILT>>
+		     <NOT <FSET? ,CAGE ,INVISIBLE>>>
 		<TELL "You can't reach it through the cage." CR>)>>
 
 "old SHADOW.ZIL"
