@@ -2714,7 +2714,7 @@ When your head clears, you realize that your surroundings have changed." CR>
 		<FSET ,RING ,NDESCBIT>)>>
 
 <ROUTINE TGOTO ("OPTIONAL" (RM <>) (SNAP <>))
-	 <SETG MOVES <+ ,MOVES 1>>
+	 ;<SETG MOVES <+ ,MOVES 1>>
 	 <QUEUE I-GUARDS-LEAVE 0>
 	 <SETG INVIS <>>
 	 <COND (<G? ,YEAR ,YEAR-BUILT>
