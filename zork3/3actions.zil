@@ -248,7 +248,6 @@
 	      (<AND <==? ,CPHERE 33>
 		    <==? ,PRSO ,P?WEST>
 		    ,CP-FLAG>
-	       <FCLEAR ,CP ,TOUCHBIT>
 	       ,CP-OUT)
 	      (<==? ,PRSO ,P?DOWN>
 	       <TELL "There's no way down here." CR>
@@ -467,6 +466,7 @@ and marble. The following notations will be used:|
 
 <ROUTINE CP-ROOM (RARG)
 	<COND (<==? .RARG ,M-ENTER>
+	       <FCLEAR ,CP ,TOUCHBIT>
 	       <SETG CPHERE
 		     <COND (<==? ,PRSO ,P?DOWN> 1)
 		     	   (T 33)>>)
