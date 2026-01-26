@@ -323,7 +323,7 @@ Exits are west and, up a few steps, north." CR>)>)>>
 
 <GLOBAL CPPUSH-FLAG <>>  
 
-<GLOBAL CPSOLVE-FLAG <>>
+;<GLOBAL CPSOLVE-FLAG <>>
 
 <ROUTINE CPLADDER-OBJECT ()
 	 <COND (<==? <GET ,CPTABLE <- ,CPHERE 1>> -3>
@@ -335,7 +335,7 @@ Exits are west and, up a few steps, north." CR>)>)>>
 <ROUTINE CPLADDER-JUNK (FLG)
 	 <COND (<VERB? CLIMB-UP CLIMB-FOO>
 		<COND (<AND .FLG <==? ,CPHERE 1>>
-		       <SETG CPSOLVE-FLAG T>
+		       ;<SETG CPSOLVE-FLAG T>
 		       <GOTO ,CP-ANTE>)
 		      (T
 		       <TELL
