@@ -236,7 +236,7 @@
 	       <COND (<==? ,CPHERE 1>
 		      <COND (<==? <GET ,CPTABLE 2> -2>
 			     <TELL
-"With the help of the ladder, you exit the puzzle." CR>
+"With the help of the ladder, you exit the puzzle." CR CR>
 			     ,CP-ANTE)
 			    (T
 			     <TELL
@@ -361,7 +361,7 @@ Exits are west and, up a few steps, north." CR>)>)>>
 		     (T
 		      <TELL
 "The wall slides forward and you follow it">
-	   	      <COND (,CPPUSH-FLAG <TELL " to this position:" CR>)
+	   	      <COND (,CPPUSH-FLAG <TELL " to this position:" CR CR>)
 			    (T
 			     <SETG SCORE <+ ,SCORE 1>>
 			     <TELL
