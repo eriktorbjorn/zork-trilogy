@@ -130,7 +130,7 @@
       (DESC "Side Room")
       (NORTH TO CP-ANTE)
       (UP TO CP-ANTE)
-      (EAST TO CP IF CP-FLAG ELSE "The steel door is closed.")
+      (EAST PER CPENTER-SIDE)
       (FLAGS RLANDBIT ONBIT)
       (ACTION CPOUT-ROOM)
       (GLOBAL CPDOOR STAIRS)>

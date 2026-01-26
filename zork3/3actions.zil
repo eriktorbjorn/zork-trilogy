@@ -398,7 +398,9 @@ and marble. The following notations will be used:|
 "You hear a soft \"snap\" from behind the wall you were pushing." CR>)>
 					    <SET CNT <- .CNT 1>>)>>)>
 		      <COND (<==? .NNXT 1>
-			     <SETG CPBLOCK-FLAG T>)>
+			     <SETG CPBLOCK-FLAG T>)
+			    (<==? .NNXT 33>
+			     <SETG CPBLOCK-FLAG2 T>)>
 		      <CPGOTO .NXT>)>)>>
 
 <ROUTINE FIXED-FONT-ON () <PUT 0 8 <BOR <GET 0 8> 2>>>
@@ -408,6 +410,7 @@ and marble. The following notations will be used:|
 "Flag for blocking of main entrance"
 
 <GLOBAL CPBLOCK-FLAG <>>
+<GLOBAL CPBLOCK-FLAG2 <>>
 
 ;<CONSTANT GCARDLOC 168>	;"8*(22-1)"
 
@@ -582,9 +585,21 @@ the " D ,PRSO " (now atomized)." CR>)>)>>
 	       <TELL
 "You are in a narrow room, lit from above. A flight of steps leads up
 to the north, and a ">
-	       <COND (,CP-FLAG <TELL "passage">)
+	       <COND (,CP-FLAG
+		      <TELL "passage">
+		      <COND (,CPBLOCK-FLAG2
+			     <TELL ", blocked by smooth sandstone,">)>)
 		     (T <TELL "metal door">)>
 	       <TELL " leads to the east." CR>)>>
+
+<ROUTINE CPENTER-SIDE ()
+	<COND (<NOT ,CP-FLAG>
+	       <TELL "The steel door is closed." CR>
+	       <RFALSE>)
+	      (,CPBLOCK-FLAG2
+	       <TELL "The passage is blocked by sandstone." CR>
+	       <RFALSE>)
+	      (T ,CP)>>
 
 "Old end-game stuff"
 
