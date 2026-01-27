@@ -2512,7 +2512,7 @@ Empire. Local grues have been reported sharpening their (slavering)
 fangs....|
 |
 \"Zork II: The Wizard of Frobozz\" was written by Dave Lebling and Marc
-Blank, and is (c) Copyright 1981, 1982, 1983 by Infocom, Inc.")>
+Blank, and is (c) Copyright 1981, 1982, 1983, 1986 by Infocom, Inc.")>
 
 <OBJECT PLACE-MAT
 	(IN GAZEBO-TABLE)
