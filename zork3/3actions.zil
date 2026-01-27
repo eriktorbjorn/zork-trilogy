@@ -384,24 +384,22 @@ and marble. The following notations will be used:|
 		      <SETG CPPUSH-FLAG T>
 		      <PUT ,CPTABLE .NXT 0>
 		      <PUT ,CPTABLE .NNXT .WL>
-		      <COND (<NOT <EQUAL? .NNXT 0>>
-			     <SET TOP <* ,MAXOBJS <- .NNXT 1>>>
-			     <SET CNT <GET ,CPOBJS .TOP>>
-			     <REPEAT ()
-				     <COND (<0? .CNT> <RETURN>)
-					   (T
-					    <SET TOP <+ .TOP 1>>
-					    <MOVE <GET ,CPOBJS .TOP> ,CP-OUT>
-					    <COND (<NOT .SNAP>
-						   <SET SNAP T>
-						   <TELL
-"You hear a soft \"snap\" from behind the wall you were pushing." CR>)>
-					    <SET CNT <- .CNT 1>>)>>)>
 		      <COND (<==? .NNXT 1>
 			     <SETG CPBLOCK-FLAG T>)
 			    (<==? .NNXT 33>
 			     <SETG CPBLOCK-FLAG2 T>)>
-		      <CPGOTO .NXT>)>)>>
+		      <CPGOTO .NXT>
+		      <SET TOP <* ,MAXOBJS <- .NNXT 1>>>
+		      <SET CNT <GET ,CPOBJS .TOP>>
+		      <REPEAT ()
+			      <COND (<0? .CNT> <RETURN>)
+				    (T
+				     <SET TOP <+ .TOP 1>>
+				     <COND (<NOT .SNAP>
+					    <SET SNAP T>
+					    <TELL
+"You hear a soft \"snap\" from behind the wall you were pushing." CR>)>
+				     <SET CNT <- .CNT 1>>)>>)>)>>
 
 <ROUTINE FIXED-FONT-ON () <PUT 0 8 <BOR <GET 0 8> 2>>>
 
