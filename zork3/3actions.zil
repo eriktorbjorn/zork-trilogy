@@ -341,7 +341,7 @@ Exits are west and, up a few steps, north." CR>)>)>>
 "You hit your head on the ceiling and fall off the ladder." CR>)>)
 	       (T <TELL "Come, come!" CR>)>> 
 
-<ROUTINE CPWALL-OBJECT ("AUX" WL NWL NXT NNXT CNT TOP (SNAP <>))
+<ROUTINE CPWALL-OBJECT ("AUX" WL NWL NXT NNXT CNT TOP OBJ (SNAP <>))
 	#DECL ((NXT WL NNXT NWL) FIX (UVEC) <UVECTOR [REST FIX]>)
 	<COND (<VERB? MOVE> <TELL "You can't grab the wall to pull it." CR>)
 	      (<VERB? PUSH>
@@ -395,6 +395,14 @@ and marble. The following notations will be used:|
 			      <COND (<0? .CNT> <RETURN>)
 				    (T
 				     <SET TOP <+ .TOP 1>>
+				     <SET OBJ <GET ,CPOBJS .TOP>>
+				     <COND (<EQUAL? .OBJ ,LAMP>
+					    <REMOVE .OBJ>
+					    <PUT ,CPOBJS .TOP ,BROKEN-LAMP>
+					    <SETG CURRENT-LAMP ,BROKEN-LAMP>)
+					   (<EQUAL? .OBJ ,STAFF>
+					    <REMOVE .OBJ>
+					    <PUT ,CPOBJS .TOP ,BROKEN-STAFF>)>
 				     <COND (<NOT .SNAP>
 					    <SET SNAP T>
 					    <TELL
