@@ -3558,7 +3558,9 @@ you can react, the figure vanishes in a cloud of fetid vapor." CR>
 		<TELL
 "The figure's hood casts a dark shadow over its face. There is no way from
 where you stand to look beneath it." CR>)
-	       (<AND <VERB? TAKE PUT> <IN? ,HOOD ,SHADOW>>
+	       (<AND <VERB? TAKE PUT>
+		     <EQUAL? ,PRSO ,HOOD>
+		     <IN? ,HOOD ,SHADOW>>
 		<COND (<==? ,S-STRENGTH 1>
 		       <TELL
 "You slowly remove the hood from your badly wounded opponent and recoil
@@ -4436,7 +4438,9 @@ His assorted valuables remain behind." CR>
 		      (T <TELL "You wouldn't hurt him with that!" CR>)>)>>
 
 <ROUTINE VALUABLES-F ()
-	 <COND (<AND <VERB? TAKE PUT MOVE> <IN? ,MAN ,CLIFF>>
+	 <COND (<AND <VERB? TAKE PUT MOVE>
+		     <EQUAL? ,PRSO ,VALUABLES>
+		     <IN? ,MAN ,CLIFF>>
 		<TELL
 "The man recoils sharply. \"These here things are mine. It's my chest and
 they're my valuables. You've a lot of nerve trying to take them from me
