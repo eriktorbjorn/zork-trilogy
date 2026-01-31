@@ -4227,8 +4227,10 @@ trees." CR>)
 <ROUTINE GLOBAL-ROPE-F ()
 	 <COND (<NOT ,ROPE-FLAG>
 		<TELL "You can't see any rope here." CR>)
-	       (<VERB? CLIMB-FOO>
-		<V-CLIMB-UP ,P?DOWN T>)
+	       (<VERB? CLIMB-UP>
+		<DO-WALK ,P?UP>)
+	       (<VERB? CLIMB-DOWN CLIMB-FOO>
+		<DO-WALK ,P?DOWN>)
 	       (<VERB? TAKE MOVE CLIMB-ON>
 		<COND (<NOT ,MAN-FLAG>
 		       <TELL
@@ -4454,8 +4456,8 @@ after me saving you like that!\"" CR>)
 		<COND (,ROPE-FLAG
 		       <TELL
 "The rope is tied to a tree." CR>)>)
-	       (<VERB? CLIMB-FOO>
-		<V-CLIMB-UP ,P?DOWN T>)
+	       (<VERB? CLIMB-DOWN CLIMB-FOO>
+		<DO-WALK ,P?DOWN>)
 	       (<VERB? BURN>
 		<TELL
 "The rope won't catch fire." CR>)

@@ -274,14 +274,7 @@ Release ">
 
 <ROUTINE V-CLIMB-DOWN () <V-CLIMB-UP ,P?DOWN ,PRSO>>
 
-<ROUTINE V-CLIMB-FOO ()
-	 %<COND (<==? ,ZORK-NUMBER 3>
-		 '<V-CLIMB-UP <COND (<EQUAL? ,PRSO ,ROPE ,GLOBAL-ROPE>
-				     ,P?DOWN)
-				    (T ,P?UP)>
-			      T>)
-		(ELSE
-		 '<V-CLIMB-UP ,P?UP ,PRSO>)>>
+<ROUTINE V-CLIMB-FOO () <V-CLIMB-UP ,P?UP ,PRSO>>
 
 <ROUTINE V-CLIMB-ON ()
 	 <COND (<FSET? ,PRSO ,VEHBIT>
@@ -293,39 +286,33 @@ Release ">
 	       (T
 		<TELL "You can't climb onto the " D ,PRSO "." CR>)>>
 
-<ROUTINE V-CLIMB-UP ("OPTIONAL" (DIR ,P?UP) (OBJ <>) "AUX" X TX)
-	 <COND (<AND .OBJ <NOT <EQUAL? ,PRSO ,ROOMS>>>
+<ROUTINE V-CLIMB-UP ("OPTIONAL" (DIR ,P?UP) (OBJ <>) "AUX" X)
+	 <COND (<NOT .OBJ>
 		<SET OBJ ,PRSO>)>
-	 <COND (<SET TX <GETPT ,HERE .DIR>>
-		<COND (.OBJ
-		       <SET X <PTSIZE .TX>>
-		       <COND (<OR <EQUAL? .X ,NEXIT>
-				  <AND <EQUAL? .X ,CEXIT ,DEXIT ,UEXIT>
-				       <NOT <GLOBAL-IN? ,PRSO <GETB .TX 0>>>>>
-			      <TELL "The " D .OBJ " do">
-			      <COND (<NOT <EQUAL? .OBJ ,STAIRS>>
-				     <TELL "es">)>
-			      <TELL "n't lead ">
-			      <COND (<==? .DIR ,P?UP>
-				     <TELL "up">)
-				    (T <TELL "down">)>
-			      <TELL "ward." CR>
-			      <RTRUE>)>)>
+	 <COND (<ZMEMQ ,W?WALL
+		       <SET X <GETPT ,PRSO ,P?SYNONYM>> <PTSIZE .X>>
+		<TELL "Climbing the walls is to no avail." CR>
+		<RTRUE>)>
+	 %<COND (<==? ,ZORK-NUMBER 1>
+		 '<COND (<AND <NOT <EQUAL? ,HERE ,PATH ,UP-A-TREE>>
+			      <EQUAL? .OBJ ,ROOMS ,TREE>
+			      <GLOBAL-IN? ,TREE ,HERE>>
+			 <TELL "There are no climbable trees here." CR>
+			 <RTRUE>)>)>
+	 <COND (<GETPT ,HERE .DIR>
 		<DO-WALK .DIR>
 		<RTRUE>)
-	       (<AND .OBJ
-		     <ZMEMQ ,W?WALL
-			    <SET X <GETPT ,PRSO ,P?SYNONYM>> <PTSIZE .X>>>
-		<TELL "Climbing the walls is to no avail." CR>)
-	       (%<COND (<==? ,ZORK-NUMBER 1>
-			'<AND <NOT <EQUAL? ,HERE ,PATH>>
-			      <EQUAL? .OBJ <> ,TREE>
-			      <GLOBAL-IN? ,TREE ,HERE>>)
-		       (ELSE '<NULL-F>)>
-		<TELL "There are no climbable trees here." CR>
-		<RTRUE>)
-	       (<EQUAL? .OBJ <> ,ROOMS>
+	       (<EQUAL? .OBJ ,ROOMS>
 		<TELL "You can't go that way." CR>)
+	       (<FSET? .OBJ ,CLIMBBIT>
+		<TELL "The " D .OBJ " do">
+		<COND (<NOT <EQUAL? .OBJ ,STAIRS>>
+		       <TELL "es">)>
+		<TELL "n't lead ">
+		<COND (<==? .DIR ,P?UP>
+		       <TELL "up">)
+		      (T <TELL "down">)>
+		<TELL "ward." CR>)
 	       (T
 	        <TELL "You can't do that!" CR>)>>
 

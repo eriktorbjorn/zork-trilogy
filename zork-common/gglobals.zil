@@ -104,10 +104,15 @@
 	(FLAGS NDESCBIT CLIMBBIT)
 	(ACTION STAIRS-F)>
 
-<ROUTINE STAIRS-F ()
+<ROUTINE STAIRS-F ("AUX" (DIR ,P?UP))
 	 <COND (<VERB? THROUGH>
 		<TELL
-"You should say whether you want to go up or down." CR>)>>
+"You should say whether you want to go up or down." CR>)
+	       (<VERB? CLIMB-UP CLIMB-FOO CLIMB-DOWN>
+		<COND (<VERB? CLIMB-DOWN>
+		       <SET DIR ,P?DOWN>)>
+		<COND (<GETPT ,HERE .DIR>
+		       <DO-WALK .DIR>)>)>>
 
 <OBJECT SAILOR
 	(IN GLOBAL-OBJECTS)
