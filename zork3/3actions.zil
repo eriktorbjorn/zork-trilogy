@@ -4360,7 +4360,9 @@ gravel, he disappears from sight." CR>
 	 <COND (,CHEST-OPENED
 		<COND (<AND <VERB? TIE> <==? ,ROPE ,PRSO ,PRSI>>
 		       <TELL "What's the point?" CR>)
-		      (<AND <VERB? PUT> <EQUAL? ,PRSO ,STAFF ,LAMP ,TORCH>>
+		      (<AND <VERB? PUT>
+			    <FSET? ,CHEST ,OPENBIT>
+			    <EQUAL? ,PRSO ,STAFF ,LAMP ,TORCH>>
 		       <TELL "It doesn't fit.">
 		       <COND (<EQUAL? ,PRSO ,STAFF>
 			      <TELL
