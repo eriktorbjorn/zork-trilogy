@@ -140,7 +140,7 @@
 	 <COND (<NOT <0? .TICK>>
 		<SETG .TBLNAM <REST .TBL 4>>)>>
 
-<ROUTINE CHASM-FCN ()
+;<ROUTINE CHASM-FCN ()
 	 <COND (<OR <VERB? LEAP>
 		    <AND <VERB? PUT> <==? ,PRSO ,ME>>>
 		<TELL
