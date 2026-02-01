@@ -1566,7 +1566,9 @@ that before long it will be impossible to cross to the other side.">)
 	       <COND (<VERB? EXAMINE>
 		      <TELL
 "The cyclops is sleeping like a baby, albeit a very ugly one." CR>)
-		     (<VERB? ALARM KICK ATTACK BURN MUNG>
+		     (<VERB? ALARM KICK ATTACK BURN MUNG THROW>
+		      <COND (<VERB? THROW>
+			     <MOVE ,PRSO ,HERE>)>
 		      <TELL
 "The cyclops yawns and stares at the thing that woke him up." CR>
 		      <SETG CYCLOPS-FLAG <>>
