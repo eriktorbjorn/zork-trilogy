@@ -2552,7 +2552,7 @@ is obviously deranged and holding his nose." CR>)
 "You are in a small room which has doors only to the east and south." CR>)
 	       (<AND <EQUAL? .RARG ,M-ENTER> <NOT ,DEAD>>
 		<COND (<NOT <EQUAL? <LOC ,GARLIC> ,WINNER ,HERE>>
-		       <V-LOOK>
+		       <V-FIRST-LOOK>
 		       <CRLF>
 		       <FLY-ME>)>)>>
 
