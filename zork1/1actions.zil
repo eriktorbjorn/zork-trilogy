@@ -2784,19 +2784,29 @@ swim." CR>)>>
 		RESERVOIR-NORTH RESERVOIR
 		STREAM-VIEW IN-STREAM>>
 
+<GLOBAL GO-WITH-THE-FLOW <>>
+
 <ROUTINE I-RIVER ("AUX" RM)
 	 <COND (<AND <NOT <EQUAL? ,HERE ,RIVER-1 ,RIVER-2 ,RIVER-3>>
 		     <NOT <EQUAL? ,HERE ,RIVER-4 ,RIVER-5>>>
 		<DISABLE <INT I-RIVER>>)
 	       (<SET RM <LKP ,HERE ,RIVER-NEXT>>
 		<TELL "The flow of the river carries you downstream." CR CR>
-		<GOTO .RM>
-		<ENABLE <QUEUE I-RIVER <LKP ,HERE ,RIVER-SPEEDS>>>)
+		<SETG GO-WITH-THE-FLOW T>
+		<GOTO .RM>)
 	       (T
 		<JIGS-UP
 "Unfortunately, the magic boat doesn't provide protection from
 the rocks and boulders one meets at the bottom of waterfalls.
 Including this one.">)>>
+
+<ROUTINE RIVER-ROOM (RARG "AUX" S)
+	 <COND (<EQUAL? .RARG ,M-ENTER>
+		<SET S <LKP ,HERE ,RIVER-SPEEDS>>
+		<COND (<NOT ,GO-WITH-THE-FLOW>
+		       <SET S <+ .S 1>>)>
+		<ENABLE <QUEUE I-RIVER .S>>)>
+	 <SETG GO-WITH-THE-FLOW <>>>
 
 <ROUTINE RBOAT-FUNCTION ("OPTIONAL" (RARG <>) "AUX" TMP)
     <COND (<EQUAL? .RARG ,M-ENTER ,M-LOOK> <>)
@@ -2805,23 +2815,16 @@ Including this one.">)>>
 	   <RFALSE>)
 	  (<EQUAL? .RARG ,M-BEG>
 	   <COND (<VERB? WALK>
-		  <COND (<EQUAL? ,PRSO ,P?LAND ,P?EAST ,P?WEST>
-			 <RFALSE>)
-			(<AND <EQUAL? ,HERE ,RESERVOIR>
-			      <EQUAL? ,PRSO ,P?NORTH ,P?SOUTH>>
-			 <RFALSE>)
-			(<AND <EQUAL? ,HERE ,IN-STREAM>
-			      <EQUAL? ,PRSO ,P?SOUTH>>
+		  <COND (<AND <FSET? ,HERE ,NONLANDBIT>
+			      <GETPT ,HERE ,PRSO>>
 			 <RFALSE>)
 			(T
 			 <TELL
 "Read the label for the boat's instructions." CR>
 			 <RTRUE>)>)
 		 (<VERB? LAUNCH>
-		  <COND (<OR <EQUAL? ,HERE ,RIVER-1 ,RIVER-2 ,RIVER-3>
-			     <EQUAL? ,HERE ,RIVER-4 ,RESERVOIR ,IN-STREAM>>
-			 <TELL
-"You are on the ">
+		  <COND (<FSET? ,HERE ,NONLANDBIT>
+			 <TELL "You are on the ">
 			 <COND (<EQUAL? ,HERE ,RESERVOIR>
 				<TELL "reservoir">)
 			       (<EQUAL? ,HERE ,IN-STREAM>
@@ -2829,7 +2832,6 @@ Including this one.">)>>
 			       (T <TELL "river">)>
 			 <TELL ", or have you forgotten?" CR>)
 			(<EQUAL? <SET TMP <GO-NEXT ,RIVER-LAUNCH>> 1>
-			 <ENABLE <QUEUE I-RIVER <LKP ,HERE ,RIVER-SPEEDS>>>
 			 <RTRUE>)
 			(<NOT <EQUAL? .TMP 2>>
 			 <TELL "You can't launch it here." CR>

@@ -1812,6 +1812,7 @@ follows the stream, which flows from west to east.")
 to navigate, and the downstream route is invisible due to twisting
 walls. There is a narrow beach to land on.")
       (DESC "Stream")
+      (SOUTH STREAM-VIEW)
       (UP "The channel is too narrow.")
       (WEST "The channel is too narrow.")
       (LAND TO STREAM-VIEW)
@@ -2175,6 +2176,7 @@ flows quietly here. There is a landing on the west shore.")
       (LAND TO DAM-BASE)
       (DOWN TO RIVER-2)
       (EAST "The White Cliffs prevent your landing here.")
+      (ACTION RIVER-ROOM)
       (FLAGS NONLANDBIT SACREDBIT ONBIT)
       (GLOBAL GLOBAL-WATER RIVER)>
 
@@ -2190,6 +2192,7 @@ landing on the west.")
       (LAND "There is no safe landing spot here.")
       (EAST "The White Cliffs prevent your landing here.")
       (WEST "Just in time you steer away from the rocks.")
+      (ACTION RIVER-ROOM)
       (FLAGS NONLANDBIT SACREDBIT)
       (GLOBAL GLOBAL-WATER RIVER)>
 
@@ -2204,6 +2207,7 @@ heard.")
       (DOWN TO RIVER-4)
       (LAND TO WHITE-CLIFFS-NORTH)
       (WEST TO WHITE-CLIFFS-NORTH)
+      (ACTION RIVER-ROOM)
       (FLAGS NONLANDBIT SACREDBIT)
       (GLOBAL GLOBAL-WATER RIVER)>
 
@@ -2245,6 +2249,7 @@ area of beach can also be seen below the cliffs on the west shore.")
       (WEST TO WHITE-CLIFFS-SOUTH)
       (EAST TO SANDY-BEACH)
       ;(ACTION RIVR4-ROOM)
+      (ACTION RIVER-ROOM)
       (FLAGS NONLANDBIT SACREDBIT)
       (GLOBAL GLOBAL-WATER RIVER)>
 
@@ -2257,6 +2262,7 @@ shore is a large landing area.")
       (UP "You cannot go upstream due to strong currents.")
       (EAST TO SHORE)
       (LAND TO SHORE)
+      (ACTION RIVER-ROOM)
       (FLAGS NONLANDBIT SACREDBIT ONBIT)
       (GLOBAL GLOBAL-WATER RIVER)>
 
