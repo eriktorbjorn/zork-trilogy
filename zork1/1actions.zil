@@ -2847,9 +2847,10 @@ Including this one.">)>>
 		  <MOVE-CONTENTS ,INFLATED-BOAT ,HERE>
 		  <MOVE ,WINNER ,HERE>
 		  <SWAP-BOATS ,INFLATED-BOAT ,PUNCTURED-BOAT>
-		  <TELL
-"It seems that the ">
-		  <COND (<VERB? DROP PUT> <TELL D ,PRSO>)
+		  <TELL "It seems that the ">
+		  <COND (<VERB? DROP PUT>
+			 <MOVE ,PRSO ,HERE>
+			 <TELL D ,PRSO>)
 			(T <TELL D ,PRSI>)>
 		  <TELL " didn't agree with the boat, as evidenced
 by the loud hissing noise issuing therefrom. With a pathetic sputter, the
