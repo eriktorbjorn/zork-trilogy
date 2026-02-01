@@ -719,7 +719,7 @@ all passages out of the room.">)
 		      <AWAKEN ,TROLL>
 		      <COND (<VERB? THROW GIVE>
 			     <COND (<AND <EQUAL? ,PRSO ,AXE>
-					 <IN? ,AXE ,WINNER>>
+					 <HELD? ,AXE>>
 				    <TELL
 "The troll scratches his head in confusion, then takes the axe." CR>
 				    <FSET ,TROLL ,FIGHTBIT>
