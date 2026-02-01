@@ -2205,7 +2205,8 @@ Using passages unknown to you, he rushes to its defense." CR>
 			       <SET FLG T>
 			       <TELL
 "The thief gestures mysteriously, and the treasures in the room
-suddenly vanish." CR>)>)>
+suddenly vanish." CR>
+			       <SETG LIT <LIT? ,HERE>>)>)>
 		 <SET F <NEXT? .F>>>
 	 <CRLF>>
 
