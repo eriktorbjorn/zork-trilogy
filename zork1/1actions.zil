@@ -2054,7 +2054,8 @@ you politely." CR>)>)
 and forth. He carries, along with an unmistakable arrogance, a large bag
 over his shoulder and a vicious stiletto, whose blade is aimed
 menacingly in your direction. I'd watch out if I were you." CR>)
-		      (<VERB? LISTEN>
+		      (<AND <VERB? LISTEN>
+			    <NOT <L? <GETP ,THIEF ,P?STRENGTH> 0>>>
 		       <TELL
 "The thief says nothing, as you have not been formally introduced." CR>)>)
 	       (<EQUAL? .MODE ,F-BUSY?>
