@@ -2081,7 +2081,7 @@ retrieves his stiletto." CR>)>
 					<TELL
 "The chalice is now safe to take." CR>)>
 				 <RETURN>)
-				(<NOT <EQUAL? .X ,CHALICE ,THIEF ,ADVENTURER>>
+				(<NOT <EQUAL? .X ,STILETTO ,CHALICE ,THIEF ,ADVENTURER>>
 				 <FCLEAR .X ,INVISIBLE>
 				 <COND (<NOT .FLG>
 					<SET FLG T>
