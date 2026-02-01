@@ -762,7 +762,8 @@ rather barbarous accent." CR>)
 			    (<VERB? MUNG>
 			     <TELL
 "The troll laughs at your puny gesture." CR>)>)
-		     (<VERB? LISTEN>
+		     (<AND <VERB? LISTEN>
+			   <NOT ,TROLL-FLAG>>
 		      <TELL
 "Every so often the troll says something, probably uncomplimentary, in
 his guttural tongue." CR>)
