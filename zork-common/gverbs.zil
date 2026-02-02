@@ -2147,13 +2147,6 @@ stumbled into an authentic grue lair!">))
 		      (<AND <NOT <EQUAL? ,ADVENTURER ,WINNER>>
 			    <IN? ,ADVENTURER .OHERE>>
 		       <TELL "The " D ,WINNER " leaves the room." CR>)
-		      %<COND (<==? ,ZORK-NUMBER 1>
-			      '(<AND <EQUAL? ,HERE .OHERE>
-				      ;"no double description"
-				     <EQUAL? ,HERE ,ENTRANCE-TO-HADES>>
-				<RTRUE>))
-			     (ELSE
-			      '(<NULL-F> <RTRUE>))>
 		      (<AND .V?
 			    <EQUAL? ,WINNER ,ADVENTURER>>
 		       <V-FIRST-LOOK>)>
