@@ -1103,7 +1103,7 @@ excised them.")>
 	(SYNONYM MANUAL PIECE PAPER)
 	(ADJECTIVE ZORK OWNERS SMALL)
 	(DESC "ZORK owner's manual")
-	(FLAGS READBIT TAKEBIT)
+	(FLAGS READBIT TAKEBIT BURNBIT)
 	(FDESC "Loosely attached to a wall is a small piece of paper.")
 	(TEXT
 "Congratulations!|
