@@ -4509,6 +4509,8 @@ your head. \"We're wasting time now. Be a good fellow and ">
 		<TELL " the rope!\"" CR>
 		<MOVE ,PRSO ,HERE>)>>
 
+<GLOBAL WHERE-YOU-ARE "Just where do you think you are?">
+
 <ROUTINE LAKE-F ()
 	 <COND (<VERB? THROUGH LEAP BOARD>
 		<COND (<EQUAL? ,HERE ,LAKE-SHORE ,FAR-SHORE ,SOUTH-SHORE>
@@ -4516,11 +4518,13 @@ your head. \"We're wasting time now. Be a good fellow and ">
 		      (<==? ,HERE ,ON-LAKE>
 		       <GOTO ,IN-LAKE>)
 		      (T
-		       <TELL "Just where do you think you are?" CR>)>)
+		       <TELL ,WHERE-YOU-ARE CR>)>)
 	       (<VERB? LOOK-UNDER>
 		<COND (<==? ,HERE ,ON-LAKE>
 		       <TELL
 "You can't quite make out the bottom of the lake from here..." CR>)
+ 		      (<==? ,HERE ,IN-LAKE>
+		       <TELL ,WHERE-YOU-ARE CR>)
 		      (T <TELL
 "You can't see under the surface from here." CR>)>)>>
 
