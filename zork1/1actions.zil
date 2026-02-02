@@ -360,8 +360,11 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		<TELL "The bell is very hot and cannot be taken." CR>)
 	       (<OR <VERB? RUB> <AND <VERB? RING> ,PRSI>>
 		<COND (<AND ,PRSI <FSET? ,PRSI ,BURNBIT>>
-		       <TELL "The " D ,PRSI " burns and is consumed." CR>
-		       <REMOVE-CAREFULLY ,PRSI>)
+		       <COND (<EQUAL? ,PRSI ,BOOK>
+			      <BURN-BOOK>)
+			     (T
+			      <TELL "The " D ,PRSI " burns and is consumed." CR>
+			      <REMOVE-CAREFULLY ,PRSI>)>)
 		      (<EQUAL? ,PRSI <> ,HANDS>
 		       <TELL "The bell is too hot to touch." CR>)
 		      (T
@@ -2233,6 +2236,13 @@ suddenly vanish." CR>
 \"Your disrespect costs you your life!\" and places your head on a sharp
 pole.">)>>
 
+<ROUTINE BURN-BOOK ()
+	 <REMOVE-CAREFULLY ,BOOK>
+	 <JIGS-UP
+"A booming voice says \"Wrong, cretin!\" and you notice that you have
+turned into a pile of dust. How, I can't imagine.">
+	 <RTRUE>>
+
 <ROUTINE BLACK-BOOK ()
 	 <COND (<VERB? OPEN>
 		<TELL "The book is already open to page 569." CR>)
@@ -2248,10 +2258,7 @@ it. Most of it is unreadable, but the subject seems to be the banishment of
 evil. Apparently, certain noises, lights, and prayers are efficacious in this
 regard." CR>)
 	       (<VERB? BURN>
-		<REMOVE-CAREFULLY ,PRSO>
-		<JIGS-UP
-"A booming voice says \"Wrong, cretin!\" and you notice that you have
-turned into a pile of dust. How, I can't imagine.">)>>
+		<BURN-BOOK>)>>
 
 <ROUTINE PAINTING-FCN ()
 	 <COND (<VERB? MUNG>
