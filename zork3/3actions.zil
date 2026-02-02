@@ -4571,7 +4571,7 @@ sand. A moment later, it is gone!" CR>)
 <ROUTINE I-IN-LAKE ()
 	 <COND (<==? ,HERE ,IN-LAKE>
 		<TELL
-"You run out of air and return to the surface." CR>
+"You run out of air and return to the surface." CR CR>
 		<GOTO ,ON-LAKE>)>>
 
 <GLOBAL LAKE-POINT <>>
