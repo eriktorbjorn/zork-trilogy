@@ -2542,10 +2542,14 @@ I would have thought twice about carrying flaming objects in here." CR>)>
       ** BOOOOOOOOOOOM **">)>)>> 
 
 <ROUTINE BAT-D ()
-	 <COND (<ULTIMATELY-IN? ,GARLIC ,HERE>
+	 <COND (<OR ,DEAD
+	            <ULTIMATELY-IN? ,GARLIC ,HERE>>
 		<TELL
 "In the corner of the room on the ceiling is a large vampire bat who
-is obviously deranged and holding his nose." CR>)
+is obviously deranged">
+		<COND (<NOT ,DEAD>
+		       <TELL " and holding his nose">)>
+		<TELL "." CR>)
 	       (T
 		<TELL
 "A large vampire bat, hanging from the ceiling, swoops down at you!" CR>)>>
