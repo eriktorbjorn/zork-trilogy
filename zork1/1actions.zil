@@ -317,19 +317,15 @@ It is clear that the owners must have been extremely wealthy." CR>)
 		<SETG P-CONT <>>
 		<RTRUE>)
 	       (<VERB? TAKE ATTACK MUNG>
-		<COND (<EQUAL? <LOC ,GARLIC> ,WINNER ,HERE>
-		       <TELL "You can't reach him; he's on the ceiling." CR>)
-		      (T <FLY-ME>)>)>>
+		<TELL "You can't reach him; he's on the ceiling." CR>)>>
 
 <ROUTINE FLY-ME ()
+	 <CRLF>
 	 <FWEEP 4>
 	 <CRLF>
 	 <TELL
 "The bat grabs you by the scruff of your neck and lifts you away...." CR CR>
-	 <GOTO <PICK-ONE ,BAT-DROPS> <>>
-	 <COND (<NOT <EQUAL? ,HERE ,ENTRANCE-TO-HADES>>
-		<V-FIRST-LOOK>)>
-	 T>
+	 <GOTO <PICK-ONE ,BAT-DROPS>>>
 
 <ROUTINE FWEEP (N)
 	 <REPEAT ()
@@ -2546,7 +2542,7 @@ I would have thought twice about carrying flaming objects in here." CR>)>
       ** BOOOOOOOOOOOM **">)>)>> 
 
 <ROUTINE BAT-D ()
-	 <COND (<EQUAL? <LOC ,GARLIC> ,WINNER ,HERE>
+	 <COND (<ULTIMATELY-IN? ,GARLIC ,HERE>
 		<TELL
 "In the corner of the room on the ceiling is a large vampire bat who
 is obviously deranged and holding his nose." CR>)
@@ -2558,10 +2554,8 @@ is obviously deranged and holding his nose." CR>)
 	 <COND (<EQUAL? .RARG ,M-LOOK>
 		<TELL
 "You are in a small room which has doors only to the east and south." CR>)
-	       (<AND <EQUAL? .RARG ,M-ENTER> <NOT ,DEAD>>
-		<COND (<NOT <EQUAL? <LOC ,GARLIC> ,WINNER ,HERE>>
-		       <V-FIRST-LOOK>
-		       <CRLF>
+	       (<AND <EQUAL? .RARG ,M-END> <NOT ,DEAD>>
+		<COND (<NOT <ULTIMATELY-IN? ,GARLIC ,HERE>>
 		       <FLY-ME>)>)>>
 
 <ROUTINE MACHINE-ROOM-FCN (RARG)
