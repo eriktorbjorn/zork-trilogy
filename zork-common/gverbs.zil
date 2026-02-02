@@ -1296,6 +1296,12 @@ you kill yourself, just as he might have done!">
 		       (T
 			<RETURN>)>>>
 
+<ROUTINE V-SIT ()
+	 <COND (<EQUAL? ,PRSO ,ROOMS>
+		<TELL "You are not that tired." CR>)
+	       (T
+		<PERFORM ,V?CLIMB-ON ,PRSO>)>>
+
 <ROUTINE V-SKIP ()
 	 <TELL <PICK-ONE ,WHEEEEE> CR>>
 
