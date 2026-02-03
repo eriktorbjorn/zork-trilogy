@@ -3525,7 +3525,7 @@ property, which is normally 0"
 			     (T <SET RES ,SITTING-DUCK>)>)>
 		<COND (<AND <EQUAL? .RES ,STAGGER>
 			    .DWEAPON
-			    <PROB 25 <COND (.HERO? 10)(T 50)>>>
+			    <PROB 25 50>>
 		       <SET RES ,LOSE-WEAPON>)>
 		<REMARK
 		  <RANDOM-ELEMENT <GET .REMARKS <- .RES 1>>>
@@ -3604,7 +3604,7 @@ ineffective." CR>
 		<COND (.OUT?
 		       <COND (<EQUAL? .RES ,STAGGER> <SET RES ,HESITATE>)
 			     (T <SET RES ,SITTING-DUCK>)>)>
-		<COND (<AND <EQUAL? .RES ,STAGGER> .DWEAPON <PROB 25>>
+		<COND (<AND <EQUAL? .RES ,STAGGER> .DWEAPON <PROB 25 10>>
 		       <SET RES ,LOSE-WEAPON>)>
 		<REMARK
 		  <RANDOM-ELEMENT <GET ,HERO-MELEE <- .RES 1>>>
