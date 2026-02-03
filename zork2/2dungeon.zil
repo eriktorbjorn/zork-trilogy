@@ -1359,6 +1359,7 @@ north is an exit.")
        (DESC "Library")
        (NORTH TO LEDGE-1)
        (OUT TO LEDGE-1)
+       (ACTION LIBRARY-FCN)
        (FLAGS RLANDBIT)>
 
 <ROOM VOLCANO-VIEW
@@ -2121,7 +2122,7 @@ Dimwit Flathead, \"Our Excessive Leader\".")>
 	(CAPACITY 2)
 	(SIZE 10)
 	(TEXT "This book is written in a tongue with which I am unfamiliar.")
-	(ACTION RANDOM-BOOK)>
+	;(ACTION RANDOM-BOOK)>
 
 <OBJECT BLUE-BOOK
 	(IN LIBRARY)
@@ -2133,7 +2134,7 @@ Dimwit Flathead, \"Our Excessive Leader\".")>
 	(CAPACITY 2)
 	(SIZE 10)
 	(TEXT "This book is written in a tongue with which I am unfamiliar.")
-	(ACTION RANDOM-BOOK)>
+	;(ACTION RANDOM-BOOK)>
 
 <OBJECT WHITE-BOOK
 	(IN LIBRARY)
@@ -2151,7 +2152,7 @@ magical objects, chiefly the so-called \"magic wand\". Apparently these
 devices work by pointing them at the object to be ensorcelled, and then
 chanting the appropriate magic words. (It's truly amazing how credulous
 these ancients were, isn't it?)")
-	(ACTION RANDOM-BOOK)>
+	;(ACTION RANDOM-BOOK)>
 
 <OBJECT PURPLE-BOOK
 	(IN LIBRARY)

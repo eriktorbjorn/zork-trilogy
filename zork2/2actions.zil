@@ -388,6 +388,17 @@ within the basket but cannot be removed." CR>)>>
 		<RTRUE>)>
 	 <RFALSE>>
 
+<ROUTINE LIBRARY-FCN (RARG)
+	 <COND (<EQUAL? .RARG ,M-END>
+		<COND (<OR <NOT <IN? ,WHITE-BOOK ,HERE>>
+			   <NOT <IN? ,PURPLE-BOOK ,HERE>>
+			   <NOT <IN? ,GREEN-BOOK ,HERE>>
+			   <NOT <IN? ,BLUE-BOOK ,HERE>>>
+		       <FSET ,WHITE-BOOK ,TOUCHBIT>
+		       <FSET ,PURPLE-BOOK ,TOUCHBIT>
+		       <FSET ,GREEN-BOOK ,TOUCHBIT>
+		       <FSET ,BLUE-BOOK ,TOUCHBIT>)>)>>
+
 <ROUTINE SAFE-ROOM-FCN (RARG)
 	 <COND (<EQUAL? .RARG ,M-LOOK>
 		<TELL
@@ -593,9 +604,9 @@ appointment!\" He disappears, leaving you alone on the ledge." CR>)>
 		<TELL <GETP ,PURPLE-BOOK ,P?TEXT> CR>
 		<PERFORM ,V?OPEN ,PURPLE-BOOK>
 		<RTRUE>)
-	       (T <RANDOM-BOOK>)>>
+	       ;(T <RANDOM-BOOK>)>>
 
-<ROUTINE RANDOM-BOOK ()
+;<ROUTINE RANDOM-BOOK ()
 	 <COND (<VERB? TAKE MOVE PUT>
 		<FSET ,WHITE-BOOK ,TOUCHBIT>
 		<FSET ,PURPLE-BOOK ,TOUCHBIT>
