@@ -261,6 +261,7 @@ The book itself is very old and the pages dry and brittle.")
 	(DESC "compass rose")
 	(SYNONYM ROSE)
 	(ADJECTIVE COMPASS)
+	(FLAGS TURNBIT)
 	(ACTION ROSE-F)>
 
 <OBJECT MASTER
