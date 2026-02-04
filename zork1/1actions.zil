@@ -481,7 +481,9 @@ nailed shut, ">)>
 	      (<EQUAL? .RARG ,M-END>
 	       <COND (<OR <VERB? TAKE MUNG>
 			  <AND <VERB? PUT>
-			       <EQUAL? ,PRSI ,TROPHY-CASE>>>
+			       <EQUAL? ,PRSI ,TROPHY-CASE>>
+			  <AND <VERB? CLOSE>
+			       <EQUAL? ,PRSO ,EGG>>>
 		      <COND (<IN? ,PRSO ,TROPHY-CASE>
 			     <TOUCH-ALL ,PRSO>)>
 		      <SETG SCORE <+ ,BASE-SCORE <OTVAL-FROB>>>
@@ -503,7 +505,10 @@ nailed shut, ">)>
 		 <COND (<NOT .F> <RETURN .SCORE>)>
 		 <COND (<NOT <EQUAL? .F ,SWORD>>
 			<SET SCORE <+ .SCORE <GETP .F ,P?TVALUE>>>)>
-		 <COND (<FIRST? .F> <SET SCORE <+ .SCORE <OTVAL-FROB .F>>>)>
+		 <COND (<AND <FIRST? .F>
+			     <OR <NOT <EQUAL? .F ,EGG>>
+				 <FSET? .F ,OPENBIT>>>
+			<SET SCORE <+ .SCORE <OTVAL-FROB .F>>>)>
 		 <SET F <NEXT? .F>>>>
 
 <ROUTINE TRAP-DOOR-FCN ()
