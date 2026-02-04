@@ -1076,6 +1076,8 @@ above the floor.">
 		       <SETG BEAM-BREAKER .PRI>
 		       <TELL
 "The beam is now interrupted by a " D .PRI " lying on the floor." CR>)
+		      (<EQUAL? .PRI ,BEAM>
+		       <TELL <PICK-ONE ,YUKS> CR>)
 		      (<IN? .PRI ,HERE>
 		       <TELL
 "The " D .PRI " already breaks the beam." CR>)
