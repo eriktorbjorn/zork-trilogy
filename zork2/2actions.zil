@@ -2716,6 +2716,30 @@ and is gone." CR>)>>
 	       (<AND <EQUAL? ,HERE ,GAZEBO-ROOM> <VERB? LEAVE EXIT>>
 		<DO-WALK ,P?OUT> <RTRUE>)>>
 
+<ROUTINE STREAM-PATH-FCN (RARG)
+	 <COND (<EQUAL? .RARG ,M-LOOK>
+		<TELL
+"The path follows the south edge of a deep ravine and heads northeast.
+A tunnel heads southwest, narrowing to a rather tight crawl. ">
+		<COND (<NOT ,CAROUSEL-FLIP-FLAG>
+		       <TELL
+"A faint whirring sound can be heard in that direction. ">)>
+		<TELL
+"On the east is a ruined archway choked with vegetation." CR>)>>
+
+<ROUTINE MARBLE-HALL-FCN (RARG)
+	 <COND (<EQUAL? .RARG ,M-LOOK>
+		<TELL
+"This is an arched hall of fine marble. The hall stops abruptly
+to the north at a ford across a stream, where the marble is cracked and
+broken. Perhaps a flood or collapse of the cave was responsible. To
+the south the hall opens into a large room.">
+		<COND (<NOT ,CAROUSEL-FLIP-FLAG>
+		       <TELL
+" There is a rather annoying whirring sound coming from that room.">)>
+		<CRLF>
+		<RTRUE>)>>
+
 <ROUTINE CHEST-FCN ()
 	 <COND (<VERB? OPEN>
 		<COND (<PROB 25>

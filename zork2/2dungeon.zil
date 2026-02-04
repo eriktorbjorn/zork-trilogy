@@ -352,33 +352,24 @@ the like, and they are vaguely troubling to look at." CR>)>>
 
 <ROOM STREAM-PATH
       (IN ROOMS)
-      (LDESC
-"The path follows the south edge of a deep ravine and heads northeast.
-A tunnel heads southwest, narrowing to a rather tight crawl. A
-faint whirring sound can be heard in that direction. On the east is a
-ruined archway choked with vegetation.")
-	(DESC "Path Near Stream")
-	(FLAGS RLANDBIT)
-	(EAST TO FORMAL-GARDEN)
-	(NE TO DARK-TUNNEL)
-	(SW TO CAROUSEL-ROOM)
-	(WEST TO MARBLE-HALL IF SECRET-DOOR)
-	(DOWN "The ravine is extremely deep. You would never make it.")
-	(GLOBAL BRIDGE CHASM STREAM)>
+      (DESC "Path Near Stream")
+      (FLAGS RLANDBIT)
+      (EAST TO FORMAL-GARDEN)
+      (NE TO DARK-TUNNEL)
+      (SW TO CAROUSEL-ROOM)
+      (WEST TO MARBLE-HALL IF SECRET-DOOR)
+      (DOWN "The ravine is extremely deep. You would never make it.")
+      (ACTION STREAM-PATH-FCN)
+      (GLOBAL BRIDGE CHASM STREAM)>
 
 <ROOM MARBLE-HALL
       (IN ROOMS)
-      (LDESC
-"This is an arched hall of fine marble. The hall stops abruptly
-to the north at a ford across a stream, where the marble is cracked and
-broken. Perhaps a flood or collapse of the cave was responsible. To
-the south the hall opens into a large room. There is rather annoying
-whirring sound coming from that room.")
       (DESC "Marble Hall")
       (FLAGS RLANDBIT)
       (EAST TO STREAM-PATH IF SECRET-DOOR ELSE "That's a wall there.")
       (NORTH TO DEEP-FORD)
       (SOUTH TO CAROUSEL-ROOM)
+      (ACTION MARBLE-HALL-FCN)
       (GLOBAL STREAM)>
 
 <ROOM DEEP-FORD
