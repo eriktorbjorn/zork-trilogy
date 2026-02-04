@@ -2165,7 +2165,7 @@ surrounded by the Crown Jewels of the Empire.")>
       (NORTH TO TECH-MUSEUM IF WOODEN-DOOR IS OPEN)
       (FLAGS ONBIT RLANDBIT)
       (ACTION MUSEUM-ENTRANCE-F)
-      (GLOBAL IRON-DOOR JEWEL-DOOR WOODEN-DOOR STAIRS CLEFT)>
+      (GLOBAL IRON-DOOR JEWEL-DOOR WOODEN-DOOR STAIRS CLEFT ROBOT)>
 
 <OBJECT CLEFT
 	(IN LOCAL-GLOBALS)
@@ -2181,7 +2181,7 @@ surrounded by the Crown Jewels of the Empire.")>
       (OUT TO MUSEUM-ENTRANCE IF JEWEL-DOOR IS OPEN)
       (FLAGS ONBIT RLANDBIT)
       (ACTION JEWEL-ROOM-F)
-      (GLOBAL JEWEL-DOOR)>
+      (GLOBAL JEWEL-DOOR ROBOT)>
 
 <ROOM TECH-MUSEUM
       (IN ROOMS)
@@ -2190,7 +2190,7 @@ surrounded by the Crown Jewels of the Empire.")>
       (OUT TO MUSEUM-ENTRANCE IF WOODEN-DOOR IS OPEN)
       (FLAGS RLANDBIT ONBIT)
       (ACTION TECH-MUSEUM-F)
-      (GLOBAL WOODEN-DOOR)>
+      (GLOBAL WOODEN-DOOR ROBOT)>
 
 <ROOM MID-CP-ANTE
       (IN ROOMS)
@@ -2222,7 +2222,7 @@ surrounded by the Crown Jewels of the Empire.")>
       (NORTH TO MID-TECH-MUSEUM IF WOODEN-DOOR IS OPEN)
       (FLAGS ONBIT RLANDBIT)
       (ACTION MUSEUM-ENTRANCE-F)
-      (GLOBAL IRON-DOOR JEWEL-DOOR WOODEN-DOOR STAIRS)>
+      (GLOBAL IRON-DOOR JEWEL-DOOR WOODEN-DOOR STAIRS ROBOT)>
 
 <ROOM MID-JEWEL-ROOM
       (IN ROOMS)
@@ -2231,7 +2231,7 @@ surrounded by the Crown Jewels of the Empire.")>
       (OUT TO MID-MUSEUM-ENTRANCE IF JEWEL-DOOR IS OPEN)
       (FLAGS ONBIT RLANDBIT)
       (ACTION JEWEL-ROOM-F)
-      (GLOBAL JEWEL-DOOR)>
+      (GLOBAL JEWEL-DOOR ROBOT)>
 
 <ROOM MID-TECH-MUSEUM
       (IN ROOMS)
@@ -2240,7 +2240,7 @@ surrounded by the Crown Jewels of the Empire.")>
       (OUT TO MID-MUSEUM-ENTRANCE IF WOODEN-DOOR IS OPEN)
       (FLAGS RLANDBIT ONBIT)
       (ACTION TECH-MUSEUM-F)
-      (GLOBAL WOODEN-DOOR)>
+      (GLOBAL WOODEN-DOOR ROBOT)>
 
 <ROOM OLD-TECH-MUSEUM
       (IN ROOMS)
@@ -2968,11 +2968,16 @@ garment, and vaporizes you with a flick of his finger.">>
 	(IN LOCAL-GLOBALS)
 	(DESC "robot")
 	(SYNONYM ROBOT DEVICE)
+	(FLAGS INVISIBLE)
 	(ACTION ROBOT-F)>
 
 <ROUTINE ROBOT-F ()
-	 <COND (<VERB? FOLLOW>
-		<TELL "It moved quickly and left the door closed." CR>)
+	 <COND (<AND <VERB? FOLLOW>
+		     <EQUAL? ,HERE, JEWEL-ROOM>>
+		<COND (<FSET? ,JEWEL-DOOR ,OPENBIT>
+		       <DO-WALK ,P?WEST>)
+		      (T
+		       <TELL "It moved quickly and left the door closed." CR>)>)
 	       (T <TELL "There is no robot here." CR>)>>
 
 <ROUTINE JEWEL-ROOM-F (RARG)
@@ -2986,6 +2991,7 @@ it says, rather tinnily. \"Someone has been tampering with the machines
 again.\" Six beady mechanical eyes focus on you as the robot picks up the
 gold machine. \"Hands off, adventurer!\" it says as it leaves the
 room, closing the door behind it." CR>
+		<FCLEAR ,ROBOT ,INVISIBLE>
 		<FCLEAR ,JEWEL-DOOR ,OPENBIT>
 		<FCLEAR ,WOODEN-DOOR ,OPENBIT>
 		<MOVE ,TIME-MACHINE ,TECH-MUSEUM>)
