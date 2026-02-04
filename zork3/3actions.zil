@@ -1048,7 +1048,7 @@ end, inches above the floor." CR>
 <ROUTINE BEAM-FUNCTION ("AUX" PRO PRI)
 	 <COND (<VERB? LEAP>
 		<TELL
-"You jump over the beam and into the hallway." CR>
+"You jump over the beam and into the hallway." CR CR>
 		<GOTO ,MRA>
 		<RTRUE>)
 	       (<VERB? FOLLOW>
