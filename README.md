@@ -1,6 +1,10 @@
+**This repository has not been publicly announced yet. It is very much work in progress. Fixes will be made, modified, and possibly even backed out. I have force push, and I'm not afraid to use it. You have been warned!**
+
+But if you just want to use this as a source of Zork bugs and their potential fixes, go ahead.
+
 # Zork Trilogy Source Code Collection
 
-Zork was created at the MIT Laboratory for Computer Science, by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling. Severalversions of this have been preserved elsewhere.
+Zork was created at the MIT Laboratory for Computer Science, by Tim Anderson, Marc Blank, Bruce Daniels, and Dave Lebling. Several versions of this have been preserved elsewhere.
 
 The Zork Trilogy, as released by Infocom, is mainly credited to Dave Lebling and Marc Blank. This source code has been extracted from the following repositories:
 
