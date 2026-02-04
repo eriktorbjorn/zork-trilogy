@@ -5347,7 +5347,10 @@ the vial, seeming to permeate the air briefly before fading entirely." CR>
 <GLOBAL INVIS <>>
 
 <ROUTINE VIAL-F ()
-	 <COND (<VERB? FILL> <TELL "You can't seem to put anything in it." CR>)
+	 <COND (<AND <VERB? PUT>
+		     <EQUAL? ,PRSI ,VIAL>
+		     <FSET? ,PRSI ,OPENBIT>>
+		<TELL "You can't seem to put anything in it." CR>)
 	       (<VERB? DRINK-FROM>
 		<COND (<NOT <FSET? ,VIAL ,OPENBIT>>
 		       <TELL "You'll have to open the " D ,VIAL " first." CR>)
