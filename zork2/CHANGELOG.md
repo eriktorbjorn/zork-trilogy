@@ -42,6 +42,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * It's now possible to put things in the chasm. There was code for it, but it checked if PRSI was PSEUDO-OBJECT, not CHASM. I guess the chasm used to be a pseudo object and was changed to a proper object later. Though it seems it never worked even in the oldest versions of the game.
 * Using Filch or Float on an object now sets its TOUCHBIT, so that you won't see potentially misleading `FDESC` descriptions for the object.
 * The `FDESC` descriptions of the library books refer to each other, so it's supposed to set their `TOUCHBIT`s whenever that's no longer safe. It did so by intercepting a few commands, most noticeable `TAKE`. But it didn't take automatic taking, burning the books, etc. into account. Monitoring if the books are still present in the `M-END` case of the room's action routine should be more robust.
+* \[Nathan-75\] In Path Near Stream and Marble Hall, only refer to the whirring sound if the carousel is still spinning. Everything I've read suggests that it's the spinning that creates the sound. You only hear the whirring in the Carousel Room if it's spinning, in Room 8 the whirring is only mentioned in Zork III, and the InvisiClues clearly say that it's a magnetic field that causes the carousel to spin. So once that field is shifted, the whirring should stop. I also changed "`There is rather annoying whirring sound`" to "`There is a rather annoying whirring sound`".
 
 ### Bugfixes
 

@@ -8,6 +8,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 
 * Allow "`ENTER SEAT`" to work again to enter the gold machine. I think this had something to do with the seat being a vehicle in earlier versions. It no longer is. The fix was simply to handle the `THROUGH` action the same as `BOARD` and `CLIMB-ON` in `TM-SEAT`.
 * Any time `<PICK-ONE ,YUKS>` was called, the game would crash. This was, of course, a regression in the previous version.
+* The vial once again responds to attempts at filling it. There is no water in Zork III, and trying to fill it with anything else translates into a `PUT` action, not a `FILL` action.
 
 ### Changes to game mechanics
 
