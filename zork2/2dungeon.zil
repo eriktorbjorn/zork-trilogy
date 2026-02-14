@@ -699,7 +699,8 @@ The club is curiously burned at the thick end.")
 	(DESC "wooden club")
 	(FLAGS INVISIBLE TAKEBIT WEAPONBIT READBIT BURNBIT)
 	(TEXT
-"The words \"Babe Flathead\" are burned into the wood.")>
+"The words \"Babe Flathead\" are burned into the wood.")
+	(ACTION BAT-FCN)>
 
 <ROOM STAIRWAY-TOP
       (IN ROOMS)

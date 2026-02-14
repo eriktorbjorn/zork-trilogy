@@ -361,6 +361,10 @@ Release ">
 		<TELL
 "Such language in a high-class establishment like this!" CR>)>>
 
+<ROUTINE CUTTING-EDGE (OBJ)
+	 <TELL
+"The \"cutting edge\" of a " D .OBJ " is hardly adequate." CR>>
+
 <ROUTINE V-CUT ()
 	 <COND (<FSET? ,PRSO ,ACTORBIT>
 		<PERFORM ,V?ATTACK ,PRSO ,PRSI>)
@@ -374,8 +378,7 @@ Release ">
 		<TELL "Your skillful " D ,PRSI "smanship slices the " D ,PRSO
 " into innumerable slivers which blow away." CR>)
 	       (<NOT <FSET? ,PRSI ,WEAPONBIT>>
-		<TELL
-"The \"cutting edge\" of a " D ,PRSI " is hardly adequate." CR>)
+	        <CUTTING-EDGE ,PRSI>)
 	       (T
 		<TELL "Strange concept, cutting the " D ,PRSO "...." CR>)>>
 

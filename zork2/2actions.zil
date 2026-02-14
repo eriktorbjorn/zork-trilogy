@@ -2411,6 +2411,13 @@ and then its three fang-crammed mouths rend you into little doggy biscuits.">)
 		<PERFORM ,V?ENCHANT ,CERBERUS>
 		<RTRUE>)>>
 
+<ROUTINE BAT-FCN ()
+	 <COND (<VERB? CUT>
+		<COND (<EQUAL? ,PRSO, PRSI>
+		       <TELL <PICK-ONE ,YUKS> CR>)
+		      (<EQUAL? ,PRSI, BAT>
+		       <CUTTING-EDGE ,PRSI>)>)>>
+
 "SUBTITLE DRAGON AND GLACIER"
 
 <GLOBAL ICE-MELTED <>>
