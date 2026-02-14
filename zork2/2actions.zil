@@ -2530,6 +2530,7 @@ harmlessly." CR>)
 	       (<AND <IN? ,WINNER ,DRAGON-ROOM>
 		     <NOT <IN? ,DRAGON ,DRAGON-ROOM>>>
 		<MOVE ,DRAGON ,DRAGON-ROOM>
+		<FCLEAR ,DRAGON ,TOUCHBIT>
 		<TELL
 "The dragon doubles back and charges into the room, maddened by your
 attempt to sneak past him. His eyes glow with a white heat of anger." CR>
@@ -2589,6 +2590,7 @@ leading west." CR>
 		      (T
 		       <COND (<NOT <EQUAL? .ROOM ,OLD-HERE>>
 			      <MOVE ,DRAGON .ROOM>
+			      <FSET ,DRAGON ,TOUCHBIT>
 			      <TELL
 "The dragon follows you, out of mingled curiosity and anger." CR>)
 			     (T
@@ -2605,6 +2607,7 @@ leading west." CR>
 <ROUTINE DRAGON-LEAVES ()
 	 <COND (<NOT <LOC ,DEAD-DRAGON>>
 		<MOVE ,DRAGON ,DRAGON-ROOM>
+		<FCLEAR ,DRAGON ,TOUCHBIT>
 		<SETG DRAGON-ANGER 0>
 		<DISABLE <INT I-DRAGON>>)>>
 
