@@ -2497,15 +2497,15 @@ and sighs.">>
 		       <SETG QUOTE-FLAG <>>)>
 		<RTRUE>)>>
 
-<ROUTINE FIND-TARGET (TARGET "AUX" P TX L ROOM)
-	 <COND (<IN? .TARGET ,HERE> ,HERE)
+<ROUTINE FIND-TARGET (TARGET "AUX" (DL <LOC ,DRAGON>) P TX L ROOM)
+	 <COND (<IN? .TARGET .DL> .DL)
 	       (T
 		<SET P 0>
 		<REPEAT ()
-			<COND (<0? <SET P <NEXTP ,HERE .P>>>
+			<COND (<0? <SET P <NEXTP .DL .P>>>
 			       <RETURN <>>)
 			      (<NOT <L? .P ,LOW-DIRECTION>>
-			       <SET TX <GETPT ,HERE .P>>
+			       <SET TX <GETPT .DL .P>>
 			       <SET L <PTSIZE .TX>>
 			       <COND (<EQUAL? .L ,UEXIT ,CEXIT ,DEXIT>
 				      <SET ROOM <GETB .TX 0>>
