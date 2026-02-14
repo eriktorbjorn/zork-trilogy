@@ -2476,9 +2476,8 @@ swallows it. A few moments later he belches and smoke curls out of
 his nostrils." CR>)
 		      (T
 		       <TELL "The dragon refuses your gift." CR>)>)
-	       (<AND <VERB? WALK>
-		     <EQUAL? ,HERE ,DRAGON-ROOM>
-		     <EQUAL? ,PRSO ,P?NORTH>>
+	       (<AND <VERB? WALK-AROUND>
+		     <EQUAL? ,HERE ,DRAGON-ROOM>>
 		<SETG DRAGON-ANGER <+ ,DRAGON-ANGER 3>>
 		<TELL
 "The dragon puts out a claw, grins (all of his sword-sharp teeth
