@@ -49,7 +49,7 @@ This is going to be a partial list, since I only have the vaguest of ideas how t
 * The lines `<ZSTR-OFF>` and `<ZSTR-ON>` have been removed from gmacros.zil. It's unclear what \- if anything \- these did, as ZILF ignores them.
 * `MAIN-LOOP` has been refactored into `MAIN-LOOP` and `MAIN-LOOP1`. I'm not sure why.
 * The way "it" works has changed to some extent. For instance, "`TAKE LEAFLET. SOUTH. READ IT`" works, while r88 would print "`I don't see what you are referring to.`" This is presumably what's meant by "The New ITness" in the "Misc ZIL" Infocom Cabinet.
-* Some debug commands have been added, e.g. recording and replaying commands, seeding random numbers, …
+* Some debug commands have been added, e.g. recording and replaying commands, seeding random numbers, ...
 
 ## Standard verb changes
 

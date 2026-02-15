@@ -8,3 +8,4 @@ Known bugs/oddities that I don't think are worth fixing. At least not yet.
 * The baby sea serpent has an `LDESC`, but it's never used since it's in the aquarium.  
 * The baby sea serpent has code for "`PUT SERPENT IN` *object*" that I don't think can ever be triggered.  
 * In addition to `WATER`, the game also has `SALTY-WATER` and in early versions you can fill the pot with it in the Pool Room. But it appears to have never been fully implemented. Drinking it printed garbage, and trying to use it for the bucket doesn't seem to work at all. So r48 removed `GLOBAL-WATER` from the Pool Room. Is it worth fixing up the implementation? Water is a bit convoluted already...
+* If the dragon is following you, and you are standing in one of the rooms he won't follow you into, you will see the message "`The dragon will follow no further.`" every turn until he loses interest.

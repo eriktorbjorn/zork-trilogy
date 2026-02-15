@@ -43,6 +43,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Using Filch or Float on an object now sets its TOUCHBIT, so that you won't see potentially misleading `FDESC` descriptions for the object.
 * The `FDESC` descriptions of the library books refer to each other, so it's supposed to set their `TOUCHBIT`s whenever that's no longer safe. It did so by intercepting a few commands, most noticeable `TAKE`. But it didn't take automatic taking, burning the books, etc. into account. Monitoring if the books are still present in the `M-END` case of the room's action routine should be more robust.
 * \[Nathan-75\] In Path Near Stream and Marble Hall, only refer to the whirring sound if the carousel is still spinning. Everything I've read suggests that it's the spinning that creates the sound. You only hear the whirring in the Carousel Room if it's spinning, in Room 8 the whirring is only mentioned in Zork III, and the InvisiClues clearly say that it's a magnetic field that causes the carousel to spin. So once that field is shifted, the whirring should stop. I also changed "`There is rather annoying whirring sound`" to "`There is a rather annoying whirring sound`".
+* Repurposed an unused message in `DRAGON-FCN`. What was meant to be printed when the played walked north in the Dragon Room (but wasn't, because the dragon's action routine has nothign to do with that) is now printed in response to "`WALK AROUND DRAGON`" instead.
 
 ### Bugfixes
 
@@ -58,6 +59,10 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Counting the matches can no longer tell you that you have \-1 matches left. This fix has been copied from Zork I.
 * \[Nathan-48\] Throwing an object at the robot now moves it to the room.
 * \[Nathan-48\] "`DESTROY ROBOT WITH SWORD`" now removes the robot, not your hands.
+* Don't allow the dragon to escape his area. He already won't follow you into the rooms bordering it, but since `FIND-TARGET` was trying to find the player from `HERE`, not from the dragon's location, he would follow you into the next room if he was still angry.
+* Only describe the dragon as blocking the way to the north when he's in his lair.
+* \[Nathan-59\] Don't allow cutting objects with the wooden club, even though it's a weapon.
+* Trying to walk the balloon into a room witout `NONLANDBIT` would still set `BLOC` to that room even though the movement would fail. The next time the balloon moved on its own, it would end up in the wrong room. The normal use case for walking the balloon is as an alternative to typing "`LAND`", and that still works.
 
 ### Stylistic fixes
 
