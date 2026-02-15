@@ -166,6 +166,7 @@ receptacle is fastened to the center of the basket">)>
 				     <AND <EQUAL? <PTSIZE .M> 1>
 					  <NOT <FSET? <SET R <GETB .M 0>>
 						      ,RMUNGBIT>>
+					  <FSET? .R ,NONLANDBIT>
 					  <SETG BLOC .R>>
 				     <ENABLE <QUEUE I-BALLOON 3>>
 				     <RFALSE>)>)
