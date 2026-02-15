@@ -1912,13 +1912,15 @@ At your service!") >
 	(IN SAFE-ROOM)
 	(SYNONYM SLOT HOLE)
 	(DESC "hole")
-	(FLAGS OPENBIT NDESCBIT)
+	(FLAGS OPENBIT NDESCBIT CONTBIT)
 	(CAPACITY 10)
 	(ACTION SLOT-F)>
 
 <ROUTINE SLOT-F ()
 	 <COND (<AND <VERB? LOOK-INSIDE> <NOT <FIRST? ,SLOT>>>
 		<TELL "There's nothing in the hole." CR>)
+	       (<VERB? OPEN CLOSE>
+		<TELL <PICK-ONE ,YUKS> CR>)
 	       (<VERB? EXAMINE>
 		<TELL
 "The oblong hole has been chipped out of the box, probably by someone
