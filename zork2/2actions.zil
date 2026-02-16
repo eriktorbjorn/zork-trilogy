@@ -1724,7 +1724,7 @@ dust rises from beneath it." CR>
 		<TELL
 "There is something misty in the sphere. Perhaps if you were to look
 into it..." CR>)
-	       (<AND <VERB? TAKE> <==? ,PRSO ,PALANTIR-3>>
+	       ;(<AND <VERB? TAKE> <==? ,PRSO ,PALANTIR-3>>
 		<PUTP ,PRSO ,P?LDESC <>>
 		<RFALSE>)>>
 

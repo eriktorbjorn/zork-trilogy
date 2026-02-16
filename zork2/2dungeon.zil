@@ -1195,7 +1195,7 @@ the east is fitful light.")
 	(SYNONYM PALANTIR SPHERE)
 	(ADJECTIVE CRYSTAL WHITE CLEAR)
 	(DESC "clear crystal sphere")
-	(LDESC "There is a clear crystal sphere lying in the sand.")
+	(FDESC "There is a clear crystal sphere lying in the sand.")
 	(FLAGS STAGGERED TAKEBIT NDESCBIT TRANSBIT)
 	(ACTION PALANTIR)
 	(VALUE 20)>
