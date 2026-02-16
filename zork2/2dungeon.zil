@@ -1205,7 +1205,7 @@ the east is fitful light.")
 	(SYNONYM SERPENT SNAKE)
 	(ADJECTIVE BABY SEA)
 	(DESC "baby sea serpent")
-	(LDESC "There is a baby sea serpent swimming in the aquarium.")
+	(FDESC "There is a baby sea serpent swimming in the aquarium.")
 	(FLAGS ACTORBIT)
 	(ACTION SERPENT-FCN)>
 
