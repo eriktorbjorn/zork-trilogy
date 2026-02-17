@@ -2466,7 +2466,7 @@ seems to walk through ... walls ...\"")>
 	(SIZE 2)>
 
 <OBJECT PALANTIR-2
-	(IN DREARY-ROOM)
+	(IN PTABLE)
 	(SYNONYM PALANTIR SPHERE)
 	(ADJECTIVE CRYSTAL BLUE)
 	(DESC "blue crystal sphere")
