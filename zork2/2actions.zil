@@ -1557,16 +1557,18 @@ leaving you alone." CR>)>>
 
 "PALANTIRS, ETC."
 
-<ROUTINE GO&LOOK (RM "AUX" OHERE OLIT (OSEEN <>))
+<ROUTINE GO&LOOK (RM "OPT" (PLOOK? <>) "AUX" OHERE OLIT (OSEEN <>))
 	 #DECL ((RM) OBJECT)
 	 <SET OHERE ,HERE>
-	 <COND (<FSET? .OHERE ,TOUCHBIT>
+	 <COND (<FSET? .RM ,TOUCHBIT>
 		<SET OSEEN T>)>
 	 <SET OLIT ,LIT>
 	 <SETG HERE .RM>
 	 <SETG LIT <LIT? .RM>>
+	 <SETG PLOOK-FLAG .PLOOK?>
 	 <PERFORM ,V?LOOK>
-	 <COND (<NOT .OSEEN> <FCLEAR .OHERE ,TOUCHBIT>)>
+	 <SETG PLOOK-FLAG <>>
+	 <COND (<NOT .OSEEN> <FCLEAR .RM ,TOUCHBIT>)>
 	 <SETG HERE .OHERE>
 	 <SETG LIT .OLIT>
 	 T>
@@ -1576,7 +1578,7 @@ leaving you alone." CR>)>>
     <COND (<EQUAL? .RARG ,M-LOOK>
 	   <TELL
 "This is a tiny room carved out of the wall of the ravine. There is
-an exit down a precarious climb. ">
+an exit down a precarious climb.">
 	   <P-DOOR "north" ,LID-1 ,KEYHOLE-1>
 	   <RTRUE>)
 	  (<NOT <VERB? LOOK>> <PCHECK> <RFALSE>)>>
@@ -1587,19 +1589,25 @@ an exit down a precarious climb. ">
 	   <TELL
 "This is a small and rather dreary room, eerily illuminated by a red glow
 emanating from a crack in one wall. The light falls upon a dusty wooden table
-in the center of the room. ">
+in the center of the room.">
 	   <P-DOOR "south" ,LID-2 ,KEYHOLE-2>
 	   <RTRUE>)
           (T <PCHECK> <RFALSE>)>>
 
-<ROUTINE PCHECK ("AUX" (LID <PLID>))
-	#DECL ((LID) OBJECT)
-	<SETG PLOOK-FLAG <>>
-	<COND (<OR <IN? ,KEY ,KEYHOLE-1>
-		   <IN? ,KEY ,KEYHOLE-2>>
-	       <FSET ,KEY ,NDESCBIT>)
-	      (T
-	       <FCLEAR ,KEY ,NDESCBIT>)>
+<GLOBAL KEYHOLE-OBJECTS
+	<LTABLE (PURE) KEY LETTER-OPENER>>
+
+<ROUTINE PCHECK ("AUX" (LID <PLID>) (CNT 0) (LEN <GET ,KEYHOLE-OBJECTS 0>) OBJ)
+	#DECL ((LID OBJ) OBJECT (CNT LEN) FIX)
+	<REPEAT ()
+		<COND (<G? <SET CNT <+ .CNT 1>> .LEN>
+		       <RETURN>)
+		      (<AND <SET OBJ <GET ,KEYHOLE-OBJECTS .CNT>>
+			    <OR <IN? .OBJ ,KEYHOLE-1>
+				<IN? .OBJ ,KEYHOLE-2>>>
+		       <FSET .OBJ ,NDESCBIT>)
+		      (T
+		       <FCLEAR .OBJ ,NDESCBIT>)>>
 	<COND (<HELD? ,PLACE-MAT>
 	       <SETG MUD-FLAG <>>)> ;"HUH?"
 	<COND (,MUD-FLAG
@@ -1612,8 +1620,8 @@ in the center of the room. ">
 
 <ROUTINE P-DOOR (STR LID KEYHOLE "AUX" F)
 	#DECL ((STR) STRING (LID KEYHOLE) OBJECT)
-	<COND (,PLOOK-FLAG <SETG PLOOK-FLAG <>> <RFALSE>)>
-	<TELL "On the "
+	<COND (,PLOOK-FLAG <CRLF> <RFALSE>)>
+	<TELL " On the "
 	      .STR
 	      " side of the room is a massive wooden door, which has a
 small window barred with iron. A formidable bolt lock is set within the
@@ -1636,11 +1644,9 @@ door frame. A keyhole ">
 	   .OBJ1)
 	  (T .OBJ2)>>
 
-<ROUTINE PKH (KEYHOLE "OPTIONAL" (THIS <>))
-    #DECL ((KEYHOLE) OBJECT (THIS) <OR ATOM FALSE>)
-    <COND (<AND <EQUAL? .KEYHOLE ,KEYHOLE-1> <NOT .THIS>>
-	   ,KEYHOLE-2)
-	  (<AND <NOT <EQUAL? .KEYHOLE ,KEYHOLE-1>> .THIS>
+<ROUTINE PKH (KEYHOLE)
+    #DECL ((KEYHOLE) OBJECT)
+    <COND (<EQUAL? .KEYHOLE ,KEYHOLE-1>
 	   ,KEYHOLE-2)
 	  (T ,KEYHOLE-1)>>
 
@@ -1661,7 +1667,7 @@ door frame. A keyhole ">
 "No light can be seen through the keyhole." CR>)>)
 	  (<VERB? PUT>
 	   <COND (<FSET? <PLID> ,OPENBIT>
-		  <COND (<FIRST? <PKH ,PRSI T>>
+		  <COND (<FIRST? ,PRSI>
 			 <TELL "The keyhole is blocked." CR>)
 			(<EQUAL? ,PRSO ,LETTER-OPENER ,KEY>
 			 <COND (<FIRST? <SET KH <PKH ,PRSI>>>
@@ -1669,9 +1675,11 @@ door frame. A keyhole ">
 "There is a faint noise from behind the door and a small cloud of
 dust rises from beneath it." CR>
 				<SET OBJ <FIRST? .KH>>
-				<REMOVE .OBJ>
 				<COND (,MUD-FLAG
-				       <SETG MATOBJ .OBJ>)>
+				       <REMOVE .OBJ>
+				       <SETG MATOBJ .OBJ>)
+				      (T
+				       <MOVE .OBJ <LOC .KH>>)>
 				<RFALSE>)>)
 			(T <TELL "The " D ,PRSO " doesn't fit." CR>)>)
 		 (T <TELL "The lid is in the way." CR>)>)>>
@@ -1838,26 +1846,32 @@ a distant room, which can be described clearly...." CR CR>)>
 
 <ROUTINE PWINDOW-FCN ()
     <COND (<VERB? LOOK-INSIDE>
-	   <SETG PLOOK-FLAG T>
 	   <COND (<FSET? ,PDOOR ,OPENBIT>
 		  <TELL "The door is open, dummy." CR>)
 		 (<EQUAL? ,HERE ,DREARY-ROOM>
 		  <COND (<NOT <LIT? ,TINY-ROOM>>
 			 <TELL "You see only darkness." CR>)
 			(T
-			 <GO&LOOK ,TINY-ROOM>)>)
-		 (T <GO&LOOK ,DREARY-ROOM>)>)
+			 <GO&LOOK ,TINY-ROOM T>)>)
+		 (T <GO&LOOK ,DREARY-ROOM T>)>)
 	  (<VERB? THROUGH>
 	   <TELL "Perhaps if you were diced...." CR>)>>
 
 <ROUTINE PDOOR-FCN ("AUX" K)
+    <COND (<VERB? LOCK UNLOCK>
+	   <COND (<FSET? ,PRSO ,OPENBIT>
+		  <TELL "The door is open, dummy." CR>
+		  <RTRUE>)
+		 (<AND <SET K <FIRST? <PLID ,KEYHOLE-1, KEYHOLE-2>>>
+		       <NOT <EQUAL? .K ,KEY>>>
+		  <TELL "The keyhole is blocked." CR>
+		  <RTRUE>)>)>
     <COND (<AND <VERB? LOOK-UNDER> ,MUD-FLAG>
 	   <TELL "The place mat is under the door." CR>)
 	  (<VERB? UNLOCK>
 	   <COND (<EQUAL? ,PRSI ,KEY>
-		  <COND (<AND <SET K <FIRST? <PLID ,KEYHOLE-1 ,KEYHOLE-2>>>
-			      <NOT <EQUAL? .K ,KEY>>>
-			 <TELL "The keyhole is blocked." CR>)
+		  <COND (,PUNLOCK-FLAG
+			 <TELL "It is already!" CR>)
 			(T
 			 <TELL "The door is now unlocked." CR>
 			 <SETG PUNLOCK-FLAG T>)>)
@@ -1866,9 +1880,12 @@ a distant room, which can be described clearly...." CR CR>)>
 		 (T <TELL "It can't be unlocked with that." CR>)>)
 	  (<VERB? LOCK>
 	   <COND (<EQUAL? ,PRSI ,KEY>
-		  <TELL "The door is locked." CR>
-		  <SETG PUNLOCK-FLAG <>>
-		  T)
+		  <COND (<NOT ,PUNLOCK-FLAG>
+			 <TELL "It is already!" CR>)
+			(T
+			 <TELL "The door is locked." CR>
+			 <SETG PUNLOCK-FLAG <>>
+			 T)>)
 		 (<EQUAL? ,PRSI ,GOLD-KEY>
 		  <TELL "It doesn't fit the lock." CR>)
 		 (T <TELL "It can't be locked with that." CR>)>)
@@ -1883,6 +1900,7 @@ a distant room, which can be described clearly...." CR CR>)>
 "The newspaper crumples up and won't go under the door." CR>)>)
 	  (<VERB? OPEN CLOSE>
 	   <COND (,PUNLOCK-FLAG
+		  <REVEAL-MAT-OBJECT "disturbed">
 		  <OPEN-CLOSE ,PRSO
 		       "The door is now open."
 		       "The door is now closed.">)
@@ -1897,24 +1915,32 @@ a distant room, which can be described clearly...." CR CR>)>
 		  <PERFORM ,V?LOCK ,PDOOR ,PRSO>)
 		 (T
 		  <PERFORM ,V?UNLOCK ,PDOOR ,PRSO>)>)>>
-		
+
+<ROUTINE REVEAL-MAT-OBJECT (HOW)
+	 <COND (,MATOBJ
+		<MOVE ,MATOBJ ,HERE>
+		<TELL "As the place mat is " .HOW ", a " D ,MATOBJ
+		      " falls from it and onto the floor." CR>
+		<SET MATOBJ <>>)>
+	 <SET MUD-FLAG <>>
+	 <RTRUE>>
+
 <ROUTINE PLACE-MAT-FCN ()
     <COND (<VERB? PUT-UNDER>
 	   <COND (<EQUAL? ,PRSI ,PDOOR>
-	          <TELL "The place mat fits easily under the door." CR>
-	          <MOVE ,PRSO ,HERE>
-	          <SETG MUD-FLAG T>)
+		  <COND (<FSET? ,PRSI ,OPENBIT>
+			 <TELL
+"There's not enough room under the open door." CR>)
+			(T
+			 <TELL "The place mat fits easily under the door." CR>
+			 <MOVE ,PRSO ,HERE>
+			 <SETG MUD-FLAG T>)>)
 		 (<EQUAL? ,PRSI ,WIZ-DOOR ,RIDDLE-DOOR ,CRYPT-DOOR>
 	          <TELL "There's not enough room under this door." CR>)>)
 	  (<AND <VERB? TAKE MOVE> ,MATOBJ>
- 	   <MOVE ,MATOBJ ,HERE>
-	   <TELL "As the place mat is moved, a "
-		 D
-		 ,MATOBJ
-		 " falls from it and onto the floor." CR>
-	   <SETG MATOBJ <>>
-	   <SETG MUD-FLAG <>>
-	   <RTRUE>)>>
+	   <REVEAL-MAT-OBJECT "moved">
+	   <COND (<VERB? MOVE>
+		  <RTRUE>)>)>>
 
 <ROUTINE WISH-FCN ()
 	 <COND (<VERB? MAKE>
