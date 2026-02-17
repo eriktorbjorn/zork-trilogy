@@ -1537,6 +1537,9 @@ CR>)
 	 <COND (%<COND (<==? ,ZORK-NUMBER 1>
 			'<AND <EQUAL? ,PRSI <> ,ROOMS, HANDS>
 			      <NOT <EQUAL? ,PRSO ,BOOK>>>)
+		       (<==? ,ZORK-NUMBER 2>
+			'<AND <EQUAL? ,PRSI <> ,ROOMS, HANDS>
+			      <NOT <EQUAL? ,PRSO ,KEY>>>)
 		       (ELSE
 			'<EQUAL? ,PRSI <> ,ROOMS ,HANDS>)>
 		<TELL "Your bare hands don't appear to be enough." CR>)
