@@ -3067,6 +3067,9 @@ key, though. It grins maniacally." CR>)
 			      <MOVE ,GOLD-KEY ,HERE>
 			      <TELL " You drop the key, though." CR>)
 			     (T <CRLF>)>)>)
+	       (<AND <VERB? LOCK UNLOCK>
+		     <FSET? ,PRSO ,OPENBIT>>
+		<TELL "The door is open, dummy." CR>)
 	       (<VERB? UNLOCK>
 		<COND (,WIZ-DOOR-FLAG
 		       <TELL "It is already!" CR>)
