@@ -7,6 +7,7 @@
 <ROUTINE GO () 
 	 <PUTB ,P-LEXV 0 59>
 ;"put interrupts on clock chain"
+	 <QUEUE I-SWORD -1>
 	 <ENABLE <QUEUE I-WIZARD 4>>
 	 <QUEUE I-LANTERN 200>
 ;"clean up junk compiler can't do"
