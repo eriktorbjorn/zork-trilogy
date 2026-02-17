@@ -44,6 +44,12 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The `FDESC` descriptions of the library books refer to each other, so it's supposed to set their `TOUCHBIT`s whenever that's no longer safe. It did so by intercepting a few commands, most noticeable `TAKE`. But it didn't take automatic taking, burning the books, etc. into account. Monitoring if the books are still present in the `M-END` case of the room's action routine should be more robust.
 * \[Nathan-75\] In Path Near Stream and Marble Hall, only refer to the whirring sound if the carousel is still spinning. Everything I've read suggests that it's the spinning that creates the sound. You only hear the whirring in the Carousel Room if it's spinning, in Room 8 the whirring is only mentioned in Zork III, and the InvisiClues clearly say that it's a magnetic field that causes the carousel to spin. So once that field is shifted, the whirring should stop. I also changed "`There is rather annoying whirring sound`" to "`There is a rather annoying whirring sound`".
 * Repurposed an unused message in `DRAGON-FCN`. What was meant to be printed when the played walked north in the Dragon Room (but wasn't, because the dragon's action routine has nothign to do with that) is now printed in response to "`WALK AROUND DRAGON`" instead.
+* Changed the `LDESC` on `SERPENT` to `FDESC`, so that it will be printed. With `LDESC` you just get the default container contents list.
+* Similarly, changed `LDESC` on the clear crystal sphere to `FDESC` so that it will be printed once the aquarium is shattered. That means there is no need to clear `LDESC` when picking it up. (Which wasn't foolproof anyway.)
+* The gold key now has `TOOLBIT` to be consistent with the iron key. This allows "`UNLOCK DOOR`" to infer the key, if it's the only tool you're carrying.
+* The sword demon now gets put on the clock chain early, like in Zork I. Otherwise the Wizard demon runs after the sword demon, causing the sword to not instantly glow when the wizard appears and hangs around for a bit.
+* The blue sphere now starts out on the table instead, like its description suggests. Otherwise the game will describe the table as empty.
+* It's only possible to put the mat under the oak door while it's closed. Opening the door dislodges the mat object, same as taking or moving the mat.
 
 ### Bugfixes
 
@@ -63,6 +69,13 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Only describe the dragon as blocking the way to the north when he's in his lair.
 * \[Nathan-59\] Don't allow cutting objects with the wooden club, even though it's a weapon.
 * Trying to walk the balloon into a room witout `NONLANDBIT` would still set `BLOC` to that room even though the movement would fail. The next time the balloon moved on its own, it would end up in the wrong room. The normal use case for walking the balloon is as an alternative to typing "`LAND`", and that still works.
+* The hole in the Safe Room is now a container. It already acted like one, for the most part, but "`LOOK IN HOLE`" only worked while it was empty. Now that it's a container, we also have to make sure it can't be opened or closed.
+* When turning the iron key, only lock/unlock the door if the key is in the keyhole.
+* Doors can now only be locked or unlocked while they're closed.
+* Looking through the window in the oak door now omits the description of the door from both directions. That was the intention, but it didn't work right.
+* Looking into another room (by palantir or through the window) no longer marks that room as visited. That appears to have been the intention all along, but the code for it was buggy.
+* \[Nathan-65\] Putting an object in the keyhole no longer causes the object in the other keyhole to disappear.
+* Taking the mat from under the door now both dislodges the mat object and picks up the mat.
 
 ### Stylistic fixes
 
@@ -84,6 +97,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Tell the player if the room goes dark when the lizard eats an object.
 * Tell the player if the room goes dark when you put an object in the well.
 * Tell the player if the room goes dark when using the Fry spell.
+* Added missing newline when looking through the window in the oak door. Usually you wouldn't notice it was missing because you'd see the blue sphere on the table.
 
 # r63
 
