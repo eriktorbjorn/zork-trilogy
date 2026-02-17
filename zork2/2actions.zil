@@ -1890,7 +1890,10 @@ a distant room, which can be described clearly...." CR CR>)>
 	
 <ROUTINE PKEY-FCN ()
     <COND (<VERB? TURN>
-	   <COND (,PUNLOCK-FLAG
+	   <COND (<AND <NOT <IN? ,KEY, KEYHOLE-1>>
+		       <NOT <IN? ,KEY, KEYHOLE-2>>>
+		  <HACK-HACK "Turning the ">)
+		 (,PUNLOCK-FLAG
 		  <PERFORM ,V?LOCK ,PDOOR ,PRSO>)
 		 (T
 		  <PERFORM ,V?UNLOCK ,PDOOR ,PRSO>)>)>>
