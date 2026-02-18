@@ -50,6 +50,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The sword demon now gets put on the clock chain early, like in Zork I. Otherwise the Wizard demon runs after the sword demon, causing the sword to not instantly glow when the wizard appears and hangs around for a bit.
 * The blue sphere now starts out on the table instead, like its description suggests. Otherwise the game will describe the table as empty.
 * It's only possible to put the mat under the oak door while it's closed. Opening the door dislodges the mat object, same as taking or moving the mat.
+* Throwing the flask at the aquarium now mungs the room and removes the flask.
 
 ### Bugfixes
 
@@ -76,6 +77,8 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Looking into another room (by palantir or through the window) no longer marks that room as visited. That appears to have been the intention all along, but the code for it was buggy.
 * \[Nathan-65\] Putting an object in the keyhole no longer causes the object in the other keyhole to disappear.
 * Taking the mat from under the door now both dislodges the mat object and picks up the mat.
+* Destroying the aquarium no longer makes you drop the object you destroy it with. (Minor point, since doing this is fatal.)
+* Removed special case for the bomb from `AQUARIUM-FCN`. All it did was to stop the fuse demon, then print no message. Very strange. Now it bounces harmlessly off the glass. The room will be munged by the explosion, as usual.
 
 ### Stylistic fixes
 
