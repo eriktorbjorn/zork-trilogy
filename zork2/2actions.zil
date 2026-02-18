@@ -3230,7 +3230,8 @@ scaly body writhes about in the huge tank." CR>)
 		       <COND (<NOT ,PRSI> <RFALSE>)
 			     (T <SET OBJ ,PRSI>)>)
 		      (T <SET OBJ ,PRSO>)>
-		<MOVE .OBJ ,HERE>
+		<COND (<VERB? THROW>
+		       <MOVE .OBJ ,HERE>)>
 		<COND (<IN? ,DEAD-SERPENT ,HERE>
 		       <TELL
 "The aquarium is already broken!" CR>
