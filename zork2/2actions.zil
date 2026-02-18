@@ -3237,6 +3237,8 @@ scaly body writhes about in the huge tank." CR>)
 "The aquarium is already broken!" CR>
 		       <RTRUE>)
 		      (<EQUAL? .OBJ ,FLASK>
+		       <REMOVE .OBJ>
+		       <MUNG-ROOM ,HERE ,NOXIOUS-VAPORS>
 		       <JIGS-UP
 "The flask shatters, and poison gas fills the room!">
 		       <RTRUE>)
