@@ -1271,7 +1271,13 @@ your fears about the fate of your brave mechanical friend.">
 
 <ROUTINE ROBOT-FCN ("OPTIONAL" (RARG ,M-OBJECT))
 	<COND (<EQUAL? ,WINNER ,ROBOT>
-	       <COND (<VERB? SGIVE> <RFALSE>)
+	       <COND (,P-CONT
+		      <SETG P-CONT <>>
+		      <SETG QUOTE-FLAG <>>
+		      <TELL
+"\"My memory circuits are not advanced enough to handle multiple
+tasks.\"" CR>)
+		     (<VERB? SGIVE> <RFALSE>)
 		     (<VERB? FOLLOW>
 		      <TELL
 "\"My memory circuits are not that advanced. I can move as directed,
