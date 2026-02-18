@@ -2157,7 +2157,7 @@ stumbled into an authentic grue lair!">))
 		<SCORE-OBJ .RM>
 		<COND (<NOT <EQUAL? ,HERE .RM>> <RTRUE>)
 		      (<AND <NOT <EQUAL? ,ADVENTURER ,WINNER>>
-			    <IN? ,ADVENTURER .OHERE>>
+			    <EQUAL? <META-LOC ,ADVENTURER> .OHERE>>
 		       <TELL "The " D ,WINNER " leaves the room." CR>)
 		      (<AND .V?
 			    <EQUAL? ,WINNER ,ADVENTURER>>
