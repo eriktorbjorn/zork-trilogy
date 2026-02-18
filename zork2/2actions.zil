@@ -3242,7 +3242,7 @@ scaly body writhes about in the huge tank." CR>)
 		       <JIGS-UP
 "The flask shatters, and poison gas fills the room!">
 		       <RTRUE>)
-		      (<BOMB? .OBJ>
+		      ;(<BOMB? .OBJ>
 		       <DISABLE <INT I-FUSE>>)
 		      (<OR <FSET? .OBJ ,WEAPONBIT>
 			   <G? <GETP .OBJ ,P?SIZE> 10>>
