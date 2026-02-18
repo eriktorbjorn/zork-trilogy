@@ -35,6 +35,7 @@
 * Fixed "`SWIM`" printing garbage in Zork I and II.
 * Check if you're using your hands in `PRE-MUNG`, so that it can print "your bare hands" instead of the name of the object.
 * `ACCESSIBLE?` now treats object 0 as not accessible. This could happen when referring to "it" after `REMOVE-CAREFULLY` had removed the object.
+* When an actor leaves the room, print the message as long as the player is enclosed by the same room. E.g. in Zork II you will see the robot leave the room even if you order him to leave from within the bucket.
 
 ## Changes in the final unreleased versions
 

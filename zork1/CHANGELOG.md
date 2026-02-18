@@ -111,6 +111,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Added missing newline before `FINISH` when dying permanently.
 * If you reveal the grate by burning the leaves, the message now states that the leaves are gone, not moved.
 * Replaced tabs with spaces in the text for the guidebook and the tube. At least the DOS version would print a garbage character instead of the TAB when I tried it in DOSBox.
+* Removed unnecessary blank line from the matchbook description.
 
 # r119
 

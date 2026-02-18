@@ -16,6 +16,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 
 * Zork II implements spell casting as `ENCHANT` and `DISENCHANT` actions, perhaps because it allows objects to easily react to spells. Not that this actually gets used much. But it also allows the player to type "`ENCHANT` *object*" and "`DISENCHANT` *object*". This was not a problem for `ENCHANT`, since you can't specify how the object should be enchanted. `V-ENCHANT` can just tell you that nothing happens. But the `DISENCHANT` action is invoked by `I-SPELL` when the spell times out. A lot of the time that won't print a message, and neither would typing "`DISENCHANT` *object*". So I've introduced a hack where the `DISENCHANT` action has a dummy `PRSI` value when called by the timer. So now V-DISENCHANT can print that nothing happens if `PRSI` is `<>` and work as before in the other case. While it's tempting to allow the player to actually disenchant objects, that raises too many issues. Let's just say that the player has mastered magic on a *Sorcerer's Apprentice* level, where he knows how to cast spells he's seen but has no idea how to undo them afterwards.
 * When the wizard casts the Freeze spell on you, you are now allowed to quit, restart, restore, or even save. You're allowed to use these commands in the Loud Room in Zork I, so I don't see why you shouldn't be allowed to here. Having to wait for the spell to time out is just annoying.
+* The robot now only accepts single commands. While handling multiple commands is undeniably cool (and necessary in Enchanter\!), in Zork II it opens up an enormous can of worms. You can see the result of actions that should be out of sight, you can turn the Low Room deadly while you're standing in it, yet suffer no harm, ...
 
 ### Other minor features
 
@@ -51,6 +52,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The blue sphere now starts out on the table instead, like its description suggests. Otherwise the game will describe the table as empty.
 * It's only possible to put the mat under the oak door while it's closed. Opening the door dislodges the mat object, same as taking or moving the mat.
 * Throwing the flask at the aquarium now mungs the room and removes the flask.
+* You can now order the robot to leave the room while you're trapped in the cage. It's not a good idea by any means, but it makes sense that you can do it.
 
 ### Bugfixes
 
@@ -79,6 +81,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Taking the mat from under the door now both dislodges the mat object and picks up the mat.
 * Destroying the aquarium no longer makes you drop the object you destroy it with. (Minor point, since doing this is fatal.)
 * Removed special case for the bomb from `AQUARIUM-FCN`. All it did was to stop the fuse demon, then print no message. Very strange. Now it bounces harmlessly off the glass. The room will be munged by the explosion, as usual.
+* `CAKE-CRUMBLE` now only crumbles the cakes. Before it could crumble any object as long as it had `FOODBIT`, like the candy.
 
 ### Stylistic fixes
 
@@ -101,6 +104,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Tell the player if the room goes dark when you put an object in the well.
 * Tell the player if the room goes dark when using the Fry spell.
 * Added missing newline when looking through the window in the oak door. Usually you wouldn't notice it was missing because you'd see the blue sphere on the table.
+* Removed leading space from the balloon label and safe card texts. Judging by Confusion, these were blank lines in Mainframe Zork. We don't want that any more, and ZIL rendered it as a single space anyway.
 
 # r63
 
