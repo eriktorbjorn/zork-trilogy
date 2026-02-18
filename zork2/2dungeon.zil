@@ -1453,6 +1453,8 @@ There doesn't seem to be any footpad here, however.")
        (LDESC "You are trapped inside a solid steel cage.")
        (DESC "Cage")
        (ACTION IN-CAGE-FCN)
+       (OUT PER ROBOT-CAGE-EXIT)
+       (NORTH PER ROBOT-CAGE-EXIT)
        (FLAGS RLANDBIT ;NWALLBIT ONBIT)>
 
 <ROOM WELL-TOP

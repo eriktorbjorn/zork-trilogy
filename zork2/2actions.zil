@@ -1269,6 +1269,14 @@ your fears about the fate of your brave mechanical friend.">
 <ROUTINE IN-CAGE-FCN (RARG)
     <COND (,CAGE-SOLVE-FLAG <SETG HERE ,CAGE-ROOM>)>>
 
+<ROUTINE ROBOT-CAGE-EXIT ()
+	<COND (<EQUAL? ,WINNER ,ROBOT>
+	       <FCLEAR ,ROBOT ,NDESCBIT>
+	       ,MACHINE-ROOM)
+	      (T
+	       <TELL "You can't go that way." CR>
+	       <RFALSE>)>>
+
 <ROUTINE ROBOT-FCN ("OPTIONAL" (RARG ,M-OBJECT))
 	<COND (<EQUAL? ,WINNER ,ROBOT>
 	       <COND (,P-CONT
