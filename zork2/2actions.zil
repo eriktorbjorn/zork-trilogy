@@ -941,17 +941,40 @@ everything you are carrying seems to be its normal size)." CR CR>
 	   <GOTO ,POSTS-ROOM>)
 	  (T <CAKE-CRUMBLE>)>>
 
-<ROUTINE CAKE-CRUMBLE ("AUX" CAKE)
-	 <COND (<FSET? ,PRSO ,FOODBIT> <SET CAKE ,PRSO>)
-	       (T <SET CAKE ,PRSI>)>
+<ROUTINE CAKE (OBJ)
+	 <COND (<OR <EQUAL? .OBJ ,EAT-ME-CAKE ,BLUE-ICING, ORANGE-ICING>
+		    <EQUAL? .OBJ ,RED-ICING>>
+		<RETURN .OBJ>)
+	       (T <RETURN <>>)>>
+
+<GLOBAL CAKE-COLORS <LTABLE (PURE)
+	EAT-ME-CAKE
+	"green"
+	BLUE-ICING
+	"blue"
+	ORANGE-ICING
+	"orange"
+	RED-ICING
+	"red">>
+
+<ROUTINE CAKE-CRUMBLE ("AUX" (C1 <>) (C2 <>))
+	 <COND (<SET C1 <CAKE ,PRSO>>
+		<SET C2 <CAKE ,PRSI>>)
+	       (T <SET C1 <CAKE ,PRSI>>)>
 	 <COND (<OR <EQUAL? ,HERE ,TEA-ROOM ,POSTS-ROOM ,POOL-ROOM>
 		    <EQUAL? ,HERE ,MACHINE-ROOM ,MAGNET-ROOM ,CAGE-ROOM>
 		    <EQUAL? ,HERE ,WELL-TOP ,IN-CAGE>>
 	        <RFALSE>)
 	       (T
-	        <REMOVE .CAKE>
-	        <TELL
-"The " D .CAKE " has crumbled to dust." CR>)>>
+	        <REMOVE .C1>
+		<COND (.C2
+		       <REMOVE .C2>
+		       <TELL
+"The cakes frosted with " <LKP .C1 ,CAKE-COLORS> " and "
+<LKP .C2 ,CAKE-COLORS> " letters have both crumbled to dust." CR>)
+		      (T
+		       <TELL
+"The " D .C1 " has crumbled to dust." CR>)>)>>
 
 <ROUTINE CAKE-FCN ("AUX" F N)
 	<COND (<VERB? READ>
