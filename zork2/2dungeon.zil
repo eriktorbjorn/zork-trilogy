@@ -1730,8 +1730,7 @@ computer store for more details.\"")
 	(LDESC "There is a blue label here.")
 	(SIZE 1)
 	(TEXT
-"
-!! FROBOZZ MAGIC BALLOON COMPANY !!|
+"!! FROBOZZ MAGIC BALLOON COMPANY !!|
 |
 Hello, Aviator!|
 |
