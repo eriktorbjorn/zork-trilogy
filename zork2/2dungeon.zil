@@ -1814,8 +1814,7 @@ to collapse.")
 	(LDESC "There is a card with writing on it here.")
 	(SIZE 1)
 	(TEXT
-"
-Warning:|
+"Warning:|
     This room was constructed over very weak rock strata. Detonation
 of explosives in this room is strictly prohibited!|
          Frobozz Magic Cave Company|
