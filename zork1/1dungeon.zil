@@ -622,8 +622,7 @@ No computer should be without one!\"")
 "There is a matchbook whose cover says \"Visit Beautiful FCD#3\" here.")
 	(SIZE 2)
 	(TEXT
-"|
-(Close cover before striking)|
+"(Close cover before striking)|
 |
 YOU too can make BIG MONEY in the exciting field of PAPER SHUFFLING!|
 |
