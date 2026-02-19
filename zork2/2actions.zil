@@ -891,6 +891,8 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 	       <MOVE ,WATER ,BUCKET>
 	       <ENABLE <QUEUE I-BUCKET 100>>
 	       <SETG BUCKET-TOP-FLAG T>)
+	      (<VERB? OPEN CLOSE>
+	       <TELL <PICK-ONE ,YUKS> CR>)
 	      (<VERB? CLIMB-ON>
 	       <PERFORM ,V?BOARD ,PRSO>
 	       <RTRUE>)
