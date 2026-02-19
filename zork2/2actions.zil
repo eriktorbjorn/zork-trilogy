@@ -1546,7 +1546,7 @@ askance at you over his wire-rimmed bifocals." CR>
 "The gnome carefully places the " D ,PRSO  " in the
 deposit box. \"Let me show you the way out,\" he says, making it clear
 he will be pleased to see the last of you. Then, you are momentarily
-disoriented, and when you recover you are back at the Bank Entrance." CR>
+disoriented, and when you recover you are back at the Bank Entrance." CR CR>
 		  <REMOVE ,GNOME-OF-ZURICH>
 		  <REMOVE ,PRSO>
 		  <DISABLE <INT I-ZGNOME-OUT>>
