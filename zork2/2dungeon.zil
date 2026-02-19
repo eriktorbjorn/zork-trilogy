@@ -181,7 +181,7 @@
 The barrow opens into a narrow tunnel at its southern end. You can
 see a faint glow at the far end.")
       (DESC "Inside the Barrow")
-      (FLAGS RLANDBIT ONBIT)
+      (FLAGS RLANDBIT ONBIT SACREDBIT)
       (SOUTH TO NARROW-TUNNEL)
       (OUT
 "You may not recall, but when you entered, the door of the barrow
@@ -1291,7 +1291,7 @@ else.")
 light enters from the cone of the volcano. The only exit is to the north.")
        (DESC "Volcano Bottom")
        (NORTH TO LAVA-ROOM)
-       (FLAGS RLANDBIT NONLANDBIT)>
+       (FLAGS RLANDBIT NONLANDBIT SACREDBIT)>
 
 <ROOM VAIR-1
         (IN ROOMS)
@@ -1299,7 +1299,7 @@ light enters from the cone of the volcano. The only exit is to the north.")
 "You are about one hundred feet above the bottom of the volcano. The
 top of the volcano is clearly visible here.")
        (DESC "Volcano Core")
-       (FLAGS NONLANDBIT ;NWALLBIT)>
+       (FLAGS NONLANDBIT ;NWALLBIT SACREDBIT)>
 
 <ROOM VAIR-2
         (IN ROOMS)
@@ -1310,7 +1310,7 @@ side.")
        (DESC "Volcano Near Small Ledge")
        (WEST TO LEDGE-1)
        (LAND TO LEDGE-1)
-       (FLAGS NONLANDBIT ;NWALLBIT)>
+       (FLAGS NONLANDBIT ;NWALLBIT SACREDBIT)>
 
 <ROOM VAIR-3
         (IN ROOMS)
@@ -1319,7 +1319,7 @@ side.")
 looks very narrow and you are very near it. To the
 east is what appears to be a viewing ledge, too thin to land on.")
        (DESC "Volcano by Viewing Ledge")
-       (FLAGS NONLANDBIT ;NWALLBIT )>
+       (FLAGS NONLANDBIT ;NWALLBIT SACREDBIT)>
 
 <ROOM VAIR-4
        (IN ROOMS)
@@ -1329,7 +1329,7 @@ To the west, there is a place to land on a wide ledge.")
        (DESC "Volcano Near Wide Ledge")
        (LAND TO LEDGE-2)
        (WEST TO LEDGE-2)
-       (FLAGS NONLANDBIT ;NWALLBIT )>
+       (FLAGS NONLANDBIT ;NWALLBIT SACREDBIT)>
 
 <ROOM LEDGE-1
        (IN ROOMS)
@@ -1466,7 +1466,7 @@ entrance to a room on the east, but it can be crossed easily.")
        (DESC "Top of Well")
        (EAST TO TEA-ROOM)
        (DOWN "It's a long way down!")
-       (FLAGS RLANDBIT NONLANDBIT)
+       (FLAGS RLANDBIT NONLANDBIT SACREDBIT)
        (VALUE 10)
        (GLOBAL WELL)
        (PSEUDO "CRACK" CRACK-PSEUDO)>
@@ -1485,7 +1485,7 @@ some etchings on the walls. There is a passageway to the west.")
        (DESC "Circular Room")
        (WEST TO PEARL-ROOM)
        (UP "The walls cannot be climbed.")
-       (FLAGS RLANDBIT NONLANDBIT)
+       (FLAGS RLANDBIT NONLANDBIT SACREDBIT)
        (GLOBAL WELL)>
 
 <ROOM TEA-ROOM

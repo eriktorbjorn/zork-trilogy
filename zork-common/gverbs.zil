@@ -2229,7 +2229,7 @@ stumbled into an authentic grue lair!">))
 
 <ROUTINE MUNG-ROOM (RM STR)
 	 %<COND (<==? ,ZORK-NUMBER 2>
-		 '<COND (<EQUAL? .RM ,INSIDE-BARROW>
+		 '<COND (<FSET? .RM ,SACREDBIT>
 			 <RFALSE>)>)
 		(ELSE T)>
 	 <FSET .RM ,RMUNGBIT>
