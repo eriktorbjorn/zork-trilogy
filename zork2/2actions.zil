@@ -860,25 +860,8 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 	<TELL "There is now a puddle in the bottom of the " D .AV "." CR>
 	<MOVE ,PRSO .AV>>
 
-<ROUTINE BUCKET-FCN ("OPTIONAL" (RARG ,M-BEG))
-	<COND (<EQUAL? .RARG ,M-BEG>
-	       <COND (<AND <VERB? BURN>
-			   <EQUAL? ,PRSO ,BUCKET>>
-		      <TELL
-		       "The bucket is fireproof, and won't burn." CR>)
-		     (<AND <VERB? DROP PUT>
-			   <EQUAL? ,PRSO ,WATER>
-			   <EQUAL? ,PRSI ,BUCKET>
-			   <IN? ,BUCKET ,WELL-BOTTOM>
-			   <NOT <IN? ,WINNER ,BUCKET>>>
-		      <TELL "The bucket swiftly rises up, and is gone." CR>
-		      <MOVE ,BUCKET ,WELL-TOP>
-		      <MOVE ,WATER ,BUCKET>
-		      <SETG BUCKET-TOP-FLAG T>
-		      <ENABLE <QUEUE I-BUCKET 100>>
-		      <RTRUE>)
-		     (<VERB? KICK>
-		      <JIGS-UP "If you insist.">)>)
+<ROUTINE BUCKET-FCN ("OPTIONAL" (RARG <>))
+	<COND (<EQUAL? .RARG ,M-ENTER ,M-LOOK ,M-BEG> <>)
 	      (<EQUAL? .RARG ,M-END>
 	       <COND (<AND <IN? ,WATER ,BUCKET>
 			   <NOT ,BUCKET-TOP-FLAG>>
@@ -898,9 +881,23 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 "The bucket descends and comes to a stop." CR CR>)>
 		      <SETG BUCKET-TOP-FLAG <>>
 		      <PASS-THE-BUCKET ,WELL-BOTTOM>)>)
+	      (<AND <VERB? DROP PUT>
+		    <EQUAL? ,PRSO ,WATER>
+		    <EQUAL? ,PRSI ,BUCKET>
+		    <IN? ,BUCKET ,WELL-BOTTOM>
+		    <NOT <IN? ,WINNER ,BUCKET>>>
+	       <TELL "The bucket swiftly rises up, and is gone." CR>
+	       <MOVE ,BUCKET ,WELL-TOP>
+	       <MOVE ,WATER ,BUCKET>
+	       <ENABLE <QUEUE I-BUCKET 100>>
+	       <SETG BUCKET-TOP-FLAG T>)
 	      (<VERB? CLIMB-ON>
 	       <PERFORM ,V?BOARD ,PRSO>
-	       <RTRUE>)>>
+	       <RTRUE>)
+	      (<VERB? BURN>
+	       <TELL "The bucket is fireproof, and won't burn." CR>)
+	      (<VERB? KICK>
+	       <JIGS-UP "If you insist.">)>>
 
 <ROUTINE PASS-THE-BUCKET (R)
     #DECL ((R) OBJECT)
