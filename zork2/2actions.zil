@@ -1414,16 +1414,12 @@ disintegrates before your eyes." CR>
 <GLOBAL SCOL-WALLS <TABLE
        VIEWING-WEST
        SEWL
-       VIEWING-WEST
        VIEWING-EAST
        SWWL
-       VIEWING-EAST
        SMALL-ROOM
        SSWL
        VAULT
-       VAULT
-       SNWL
-       SMALL-ROOM>>
+       SNWL>>
 
 <GLOBAL SCOL-ROOM VIEWING-WEST>
 
@@ -1444,15 +1440,32 @@ sign which reads  \"Viewing Room\". On the ">
           BANK PERSONNEL ONLY
 " CR>)>>
 
-<ROUTINE SCOL-OBJECT ("OPTIONAL" (OBJ <>))
+<ROUTINE SCOL-OBJECT ()
     <COND (<VERB? PUSH MOVE TAKE RUB>
 	   <TELL "As you try, your hand seems to go through it." CR>)
 	  (<AND <VERB? ATTACK> ,PRSI>
 	   <TELL "The " D ,PRSI " goes through it." CR>)
-	  (<AND <VERB? THROW OVERBOARD> <EQUAL? ,PRSI ,CURTAIN .OBJ>>
-	   <COND (<IN? ,PRSO ,WINNER>
-		  <V-THROUGH ,PRSO>)
-		 (T <TELL "You don't have that!" CR>)>)>>
+	  (<VERB? THROUGH>
+	   <COND (<AND ,SCOL-ROOM
+		       <NOT <FSET? ,SCOL-ROOM ,RMUNGBIT>>>
+		  <SETG SCOL-ACTIVE ,SCOL-ROOM>
+		  <SETG SCOL-ROOM <>>
+		  <SCOL-THROUGH 12 ,SCOL-ACTIVE>)
+		 (T
+		  <TELL
+"You can't go more than part way through the curtain." CR>)>)
+	  (<AND <VERB? THROW OVERBOARD PUT>
+		<EQUAL? ,PRSI ,CURTAIN>>
+	   <COND (<AND ,SCOL-ROOM
+		       <NOT <FSET? ,SCOL-ROOM ,RMUNGBIT>>>
+		  <SCOL-OBJ ,PRSO 12 ,SCOL-ROOM>)
+		 (T
+		  <TELL
+"The " D ,PRSO " stops part way through the curtain">
+		  <COND (<VERB? THROW OVERBOARD>
+			 <TELL ", then falls to the ground">
+			 <MOVE ,PRSO ,HERE>)>
+		  <TELL "." CR>)>)>>
 
 <ROUTINE GET-WALL (RM "AUX" W)
     #DECL ((RM) OBJECT)
@@ -1460,30 +1473,39 @@ sign which reads  \"Viewing Room\". On the ">
     <REPEAT ()
 	<COND (<EQUAL? <GET .W 0> .RM>
 	       <RETURN .W>)
-	      (T <SET W <REST .W 6>>)>>>
+	      (T <SET W <REST .W 4>>)>>>
 
 <ROUTINE SCOLWALL ()
-    <COND (<AND <VERB? THROW OVERBOARD PUT>
+    <COND (<EQUAL? ,HERE ,DEPOSITORY>
+	   <COND (<AND <VERB? THROW OVERBOARD PUT>
+		       <EQUAL? ,PRSI ,SNWL>>
+		  <PERFORM ,PRSA ,PRSO ,CURTAIN>)
+		 (<AND <VERB? THROUGH>
+		       <EQUAL? ,PRSO ,SNWL>>
+		  <PERFORM ,PRSA ,CURTAIN>)>)
+	  (<NOT <EQUAL? ,HERE ,SCOL-ACTIVE>>
+	   <RFALSE>)
+	  (<AND <VERB? THROUGH>
+		<EQUAL? ,PRSO <GET <GET-WALL ,HERE> 1>>
+		<NOT <FSET? ,DEPOSITORY ,RMUNGBIT>>>
+	   <SETG PRSO <GETP ,PRSO ,P?SIZE>>
+	   <SCOL-THROUGH 0 ,DEPOSITORY>)
+	  (<AND <VERB? THROW OVERBOARD PUT>
 		<EQUAL? ,HERE ,SCOL-ACTIVE>
-		<EQUAL? ,PRSI <GET <GET-WALL ,HERE> 1>>>
-	   <SCOL-OBJECT ,PRSI>)>>
-
-<ROUTINE SCOL-GO (OBJ)
-	 #DECL ((OBJ) OBJECT)
-	 <SETG SCOL-ACTIVE ,SCOL-ROOM>
-	 <COND (.OBJ <SCOL-OBJ .OBJ 0 ,SCOL-ROOM>)
-	       (T
-	        <SCOL-THROUGH 12 ,SCOL-ROOM>)>>
+		<EQUAL? ,PRSI <GET <GET-WALL ,HERE> 1>>
+		<NOT <FSET? ,DEPOSITORY ,RMUNGBIT>>>
+	   <SCOL-OBJ ,PRSO 0 ,DEPOSITORY>)>>
 
 <ROUTINE SCOL-OBJ (OBJ CINT RM)
     #DECL ((OBJ) OBJECT (CINT) FIX (RM) OBJECT)
-    <ENABLE <QUEUE I-CURTAIN .CINT>>
     <MOVE .OBJ .RM>
     <COND (<EQUAL? .RM ,DEPOSITORY>
 	   <TELL "The " D .OBJ " passes through the wall and vanishes." CR>)
-	  (T
+	  (,SCOL-ROOM
 	   <TELL "The curtain dims slightly as the "
 		 D .OBJ " passes through." CR>
+	   <ENABLE <QUEUE I-CURTAIN .CINT>>
+	   <SETG SCOL-ACTIVE ,SCOL-ROOM>
 	   <SETG SCOL-ROOM <>>
 	   T)>>
 

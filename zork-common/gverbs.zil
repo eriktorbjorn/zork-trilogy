@@ -1449,34 +1449,7 @@ the manual." CR>)>)
 	      (<AND <NOT .OBJ> <FSET? ,PRSO ,VEHBIT>>
 	       <PERFORM ,V?BOARD ,PRSO>
 	       <RTRUE>)
-	      (<OR .OBJ <NOT <FSET? ,PRSO ,TAKEBIT>>>
-	       %<COND (<==? ,ZORK-NUMBER 2>
-		       '<COND (<AND ,SCOL-ROOM
-				   <OR .OBJ <EQUAL? ,PRSO ,CURTAIN>>>
-			      <SCOL-GO .OBJ>
-			      <RTRUE>)
-			     (<AND <EQUAL? ,HERE ,DEPOSITORY>
-				   <EQUAL? ,PRSO ,SNWL>
-				   ,SCOL-ROOM>
-			      <SCOL-GO .OBJ>
-			      <RTRUE>)
-			     (<AND <EQUAL? ,HERE ,SCOL-ACTIVE>
-				   <EQUAL? ,PRSO 
-					   <GET <SET M <GET-WALL ,HERE>> 1>>>
-			      <SETG SCOL-ROOM <GET .M 2>>
-			      <SETG PRSO <GETP ,PRSO ,P?SIZE>>
-			      <COND (.OBJ <SCOL-OBJ .OBJ 0 ,DEPOSITORY>)
-				    (T
-				     <SCOL-THROUGH 0 ,DEPOSITORY>)>
-			      <RTRUE>)
-			     (.OBJ
-			      <TELL "You can't do that!" CR>
-			      <RTRUE>)
-			     (<EQUAL? ,PRSO ,CURTAIN>
-			      <TELL
-"You can't go more than part way through the curtain." CR>
-			      <RTRUE>)>)
-		      (ELSE '<NULL-F>)>
+	      (<NOT <FSET? ,PRSO ,TAKEBIT>>
 	       <TELL
 "You hit your head against the " D ,PRSO " as you attempt this feat." CR>)
 	      (<IN? ,PRSO ,WINNER>
