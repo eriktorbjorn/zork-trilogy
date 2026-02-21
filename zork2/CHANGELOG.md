@@ -17,22 +17,28 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Zork II implements spell casting as `ENCHANT` and `DISENCHANT` actions, perhaps because it allows objects to easily react to spells. Not that this actually gets used much. But it also allows the player to type "`ENCHANT` *object*" and "`DISENCHANT` *object*". This was not a problem for `ENCHANT`, since you can't specify how the object should be enchanted. `V-ENCHANT` can just tell you that nothing happens. But the `DISENCHANT` action is invoked by `I-SPELL` when the spell times out. A lot of the time that won't print a message, and neither would typing "`DISENCHANT` *object*". So I've introduced a hack where the `DISENCHANT` action has a dummy `PRSI` value when called by the timer. So now V-DISENCHANT can print that nothing happens if `PRSI` is `<>` and work as before in the other case. While it's tempting to allow the player to actually disenchant objects, that raises too many issues. Let's just say that the player has mastered magic on a *Sorcerer's Apprentice* level, where he knows how to cast spells he's seen but has no idea how to undo them afterwards.
 * When the wizard casts the Freeze spell on you, you are now allowed to quit, restart, restore, or even save. You're allowed to use these commands in the Loud Room in Zork I, so I don't see why you shouldn't be allowed to here. Having to wait for the spell to time out is just annoying.
 * The robot now only accepts single commands. While handling multiple commands is undeniably cool (and necessary in Enchanter\!), in Zork II it opens up an enormous can of worms. You can see the result of actions that should be out of sight, you can turn the Low Room deadly while you're standing in it, yet suffer no harm, ...
+* The balloon and bucket do not interact well with the concept of munged rooms, so the rooms where these vehicles move automatically can no longer be munged. (The ledges alongside the volcano shaft can still be, though.) Rather than adding a hard-coded list of non-mungable rooms, I have repurposed the `SACREDBIT` to indicate that a room is safe from munging.
+* The Bank of Zork has been cleaned up a bit:
+  * You could always throw objects through the curtain and walls, but there was code that suggested that you should also be able to put objects in them. That has been fixed.
+  * The north wall in the Safety Depository now acts as the curtain, both for walking through it (already the case) and for putting objects through it (that has been fixed).
+  * Putting objects through the wall after going through the curtain didn't work right: It would say the object went through the curtain, the object would stay in the room, and it would turn off the `I-CURTAIN` timer so the curtain door never closed. All of that has been fixed.
+  * Trying to put an object through the curtain after it is closed now provides feedback similar to when trying to walk through it.
 
 ### Other minor features
 
 * In `WHICH-PRINT`, when printing the name of the `SWORD` object, print "elvish sword" instead of the real object name. This gives a better disambiguation message between it and the nicked swords. This applies to all Zork games, but I only think it's ever noticeable in Zork II.
 * It appears someone went through the game and changed a few REMOVE to REMOVE-CAREFULLY. This has the advantage of informing the player if the room goes dark as a result. Unfortunately, in some cases this led to the darkness message being printed before the message describing what happened. I have fixed the ones I've found:
-* Giving your only light to the Volcano Gnome
+  * Giving your only light to the Volcano Gnome
 * Objects could react to "`WAVE WAND AT` *object*", but since the wand handles the default response and `PRSI` gets the first shot, it was not possible for them to respond to "`RUB` *object* `WITH WAND`" even though these commands are supposed to do the same thing. I have introduced a `PRE-RUB` routine that rewrites it to a `WAVE` action. This affects grues and Cerberus.
 * \[Nathan-51\] WATER-FCN has been adjusted to handle "`TAKE WATER`" more like Zork I. So if there is anything in the teapot, it will now say "`The water slips through your fingers.`" rather than "`The teapot isn't currently empty.`" The old message was particularly confusing if the object inside the teapot was water. "`TAKE WATER`" if the filled teapot was in the room would pick it up without printing any message. Now it tells you that "`It's in the teapot. Perhaps you should take that instead.`" I made the assumption here that Zork I is the better tested game of the two.
 * \[Nathan-63\] "`PUT REPELLENT ON` *object*" now acts as a synonym for spraying the repellent on the object. "`PUT REPELLENT IN` *object*" still works too, since that's another way of writing "`APPLY REPELLENT TO` *object*". I have added exceptions for if you're trying to put the repellent on a surface or in a container. In those cases it assumes that you do not want to spray the target.
 * The balloon \- the receptacle in particular \- has received a number of fixes to make it work more consistently:
-* \[Nathan-78\] Much of the custom behavior for the receptacle (and some other bits) were in BALLOON-FCN to be run in the M-BEG case. But that meant they were only run when the player was inside the balloon, not when standing on the ground outside. E:g. it was possible to put more than one object inside it from outside the balloon.
-* "`INFLATE` *object*" now checks that it's the balloon you're trying to inflate before saying that you can't.
-* Only objects that can be put in the receptacle are given DESCBIT to hide them from the standard object lister. (They're printed as part of the room description instead.) For instance, before you could try to put your sword in the *closed* receptacle, and if you later dropped it you wouldn't be able to see it in the room.
-* After you've poured water on a burning object in the receptacle, trying to pick it up now gives a much clearer message explaining why you can't. (When you put objects in the receptacle, their `TAKEBIT` is cleared, but the default message for taking them didn't make sense.)
-* Looking inside the receptacle no longer incorrectly claims that it's empty.
-* "`TAKE` *object* `FROM RECEPTACLE`" no longer claims that the object is an integral part of the balloon.
+  * \[Nathan-78\] Much of the custom behavior for the receptacle (and some other bits) were in BALLOON-FCN to be run in the M-BEG case. But that meant they were only run when the player was inside the balloon, not when standing on the ground outside. E:g. it was possible to put more than one object inside it from outside the balloon.
+  * "`INFLATE` *object*" now checks that it's the balloon you're trying to inflate before saying that you can't.
+  * Only objects that can be put in the receptacle are given DESCBIT to hide them from the standard object lister. (They're printed as part of the room description instead.) For instance, before you could try to put your sword in the *closed* receptacle, and if you later dropped it you wouldn't be able to see it in the room.
+  * After you've poured water on a burning object in the receptacle, trying to pick it up now gives a much clearer message explaining why you can't. (When you put objects in the receptacle, their `TAKEBIT` is cleared, but the default message for taking them didn't make sense.)
+  * Looking inside the receptacle no longer incorrectly claims that it's empty.
+  * "`TAKE` *object* `FROM RECEPTACLE`" no longer claims that the object is an integral part of the balloon.
 * \[Nathan-76\] When looking through the window in the Dreary Room, check if the Tiny Room is lit and, if not, tell the player that he sees only darkness. Otherwise, the game would tell you that you were likely to be eaten by a grue, and that doesn't make sense since you're in a lit room. This is similar to how the palantirs work.
 * \[Nathan-62\] Added a custom response for "`SMELL ROSES`", since the default message is grammatically incorrect. The new message is borrowed from Deadline.
 * "`PUT WATER IN WATER`" and "`PUT WATER IN ME`" now gives more sensible responses. The first is rejected, and the second is interpreted as drinking the water.
@@ -82,6 +88,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Destroying the aquarium no longer makes you drop the object you destroy it with. (Minor point, since doing this is fatal.)
 * Removed special case for the bomb from `AQUARIUM-FCN`. All it did was to stop the fuse demon, then print no message. Very strange. Now it bounces harmlessly off the glass. The room will be munged by the explosion, as usual.
 * `CAKE-CRUMBLE` now only crumbles the cakes. Before it could crumble any object as long as it had `FOODBIT`, like the candy.
+* Restructured `BUCKET-FCN` to make sure that actions are only handled when directed at the bucket. Several of them were in `M-BEG` for no apparent reason.
 
 ### Stylistic fixes
 
@@ -89,15 +96,16 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * `[Nathan-64] WATER` and `SALTY-WATER` now have `TRYTAKEBIT` so that you can't automatically pick up the water without a container. Note that `SALTY-WATER` isn't actually used in the game. It was in older versions, but apparently never worked correctly.
 * Added a missing newline when attacking the princess.
 * Added a missing newline the first time your compass starts spinning.
+* Added a missing newline when the Gnome of Zurich escorts you to the Bank entrance.
 * Removed an unnecessary blank line in `JIGS-UP` when someone other than the player dies, e.g. the robot.
 * Removed unnecessary newline when reading the Wizard's warning label.
 * Lighting the fuse now prints "(with the match)" when appropriate. This is consistent with lighting the candles in Zork I, even though the implementation is a bit different.
 * Added missing newlines before `FINISH` when dying permanently.
-* `Some fixes for the matchbook` have been brought over from Zork I:
-* Lighting a match in a dark room now prints the room description.
-* Blowing out a match now tells you if the room goes dark.
-* When a light goes out, you are now told if the room went dark.
-* Pouring water on a burning match now stops its demon.
+* Some fixes for the matchbook have been brought over from Zork I:
+  * Lighting a match in a dark room now prints the room description.
+  * Blowing out a match now tells you if the room goes dark.
+  * When a light goes out, you are now told if the room went dark.
+  * Pouring water on a burning match now stops its demon.
 * Tell the player if the room goes dark when breaking the lamp.
 * Removed unnecessary newline for the sign in `TELLER-ROOM`.
 * Tell the player if the room goes dark when the lizard eats an object.
@@ -125,12 +133,12 @@ This version was never publicly released, but I have tried to understand what ch
 * The demon will not accept the sword as a treasure. The sword also no longer has a `VALUE` property, so this should be doubly fixed.
 * The demon now starts out with the `INVISIBLE` bit. There is a case where the Wizard will run from the room if the demon isn't invisible, so it probably has to do with fixing some bug there.
 * Several Wizard messages have been adjusted if they happen in a dark room:
-* The message "`The Wizard vanishes.`" isn't shown at all.
-* Any message where the Wizard appears becomes "`You feel a slight outrush of air as something moves nearby.`"
-* If the Wizard disappears because you have the Black Crystal, the message becomes "`You feel a sudden inrush of air as though something disappeared.`"
-* The Wizard muttering something, then disappearing, becomes "`You hear low, confused muttering.`"
-* The Wizard using his wand becomes "`Suddenly, illuminated by the faint blue glow of a magic wand pointed in your direction, you see the Wizard!`"
-* The "`He cackles gleefully!`" message when the Wizard casts a spell on you has been clarified to "`He then vanishes, cackling gleefully.`"
+  * The message "`The Wizard vanishes.`" isn't shown at all.
+  * Any message where the Wizard appears becomes "`You feel a slight outrush of air as something moves nearby.`"
+  * If the Wizard disappears because you have the Black Crystal, the message becomes "`You feel a sudden inrush of air as though something disappeared.`"
+  * The Wizard muttering something, then disappearing, becomes "`You hear low, confused muttering.`"
+  * The Wizard using his wand becomes "`Suddenly, illuminated by the faint blue glow of a magic wand pointed in your direction, you see the Wizard!`"
+  * The "`He cackles gleefully!`" message when the Wizard casts a spell on you has been clarified to "`He then vanishes, cackling gleefully.`"
 * I'm a bit uncertain, but I think a bug in `ROB` has been fixed, where it would never steal the first object, but it might try to steal object 0\.
 * `GLOBAL-MENHIR` now has an action routine, just so that it can print "`It's not here.`"
 * `GLOBAL-CERBERUS` now has an action routine, just so that it can print "`He's not here.`"

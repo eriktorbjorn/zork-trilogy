@@ -32,12 +32,12 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * You now only get the message about something strange about the feel of the buoy if you haven't already seen the emerald inside it.
 * The command "`LAUNCH BOAT`" while not inside now prints "`You're not in the boat!`" The message was always there, but was incorrectly handled in the `M-BEG` case, where it was never reached because the `LAUNCH` action was already handled.
 * There are several times when you may lose your only light source, either temporarily or permanently. At these points the game should tell you that the room goes dark, and in a lot of cases it does. Other had to be fixed:
-* When putting things in the river, the game would tell you the room went dark before telling you the object is gone. The order has been fixed.
-* When raising the basket from below. It was already done for lowering the basket from above.
-* Closing the lid in the Machine Room.
-* When a match burns out.
-* Turning off the lights in the Maintenance Room.
-* Putting objects in the slide.
+  * When putting things in the river, the game would tell you the room went dark before telling you the object is gone. The order has been fixed.
+  * When raising the basket from below. It was already done for lowering the basket from above.
+  * Closing the lid in the Machine Room.
+  * When a match burns out.
+  * Turning off the lights in the Maintenance Room.
+  * Putting objects in the slide.
 * \[Nathan-65\] "`PUT WATER IN WATER`" and "`PUT WATER IN ME`" now give more sensible responses. The first is rejected, and the second is interpreted as drinking the water.
 * In r88, the message when you try to pick up the rusty knife while carrying the sword was changed from "`As you pick up...`" to "`As you touch...`". Probably to deal with the case where you were already carrying too much to be able to pick it up. So now it will also react to "`TOUCH RUSTY KNIFE`".
 * "`DRINK FROM BOTTLE`" now works, to be consistent with Zork III's "`DRINK FROM VIAL`".
@@ -102,10 +102,10 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 
 ### Stylistic fixes
 
-* If a message is printed before entering a new room, it's customary to put a newline before the room description. Earlier versions of Zork did not do this, perhaps to cater to smaller screens, and it was not fixed for all cases. I've fixed it in a few places.
-* When `I-RFILL` causes you to flee from the Loud Room.
-* When lighting a match in a dark room. (This was already done when lighting the lamp in a dark room.)
-* When going down the slide.
+* If a message is printed before entering a new room, it's customary to put a newline before the room description. Earlier versions of Zork did not do this, perhaps to cater to smaller screens, and it was not fixed for all cases. I've fixed it in a few places:
+  * When `I-RFILL` causes you to flee from the Loud Room.
+  * When lighting a match in a dark room. (This was already done when lighting the lamp in a dark room.)
+  * When going down the slide.
 * Added a missing line break when trying to tie up an actor with the rope.
 * Added missing newline before `FINISH` when winning the game. Strangely enough, this was already done for the case where the Tandy bit was set.
 * Added missing newline before `FINISH` when dying permanently.
@@ -159,8 +159,8 @@ This version was never publicly released, but I have tried to understand what ch
 * A tab has been removed from the text of the `BOAT-LABEL`. Though this probably removed some of the intended indentation.
 * A paragraph from Mainframe Zork has been re-added to the text of the `GUIDE` with minor modifications.
 * The `SAILOR` has some new responses:
-* "`SAILOR, HELLO`" now prints "`You can't talk to the sailor that way.`"
-* "`EXAMINE SAILOR`" now prints "`There is no sailor to be seen.`"
-* "`THROW ME AT` *object*" now responds with "`Why don't you just walk like normal people.`"
+  * "`SAILOR, HELLO`" now prints "`You can't talk to the sailor that way.`"
+  * "`EXAMINE SAILOR`" now prints "`There is no sailor to be seen.`"
+  * "`THROW ME AT` *object*" now responds with "`Why don't you just walk like normal people.`"
 * `PATHOBJ` has changed its name from "way" to "passage", and lost the synonyms `PASSAGE` and `CRAWLWAY`.
 
