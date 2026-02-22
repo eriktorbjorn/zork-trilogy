@@ -782,6 +782,8 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 		<REMOVE ,WATER>)>
 	 <RFALSE>>
 
+<GLOBAL GET-IN-BUCKET "You'll need to get in the bucket to reach it.">
+
 <ROUTINE WATER-FCN ("AUX" AV W PI?)
 	 #DECL ((AV) <OR OBJECT FALSE> (W) OBJECT (PI?) <OR ATOM FALSE>)
 	 <COND (<VERB? SGIVE> <RFALSE>)
@@ -824,10 +826,16 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 		      (<IN? ,TEAPOT ,WINNER>
 		       <COND (<NOT <FIRST? ,TEAPOT>>
 			      <COND (<EQUAL? ,HERE ,POOL-ROOM>
-				     <MOVE ,SALTY-WATER ,TEAPOT>)
+				     <SET W ,SALTY-WATER>)
 				    (T 
-				     <MOVE ,WATER ,TEAPOT>)>
-			      <TELL "The teapot is now full of water." CR>)
+				     <SET W ,WATER>)>
+			      <COND (<AND <IN? .W ,BUCKET>
+					  <NOT <IN? ,WINNER ,BUCKET>>>
+				     <TELL ,GET-IN-BUCKET CR>)
+				    (T
+				     <MOVE .W ,TEAPOT>
+				     <TELL
+"The teapot is now full of water." CR>)>)
 			     (T
 			      <TELL "The water slips through your fingers." CR>
 			      <RTRUE>)>)
@@ -4209,4 +4217,4 @@ up completely, but you can't have everything." CR CR>
 
 <ROUTINE BUCKET-CONT ()
 	 <COND (<AND <VERB? TAKE> <NOT <IN? ,WINNER ,BUCKET>>>
-	        <TELL "You'll need to get in the bucket to reach it." CR>)>>
+	        <TELL ,GET-IN-BUCKET CR>)>>
