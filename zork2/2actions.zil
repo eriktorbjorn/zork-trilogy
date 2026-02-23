@@ -2376,7 +2376,7 @@ passage leading down into unrelieved darkness.">)>
 				     <SETG DIAMOND-MOVES 0>)>
 			      <COND (<EQUAL? ,DIAMOND-COUNT 5>
 				     <TELL
-"You hear a strange rusty squeal echoing in the distance." CR>
+"You hear a strange rusty squeal echoing in the distance." CR CR>
 				     <FCLEAR ,DIAMOND-5 ,TOUCHBIT>
 				     <SCORE-UPD 5>
 				     <SETG DIAMOND-SOLVE T>)>
@@ -2424,7 +2424,7 @@ passage leading down into unrelieved darkness.">)>
 "As you thrash about in the maze, the mirthful voice of the Wizard
 taunts you: \"Fool! You'll never get past ">
 		<TELL <GET ,BASES ,DIAMOND-BASE>>
-		<TELL " base at this rate!\"" CR>)>
+		<TELL " base at this rate!\"" CR CR>)>
 	 <GOTO <GET ,DIAMOND-ROOMS <+ 3 <RANDOM 5>>>>>
 
 <GLOBAL BASES <TABLE "first" "first" "first" "second" "third" "home">>
