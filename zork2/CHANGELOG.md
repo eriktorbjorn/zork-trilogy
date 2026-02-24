@@ -14,6 +14,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The Fierce spell now makes the sword glow dull red again.
 * The sword is once again listed before the lamp in the starting room.
 * The sword now only glows for dangerous actors, i.e. the dragon, Cerberus, the demon, and the Wizard. Older versions of Zork II used to have a separate attribute for this, while newer checked for all actors but made an exception for the robot. Rather than reintroducing an attribute, I've just added a `VILLAIN?` routine to test if an object is a villain.
+* The sword now stops glowing if you die. This appears to be a regression from when `GLOW-STATE` was introduced to keep track of the sword's state. Before that it used its `VALUE` property, which accidentally turned the sword into a treasure.
 
 ### Changes to game mechanics
 
@@ -63,6 +64,11 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Throwing the flask at the aquarium now mungs the room and removes the flask.
 * You can now order the robot to leave the room while you're trapped in the cage. It's not a good idea by any means, but it makes sense that you can do it.
 * It's no longer possible to fill the pot with the water in the bucket while you're outside the bucket. You're not allowed to take objects from the bucket while you're outside, and taking the water should arguably be even harder.
+* The growing/shrinking mechanics in the Alice area have been slightly updated:
+  * It no longer sets/clears `TRYTAKEBIT` on objects, because that may remove the bit from objects that should still have it, e.g. the sword. Instead, `ITAKE` will no longer automatically pick up objects that have `NONLANDBIT`. That's the bit still used to indicate that an object is now larger than you are.
+  * The NONLANDBIT is applied recursively to objects in the room, so that objects inside containers also grow or shrink.
+  * Eating an enlargened cake no longer removes it, unless it's the exploding one. A mouthful should be enough.
+* The sword will now glow in the Topiary, because it's a dangerous place. This is a new feature, but I think it's well within the spirit of the game. Especially now that the sword doesn't glow as often any more.
 
 ### Bugfixes
 
