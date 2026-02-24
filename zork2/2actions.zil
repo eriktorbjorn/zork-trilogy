@@ -4185,6 +4185,7 @@ up completely, but you can't have everything." CR CR>
 <ROUTINE RANDOMIZE-OBJECTS ("AUX" (R <>) F N)
 	 <COND (<IN? ,LAMP ,WINNER>
 		<MOVE ,LAMP ,INSIDE-BARROW>)>
+	 <SETG SWORD-GLOW 0>
 	 <SET N <FIRST? ,WINNER>>
 	 <REPEAT ()
 		 <SET F .N>
