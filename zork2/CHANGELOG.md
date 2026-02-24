@@ -11,6 +11,9 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The Fantasize spell should work again. It was broken completely in r48, and while an attempt had been made to restore it in r63 it didn't work correctly. I hope it does now.
 * Removed TAKE and HAVE from the "`LIGHT OBJECT`" syntax. Otherwise, "LIGHT FUSE" will auto-pickup the fuse before lighting it, before you can even say "Wile E. Coyote, Genius". Historically, Zork I always did the auto-pickup thing for this syntax. Zork II and III only added it later, presumably when the code bases were unified. But I can't think of any downsides to keeping it in Zork III. Technically it looks like Zork II used to still have the HAVE flag, but maybe it wasn't as strictly enforced back then? Note that in earlier versions you couldn't even "`LIGHT FUSE`". Before r48 you were told to use a match instead.
 * Removed "footpad" as a synonym for the sailor when compiling as Zork II, because that game already has a `FOOTPAD` object.This means that you can once again ask the game what a footpad is. This was only broken in r63.
+* The Fierce spell now makes the sword glow dull red again.
+* The sword is once again listed before the lamp in the starting room.
+* The sword now only glows for dangerous actors, i.e. the dragon, Cerberus, the demon, and the Wizard. Older versions of Zork II used to have a separate attribute for this, while newer checked for all actors but made an exception for the robot. Rather than reintroducing an attribute, I've just added a `VILLAIN?` routine to test if an object is a villain.
 
 ### Changes to game mechanics
 
@@ -59,6 +62,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * It's only possible to put the mat under the oak door while it's closed. Opening the door dislodges the mat object, same as taking or moving the mat.
 * Throwing the flask at the aquarium now mungs the room and removes the flask.
 * You can now order the robot to leave the room while you're trapped in the cage. It's not a good idea by any means, but it makes sense that you can do it.
+* It's no longer possible to fill the pot with the water in the bucket while you're outside the bucket. You're not allowed to take objects from the bucket while you're outside, and taking the water should arguably be even harder.
 
 ### Bugfixes
 
@@ -113,6 +117,8 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Tell the player if the room goes dark when using the Fry spell.
 * Added missing newline when looking through the window in the oak door. Usually you wouldn't notice it was missing because you'd see the blue sphere on the table.
 * Removed leading space from the balloon label and safe card texts. Judging by Confusion, these were blank lines in Mainframe Zork. We don't want that any more, and ZIL rendered it as a single space anyway.
+* Added newline to message printed when the Wizard taunts you in the baseball maze.
+* Added newline to message printed when solving the baseball maze.
 
 # r63
 

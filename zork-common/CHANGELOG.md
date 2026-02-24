@@ -22,6 +22,7 @@
 * "`TIE` *object* `TO ME`" now prints the intended response.
 * "`SIT ON`" / "`SIT IN`" now has its own syntax. Otherwise, "`SIT`" gets interpreted as "`CLIMB`", which gets interpreted as "`UP`".
 * Zork II: Don't require a tool to turn the key. This is the same kind of exception that was already made for turning the page in the black book in Zork I.
+* Zork II: Don't allow objects to be automatically taken from the bucket when you're outside.
 
 ### Bugfixes
 
