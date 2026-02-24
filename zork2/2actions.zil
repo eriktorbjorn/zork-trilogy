@@ -15,7 +15,8 @@
 <ROUTINE I-SWORD ("AUX" (DEM <INT I-SWORD>) (NG 0) G P TX L)
 	 <SET G ,SWORD-GLOW>
 	 <COND (<IN? ,SWORD ,ADVENTURER>
-		<COND (<INFESTED? ,HERE> <SET NG 2>)
+		<COND (<EQUAL? ,SPELL? ,S-FIERCE> <SETG NG 3>)
+		      (<INFESTED? ,HERE> <SET NG 2>)
 		      (T
 		       <SET P 0>
 		       <REPEAT ()
@@ -29,6 +30,8 @@
 						    <SET NG 1>
 						    <RETURN>)>)>)>>)>
 		<COND (<EQUAL? .NG .G> <RFALSE>)
+		      (<EQUAL? .NG 3>
+		       <TELL "Your sword is glowing with a dull red glow." CR>)
 		      (<EQUAL? .NG 2>
 		       <TELL "Your sword has begun to glow very brightly." CR>)
 		      (<1? .NG>
@@ -3656,7 +3659,7 @@ towards the bottom of the volcano.">
 			      <RTRUE>)>)
 		      (<EQUAL? ,SPELL? ,S-FEEBLE>
 		       <SETG LOAD-ALLOWED ,LOAD-MAX>)
-		      (<EQUAL? ,SPELL? ,S-FIERCE>
+		      ;(<EQUAL? ,SPELL? ,S-FIERCE>
 		       <SETG SWORD-GLOW 0>)
 		      (<EQUAL? ,SPELL? ,S-FUMBLE>
 		       <SETG FUMBLE-NUMBER 7>
