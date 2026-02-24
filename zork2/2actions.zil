@@ -45,12 +45,19 @@
 		<PUT .DEM ,C-ENABLED? 0>
 		<RFALSE>)>>
 
+<ROUTINE VILLAIN? (OBJ)
+	 <COND (<AND <FSET? .OBJ ,ACTORBIT>
+		     <NOT <FSET? .OBJ ,INVISIBLE>>
+		     <OR <EQUAL? .OBJ ,DRAGON ,CERBERUS ,GENIE>
+			 <EQUAL? .OBJ ,WIZARD>>>
+		<RTRUE>)
+	       (T
+		<RFALSE>)>>
+
 <ROUTINE INFESTED? (R "AUX" (F <FIRST? .R>))
 	 <REPEAT ()
 		 <COND (<NOT .F> <RFALSE>)
-		       (<AND <FSET? .F ,ACTORBIT>
-			     <NOT <FSET? .F ,INVISIBLE>>
-			     <NOT <EQUAL? .F ,ROBOT>>>
+		       (<VILLAIN? .F>
 			<RETURN .F>)
 		       (<NOT <SET F <NEXT? .F>>> <RFALSE>)>>>
 
