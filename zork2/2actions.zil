@@ -17,6 +17,7 @@
 	 <COND (<IN? ,SWORD ,ADVENTURER>
 		<COND (<EQUAL? ,SPELL? ,S-FIERCE> <SETG NG 3>)
 		      (<INFESTED? ,HERE> <SET NG 2>)
+		      (<EQUAL? ,HERE ,TOPIARY-ROOM> <SET NG 1>)
 		      (T
 		       <SET P 0>
 		       <REPEAT ()
