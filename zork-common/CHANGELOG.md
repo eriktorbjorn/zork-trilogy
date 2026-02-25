@@ -7,6 +7,7 @@
 * Climbing ("`CLIMB UP/DOWN"`, "`CLIMB UP/DOWN` *object*") has been rewritten a bit to eliminate Zork III special cases, and fix some regressions. Hopefully it didn't introduce any new ones.
 * Restored old `V-OPEN` / `V-CLOSED` behavior where objects need `CONTBIT` to be openable or closable by default. This behavior goes back all the way to Mainframe Zork, and is necessary for Zork II and III where certain objects are "doors" but not meant to be opened or closed. The `CLEFT` in Zork III is one such example. I assume it won't do any harm to Zork I either.
 * Restored old `GWIM` behavior so that it never matches `ME`. The syntax for `THROW` tells it to pick an actor as the indirect object, if none is specified. The ME object is an actor, and in Zork I and III it's often the only actor present. (In Zork II, there's `GLOBAL-PRINCESS`.) That meant that "`THROW` *object*" was often lethal, which seemed unfair.
+* Demons now always run with the player as the `WINNER`. Otherwise strange things could happen, e.g. in Zork II if you talked to the robot on the move a timed event was supposed to kill you but instead it killed the robot. I think some other Infocom games did this too.
 
 ### Minor features
 
@@ -24,6 +25,7 @@
 * Zork II: Don't require a tool to turn the key. This is the same kind of exception that was already made for turning the page in the black book in Zork I.
 * Zork II: Don't allow objects to be automatically taken from the bucket when you're outside.
 * Zork II: Don't allow enlargened objects (in the Alice area) to be automatically picked up.
+* `PRE-MUNG` now requires you to be holding the weapon. Before you could destroy the robot in Zork II with a sword he was holding.
 
 ### Bugfixes
 
