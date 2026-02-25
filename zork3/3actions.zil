@@ -2030,9 +2030,10 @@ leap up and very nearly sear your flesh. After a while, footfalls can
 be heard in the distance, then closer and closer.... The door swings
 open, and in walks an old man.|
 |
-He is dressed simply in a hood and cloak, wearing an amulet and ring,
-carrying an old book under one arm, and leaning on a wooden staff. A single
-key, as if to a massive prison cell, hangs from his belt.|
+He is dressed simply in a hood and cloak,
+wearing a few simple jewels, carrying something under one arm, and
+leaning on a wooden staff.  A single key, as if to a massive prison cell,
+hangs from his belt.|
 |
 He raises the staff toward you and you hear
 him speak, as if in a dream: \"I await you, though your journey be long
