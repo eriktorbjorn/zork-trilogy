@@ -1344,23 +1344,16 @@ say, but the robot appears to be smiling." CR CR>
 		      <MOVE ,ROBOT ,CAGE-ROOM>
 		      <SETG CAGE-SOLVE-FLAG T>)
 		     (<VERB? EAT DRINK>
-		      <COND (<IN? ,ADVENTURER ,HERE>
-			     <TELL
-"\"I am sorry but that is difficult for a being with no mouth.\"" CR>)>
-		      <RTRUE>)
-		     (<AND <PROB 2>
-			   <EQUAL? <META-LOC ,ADVENTURER> ,HERE>>
+		      <TELL
+"\"I am sorry but that is difficult for a being with no mouth.\"" CR>)
+		     (<PROB 2>
 		      <TELL
 "\"Buzz! Buzz! Buzz! My circuits are getting rusty. Try again.\"" CR>)
 		     (<VERB? READ EXAMINE>
-		      <COND (<EQUAL? <META-LOC ,ADVENTURER> ,HERE>
-			     <TELL
-"\"My vision is not sufficiently acute to do that.\"" CR>)>
-		      <RTRUE>)
+		      <TELL
+"\"My vision is not sufficiently acute to do that.\"" CR>)
 		     (<VERB? DROP PUT THROW>
-		      <COND (<NOT <EQUAL? <META-LOC ,ADVENTURER> ,HERE>>
-			     <RFALSE>)
-			    (<IN? ,PRSO ,ROBOT>
+		      <COND (<IN? ,PRSO ,ROBOT>
 			     <TELL "\"Whirr, buzz, click!\"" CR>
 			     <RFALSE>)
 			    (T
@@ -1369,18 +1362,14 @@ say, but the robot appears to be smiling." CR CR>
 		     (<OR <VERB? WALK>
 			  <AND <VERB? TAKE PUSH TURN>
 			       <NOT <FSET? ,PRSO ,ACTORBIT>>>>
-		      <COND (<NOT <EQUAL? <META-LOC ,ADVENTURER> ,HERE>>
-			     <RFALSE>)
-			    (<PROB 80>
+		      <COND (<PROB 80>
 			     <TELL "\"Whirr, buzz, click!\"" CR>)
 			    (T
 			     <TELL "\"Buzz, click, whirr!\"" CR>)>
 		      <RFALSE>)
 		     (T
-		      <COND (<EQUAL? <META-LOC ,ADVENTURER> ,HERE>
-			     <TELL
-"\"My programming is insufficient to allow me to perform that task.\"" CR>)>
-		      <RTRUE>)>)
+		      <TELL
+"\"My programming is insufficient to allow me to perform that task.\"" CR>)>)
 	      (<VERB? OPEN LOOK-INSIDE CLOSE>
 	       <TELL "There's no access panel or door on the robot." CR>)
 	      (<AND <VERB? GIVE>
