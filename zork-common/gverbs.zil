@@ -931,7 +931,9 @@ killing yourself." CR CR>
 		       <TELL "your bare hands">)
 		      (T
 		       <TELL "a " D ,PRSI>)>
-		<TELL " is futile." CR>)>>
+		<TELL " is futile." CR>)
+	       (<NOT <HELD? ,PRSI>>
+		     <TELL "You aren't even holding the " D ,PRSI "." CR>)>>
 
 <ROUTINE V-MUNG ()
 	 <COND (<FSET? ,PRSO ,ACTORBIT>
