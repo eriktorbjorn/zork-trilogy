@@ -70,6 +70,8 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
   * Eating an enlargened cake no longer removes it, unless it's the exploding one. A mouthful should be enough.
 * The sword will now glow in the Topiary, because it's a dangerous place. This is a new feature, but I think it's well within the spirit of the game. Especially now that the sword doesn't glow as often any more.
 * A number of commands given to the robot checked if the player was in the same room. That should no longer be necessary (if it ever was), and at least in one case it was harmful because it printed no message at all e.g. if the player was giving the order from the bucket.
+* A number of changes have been made to the robot/cage puzzle to improve the illusion that the robot is outside the cage, not inside with you. Most noticeably, his inventory is no longer shown and interactions with him are limited.
+* If you have dropped objects while trapped in the cage, they are moved out of the cage along with you when the cage is lifted.
 
 ### Bugfixes
 
