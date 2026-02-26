@@ -1277,6 +1277,7 @@ to entrap you. To make matters worse, poisonous gas starts coming
 into the room." CR CR>
 	       <COND (<IN? ,ROBOT ,HERE>
 		      <MOVE ,ROBOT ,IN-CAGE>
+		      <FCLEAR ,ROBOT ,OPENBIT>
 		      <FSET ,ROBOT ,NDESCBIT>)>
 	       <GOTO ,IN-CAGE>
 	       <MOVE ,CAGE ,HERE>
@@ -1312,13 +1313,14 @@ your fears about the fate of your brave mechanical friend.">
 
 <ROUTINE ROBOT-CAGE-EXIT ()
 	<COND (<EQUAL? ,WINNER ,ROBOT>
+	       <FSET ,ROBOT ,OPENBIT>
 	       <FCLEAR ,ROBOT ,NDESCBIT>
 	       ,MACHINE-ROOM)
 	      (T
 	       <TELL "You can't go that way." CR>
 	       <RFALSE>)>>
 
-<ROUTINE ROBOT-FCN ("OPTIONAL" (RARG ,M-OBJECT))
+<ROUTINE ROBOT-FCN ("OPTIONAL" (RARG ,M-OBJECT) "AUX" X N)
 	<COND (<EQUAL? ,WINNER ,ROBOT>
 	       <COND (,P-CONT
 		      <SETG P-CONT <>>
@@ -1337,16 +1339,26 @@ though.\"" CR>)
 say, but the robot appears to be smiling." CR CR>
 		      <DISABLE <INT I-SPHERE>>
 		      <SETG WINNER ,ADVENTURER>
-		      <GOTO ,CAGE-ROOM>
+		      <COND (<SET X <FIRST? ,IN-CAGE>>
+			     <REPEAT ()
+				     <COND (<NOT .X> <RETURN>)>
+				     <SET N <NEXT? .X>>
+				     <COND (<FSET? .X ,TAKEBIT>
+					    <MOVE .X ,CAGE-ROOM>)>
+				     <SET X .N>>)>
 		      <MOVE ,MANGLED-CAGE ,CAGE-ROOM>
+		      <FSET ,ROBOT ,OPENBIT>
 		      <FCLEAR ,ROBOT ,NDESCBIT>
-		      <FSET ,PALANTIR-1 ,TAKEBIT>
 		      <MOVE ,ROBOT ,CAGE-ROOM>
+		      <GOTO ,CAGE-ROOM>
+		      <FSET ,PALANTIR-1 ,TAKEBIT>
 		      <SETG CAGE-SOLVE-FLAG T>)
 		     (<VERB? EAT DRINK>
 		      <TELL
 "\"I am sorry but that is difficult for a being with no mouth.\"" CR>)
-		     (<PROB 2>
+		     (<OR <PROB 2>
+			  <AND <IN? ,ROBOT ,IN-CAGE>
+			       <VERB? TAKE DROP THROW PUT>>>
 		      <TELL
 "\"Buzz! Buzz! Buzz! My circuits are getting rusty. Try again.\"" CR>)
 		     (<VERB? READ EXAMINE>
@@ -1370,6 +1382,13 @@ say, but the robot appears to be smiling." CR CR>
 		     (T
 		      <TELL
 "\"My programming is insufficient to allow me to perform that task.\"" CR>)>)
+	      (<EQUAL? ,HERE ,IN-CAGE>
+	       <COND (<VERB? LISTEN TELL>
+		      <RFALSE>)
+		     (<VERB? FIND>
+		      <TELL "It is probably still outside the cage." CR>)
+		     (T
+		      <TELL "The cage wall is in the way." CR>)>)
 	      (<VERB? OPEN LOOK-INSIDE CLOSE>
 	       <TELL "There's no access panel or door on the robot." CR>)
 	      (<AND <VERB? GIVE>
