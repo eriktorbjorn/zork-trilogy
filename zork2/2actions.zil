@@ -3612,7 +3612,8 @@ such a demonstration early on.\" He grins vilely." CR>)>)>>
 he regards it as fanciful." CR>)>)
 	       (<AND <VERB? GIVE> <EQUAL? ,PRSI ,WIZARD>>
 		<SET OLIT ,LIT>
-		<REMOVE-CAREFULLY ,PRSO>
+		<REMOVE ,PRSO>
+		<SETG LIT <LIT? ,HERE>>
 		<COND (<BOMB? ,PRSO>
 		       <COND (<IN? ,GENIE ,PENTAGRAM-ROOM>
 			      <MOVE ,PRSO ,HERE>
