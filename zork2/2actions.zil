@@ -3607,8 +3607,10 @@ such a demonstration early on.\" He grins vilely." CR>)>)>>
 		<TELL
 "The Wizard seems surprised, much as you might be if a dog talked." CR>)
 	       (<EQUAL? ,WINNER ,WIZARD>
-		<COND (<VERB? GIVE> <TELL
-"The Wizard replies \"Foolishment!\"" CR>)
+		<COND (<OR <VERB? GIVE SGIVE>
+			   <AND <VERB? DROP THROW PUT PUT-ON MUNG>
+				<EQUAL? ,PRSO ,WAND>>>
+		       <TELL "The Wizard replies \"Foolishment!\"" CR>)
 		      (T
 		       <TELL
 "The Wizard considers your statement carefully. His expression indicates
