@@ -3603,7 +3603,10 @@ the walls begin to shake a little. Another pass and the shaking stops.
 such a demonstration early on.\" He grins vilely." CR>)>)>>
 
 <ROUTINE WIZARD-FCN ("OPTIONAL" (RARG ,M-OBJECT) "AUX" OLIT)
-	 <COND (<EQUAL? ,WINNER ,WIZARD>
+	 <COND (<VERB? HELLO>
+		<TELL
+"The Wizard seems surprised, much as you might be if a dog talked." CR>)
+	       (<EQUAL? ,WINNER ,WIZARD>
 		<COND (<VERB? GIVE> <TELL
 "The Wizard replies \"Foolishment!\"" CR>)
 		      (T
@@ -3631,9 +3634,6 @@ flowers disappear." CR>)>)
 room becomes dark." CR>)
 		      (T
 		       <TELL "\"Thank you.\"" CR>)>)
-	       (<HELLO? ,WIZARD>
-		<TELL
-"The Wizard seems surprised, much as you might be if a dog talked." CR>)
 	       (<VERB? ATTACK MUNG>
 		<REMOVE ,WIZARD>
 		<COND (<IN? ,WAND ,WIZARD>
