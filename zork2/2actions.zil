@@ -1141,6 +1141,11 @@ c    W  E   L  L    y|
 "You enter the pool, thrash around for a good while, and then drown.
 Sad, but true.">)>>
 
+<ROUTINE RELEASE-VAPORS (RM)
+	 <MUNG-ROOM .RM "Noxious vapors prevent your entry.">
+	 <COND (<EQUAL? .RM ,GAZEBO-ROOM>
+		<SETG GAZEBO-MUNG "survive the noxious vapors">)>>
+
 <ROUTINE FLASK-FCN ("AUX" (MUNG? <>))
 	 <COND (<VERB? LOOK-INSIDE>
 		<TELL
@@ -1156,16 +1161,13 @@ You might try looking at something through the flask." CR>)
 not noticed earlier." CR>)>
 		<RFALSE>)
 	       (<VERB? OPEN>
-		<MUNG-ROOM ,HERE ,NOXIOUS-VAPORS>
+		<RELEASE-VAPORS ,HERE>
 		<JIGS-UP ,FATAL-VAPORS>)
 	       (<VERB? MUNG THROW>
 		<TELL "The flask breaks into pieces." CR>
 		<REMOVE ,PRSO>
-		<MUNG-ROOM ,HERE ,NOXIOUS-VAPORS>
+		<RELEASE-VAPORS ,HERE>
 		<JIGS-UP ,FATAL-VAPORS>)>>
-
-<GLOBAL NOXIOUS-VAPORS
-"Noxious vapors prevent your entry.">
 
 <GLOBAL FATAL-VAPORS
 "As you pass out, you realize that the vapors from the
@@ -2962,6 +2964,8 @@ fix on the ">
 	       "north" GARDEN-NORTH "south" P?NORTH
 	       "in" GAZEBO-ROOM "out" P?IN>>
 
+<GLOBAL GAZEBO-MUNG "get past the debris">
+
 <ROUTINE I-PRINCESS ("AUX" (DEM <INT I-PRINCESS>) (OLDP <LOC ,PRINCESS>)
 		     (PC <* ,PRCOUNT 4>))
 	 <MOVE ,PRINCESS <GET ,PRDIRS <+ .PC 1>>>
@@ -2986,8 +2990,8 @@ through a wall." CR>)
 	        <COND (<EQUAL? .OLDP ,GARDEN-NORTH>
 		       <TELL "The princess enters the gazebo">
 		       <COND (<FSET? ,GAZEBO-ROOM ,RMUNGBIT>
-			      <TELL ", although you would never get past
-the debris. She must be magically protected.">)>
+			      <TELL ", although you would never "
+,GAZEBO-MUNG ". She must be magically protected.">)>
 		       <TELL "." CR>)
 		      (<EQUAL? .OLDP ,RAVINE-LEDGE>
 		       <TELL
@@ -3323,7 +3327,7 @@ scaly body writhes about in the huge tank." CR>)
 		       <RTRUE>)
 		      (<EQUAL? .OBJ ,FLASK>
 		       <REMOVE .OBJ>
-		       <MUNG-ROOM ,HERE ,NOXIOUS-VAPORS>
+		       <RELEASE-VAPORS ,HERE>
 		       <JIGS-UP
 "The flask shatters, and poison gas fills the room!">
 		       <RTRUE>)
