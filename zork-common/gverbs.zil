@@ -919,7 +919,10 @@ killing yourself." CR CR>
 	 <TELL "You'll have to speak up if you expect me to hear you!" CR>>
 
 <ROUTINE PRE-MUNG ()
-	 <COND %<COND (<==? ,ZORK-NUMBER 3>
+	 <COND %<COND (<==? ,ZORK-NUMBER 2>
+		       '(<EQUAL? ,PRSO ,GLOBAL-PALANTIR>
+			 <RFALSE>))
+		      (<==? ,ZORK-NUMBER 3>
 		       '(<EQUAL? ,PRSO ,BEAM>
 		         <RFALSE>))
 		      (T
