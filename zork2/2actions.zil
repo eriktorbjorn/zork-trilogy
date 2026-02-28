@@ -1566,7 +1566,6 @@ Vault Company.\"">)
 
 <ROUTINE I-ZGNOME ()
          <COND (<EQUAL? ,HERE ,SMALL-ROOM>
-		<ENABLE <QUEUE I-ZGNOME-OUT 12>>
 		<TELL
 "An epicene gnome of Zurich wearing a three-piece suit and carrying a
 safety deposit box materializes in the room.">
@@ -1579,6 +1578,7 @@ forgotten to deposit your valuables,\" he says, tapping the lid of the
 box impatiently. \"We don't usually allow customers to use the boxes
 here, but we can make this ONE exception, I suppose...\" He looks
 askance at you over his wire-rimmed bifocals." CR>
+		       <ENABLE <QUEUE I-ZGNOME-OUT 12>>
 		       <MOVE ,GNOME-OF-ZURICH ,HERE>)>)>>
 
 <ROUTINE BOX-F ()
