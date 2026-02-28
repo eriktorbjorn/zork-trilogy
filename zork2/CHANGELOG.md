@@ -27,6 +27,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
   * The north wall in the Safety Depository now acts as the curtain, both for walking through it (already the case) and for putting objects through it (that has been fixed).
   * Putting objects through the wall after going through the curtain didn't work right: It would say the object went through the curtain, the object would stay in the room, and it would turn off the `I-CURTAIN` timer so the curtain door never closed. All of that has been fixed.
   * Trying to put an object through the curtain after it is closed now provides feedback similar to when trying to walk through it.
+  * You can't go through the wall or curtain if the room on the other side has been munged.
 
 ### Other minor features
 
@@ -72,6 +73,8 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * A number of commands given to the robot checked if the player was in the same room. That should no longer be necessary (if it ever was), and at least in one case it was harmful because it printed no message at all e.g. if the player was giving the order from the bucket.
 * A number of changes have been made to the robot/cage puzzle to improve the illusion that the robot is outside the cage, not inside with you. Most noticeably, his inventory is no longer shown and interactions with him are limited.
 * If you have dropped objects while trapped in the cage, they are moved out of the cage along with you when the cage is lifted.
+* The Wizard was supposed to respond to requests that he give you something, presumably his wand, but that code was never reached. Now it is, and I've added a couple of alternate wants to ask him to give up his wand that are now all handled the same way.
+* If the princess enters the gazebo after it's been munged, the message for why she can and you can't is now tailored to how the gazebo was munged.
 
 ### Bugfixes
 

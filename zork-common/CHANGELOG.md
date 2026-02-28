@@ -26,6 +26,7 @@
 * Zork II: Don't allow objects to be automatically taken from the bucket when you're outside.
 * Zork II: Don't allow enlargened objects (in the Alice area) to be automatically picked up.
 * `PRE-MUNG` now requires you to be holding the weapon. Before you could destroy the robot in Zork II with a sword he was holding.
+* Zork II: Allow trying to break `GLOBAL-PALANTIR` with your hands, since there's a custom message for it. (These are the spheres you pass through before resurrection.)
 
 ### Bugfixes
 
@@ -40,6 +41,10 @@
 * Check if you're using your hands in `PRE-MUNG`, so that it can print "your bare hands" instead of the name of the object.
 * `ACCESSIBLE?` now treats object 0 as not accessible. This could happen when referring to "it" after `REMOVE-CAREFULLY` had removed the object.
 * When an actor leaves the room, print the message as long as the player is enclosed by the same room. E.g. in Zork II you will see the robot leave the room even if you order him to leave from within the bucket.
+
+### Stylistic changes
+
+* Added newline to the message when the balloon lands.
 
 ## Changes in the final unreleased versions
 
