@@ -2290,22 +2290,51 @@ can't do anything else in this state." CR>)>)
 			    <IN? ,WINNER ,HERE>>
 		       <TELL
 "Oops, you seem a little unsteady... I'm not sure you got where
-you intended going." CR CR>
-		       <RANDOM-WALK>)
+you intended going." CR>
+		       <COND (<CAN-RANDOM-WALK>
+			      <CRLF>
+			      <RANDOM-WALK>)>
+		       <RTRUE>)
 		      (<AND <EQUAL? ,SPELL? ,S-FEAR>
 			    <SET V <INFESTED? ,HERE>>>
 		       <TELL
-"All at once, you are overcome by fear! There's is a " D .V " in here!
-Maybe it's after you! ">
-		       <COND (<FSET? <LOC ,WINNER> ,VEHBIT>
+"All at once, you are overcome by fear! ">
+		       <COND (<EQUAL? .V ,WIZARD>
 			      <TELL
-"You huddle in the corner, terrified." CR>)
+"The Wizard of Frobozz is here! Maybe he's after you! ">)
 			     (T
 			      <TELL
+"There's is a " D .V " in here! Maybe it's after you! ">)>
+		       <COND (<CAN-RANDOM-WALK>
+			      <TELL
 "You run from the room screaming in terror!" CR CR>
-			      <RANDOM-WALK>)>)>)>>
+			      <RANDOM-WALK>)
+			     (T
+			      <TELL
+"You huddle in the corner, terrified." CR>)>)>)>>
 
-<ROUTINE RANDOM-WALK ("AUX" P TX L S (D <>))
+<ROUTINE RANDOM-WALK-DIR? (P "AUX" TX L)
+	 <SET TX <GETPT ,HERE .P>>
+	 <SET L <PTSIZE .TX>>
+	 <COND (<OR <EQUAL? .L ,UEXIT>
+		    <AND <EQUAL? .L ,CEXIT>
+			 <VALUE <GETB .TX ,CEXITFLAG>>>
+		    <AND <EQUAL? .L ,DEXIT>
+			 <FSET? <GETB .TX ,DEXITOBJ> ,OPENBIT>>>
+		<RTRUE>)>>
+
+<ROUTINE CAN-RANDOM-WALK ("AUX" P TX L)
+	 <COND (<FSET? <LOC ,WINNER> ,VEHBIT>
+		<RFALSE>)
+	       (T
+		<SET P 0>
+		<REPEAT ()
+			<COND (<L? <SET P <NEXTP ,HERE .P>> ,LOW-DIRECTION>
+			       <RFALSE>)
+			      (<RANDOM-WALK-DIR? .P>
+			       <RTRUE>)>>)>>
+
+<ROUTINE RANDOM-WALK ("AUX" P S (D <>))
 	 <SET P 0>
 	 <REPEAT ()
 		 <COND (<L? <SET P <NEXTP ,HERE .P>> ,LOW-DIRECTION>
@@ -2317,16 +2346,9 @@ Maybe it's after you! ">
 			       <DO-WALK .D>
 			       <SETG SPELL? .S>)>
 			<RETURN>)
-		       (T
-			<SET TX <GETPT ,HERE .P>>
-			<SET L <PTSIZE .TX>>
-			<COND (<OR <EQUAL? .L ,UEXIT>
-				   <AND <EQUAL? .L ,CEXIT>
-					<VALUE <GETB .TX ,CEXITFLAG>>>
-				   <AND <EQUAL? .L ,DEXIT>
-					<FSET? <GETB .TX ,DEXITOBJ> ,OPENBIT>>>
-			       <COND (<NOT .D> <SET D .P>)
-				     (<PROB 50> <SET D .P>)>)>)>>>
+		       (<RANDOM-WALK-DIR? .P>
+			<COND (<NOT .D> <SET D .P>)
+			      (<PROB 50> <SET D .P>)>)>>>
 
 <ROUTINE FORCE-FIGHT (V "AUX" W)
 	 <COND (<NOT <SET W <FIND-IN ,ADVENTURER ,WEAPONBIT>>>
@@ -3606,7 +3628,7 @@ the walls begin to shake a little. Another pass and the shaking stops.
 \"A nice effect... I find it makes for a better relationship to give
 such a demonstration early on.\" He grins vilely." CR>)>)>>
 
-<ROUTINE WIZARD-FCN ("OPTIONAL" (RARG ,M-OBJECT) "AUX" OLIT)
+<ROUTINE WIZARD-FCN ("OPTIONAL" (RARG ,M-OBJECT) "AUX" OLIT RW)
 	 <COND (<VERB? HELLO>
 		<TELL
 "The Wizard seems surprised, much as you might be if a dog talked." CR>)
@@ -3655,14 +3677,22 @@ room becomes dark." CR>)
 "Nothing happens! With a terrified glance at the demon, the wizard
 runs past you and out of the room." CR>)
 		      (T
-		       <TELL
-"You are suddenly terrified. The Wizard seems huge and terrible,
-looming over you. You flee, terrified. He chuckles, snaps his fingers, and
-disappears." CR CR>
 		       <SETG SPELL? ,S-FEAR>
 		       <PUTP ,ADVENTURER ,P?ACTION MAGIC-ACTOR>
 		       <ENABLE <QUEUE I-WIZARD 10>>
-		       <RANDOM-WALK>)>)>>
+		       <TELL
+"You are suddenly terrified. The Wizard seems huge and terrible,
+looming over you. ">
+		       <COND (<SET RW <CAN-RANDOM-WALK>>
+			      <TELL "You flee">)
+			     (T
+			      <TELL "You huddle in the corner">)>
+		       <TELL
+", terrified. He chuckles, snaps his fingers, and disappears." CR>
+		       <COND (.RW
+			      <CRLF>
+			      <RANDOM-WALK>)>
+		       <RTRUE>)>)>>
 
 <ROUTINE I-WIZARD ("AUX" CAST-PROB (PCNT 0) F (WLOC <LOC ,WINNER>))
 	 <ENABLE <QUEUE I-WIZARD 4>>
@@ -3823,10 +3853,14 @@ about five feet." CR>)>)
 "In fact, you feel so weak that you drop the " D .F "." CR>
 				     <MOVE .F .WLOC>)>)
 			     (<EQUAL? ,SPELL? ,S-FEAR>
-			      <COND (<FSET? .WLOC ,VEHBIT>
+			      <COND (<NOT <CAN-RANDOM-WALK>>
 				     <TELL
-"You cower in the corner of the " D .WLOC ", hoping the wizard
-won't see you." CR>)
+"You cower in the corner">
+				     <COND (<FSET? .WLOC ,VEHBIT>
+					    <TELL
+" of the " D .WLOC>)>
+				     <TELL
+", hoping the wizard won't see you." CR>)
 				    (T
 				     <CRLF>
 				     <RANDOM-WALK>)>)
