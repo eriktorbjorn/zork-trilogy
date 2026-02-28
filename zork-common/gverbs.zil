@@ -2091,7 +2091,7 @@ for the final secret.\"" CR>)>)
 			      (<==? ,ZORK-NUMBER 2>
 			       '<COND (<EQUAL? .WLOC ,BALLOON>
 				       <TELL
-"The balloon lands." CR>)
+"The balloon lands." CR CR>)
 				      (<FSET? .WLOC ,VEHBIT>
 				       <TELL
 "The " D .WLOC " comes to a stop." CR CR>)>)
