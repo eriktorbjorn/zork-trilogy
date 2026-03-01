@@ -194,8 +194,11 @@ receptacle is fastened to the center of the basket">)>
 <ROUTINE I-BALLOON ()
 	 <COND (<AND <FSET? ,RECEPTACLE ,OPENBIT> ,BINF-FLAG>
 		<RISE-AND-SHINE>)
-	       (<EQUAL? ,HERE ,LEDGE-1 ,LEDGE-2>
-		<RISE-AND-SHINE>)
+	       (<EQUAL? ,BLOC ,LEDGE-1 ,LEDGE-2>
+		<COND (<NOT ,BINF-FLAG>
+		       <DISABLE <INT I-BALLOON>>)
+		      (T
+		       <RISE-AND-SHINE>)>)
 	       (T
 		<DECLINE-AND-FALL>)>>
 
