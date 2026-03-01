@@ -75,6 +75,8 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * If you have dropped objects while trapped in the cage, they are moved out of the cage along with you when the cage is lifted.
 * The Wizard was supposed to respond to requests that he give you something, presumably his wand, but that code was never reached. Now it is, and I've added a couple of alternate wants to ask him to give up his wand that are now all handled the same way.
 * If the princess enters the gazebo after it's been munged, the message for why she can and you can't is now tailored to how the gazebo was munged.
+* Remove the gnomes if the player dies. Their timed events were already disabled, and it makes no sense that they should just stick around forever.
+* Before calling `RANDOM-WALK`, check that there is a random direction to run to. It still won't check if the room on the other side is munged, but I think we can live with that. At the same time, I made a special case for being scared by the Wizard, so that he's referred to as "he" rather than "it".
 
 ### Bugfixes
 
@@ -105,6 +107,9 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Removed special case for the bomb from `AQUARIUM-FCN`. All it did was to stop the fuse demon, then print no message. Very strange. Now it bounces harmlessly off the glass. The room will be munged by the explosion, as usual.
 * `CAKE-CRUMBLE` now only crumbles the cakes. Before it could crumble any object as long as it had `FOODBIT`, like the candy.
 * Restructured `BUCKET-FCN` to make sure that actions are only handled when directed at the bucket. Several of them were in `M-BEG` for no apparent reason.
+* Don't make the Gnome of Zurich leave a few moves later, if the wand has already scared him off as soon as he entered.
+* When the balloon is about to take off from a ledge, check that it's actually inflated first.
+* Allow the empty balloon to take off from a ledge, even if the player isn't there to witness it. (It was checking `HERE`, where it should have checked `BLOC`.) The balloon is light enough to take off even with the receptacle closed, but I imagine it to be more of a sideways thing because it may descend after that.
 
 ### Stylistic fixes
 
