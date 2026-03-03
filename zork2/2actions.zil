@@ -4079,10 +4079,13 @@ magical essences, and you feel suffused with power." CR>)>
 
 <GLOBAL WAND-ON-LOC <>>
 
-<ROUTINE I-WAND ()
-	 <COND (<AND ,WAND-ON
-		     <OR <EQUAL? ,WAND-ON-LOC ,HERE>
-			 <IN? ,WAND-ON ,WINNER>>>
+<ROUTINE I-WAND ("AUX" (V? <>))
+	 <COND (,WAND-ON
+		<COND (<FSET? ,WAND-ON ,TAKEBIT>
+		       <SET V? <ACCESSIBLE? ,WAND-ON>>)
+		      (T
+		       <SET V? <EQUAL? ,WAND-ON-LOC ,HERE>>)>)>
+	 <COND (.V?
 		<TELL
 "The " D ,WAND-ON " stops glowing and the power within you weakens." CR>
 		<SETG WAND-ON <>>
