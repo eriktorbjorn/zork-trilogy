@@ -1821,8 +1821,7 @@ to collapse.")
     This room was constructed over very weak rock strata. Detonation
 of explosives in this room is strictly prohibited!|
          Frobozz Magic Cave Company|
-         per M. Agrippa, foreman|
-") >
+         per M. Agrippa, foreman")>
 
 <OBJECT CLOTH-BAG
 	(IN BALLOON)
