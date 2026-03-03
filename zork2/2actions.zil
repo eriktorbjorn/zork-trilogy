@@ -3582,7 +3582,8 @@ me a small service by loosing me from this wizard, it will suffice.\"" CR>)
 			    (T
 			     <TELL
 "\"" <GET ,GENIE-THANKS .HOARD> "\"" CR>
-			     <COND (<EQUAL? .HOARD 8>
+			     <COND (<AND <EQUAL? .HOARD 8>
+					 <IN? ,WIZARD, PENTAGRAM-ROOM>>
 				    <TELL
 "The Wizard looks at you as if you are a madman. He tears his beard and
 stares at you fearfully." CR>)>
