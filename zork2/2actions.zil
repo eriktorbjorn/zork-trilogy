@@ -3426,6 +3426,17 @@ wall, and contents himself with splashing you with water." CR>)
 		<TELL
 "This may only be a baby sea serpent, but it's as big as a small whale." CR>)>>
 
+<ROUTINE GENIE-SEARCH-CONTAINER (OBJ T)
+	 <COND (<IN? .T ,OBJ>
+		<TELL "The genie frowns briefly, then ">
+		<COND (<FSET? .OBJ ,OPENBIT>
+		       <TELL "looks inside">)
+		      (T
+		       <TELL "opens">)>
+		<TELL " the " D .OBJ ". He smiles horribly." CR>
+		<REMOVE-CAREFULLY .OBJ>
+		<SETG PRSO .T>)>>
+
 <ROUTINE GENIE-FCN ("OPTIONAL" (RARG ,M-OBJECT) "AUX" HOARD)
 	<COND (<VERB? HELLO>
 	       <TELL
@@ -3551,15 +3562,10 @@ He seems somewhat chagrined to have to admit this." CR>
 	       <TELL
 "The demon laughs uproariously." CR>)
 	      (<AND <VERB? GIVE> <EQUAL? ,PRSI ,GENIE>>
-	       <COND (<AND <EQUAL? ,PRSO ,IRON-BOX>
-			   <IN? ,VIOLIN ,PRSO>>
-		      <TELL
-"The genie frowns briefly, then ">
-		      <COND (<FSET? ,PRSO ,OPENBIT> <TELL "looks inside">)
-			    (ELSE <TELL "opens">)>
-		      <TELL " the box. He smiles horribly." CR>
-		      <REMOVE-CAREFULLY ,IRON-BOX>
-		      <SETG PRSO ,VIOLIN>)>
+	       <COND (<EQUAL? ,PRSO ,IRON-BOX>
+		      <GENIE-SEARCH-CONTAINER ,IRON-BOX ,VIOLIN>)
+		     (<EQUAL? ,PRSO ,CHEST>
+		      <GENIE-SEARCH-CONTAINER ,CHEST ,STATUETTE>)>
 	       <COND (<AND <GETPT ,PRSO ,P?VALUE>
 			   <NOT <EQUAL? ,PRSO ,SWORD>>>
 		      <REMOVE-CAREFULLY ,PRSO>
