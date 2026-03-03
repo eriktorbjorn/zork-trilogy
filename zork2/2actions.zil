@@ -775,7 +775,7 @@ become the master of his domain, but the final challenge awaits!|
 |
 (The ultimate adventure concludes in \"Zork III: The Dungeon Master\".)|
 |
-" CR>
+">
 		<SETG WON-FLAG T>
 		<FINISH>)
 		      (T
