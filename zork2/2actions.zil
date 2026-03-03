@@ -3756,13 +3756,16 @@ towards the bottom of the volcano.">
 		       <MOVE ,WIZARD ,PENTAGRAM-ROOM>
 		       <COND (<IN? ,WINNER ,PENTAGRAM-ROOM>
 			      <TELL
-
 "Suddenly the Wizard materializes in the room. He is astonished by what
-he sees: his servant in deep conversation with a common adventurer! He
+he sees">
+			      <COND (<NOT <FSET? ,GENIE ,INVISIBLE>>
+				     <TELL
+": his servant in deep conversation with a common adventurer! He
 draws forth his wand, waves it frantically, and incants \"Frobizz!
 Frobozzle! Frobnoid!\" The demon laughs heartily. \"You no longer
 control the Black Crystal, hedge-wizard! Your wand is powerless! Your
-doom is sealed!\" The demon turns to you, expectantly." CR>)>)>
+doom is sealed!\" The demon turns to you, expectantly">)>
+			      <TELL "." CR>)>)>
 		<RTRUE>)>
 	 <COND (<AND <NOT ,LIT>
 		     <FSET? ,LAMP ,RMUNGBIT>
