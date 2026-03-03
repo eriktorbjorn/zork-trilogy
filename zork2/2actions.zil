@@ -3860,7 +3860,7 @@ someone had flipped it over." CR>
 			     (<EQUAL? ,SPELL? ,S-FLOAT>
 			      <COND (<FSET? .WLOC ,VEHBIT>
 				     <TELL
-" You rise majestically out of the " D .WLOC ", coming to a stop about five
+"You rise majestically out of the " D .WLOC ", coming to a stop about five
 feet above it and to one side." CR>
 				     <MOVE ,WINNER ,HERE>)
 				    (T
