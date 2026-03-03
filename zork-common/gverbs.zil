@@ -591,6 +591,7 @@ probably)." CR>>
 				   <IN? ,COLLAR ,CERBERUS>>
 			      <SETG SPELL-VICTIM ,CERBERUS>)>
 		       <FSET ,PRSO ,TOUCHBIT>
+		       <MOVE ,PRSO ,HERE>
 		       <TELL
 "The " D ,PRSO " floats serenely in midair." CR>)
 		      (<AND <EQUAL? ,SPELL-USED ,W?FRY>
