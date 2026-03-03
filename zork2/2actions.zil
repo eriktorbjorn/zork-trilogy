@@ -2543,15 +2543,33 @@ than ten!" CR>)>)
 "The dog is now insanely happy, slobbering all over the place and
 whining with uncontained doggish joy." CR>)>>
 
-<ROUTINE COLLAR-FCN ()
-	 <COND (<AND <VERB? TAKE> ,CERBERUS-LEASHED>
-		<JIGS-UP
+<ROUTINE UNLEASH-CERBERUS (STR)
+	 <TELL
 "That wasn't such a good idea. The creature was enjoying being your pet.
-As you unfasten the collar, the disappointed monster hound begins to growl,
-and then its three fang-crammed mouths rend you into little doggy biscuits.">)
-	       (<AND <VERB? ENCHANT> <EQUAL? ,SPELL-USED ,W?FLOAT>>
-		<PERFORM ,V?ENCHANT ,CERBERUS>
-		<RTRUE>)>>
+As " .STR>
+	 <JIGS-UP
+", the disappointed monster hound begins to growl, and then its three
+fang-crammed mouths rend you into little doggy biscuits.">>
+
+<ROUTINE COLLAR-FCN ()
+	 <COND (<NOT ,CERBERUS-LEASHED>
+		<RFALSE>)
+	       (<VERB? TAKE>
+		<MOVE ,COLLAR ,WINNER>
+		<FCLEAR ,COLLAR ,NDESCBIT>
+		<UNLEASH-CERBERUS "you unfasten the collar">)
+	       (<VERB? ENCHANT>
+		<COND (<EQUAL? ,SPELL-USED ,W?FILCH>
+		       <MOVE ,COLLAR ,WINNER>
+		       <FCLEAR ,COLLAR ,NDESCBIT>
+		       <UNLEASH-CERBERUS "the collar vanishes">)
+		      (<EQUAL? ,SPELL-USED ,W?FLOAT>
+		       <SETG SPELL-VICTIM <>>
+		       <PERFORM ,V?ENCHANT ,CERBERUS>)
+		      (<EQUAL? ,SPELL-USED ,W?FRY>
+		       <REMOVE ,COLLAR>
+		       <UNLEASH-CERBERUS
+"the collar goes up in a puff of smoke">)>)>>
 
 <ROUTINE BAT-FCN ()
 	 <COND (<VERB? CUT>

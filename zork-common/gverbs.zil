@@ -587,7 +587,7 @@ probably)." CR>>
 			      <TELL "You can't filch the " D ,PRSO "!" CR>)>)
 		      (<AND <EQUAL? ,SPELL-USED ,W?FLOAT>
 			    <FSET? ,PRSO ,TAKEBIT>>
-		       <COND (<AND <EQUAL? ,SPELL-VICTIM ,COLLAR>
+		       ;<COND (<AND <EQUAL? ,SPELL-VICTIM ,COLLAR>
 				   <IN? ,COLLAR ,CERBERUS>>
 			      <SETG SPELL-VICTIM ,CERBERUS>)>
 		       <FSET ,PRSO ,TOUCHBIT>
