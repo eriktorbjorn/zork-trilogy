@@ -77,6 +77,8 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * If the princess enters the gazebo after it's been munged, the message for why she can and you can't is now tailored to how the gazebo was munged.
 * Remove the gnomes if the player dies. Their timed events were already disabled, and it makes no sense that they should just stick around forever.
 * Before calling `RANDOM-WALK`, check that there is a random direction to run to. It still won't check if the room on the other side is munged, but I think we can live with that. At the same time, I made a special case for being scared by the Wizard, so that he's referred to as "he" rather than "it".
+* Frying or Filching the dog collar while Cerberus is wearing it is now treated the same as removing it by hand.
+* Giving the chest to the demon is now handled the same as giving the iron box to him, i.e. he will look in it for the treasure that was originally there but not for any other treasures. It's a bit strange, but at least it's more consistent now.
 
 ### Bugfixes
 
@@ -110,6 +112,12 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Don't make the Gnome of Zurich leave a few moves later, if the wand has already scared him off as soon as he entered.
 * When the balloon is about to take off from a ledge, check that it's actually inflated first.
 * Allow the empty balloon to take off from a ledge, even if the player isn't there to witness it. (It was checking `HERE`, where it should have checked `BLOC`.) The balloon is light enough to take off even with the receptacle closed, but I imagine it to be more of a sideways thing because it may descend after that.
+* Levitating the dog collar now only attempts to levitate Cerberus if he's wearing it.
+* The Wizard is now only seen tearing his beard if he's present.
+* The demon won't taunt the Wizard if you've already set him free before the Wizard arrives.
+* `I-WAND` checks if takeable objects are still accessible before printing that they stop glowing. Before you could still see the message e.g. if you tossed the object down a chasm.
+* Fixed the menhir description. There were a couple of cases where it either wasn't correctly described, or not described at all.
+* If the menhir is moved from the Menhir Room, you can no longer interact with it from there or from the kennel.
 
 ### Stylistic fixes
 
@@ -136,6 +144,9 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Removed leading space from the balloon label and safe card texts. Judging by Confusion, these were blank lines in Mainframe Zork. We don't want that any more, and ZIL rendered it as a single space anyway.
 * Added newline to message printed when the Wizard taunts you in the baseball maze.
 * Added newline to message printed when solving the baseball maze.
+* Removed a stray space when being floated out of a vehicle.
+* Removed extra newline before `FINISH` when winning the game.
+* Removed extra newline at the end of the card text.
 
 # r63
 

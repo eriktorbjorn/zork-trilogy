@@ -27,6 +27,7 @@
 * Zork II: Don't allow enlargened objects (in the Alice area) to be automatically picked up.
 * `PRE-MUNG` now requires you to be holding the weapon. Before you could destroy the robot in Zork II with a sword he was holding.
 * Zork II: Allow trying to break `GLOBAL-PALANTIR` with your hands, since there's a custom message for it. (These are the spheres you pass through before resurrection.)
+* Zork II: Casting Float on an object now moves it to the room, i.e. out of containers or your inventory.
 
 ### Bugfixes
 
