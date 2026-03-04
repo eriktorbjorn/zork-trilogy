@@ -3124,7 +3124,10 @@ passage to the southwest opens beneath it." CR>)>
 <GLOBAL MENHIR-POSITION <>>
 
 <ROUTINE MENHIR-FCN ()
-	 <COND (<VERB? LOOK-UNDER LOOK-BEHIND>
+	 <COND (<AND <EQUAL? ,HERE ,MENHIR-ROOM ,KENNEL>
+		     <NOT <IN? ,MENHIR ,LOCAL-GLOBALS>>>
+		<GLOBAL-MENHIR-F>)
+	       (<VERB? LOOK-UNDER LOOK-BEHIND>
 		<COND (,MENHIR-POSITION
 		       <TELL
 "Behind the menhir is some air and then a wall." CR>)
