@@ -3098,34 +3098,28 @@ rough-hewn and unworked, others smooth and well-finished. One side of
 the room appears to have been used to quarry building blocks, the other
 to produce menhirs (standing stones). Obvious passages lead north and
 south." CR>
-		<COND (<IN? ,MENHIR ,LOCAL-GLOBALS>
-		       <DESCRIBE-MENHIR>)>
-		T)>>
+		<DESCRIBE-MENHIR>)>>
 
 <ROUTINE DESCRIBE-MENHIR ()
-	 <COND (<EQUAL? ,HERE ,MENHIR-ROOM>
-		<COND (<EQUAL? ,MENHIR-POSITION <>>
-		       <TELL
+	 <COND (<EQUAL? ,MENHIR-POSITION <>>
+		<TELL
 "One particularly large menhir, at least twenty feet tall and eight feet
 thick, is leaning against the wall blocking a dark opening leading
 southwest. On this side of the menhir is carved an ornate letter \"F\"." CR>)
-		      (<EQUAL? ,MENHIR-POSITION 1>
-		       <TELL
+	       (<EQUAL? ,MENHIR-POSITION 1>
+	        <TELL
 "There is a huge menhir lying on the floor near a southwest passage." CR>)
-		      (<EQUAL? ,MENHIR-POSITION 2>
-		       <TELL
-"A dark opening leads southwest." CR>)
-		      (<EQUAL? ,MENHIR-POSITION 3>
-		       <TELL "There is a huge menhir here." CR>)
-		      (T
-		       <TELL
+	       (<EQUAL? ,MENHIR-POSITION 2>
+	        <TELL "A dark opening leads southwest." CR>
+		<RTRUE>)
+	       (T
+	        <TELL
 "There is a huge menhir floating like a feather in midair here. A
 passage to the southwest opens beneath it." CR>)>
-		<COND (<EQUAL? ,HERE ,MUNGED-ROOM>
-		       <TELL
+	 <COND (<EQUAL? ,HERE ,MUNGED-ROOM>
+		<TELL
 "The explosion appears to have had no effect on the menhir." CR>)>
-		<RTRUE>)
-	       (T <TELL "A dark opening leads southwest." CR>)>>
+	 <RTRUE>>
 
 <GLOBAL MENHIR-POSITION <>>
 
@@ -3502,7 +3496,7 @@ The wizard runs from the room in terror." CR>
 			     <MOVE ,MENHIR ,PENTAGRAM-ROOM>
 			     <FCLEAR ,MENHIR ,NDESCBIT>
 			     <FCLEAR ,MENHIR ,TAKEBIT>
-			     <SETG MENHIR-POSITION 3>
+			     <SETG MENHIR-POSITION 2>
 			     <TELL
 "He waves his hands, and the menhir drops softly at your feet." CR>
 			     <GENIE-LEAVES>)
