@@ -2,6 +2,23 @@
 		      Zork II: The Wizard of Frobozz
 	(c) Copyright 1981, 1983 Infocom, Inc.  All Rights Reserved."
 
+<REPLACE-DEFINITION INHIBIT-AUTO-TAKE?
+	 <ROUTINE INHIBIT-AUTO-TAKE? (OBJ)
+		  <COND (<FSET? .OBJ ,TRYTAKEBIT>
+			 <RTRUE>)
+			(<FSET? .OBJ ,NONLANDBIT>
+			 <RTRUE>)
+			(<AND <IN? .OBJ ,BUCKET>
+			      <NOT <IN? ,WINNER ,BUCKET>>>
+			 <RTRUE>)
+			(<EQUAL? ,SPELL? ,S-FLOAT>
+			 <RTRUE>)
+			(<AND <EQUAL? .OBJ ,SPELL-VICTIM>
+			      <EQUAL? ,SPELL-USED ,W?FLOAT ,W?FREEZE>>
+			 <RTRUE>)
+			(T
+			 <RFALSE>)>>>
+
 <ROUTINE SWORD-FCN ()
 	 <COND (<AND <VERB? TAKE>
 		     <EQUAL? ,WINNER ,ADVENTURER>>
