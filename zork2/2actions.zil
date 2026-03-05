@@ -2249,7 +2249,7 @@ quietly swings open to reveal a passageway beyond." CR>
 	 <COND (<VERB? EXAMINE>
 		<TELL "Use the \"Look\" command." CR>)>>
 
-<ROUTINE MAGIC-ACTOR ("AUX" V)
+<ROUTINE MAGIC-ACTOR ("AUX" V L)
 	 <COND (,SPELL?
 		<COND (<EQUAL? ,SPELL? ,S-FALL>
 		       <COND (<OR <VERB? CLIMB-UP CLIMB-DOWN CROSS>
@@ -2272,20 +2272,35 @@ have done you in.">)
 this must be your lucky day, as you managed to regain your balance
 before what could have been a fatal fall." CR>)>)
 			     (<VERB? BOARD>
-			      <TELL
+			      <COND (<PRE-BOARD>
+				     <RTRUE>)
+				    (T
+				     <TELL
 "You get in the " D ,PRSO " but you fall out again, almost as though
-an invisible hand had tipped it over." CR>)>)
+an invisible hand had tipped it over." CR>)>)>)
 		      (<EQUAL? ,SPELL? ,S-FLOAT>
 		       <COND (<VERB? DIAGNOSE WAIT> <RFALSE>)
 			     (<VERB? WALK>
 <TELL "I suppose you plan to do that by flapping your arms?" CR>)
 			     (<VERB? DROP>
-			      <MOVE ,PRSO ,HERE>
-			      <TELL
-"The " D ,PRSO " drops to the ground." CR>)
-			     (<AND <VERB? TAKE> <IN? ,PRSO ,HERE>>
-			      <TELL
-"You can't reach that! It's on the ground." CR>)>)
+			      <COND (<IDROP>
+				     <MOVE ,PRSO ,HERE>
+				     <TELL
+"The " D ,PRSO " drops to the ground." CR>)>
+			      <RTRUE>)
+			     (<AND <VERB? TAKE> <NOT <HELD? ,PRSO>>>
+			      <SET L <LOC ,PRSO>>
+			      <TELL "You can't reach that!">
+			      <COND (<EQUAL? .L ,HERE>
+				     <TELL " It's on the ground." CR>)
+				    (<FSET? .L ,ACTORBIT>
+				     <TELL " The " D .L " has it." CR>)
+				    (<FSET? .L ,SURFACEBIT>
+				     <TELL " It's on the " D .L "." CR>)
+				    (<FSET? .L ,CONTBIT>
+				     <TELL " It's in the " D .L "." CR>)
+				    (T
+				     <CRLF>)>)>)
 		      (<EQUAL? ,SPELL? ,S-FREEZE>
 		       <COND (<VERB? DIAGNOSE WAIT QUIT RESTART RESTORE SAVE>
 			      <RFALSE>)
