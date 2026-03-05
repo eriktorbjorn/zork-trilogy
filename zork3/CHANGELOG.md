@@ -13,41 +13,41 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 
 ### Changes to game mechanics
 
-* \[Cree-8\] It's no longer possible to enter the Royal Puzzle from the side room if that part of the puzzle is blocked.
+* \[Cree-8] It's no longer possible to enter the Royal Puzzle from the side room if that part of the puzzle is blocked.
 * The shadowy figure is no longer able to block an exit if he's wounded enough. The game already described him as "`probably not capable of hindering your movement`", but previously he would block you anyway.
 * The sword demon is now started when the sword appears in your hand. Before, it wasn't started until you picked up the sword which meant that you could play through a large chunk of the game without ever seeing the sword glow. In particular, it's supposed to glow if the man hasn't appeared yet.
 
 ### Other minor features
 
 * Throwing the lamp or the staff off the cliff already replaced them with broken versions of themselves. That now also happens when throwing them off the ledge, or pushing a sandstone wall on top of them.
-* Pushing a sandstone wall on top of an object bizarrely moved that object to the side room of the Royal Puzzle. This included the slot in the door, so if you put the book in the slot from there you would see an entirely fictitious passage open up to the west. The object was returned to the puzzle again when pushing the sandstone off it, but why move it in the first place?
+* Pushing a sandstone wall on top of an object bizarrely moved that object to the side room of the Royal Puzzle. This included the slot in the door, so if you put the book in the slot from there you would see an entirely fictitious passage open up to the west. The object was returned to the puzzle again when pushing the sandstone off it, but why move it in the first place\?
 * Clear `TOUCHBIT` from `CP` when entering the Royal Puzzle so that you always get the full room description. This was already done (although implemented in a different way) when exiting the puzzle through the side entrance. Now it covers all cases. Even if you leave the puzzle by dying.
 * The Royal Museum pedestal had some bugs:
   * The capacity has been increased from 50 to 55 so that it's large enough to actually hold all of the Royal Jewels.
-  * \[Cree-9\] The pedestal is accessible in the old Jewel Room. There is no cage around it this year, so the old message was wrong. This means that it's now possible to pick up one of the jewels and then put it back.
+  * \[Cree-9] The pedestal is accessible in the old Jewel Room. There is no cage around it this year, so the old message was wrong. This means that it's now possible to pick up one of the jewels and then put it back.
   * When putting an object on the pedestal, only set its `NDESCBIT` if you are in the old jewel room. If you can access the pedestal elsewhere, the standard object lister should handle it instead.
   * React to `PUT-ON` when putting the Royal Jewels on the pedestal. Previously only `PUT` was handled.
   * React the same way to `LOOK-ON` and `LOOK-INSIDE`. Before it would claim the pedestal was empty for one of them, since the jewels have `NDESCBIT`.
 * Travelling in time no longer advances the move count by 2\.
 * Call `FINISH` instead of `QUIT` when dying permanently, so that the player can restart or restore. This already happened in some cases, but now it also covers dying too many times or dying by a standard `JIGS-UP` (rather than `REALLY-DEAD`) during time travel.
-* \[Cree-10\] The pile of coal in Zork I is now a proper object, just so that the game will recognize the synonyms for it. There's probably no way you can interact with it.
-* \[Nathan-17\] `CHEST-LIFTED` is now set when tying the rope to the chest as instructed. Before it was only set if the rope was already tied when the man appeared. The game checks this flag when trying to talk to the man, so even after he returns it might tell you to tie the rope.
-* \[Nathan-16\] If you tried to grab the rope before tying it to the chest, the man would point to "`the chest near you on the ledge`", even if you were carrying the chest or had thrown it off the ledge. Now it will say "`the chest in your arms`" if you are carrying it, and if the chest disappears entirely he will leave early.
+* \[Cree-10] The pile of coal in Zork I is now a proper object, just so that the game will recognize the synonyms for it. There's probably no way you can interact with it.
+* \[Nathan-17] `CHEST-LIFTED` is now set when tying the rope to the chest as instructed. Before it was only set if the rope was already tied when the man appeared. The game checks this flag when trying to talk to the man, so even after he returns it might tell you to tie the rope.
+* \[Nathan-16] If you tried to grab the rope before tying it to the chest, the man would point to "`the chest near you on the ledge`", even if you were carrying the chest or had thrown it off the ledge. Now it will say "`the chest in your arms`" if you are carrying it, and if the chest disappears entirely he will leave early.
 
 ### Bugfixes
 
 * Stop the game from reacting to "`PUT` object `IN HOOD`" or "`PUT` object `IN VALUABLES`". I'm not sure why these objects handle the PUT action at all. They may have been needed at some point to keep the player from stealing them, but I don't think that happens any more. Still, let's keep it just to be safe.
-* \[Nathan-12\] Increased the size of `CELLOBJS` and `CPOBJS`. These tables are used to allow a single room to masquerade as several. They store which objects are in each such fake room, but they only allowed for eight objects in each room. If you dropped more than that, they would spill over to the next room. By my count, there are 16 objects that could coexist. If we still need to change it, there is now a `MAXOBJS` constant for it, instead of a hard-coded value.
+* \[Nathan-12] Increased the size of `CELLOBJS` and `CPOBJS`. These tables are used to allow a single room to masquerade as several. They store which objects are in each such fake room, but they only allowed for eight objects in each room. If you dropped more than that, they would spill over to the next room. By my count, there are 16 objects that could coexist. If we still need to change it, there is now a `MAXOBJS` constant for it, instead of a hard-coded value.
 * It's no longer possible to throw the chest off the ledge if the rope is tied to it.
 * The book now has `BURNBIT`. You could already burn it when you weren't holding it. Now you can while holding it as well.
-* \[Nathan-13\] Throwing the potion now works the same as dropping it, i.e. it's removed rather than moved to the ground.
+* \[Nathan-13] Throwing the potion now works the same as dropping it, i.e. it's removed rather than moved to the ground.
 * The valuables from the chest now have `TRYTAKEBIT` so that you can't automatically pick them up.
-* \[Nathan-19\] Drinking from the vial or opening it now checks if it's open or not.
+* \[Nathan-19] Drinking from the vial or opening it now checks if it's open or not.
 * When examining the man, no longer refer to the chest as "now-open" if it's closed. Instead it's "now-closed".
 * There was a custom message for picking up the sand underwater that was never reached. Now it is.
 * There was a custom message in `T-BAR-F` for turning the T-bar. Give `T-BAR` the `TURNBIT` so that it can be reached.
 * When waking the old man, check that he isn't already awake.
-* \[Nathan-18\] When moving the manhole cover, check if it has already been moved.
+* \[Nathan-18] When moving the manhole cover, check if it has already been moved.
 * Fixed some corner cases when interacting with the sailor. It was possible to use "`HELLO SAILOR`" from another room, and it could say that nothing happens yet even after the thing just happened.
 * Shaking an open container underwater no longer incorrectly says the contents disappear.
 * Check if the chest is open before declaring that the torch, lamp or staff don't fit.
