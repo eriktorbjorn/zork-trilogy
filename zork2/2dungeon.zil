@@ -1216,7 +1216,6 @@ the east is fitful light.")
 	(ADJECTIVE DEAD BABY SEA)
 	(DESC "dead sea serpent")
 	(LDESC "There is a dead sea serpent in a heap here.")
-	(FLAGS TAKEBIT)
 	(ACTION DEAD-SERPENT-FCN)
 	(SIZE 400)>
 
