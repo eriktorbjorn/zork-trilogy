@@ -571,11 +571,15 @@ probably)." CR>>
 		       <TELL
 "A strong odor of chocolate permeates the room." CR>)
 		      (<EQUAL? ,SPELL-USED ,W?FLUORESCE>
-		       <FSET ,PRSO ,LIGHTBIT>
-		       <FSET ,PRSO ,ONBIT>
-		       <SETG LIT T>
-		       <TELL
-"The " D ,PRSO " begins to glow." CR>)
+		       <COND (<AND <NOT <EQUAL? ,PRSO ,MATCH>>
+				   <EQUAL? <META-LOC ,PRSO> ,HERE>>
+			      <FSET ,PRSO ,ONBIT>
+			      <SETG LIT T>
+			      <COND (<EQUAL? ,PRSO ,LAMP>
+				     <DISABLE <INT I-LANTERN>>
+				     <FCLEAR ,PRSO ,LIGHTBIT>)>
+			      <TELL
+"The " D ,PRSO " begins to glow." CR>)>)
 		      (<EQUAL? ,SPELL-USED ,W?FILCH>
 		       <SETG SPELL-HANDLED? T>
 		       <COND (<FSET? ,PRSO ,TAKEBIT>
@@ -778,6 +782,11 @@ D ,PRSO "." CR>)>)
 		       <FCLEAR ,PRSO ,ONBIT>
 		       <TELL "The " D ,PRSO " is now off." CR>
 		       <NOW-DARK?>)>)
+	       %<COND (<==? ,ZORK-NUMBER 2>
+		       '(<MAGIC-GLOW? ,PRSO>
+			 <TELL "How? It's glowing by magic." CR>))
+		      (ELSE
+		       '(<NULL-F> T))>
 	       (T
 		<TELL "You can't turn that off." CR>)>
 	 <RTRUE>>
@@ -793,6 +802,11 @@ D ,PRSO "." CR>)>)
 			      <SETG LIT <LIT? ,HERE>>
 			      <CRLF>
 			      <V-LOOK>)>)>)
+		      %<COND (<==? ,ZORK-NUMBER 2>
+			      '(<MAGIC-GLOW? ,PRSO>
+				<TELL "It's already glowing by magic." CR>))
+			     (ELSE
+			      '(<NULL-F> T))>
 	       (<FSET? ,PRSO ,BURNBIT>
 		<TELL
 "If you wish to burn the " D ,PRSO ", you should say so." CR>)

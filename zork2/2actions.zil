@@ -19,6 +19,14 @@
 			(T
 			 <RFALSE>)>>>
 
+<ROUTINE MAGIC-GLOW? (OBJ)
+	 <COND (<AND <FSET? .OBJ ,ONBIT>
+		     <NOT <FSET? .OBJ ,LIGHTBIT>>
+		     <NOT <EQUAL? .OBJ ,MATCH>>>
+		<RTRUE>)
+	       (T
+		<RFALSE>)>>
+
 <ROUTINE SWORD-FCN ()
 	 <COND (<AND <VERB? TAKE>
 		     <EQUAL? ,WINNER ,ADVENTURER>>
@@ -2140,13 +2148,17 @@ Unfortunately, wishing makes the coin go...." CR>
 		<REMOVE-CAREFULLY ,LAMP>
 		<MOVE ,BROKEN-LAMP ,HERE>)
 	       (<VERB? LAMP-ON>
-		<COND (<FSET? ,LAMP ,RMUNGBIT>
+		<COND (<MAGIC-GLOW? ,LAMP>
+		       <RFALSE>)
+		      (<FSET? ,LAMP ,RMUNGBIT>
 		       <TELL "A burned-out lamp won't light." CR>)
 		      (T
 		       <ENABLE <INT I-LANTERN>>
 		       <>)>)
 	       (<VERB? LAMP-OFF>
-		<COND (<FSET? ,LAMP ,RMUNGBIT>
+		<COND (<MAGIC-GLOW? ,LAMP>
+		       <RFALSE>)
+		      (<FSET? ,LAMP ,RMUNGBIT>
 		       <TELL "The lamp has already burned out." CR>)
 		      (T
 		       <DISABLE <INT I-LANTERN>>
