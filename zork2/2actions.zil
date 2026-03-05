@@ -1047,12 +1047,14 @@ everything you are carrying seems to be its normal size)." CR CR>
 		      <REMOVE ,PRSO>
 		      <ICEBOOM>)
 		     (<EQUAL? ,PRSO ,RED-ICING>
-		      <REMOVE ,PRSO>
+		      <COND (<NOT <FSET? ,PRSO ,NONLANDBIT>>
+			     <REMOVE ,PRSO>)>
 		      <JIGS-UP
 "That was delicious, but your dying memory is of feeling horribly dehydrated
 and thirsty.">)
 		     (<EQUAL? ,PRSO ,BLUE-ICING>
-		      <REMOVE ,PRSO>
+		      <COND (<NOT <FSET? ,PRSO ,NONLANDBIT>>
+			     <REMOVE ,PRSO>)>
 		      <TELL "The room around you seems to be getting smaller."
 			    CR CR>
 		      <COND (<EQUAL? ,HERE ,POSTS-ROOM>
