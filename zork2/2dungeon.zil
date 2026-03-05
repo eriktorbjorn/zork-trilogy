@@ -2241,7 +2241,7 @@ the like of which is rarely seen outside the Great Underground Empire.")>
 	(SYNONYM FUSE STRING COIL)
 	(ADJECTIVE BLACK THIN)
 	(DESC "black string")
-	(FLAGS TAKEBIT BURNBIT)
+	(FLAGS TAKEBIT BURNBIT TRYTAKEBIT)
 	(ACTION FUSE-FCN)
 	(LDESC "There is a coil of black, braided string here.")
 	(SIZE 1)>
