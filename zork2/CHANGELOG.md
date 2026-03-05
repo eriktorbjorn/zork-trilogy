@@ -9,7 +9,6 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Looking into the palantirs didn't work because the old `ROOM?` routine had been replaced with a macro that did something else entirely. The routine returned `T` if the object was in a room, unless it was carried by the player. The macro was used to compare `HERE` to a set of objects, kind of like how `VERB?` and similar macros work. The macro has been removed and the routine reinstated.
 * \[Cree-6\] The sword had been changed from "sword" to "elvish sword", presumably for a better disambiguation message between the sword and the nicked swords. But this opened a can of worms where it was now described as "a elvish sword" instead of "an elvis sword", and we don't have any mechanism for dealing with that. So it's back to a plain "sword" again. The disambiguation problem has been solved in a different way.
 * The Fantasize spell should work again. It was broken completely in r48, and while an attempt had been made to restore it in r63 it didn't work correctly. I hope it does now.
-* Removed TAKE and HAVE from the "`LIGHT OBJECT`" syntax. Otherwise, "LIGHT FUSE" will auto-pickup the fuse before lighting it, before you can even say "Wile E. Coyote, Genius". Historically, Zork I always did the auto-pickup thing for this syntax. Zork II and III only added it later, presumably when the code bases were unified. But I can't think of any downsides to keeping it in Zork III. Technically it looks like Zork II used to still have the HAVE flag, but maybe it wasn't as strictly enforced back then? Note that in earlier versions you couldn't even "`LIGHT FUSE`". Before r48 you were told to use a match instead.
 * Removed "footpad" as a synonym for the sailor when compiling as Zork II, because that game already has a `FOOTPAD` object.This means that you can once again ask the game what a footpad is. This was only broken in r63.
 * The Fierce spell now makes the sword glow dull red again.
 * The sword is once again listed before the lamp in the starting room.
@@ -66,7 +65,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * You can now order the robot to leave the room while you're trapped in the cage. It's not a good idea by any means, but it makes sense that you can do it.
 * It's no longer possible to fill the pot with the water in the bucket while you're outside the bucket. You're not allowed to take objects from the bucket while you're outside, and taking the water should arguably be even harder.
 * The growing/shrinking mechanics in the Alice area have been slightly updated:
-  * It no longer sets/clears `TRYTAKEBIT` on objects, because that may remove the bit from objects that should still have it, e.g. the sword. Instead, `ITAKE` will no longer automatically pick up objects that have `NONLANDBIT`. That's the bit still used to indicate that an object is now larger than you are.
+  * It no longer sets/clears `TRYTAKEBIT` on objects, because that may remove the bit from objects that should still have it, e.g. the sword. Inhibiting automatic taking is handled elsewhere.
   * The NONLANDBIT is applied recursively to objects in the room, so that objects inside containers also grow or shrink.
   * Eating an enlargened cake no longer removes it, unless it's the exploding one. A mouthful should be enough.
 * The sword will now glow in the Topiary, because it's a dangerous place. This is a new feature, but I think it's well within the spirit of the game. Especially now that the sword doesn't glow as often any more.
@@ -79,6 +78,11 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Before calling `RANDOM-WALK`, check that there is a random direction to run to. It still won't check if the room on the other side is munged, but I think we can live with that. At the same time, I made a special case for being scared by the Wizard, so that he's referred to as "he" rather than "it".
 * Frying or Filching the dog collar while Cerberus is wearing it is now treated the same as removing it by hand.
 * Giving the chest to the demon is now handled the same as giving the iron box to him, i.e. he will look in it for the treasure that was originally there but not for any other treasures. It's a bit strange, but at least it's more consistent now.
+* Instead of relying (or sometimes not relying) on `TRYTAKEBIT` to inhibit automatic taking, `INHIBIT-AUTO-TAKE?` handles the following cases in addition to the standard `TRYTAKEBIT`:
+  * Objects in the Alice area that didn't shrink alongside yourself.
+  * Objects inside the bucket, while you yourself are outside.
+  * Any objects while you are suffering from the "Float" spell.
+  * Any object you have enchanted with the "Float" or "Freeze spell".
 
 ### Bugfixes
 
