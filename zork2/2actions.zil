@@ -13,8 +13,10 @@
 			 <RTRUE>)
 			(<EQUAL? ,SPELL? ,S-FLOAT>
 			 <RTRUE>)
-			(<AND <EQUAL? .OBJ ,SPELL-VICTIM>
-			      <EQUAL? ,SPELL-USED ,W?FLOAT ,W?FREEZE>>
+			(<AND <EQUAL? ,SPELL-USED ,W?FREEZE>
+			      <EQUAL? .OBJ ,SPELL-VICTIM>>
+			 <RTRUE>)
+			(<FLOATING? .OBJ>
 			 <RTRUE>)
 			(T
 			 <RFALSE>)>>>
@@ -26,6 +28,16 @@
 		<RTRUE>)
 	       (T
 		<RFALSE>)>>
+
+<ROUTINE FLOATING? (OBJ)
+	 <COND (<NOT <EQUAL? ,SPELL-USED ,W?FLOAT>>
+		<RFALSE>)>
+	 <REPEAT ()
+		 <COND (<NOT .OBJ>
+			<RFALSE>)
+		       (<EQUAL? .OBJ ,SPELL-VICTIM>
+			<RTRUE>)>
+		 <SET OBJ <LOC .OBJ>>>>
 
 <ROUTINE SWORD-FCN ()
 	 <COND (<AND <VERB? TAKE>

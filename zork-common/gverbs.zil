@@ -1941,8 +1941,9 @@ for the final secret.\"" CR>)>)
 		       <TELL <PICK-ONE ,YUKS> CR>)>
 		<RFALSE>)
 	       %<COND (<==? ,ZORK-NUMBER 2>
-		       '(<AND <EQUAL? ,PRSO ,SPELL-VICTIM>
-		              <EQUAL? ,SPELL-USED ,W?FLOAT ,W?FREEZE>>
+		       '(<OR <AND <EQUAL? ,PRSO ,SPELL-VICTIM>
+			          <EQUAL? ,SPELL-USED ,W?FREEZE>>
+			     <FLOATING? ,PRSO>>
 		         <COND (<EQUAL? ,SPELL-USED ,W?FLOAT>
 		                <TELL
 "You can't reach that. It's floating above your head." CR>)
