@@ -955,7 +955,24 @@ are attacked by these magical wardens, and destroyed!">)>)>>
 "The " D ,PRSO " is now much larger than you are. You have no hope of
 taking it." CR>)>)>>
 
-<ROUTINE EATME-FCN ("AUX" F N)
+<ROUTINE ALICE-TRANSFORM (OBJ WHERE "OPT" (GROW <>) "AUX" F N)
+	 <SET F <FIRST? .OBJ>>
+	 <REPEAT ()
+		 <COND (<NOT .F> <RETURN>)
+		       (T
+			<SET N <NEXT? .F>>
+			<COND (<AND <NOT <EQUAL? .F ,ADVENTURER>>
+				    <FSET? .F ,TAKEBIT>>
+			       <COND (<EQUAL? <LOC .F> ,HERE>
+				      <MOVE .F .WHERE>)>
+			       <COND (.GROW
+				      <FCLEAR .F ,NONLANDBIT>)
+				     (T
+				      <FSET .F ,NONLANDBIT>)>
+			       <ALICE-TRANSFORM .F .WHERE .GROW>)>)>
+		 <SET F .N>>>
+
+<ROUTINE EATME-FCN ()
     <COND (<AND <VERB? EAT>
 		<EQUAL? ,PRSO ,EAT-ME-CAKE>
 		<EQUAL? ,HERE ,TEA-ROOM>>
@@ -965,17 +982,7 @@ everything you are carrying seems to be its normal size)." CR CR>
 	   <REMOVE ,EAT-ME-CAKE>
 	   <FSET ,ROBOT ,INVISIBLE>
 	   <FSET ,ALICE-TABLE ,INVISIBLE>
-	   <SET F <FIRST? ,HERE>>
-	   <REPEAT ()
-		   <COND (<NOT .F> <RETURN>)
-			 (T
-			  <SET N <NEXT? .F>>
-			  <COND (<AND <NOT <EQUAL? .F ,ADVENTURER>>
-				      <FSET? .F ,TAKEBIT>>
-				 <FSET .F ,NONLANDBIT>
-				 <FSET .F ,TRYTAKEBIT>
-				 <MOVE .F ,POSTS-ROOM>)>)>
-		   <SET F .N>>
+	   <ALICE-TRANSFORM ,HERE ,POSTS-ROOM>
 	   <GOTO ,POSTS-ROOM>)
 	  (T <CAKE-CRUMBLE>)>>
 
@@ -1014,7 +1021,7 @@ everything you are carrying seems to be its normal size)." CR CR>
 		       <TELL
 "The " D .C1 " has crumbled to dust." CR>)>)>>
 
-<ROUTINE CAKE-FCN ("AUX" F N)
+<ROUTINE CAKE-FCN ()
 	<COND (<VERB? READ>
 	       <COND (<FSET? ,PRSO ,NONLANDBIT>
 		      <TELL
@@ -1052,17 +1059,7 @@ and thirsty.">)
 			     <FCLEAR ,ROBOT ,INVISIBLE>
 			     <FCLEAR ,ALICE-TABLE ,INVISIBLE>
 			     <FSET ,POSTS ,INVISIBLE>
-			     <SET F <FIRST? ,HERE>>
-	   		     <REPEAT ()
-				<COND (<NOT .F> <RETURN>)
-				      (T
-				       <SET N <NEXT? .F>>
-				       <COND (<AND <NOT <EQUAL? .F ,ADVENTURER>>
-						   <FSET? .F ,TAKEBIT>>
-					      <FCLEAR .F ,NONLANDBIT>
-					      <FCLEAR .F ,TRYTAKEBIT>
-					      <MOVE .F ,TEA-ROOM>)>)>
-				<SET F .N>>
+			     <ALICE-TRANSFORM ,HERE ,TEA-ROOM T>
 			     <GOTO ,TEA-ROOM>)
 			    (T <JIGS-UP
 "The room seems to have become too small to hold you. The walls are not as
