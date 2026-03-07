@@ -2002,7 +2002,6 @@ A legend beneath the picture says \"The Dungeon and Treasury of Zork.\"" CR>)
 	 <SETG P-STRENGTH 5>
 	 <SETG S-STRENGTH 5>
 	 <TELL .DESC CR>
-	 <COND (<NOT <==? ,YEAR ,YEAR-PRESENT>> <CRLF> <FINISH>)>
 	 <COND (<NOT <==? ,ADVENTURER ,WINNER>>
 		<TELL "
 |    ****  The " D ,WINNER " has died  ****
@@ -2015,6 +2014,7 @@ A legend beneath the picture says \"The Dungeon and Treasury of Zork.\"" CR>)
     ****  You have died  ****|
 |
 ">
+	 <COND (<NOT <==? ,YEAR ,YEAR-PRESENT>> <FINISH>)>
 	 <COND (<G? <SETG DEATHS <+ ,DEATHS 1>> 3>
 		<TELL
 "You feel yourself disembodied in a deep blackness. A voice from the void
@@ -2839,7 +2839,7 @@ it, everything you were holding has vanished too">)
 	 <COND (<OR .MFLG .WFLG> <TELL "!" CR>)>>
 
 <ROUTINE GUARDS-KILL ()
-	 <TELL <PICK-ONE ,GUARD-KILLERS> CR>
+	 <TELL <PICK-ONE ,GUARD-KILLERS>>
 	 <REALLY-DEAD " ">>
 
 <GLOBAL GUARD-KILLERS <LTABLE 0
@@ -2872,7 +2872,7 @@ are taken there, and spend the rest of your life in misery.">>
 <ROUTINE REALLY-DEAD (STR)
 	 <TELL .STR "|
 |
-****  You have died  ****|
+    ****  You have died  ****|
 |
 ">
 	 <FINISH>>
