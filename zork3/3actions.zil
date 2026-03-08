@@ -2439,7 +2439,7 @@ surrounded by the Crown Jewels of the Empire.")>
 
 <GLOBAL YEAR-CLOSED 883>
 
-<CONSTANT REAL-YEAR-CLOSED 883>
+;<CONSTANT REAL-YEAR-CLOSED 883>
 
 <CONSTANT YEAR-PRESENT 948>
 
@@ -2741,8 +2741,7 @@ When your head clears, you realize that your surroundings have changed." CR>
 	 ;<SETG MOVES <+ ,MOVES 1>>
 	 <QUEUE I-GUARDS-LEAVE 0>
 	 <SETG INVIS <>>
-	 <COND (<G? ,YEAR ,YEAR-BUILT>
-		<SETG GUARDS-PRESENT T>)>
+	 <SETG GUARDS-PRESENT <L? ,TM-YEAR ,YEAR-CLOSED>>
 	 <COND (<==? ,YEAR ,YEAR-PRESENT>
 		<SETG SNAP-LOC ,HERE>
 		<ENABLE <QUEUE I-SNAP 40>>)>
@@ -2883,7 +2882,7 @@ are taken there, and spend the rest of your life in misery.">>
 <GLOBAL CLUMSY-ROBBERY <>>
 <GLOBAL MYSTERY <>>
 
-<GLOBAL GUARDS-PRESENT T>
+<GLOBAL GUARDS-PRESENT <>>
 
 <ROUTINE HEAR-FLATHEAD ()
 	 <SETG FLATHEAD-HEARD T>
@@ -3117,7 +3116,7 @@ of Lord Flathead that security was too lax.">)>
 	       (<VERB? CLOSE> <TELL "The cage is already closed." CR>)>>
 
 <ROUTINE VOICES-F ()
-	 <COND (<AND ,GUARDS-PRESENT <==? ,YEAR ,YEAR-BUILT>>
+	 <COND (,GUARDS-PRESENT
 		<TELL
 "The voices are muffled by the door which (fortunately for you) separates
 you. They seem to be in heated debate on the topic of
