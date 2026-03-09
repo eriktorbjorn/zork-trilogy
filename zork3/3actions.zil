@@ -4,6 +4,16 @@
 	(c) Copyright 1982 Infocom, Inc.  All Rights Reserved.
 "
 
+<REPLACE-DEFINITION INHIBIT-AUTO-TAKE?
+	 <ROUTINE INHIBIT-AUTO-TAKE? (OBJ)
+		  <COND (<FSET? .OBJ ,TRYTAKEBIT>
+			 <RTRUE>)
+			(<AND <IN? ,WINNER ,TIME-MACHINE>
+			      <NOT <ULTIMATELY-IN? .OBJ ,TIME-MACHINE>>>
+			 <RTRUE>)
+			(T
+			 <RFALSE>)>>>
+
 "SWORD demon"
 
 <ROUTINE I-SWORD ("AUX" (DEM <INT I-SWORD>) (NG 0) P T L)
@@ -2543,10 +2553,7 @@ console in front. On the console is a single button and a dial connected to
 a three-digit display which reads " N ,TM-YEAR
 ". The machine is surprisingly shiny and shows few signs of age." CR>)
 	       (<==? .RARG ,M-BEG>
-		<COND (<VERB? MOVE>
-		       <TELL
-"You might be able to move the machine by pushing it." CR>)
-		      (<AND <VERB? PUSH-TO>
+		<COND (<AND <VERB? PUSH-TO>
 			    <==? ,PRSO ,TIME-MACHINE>>
 		       <TELL
 "That would be a good trick from inside it." CR>)
@@ -2554,8 +2561,7 @@ a three-digit display which reads " N ,TM-YEAR
 		       <TELL
 "You're not going anywhere in this heap." CR>)
 		      (<AND <VERB? TAKE PUT MOVE PUSH OPEN CLOSE>
-			    <NOT <HELD? ,PRSO>>
-			    <NOT <IN? ,PRSO ,TIME-MACHINE>>>
+			    <NOT <ULTIMATELY-IN? ,PRSO ,TIME-MACHINE>>>
 		       <TELL
 "You can't do that from inside the machine." CR>)>)
 	       (<NOT .RARG>
@@ -2575,7 +2581,10 @@ and a dial connected to a display which reads " N ,TM-YEAR "." CR>)
 			     (<VERB? TAKE RAISE>
 			      <TELL
 "The machine must weigh hundreds of pounds and cannot be carried." CR>)
-			     (<VERB? PUSH MOVE>
+			     (<VERB? MOVE>
+			      <TELL
+"You might be able to move the machine by pushing it." CR>)
+			     (<VERB? PUSH>
 			      <TELL
 "You should specify in which direction to push the machine." CR>)
 			     (<VERB? PUSH-TO>
