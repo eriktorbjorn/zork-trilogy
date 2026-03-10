@@ -1128,7 +1128,8 @@ pretty strong stuff, since it remains intact!" CR>
 	<COND (<VERB? EXAMINE READ>
 	       <FIXED-FONT-ON>
 	       <TELL
-"       o  b  o|
+"|
+       o  b  o|
    r             z|
 f   M  A  G  I  C   z|
 c    W  E   L  L    y|
@@ -1142,7 +1143,8 @@ c    W  E   L  L    y|
 	<COND (<VERB? EXAMINE READ>
 	       <FIXED-FONT-ON>
 	       <TELL
-"       o  b  o|
+"|
+       o  b  o|
 |
        A  G  I|
         E   L|
@@ -1156,7 +1158,8 @@ c    W  E   L  L    y|
 	<COND (<VERB? EXAMINE READ>
 	       <FIXED-FONT-ON>
 	       <TELL	
-"              Bank of Zork|
+"|
+               Bank of Zork|
                    VAULT|
                  *722 GUE*|
         Frobozz Magic Vault Company|
