@@ -97,19 +97,19 @@
 		<SETG CURRENT-LAMP ,BROKEN-LAMP>
 		<MOVE ,BROKEN-LAMP ,HERE>)
 	       (<VERB? LAMP-ON>
-		<COND (<NOT <FSET? ,LAMP ,LIGHTBIT>>
+		<COND (<FSET? ,LAMP ,RMUNGBIT>
 		       <TELL "A burned-out lamp won't light." CR>)
 		      (ELSE
 		       <ENABLE <INT I-LANTERN>>
 		       <>)>)
 	       (<VERB? LAMP-OFF>
-		<COND (<NOT <FSET? ,LAMP ,LIGHTBIT>>
+		<COND (<FSET? ,LAMP ,RMUNGBIT>
 		       <TELL "The lamp has already burned out." CR>)
 		      (ELSE
 		       <DISABLE <INT I-LANTERN>>
 		       <>)>)
 	       (<VERB? EXAMINE>
-		<COND (<NOT <FSET? ,LAMP ,LIGHTBIT>>
+		<COND (<FSET? ,LAMP ,RMUNGBIT>
 		       <TELL "The lamp has burned out.">)
 		      (<FSET? ,LAMP ,ONBIT>
 		       <TELL "The lamp is on.">)
