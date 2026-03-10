@@ -4159,6 +4159,8 @@ can always help me! See you around, sport!\" He disappears." CR>
 		     ,CHEST-TIED>
 		<SETG CHEST-TIED <>>
 		<SETG ROPE-FLAG <>>
+		<MOVE ,CHEST ,MAN>
+		<FSET ,CHEST ,TOUCHBIT>
 		<QUEUE I-MAN-APPEARS 0>)>>
 
 <GLOBAL MAN-WAITS <LTABLE 0
