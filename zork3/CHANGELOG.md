@@ -33,6 +33,9 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * \[Cree-10] The pile of coal in Zork I is now a proper object, just so that the game will recognize the synonyms for it. There's probably no way you can interact with it.
 * \[Nathan-17] `CHEST-LIFTED` is now set when tying the rope to the chest as instructed. Before it was only set if the rope was already tied when the man appeared. The game checks this flag when trying to talk to the man, so even after he returns it might tell you to tie the rope.
 * \[Nathan-16] If you tried to grab the rope before tying it to the chest, the man would point to "`the chest near you on the ledge`", even if you were carrying the chest or had thrown it off the ledge. Now it will say "`the chest in your arms`" if you are carrying it, and if the chest disappears entirely he will leave early.
+* `TIME-MACHINE-F` now only handles the `MOVE` action for itself, not for every object while you are inside it.
+* The check for if you are trying to manipulate objects outside the time machine from inside it has been made a bit more strict, and you can no longer automatically pick up such objects.
+* The jewelled knife now has `WEAPONBIT`.
 
 ### Bugfixes
 

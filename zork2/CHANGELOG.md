@@ -145,7 +145,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 ### Stylistic fixes
 
 * The copyright years in the newspaper have been updated to match the ones in the game banner. This was done in earlier versions when the copyright years changed.
-* Some missing newlines have been added:
+* Some missing newlines have been added. I've tried to follow two rules here: 1) If there is a message before a room description, there should be a newline between them, and 2) Small centered signs should start with a newline.
   * When attacking the princess.
   * The first time your compass starts spinning.
   * When the Gnome of Zurich escorts you to the Bank entrance.
@@ -155,10 +155,14 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
   * When the Wizard taunts you in the baseball maze.
 * Some unnecessary newlines have been removed:
   * When someone other than the player dies, e.g. the robot. There is no perfect solution here, because if a message is printed right after that it would be nice with an extra newline.
+  * When winning the game, before `FINISH` is called.
+  * At the beginning of the well etchings.
+  * At the beginning of the Bank of Zork vault sign.
+  * At the beginning of the candy description.
+* Some unnecessary newlines have been removed.
   * When reading the Wizard's warning label.
   * When reading the safe card.
-  * The signs in the Bank of Zork.
-  * When winning the game, before `FINISH` is called.
+  * The signs in the Bank of Zork room descriptions.
 * Removed a stray space when being floated out of a vehicle.
 * Removed leading space from the balloon label and safe card texts. Judging by Confusion, these were blank lines in Mainframe Zork. We don't want that any more, and ZIL rendered it as a single space anyway.
 * Lighting the fuse now prints "(with the match)" when appropriate. This is consistent with lighting the candles in Zork I, even though the implementation is a bit different.
