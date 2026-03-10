@@ -1111,7 +1111,8 @@ pretty strong stuff, since it remains intact!" CR>
 	 <COND (<VERB? EXAMINE READ>
 		<FIXED-FONT-ON>
 		<TELL
-"       Frobozz Magic Candy Company|
+"|
+       Frobozz Magic Candy Company|
          >>Special Assortment<<|
           Candied Grasshoppers|
              Chocolated Ants|
