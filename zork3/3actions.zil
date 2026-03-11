@@ -4274,9 +4274,13 @@ points to the chest ">
 		       <TELL "." CR>)>)
 	       (<VERB? TIE>
 		<COND (<EQUAL? ,CHEST ,PRSO ,PRSI>
-		       <TELL
+		       <COND (,CHEST-TIED
+			      <TELL "The rope is already tied to it." CR>
+			      <RTRUE>)
+			     (T
+			      <TELL
 "The chest is now tied to the rope." CR>
-		       <SETG CHEST-TIED T>
+			      <SETG CHEST-TIED T>)>
 		       <COND (<AND ,MAN-FLAG <NOT ,MAN-GONE>>
 			      <TELL
 "The man above you looks pleased. \"Now there's a good friend! Thank
