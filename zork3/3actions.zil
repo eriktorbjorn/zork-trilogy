@@ -4966,6 +4966,7 @@ Duration of effect is unpredictable. Use only in place of death!|
 		<COND (,SPRAY-USED? <TELL "The can seems empty." CR>)
 		      (T <TELL "There is a sloshing sound from inside." CR>)>)
 	       (<VERB? BURN>
+		<REMOVE ,REPELLENT>
 		<JIGS-UP
 "The can explodes and you die a horribly smelly death.">)
 	       (<AND <VERB? SPRAY PUT-ON> <==? ,PRSO ,REPELLENT>>
