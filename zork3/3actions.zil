@@ -2051,7 +2051,7 @@ and full of peril. Go then, and let me not wait long!\" You feel some
 great power well up inside you and you fall to the floor. The next
 moment, you are awakening, as if from a deep slumber." CR>)>
 	 <MOVE ,CURRENT-LAMP ,ZORK2-STAIR>
-	 <COND (<AND <IN? ,KEY ,WINNER>
+	 <COND (<AND <HELD? ,KEY>
 		     <OR <EQUAL? ,HERE ,DARK-1 ,DARK-2 ,KEY-ROOM>
 			 <EQUAL? ,HERE ,AQ-1 ,AQ-2>>>
 		<MOVE ,KEY ,KEY-ROOM>)>
