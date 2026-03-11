@@ -4249,7 +4249,9 @@ trees." CR>)
 	 <COND (<NOT ,ROPE-FLAG>
 		<TELL "You can't see any rope here." CR>)
 	       (<VERB? CLIMB-UP>
-		<DO-WALK ,P?UP>)
+		<TELL
+"You try to climb the rope, but you cannot reach the top even with your best
+effort." CR>)
 	       (<VERB? CLIMB-DOWN CLIMB-FOO>
 		<DO-WALK ,P?DOWN>)
 	       (<VERB? TAKE MOVE CLIMB-ON>
@@ -4270,10 +4272,6 @@ points to the chest ">
 			     (T
 			      <TELL "near you on the ledge">)>
 		       <TELL "." CR>)>)
-	       (<VERB? CLIMB-UP>
-		<TELL
-"You try to climb the rope, but you cannot reach the top even with your best
-effort." CR>)
 	       (<VERB? TIE>
 		<COND (<EQUAL? ,CHEST ,PRSO ,PRSI>
 		       <TELL
