@@ -18,9 +18,9 @@
 
 <ROUTINE I-SWORD ("AUX" (DEM <INT I-SWORD>) (NG 0) P T L)
 	 <COND (<IN? ,SWORD ,ADVENTURER>
-		<COND (<AND <==? ,HERE ,CLIFF> <NOT ,MAN-GONE>> <SET NG 1>)
+		<COND (<INFESTED? ,HERE> <SET NG 2>)
+		      (<AND <==? ,HERE ,CLIFF> <NOT ,MAN-GONE>> <SET NG 1>)
 		      (<AND <==? ,HERE ,CLIFF-LEDGE> ,MAN-FLAG> <SET NG 1>)
-		      (<INFESTED? ,HERE> <SET NG 2>)
 		      (<OR <AND <==? ,MLOC ,MRG> <==? ,HERE ,IN-MIRROR>>
 			   <EQUAL? ,HERE ,MRGE ,MRG ,MRGW>>
 		       <SET NG 1>)
@@ -4355,7 +4355,7 @@ valuables." CR>
 		<MOVE ,STAFF ,WINNER>
 		<SETG HOLDING-ROPE <>>
 		<SETG ROPE-FLAG T>
-		<MOVE ,WINNER ,CLIFF>
+		<GOTO ,CLIFF <>>
 		<MOVE ,CHEST ,CLIFF>
 		<FSET ,CHEST ,OPENBIT>
 		<TELL
