@@ -5,6 +5,7 @@
 ### Restoration of old behavior
 
 * Zork II: The Fantasize spell should work again. It was broken completely in r48, and while an attempt had been made to restore it in r63 it didn't work correctly. I hope it does now.
+* Zork III: "`THROW ROPE OVER CLIFF`" works again. The parser has gotten more strict about enforcing the `HAVE` syntax token, but since the pre-action checks that you are holding the object (with some exceptions) removing it from the `THROW-OFF` syntax should be safe.
 
 ### Larger features
 

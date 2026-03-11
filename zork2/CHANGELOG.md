@@ -95,6 +95,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
   * It can't be used on the matchbook. I don't want to have to deal with a magically glowing object that's also sometimes on fire.
   * When used on the lamp, the lamp demon is turned off and it loses its `LIGHTBIT`, so that you are no longer able to turn it on or off.
 * Removed `TRYTAKEBIT` from the fuse. Otherwise, "`LIGHT FUSE`" would take the fuse out of the brick, leaving you with no time to put it back. (Wile E. Coyote would have been proud.)
+* It's now possible to burn the repellent. Like in Zork III, it explodes.
 
 ### Bugfixes
 

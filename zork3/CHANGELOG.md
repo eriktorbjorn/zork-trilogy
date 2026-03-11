@@ -10,6 +10,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Any time `<PICK-ONE ,YUKS>` was called, the game would crash. This was, of course, a regression in the previous version.
 * The vial once again responds to attempts at filling it. There is no water in Zork III, and trying to fill it with anything else translates into a `PUT` action, not a `FILL` action.
 * Some text in `JIGS-UP` describing the dungeon master has been reverted to the release version. While the new text was consistent with how he's described later, the vagueness of the original text was probably intentional. It's even quoted in the InvisiClues.
+* Don't allow the burned-out lantern to be lit again. This was apparently a regression in the unreleased r25, when `LIGHT-INT` was replaced with a newer version. The `LANTERN` routine is now much more like the ones in Zork I and II.
 
 ### Changes to game mechanics
 
@@ -36,6 +37,12 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * `TIME-MACHINE-F` now only handles the `MOVE` action for itself, not for every object while you are inside it.
 * The check for if you are trying to manipulate objects outside the time machine from inside it has been made a bit more strict, and you can no longer automatically pick up such objects.
 * The jewelled knife now has `WEAPONBIT`.
+* Tying the rope to the chest and leaving before the man arrives now has him steal the chest off-screen. You'll find the empty chest at the top of the cliff. Before, the rope would be gone instead which didn't make much sense. Since this was caused by a previously unused `CLIFF-BASE-F` routine, I have no qualms about changing the behavior like this.
+* When tying the rope to the chest, check if it's already tied.
+* The check to see if you die while holding the key in the area beyond the lake has been made a bit stricter. Now you can no longer trick it by putting the key in the chest.
+* If you die while holding the chest, the game now makes sure the chest is untied.
+* Enabled a message for climing up the rope from the ledge that was never reached.
+* The fixes to the can of repellent made in Zork II (being able to put it on a surface or in a container without spraying it) now also apply to Zork III.
 
 ### Bugfixes
 
