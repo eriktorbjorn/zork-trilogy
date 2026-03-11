@@ -2055,6 +2055,8 @@ moment, you are awakening, as if from a deep slumber." CR>)>
 		     <OR <EQUAL? ,HERE ,DARK-1 ,DARK-2 ,KEY-ROOM>
 			 <EQUAL? ,HERE ,AQ-1 ,AQ-2>>>
 		<MOVE ,KEY ,KEY-ROOM>)>
+	 <COND (<IN? ,CHEST ,WINNER>
+		<SETG ,CHEST-TIED <>>)>
 	 <CRLF>
 	 <GOTO ,ZORK2-STAIR>
 	 <SETG P-CONT <>>
