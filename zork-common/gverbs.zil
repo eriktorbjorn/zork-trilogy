@@ -1109,7 +1109,7 @@ you kill yourself, just as he might have done!">
 
 <ROUTINE PRE-PUT ()
 	 <COND %<COND (<==? ,ZORK-NUMBER 3>
-		       '(<EQUAL? ,PRSO ,SHORT-POLE>
+		       '(<EQUAL? ,PRSO ,SHORT-POLE ,ROPE>
 		         <RFALSE>))
 		      (T
 		       '(<NULL-F>
