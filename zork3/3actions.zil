@@ -4969,7 +4969,13 @@ Duration of effect is unpredictable. Use only in place of death!|
 		<REMOVE ,REPELLENT>
 		<JIGS-UP
 "The can explodes and you die a horribly smelly death.">)
-	       (<AND <VERB? SPRAY PUT-ON> <==? ,PRSO ,REPELLENT>>
+	       (<AND <EQUAL? ,PRSO ,REPELLENT>
+		     <OR <AND <VERB? PUT-ON>
+			      <FSET? ,PRSI ,SURFACEBIT>>
+			 <AND <VERB? PUT>
+			      <FSET? ,PRSI ,CONTBIT>>>>
+		<RFALSE>)
+	       (<AND <VERB? SPRAY PUT PUT-ON> <==? ,PRSO ,REPELLENT>>
 		<COND (,SPRAY-USED?
 		       <TELL
 "The repellent is all gone." CR>)
