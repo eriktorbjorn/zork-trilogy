@@ -1338,6 +1338,9 @@ hammer the contents of the box to pulp. That includes you.">)>)>
 		       <SETG POLEUP-FLAG 1>
 		       <TELL "The pole now rests on the stone floor." CR>)>)>>
 
+<GLOBAL COME-HERE-FIRST
+	"The dungeon master's voice replies, \"You must come here first!\"">
+
 <ROUTINE DUNGEON-MASTER-F ("OPTIONAL" (RARG <>)) 
 	 <COND (<==? .RARG ,M-OBJDESC> <RFALSE>)
 	       (<==? ,WINNER ,DUNGEON-MASTER>
@@ -1347,8 +1350,7 @@ hammer the contents of the box to pulp. That includes you.">)>)>
 			      <TELL
 "The dungeon master answers, \"I will follow.\"" CR>)
 			     (T
-			      <TELL
-"The dungeon master's voice replies, \"You must come here first!\"" CR>)>)
+			      <TELL ,COME-HERE-FIRST CR>)>)
 		      (<VERB? STAY WAIT>
 		       <QUEUE I-FOLIN 0>
 		       <TELL
@@ -1387,8 +1389,14 @@ hammer the contents of the box to pulp. That includes you.">)>)>
 		       <TELL
 "The dungeon master appears angered. \"Do not run from your quest: you are
 nearing the end!\"" CR>)
+		      (<AND <VERB? ATTACK>
+			    <EQUAL? ,PRSO ,ME>>
+		       <COND (<IN? ,DUNGEON-MASTER <LOC ,PLAYER>>
+			      <REALLY-DEAD "\"If you wish,\" he replies.">)
+			     (T
+			      <TELL ,COME-HERE-FIRST CR>)>)
 		      (<VERB? PUSH TURN SPIN FOLLOW STAY OPEN CLOSE WAIT
-			      ATTACK WALK-TO>
+			      WALK-TO>
 		       <COND (<VERB? STAY FOLLOW WAIT> T)
 			     (T <TELL "\"If you wish,\" he replies." CR>)>
 		       <RFALSE>)
@@ -3452,17 +3460,22 @@ is here." CR>)>
 	       (<HELLO? ,SHADOW>
 		<TELL
 "The hooded figure does not respond to your words." CR>)
-	       (<AND <VERB? ATTACK> <==? ,PRSI ,SWORD>>
-		<COND (<NOT ,SHADOW-POINT-2>
-		       <SETG SCORE <+ ,SCORE 1>>
-		       <SETG SHADOW-POINT-2 T>)>
-		<SHADOW-ATTACK>)
 	       (<VERB? ATTACK>
-		<TELL
+		<COND (<AND <NOT ,PRSI>
+			    <IN? ,SWORD ,WINNER>>
+		       <TELL "(with the " D ,SWORD ")" CR>
+		       <SETG ,PRSI ,SWORD>)>
+		<COND (<==? ,PRSI ,SWORD>
+		       <COND (<NOT ,SHADOW-POINT-2>
+			      <SETG SCORE <+ ,SCORE 1>>
+			      <SETG SHADOW-POINT-2 T>)>
+		       <SHADOW-ATTACK>)
+		     (T
+		      <TELL
 "The hooded figure ignores your feeble attack." CR>
-		<SETG ATTACK-MODE T>
-		<ENABLE <QUEUE I-CURE 10>>
-		<ENABLE <QUEUE I-SHADOW-REPLY -1>>)>>
+		      <SETG ATTACK-MODE T>
+		      <ENABLE <QUEUE I-CURE 10>>
+		      <ENABLE <QUEUE I-SHADOW-REPLY -1>>)>)>>
 
 <GLOBAL SHADOW-DIAG
 	<TABLE
