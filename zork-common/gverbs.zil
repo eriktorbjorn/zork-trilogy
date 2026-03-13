@@ -1522,7 +1522,7 @@ CR>)
 <ROUTINE PRE-TURN ()
 	 %<COND (<==? ,ZORK-NUMBER 3>
 		 '<COND (<AND <EQUAL? ,PRSI <> ,ROOMS>
-			      <EQUAL? ,PRSO ,DIAL ,TM-DIAL ,T-BAR>>
+			      <EQUAL? ,PRSO ,SUNDIAL ,TM-DIAL ,T-BAR>>
 			 <TELL
 "You should turn the " D ,PRSO " to something." CR>
 			 <RTRUE>)>)
