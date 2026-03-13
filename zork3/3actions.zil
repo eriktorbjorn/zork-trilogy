@@ -845,7 +845,11 @@ I were you!" CR>)>)
 		       <TELL "decimate you">)
 		      (T <TELL "destroy it">)>
 		<TELL " in perfect
-unison. Satisfied, they resume their posts." CR>)
+unison. Satisfied, they resume their posts.">
+		<COND (<EQUAL? ,PRSO ,ME>
+		       <JIGS-UP "">)
+		      (T
+		       <CRLF>)>)
 	       (<VERB? ATTACK>
 	        <TELL
 "You aren't close enough, and even if you were, the fight
