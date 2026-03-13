@@ -826,7 +826,7 @@ From here, it's hard to tell which of the two is a reflection!" CR>)>)
 	        <JIGS-UP
 "The Guardians awake, and in perfect unison, pulverize you with
 their bludgeons. Satisfied, they resume their posts.">)
-	       (<NOT <==? .RARG ,M-END>> <RFALSE>)
+	       (<NOT <==? .RARG <>>> <RFALSE>)
 	       (<VERB? EXAMINE>
 		<COND (<==? ,HERE ,IN-MIRROR>
 		       <TELL "You can't see them from here." CR>)
