@@ -1898,16 +1898,19 @@ to turn the whole structure, however." CR>)>>
 		<TELL
 "The flaming pit is a seemingly bottomless abyss filled with smoke and
 flame." CR>)
-	       (<AND <VERB? PUT> <==? ,PRSI ,FLAMING-PIT>>
-		<COND (<EQUAL? ,HERE ,PARAPET ,NORTH-CORRIDOR>
-		       <COND (<==? ,PRSO ,ME>
-			      <TELL
+	       (<NOT <EQUAL? ,HERE ,PARAPET ,NORTH-CORRIDOR>>
+		<TELL "You're not close enough." CR>)
+	       (<VERB? LEAP THROUGH BOARD>
+		<TELL
 "It would be a pity to end your life so near the end of your quest!" CR>)
-			     (T
-			      <TELL
+	       (<AND <VERB? PUT>
+		     <==? ,PRSI ,FLAMING-PIT>>
+		<COND (<==? ,PRSO ,ME>
+		       <PERFORM ,V?LEAP ,FLAMING-PIT>)
+		      (T
+		       <TELL
 "You cast the " D ,PRSO " into the pit, where it is lost forever." CR>
-			      <REMOVE ,PRSO>)>)
-		      (T <TELL "You're not close enough." CR>)>)>>
+		       <REMOVE ,PRSO>)>)>>
 
 <ROUTINE PARAPET-OBJ-F ()
 	 <COND (<VERB? EXAMINE>
