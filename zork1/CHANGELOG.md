@@ -51,6 +51,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Burning the book by touching it to the red-hot bell is now just as deadly as burning the book in any other way.
 * The bat now checks every move to see if the garlic is present. Not only does that seem to eliminate the need for a hack to prevent double room descriptions if the bat dropped you off at the Entrance to Hades (presumably only if you were eaten by a grue as a result of the drop), it means that you no longer get the discrepancy where eating the garlic no longer causes the bat to be described as swooping down at you, while leaving you alone. Garlic breath alone isn't enough to keep it at bay.
 * The bat no longer swoops down at you if you're a ghost.
+* You can no longer automatically take things from the trophy case. While it doesn't break the game, it does temporarily mess up the score.
 
 ### Bugfixes
 

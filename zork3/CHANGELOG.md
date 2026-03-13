@@ -43,6 +43,9 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * If you die while holding the chest, the game now makes sure the chest is untied.
 * Enabled a message for climing up the rope from the ledge that was never reached.
 * The fixes to the can of repellent made in Zork II (being able to put it on a surface or in a container without spraying it) now also apply to Zork III.
+* The sword now glows brightly when the man at the cliff is in the same room as you. Before, it would never glow more than dimly for him.
+* The key now has `TOOLBIT`, like all other keys in Zork. This allows "`UNLOCK DOOR`" to infer that you want to use the key.
+* The flaming pit is now a bit more consistent about when it's within reach and when it isn't.
 
 ### Bugfixes
 
@@ -69,10 +72,12 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 
 ### Stylistic fixes
 
-* The game is supposed to print a blank line before the room description if there is a message before moving you to another room. I added a few of those:
+* The game is supposed to print a blank line before the room description if there is a message before moving you to another room. I added a few of those, and some other missing ones:
   * When pushing a wall in the Royal Puzzle.
-  * Wen being forced back to the surface of the lake.
+  * When being forced back to the surface of the lake.
   * When jumping over the beam.
+  * When the dungeon master pushes the button while you're in the cell.
+  * When spinning the dial at the parapet.
 * An unused `CPSOLVE-FLAG` has been removed. It was set when climbing up the ladder to exit the puzzle, but not otherwise as far as I could tell. And nothing looked at the value of it.
 * Removed unnecessary linebreak from JIGS-UP.
 * Removed unnecessary line break when using the `FROTZ OZMOO` spell.
