@@ -5224,7 +5224,7 @@ above, revealing a lone, dark path sloping down to the west." CR>
 a single key is lying in the dust.")
 	(SYNONYM KEY)
 	(ADJECTIVE STRANGE RUSTY LONG SHORT HEAVY THIN SHARP POINTED)
-	(FLAGS TAKEBIT)
+	(FLAGS TAKEBIT TOOLBIT)
 	(SIZE 10)
 	(ACTION KEY-F)>
 
