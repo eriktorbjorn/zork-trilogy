@@ -851,9 +851,12 @@ unison. Satisfied, they resume their posts.">
 		      (T
 		       <CRLF>)>)
 	       (<VERB? ATTACK>
-	        <TELL
-"You aren't close enough, and even if you were, the fight
-would be a bit one-sided." CR>)
+		<COND (<NOT <EQUAL? ,HERE ,MRG ,MRGE ,MRGW>>
+		       <TELL
+"You aren't close enough, and even if you were, t">)
+		      (T
+		       <PRINTC %<ASCII  !\T>>)>
+	       <TELL "he fight would be a bit one-sided." CR>)
 	       (<VERB? HELLO>
 	        <TELL "The statues are impassive." CR>)>>
 
