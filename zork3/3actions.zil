@@ -1587,6 +1587,7 @@ quotes!\" A moment later, you find yourself in the Button Room." CR>
 		       <SETG WINNER ,PLAYER>
 		       <FCLEAR ,GOOD-CELL ,TOUCHBIT>
 		       <FCLEAR ,PRISON-CELL ,TOUCHBIT>
+		       <CRLF>
 		       <GOTO <COND (<==? ,LCELL 4>
 				    <FCLEAR ,BRONZE-DOOR ,INVISIBLE>
 				    ,GOOD-CELL)
