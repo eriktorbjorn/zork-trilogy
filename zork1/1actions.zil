@@ -2,6 +2,15 @@
 	        Zork I: The Great Underground Empire
 	(c) Copyright 1983 Infocom, Inc. All Rights Reserved."
 
+<REPLACE-DEFINITION INHIBIT-AUTO-TAKE?
+	 <ROUTINE INHIBIT-AUTO-TAKE? (OBJ)
+		  <COND (<FSET? .OBJ ,TRYTAKEBIT>
+			 <RTRUE>)
+			(<ULTIMATELY-IN? .OBJ ,TROPHY-CASE>
+			 <RTRUE>)
+			(T
+			 <RFALSE>)>>>
+
 "SUBTITLE THE WHITE HOUSE"
 
 <ROUTINE WEST-HOUSE (RARG)
