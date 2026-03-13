@@ -1639,7 +1639,7 @@ N ,PNUMB "." CR>
 	        <SETG PNUMB <RANDOM 8>>
 	        <COND (<==? ,WINNER ,PLAYER>
 		       <TELL
-"The dial spins and comes to a stop pointing at " N ,PNUMB ".">)>
+"The dial spins and comes to a stop pointing at " N ,PNUMB "." CR>)>
 		<RTRUE>)>>
 
 <ROUTINE DIALBUTTON ("AUX" C)
