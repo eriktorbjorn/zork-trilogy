@@ -2083,6 +2083,9 @@ moment, you are awakening, as if from a deep slumber." CR>)>
 	 <SETG P-CONT <>>
 	 <RANDOMIZE-OBJECTS>
 	 <KILL-INTERRUPTS>
+	 <MOVE ,DUNGEON-MASTER ,BEHIND-DOOR>
+	 <SETG FOLFLAG T>
+	 <SETG DM-SEEN <>>
 	 <RFATAL>>
 
 <ROUTINE RANDOMIZE-OBJECTS ("AUX" (R <>) F N)
