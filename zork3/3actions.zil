@@ -1769,12 +1769,14 @@ and lore at your command and thirst for an opportunity to use them.|
 	       <FINISH>)>>
 
 <ROUTINE BRONZE-DOOR-EXIT ()
-	 <COND (<FSET? ,BRONZE-DOOR ,INVISIBLE>
+	 <COND (<N==? ,LCELL 4>
 		<TELL "You can't go that way." CR>
 		<RFALSE>)
 	       (<FSET? ,BRONZE-DOOR ,OPENBIT>
-		,CELL)
+		<COND (<==? ,HERE ,CELL> ,SOUTH-CORRIDOR)
+		      (ELSE ,CELL)>)
 	       (T
+		<THIS-IS-IT ,BRONZE-DOOR>
 		<TELL "The bronze door is closed." CR>
 		<RFALSE>)>>
 
