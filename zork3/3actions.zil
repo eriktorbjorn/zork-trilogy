@@ -984,7 +984,8 @@ when you let go.")
 			   <==? <MOD <+ ,MDIR 180> 360> .DIR>>
 		       <COND (<0? ,MDIR> <SET RM <>>) (T <SET RM T>)>
 		       <COND (<SET RM <MIRNS .RM T>>
-		              <TELL "As you leave, the door swings shut." CR>
+		              <TELL
+"As you leave, the door swings shut." CR CR>
 			      <SETG WOOD-OPEN-FLAG <>>
 			      .RM)
 			     (T
