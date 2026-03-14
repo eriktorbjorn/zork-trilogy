@@ -11,6 +11,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The vial once again responds to attempts at filling it. There is no water in Zork III, and trying to fill it with anything else translates into a `PUT` action, not a `FILL` action.
 * Some text in `JIGS-UP` describing the dungeon master has been reverted to the release version. While the new text was consistent with how he's described later, the vagueness of the original text was probably intentional. It's even quoted in the InvisiClues.
 * Don't allow the burned-out lantern to be lit again. This was apparently a regression in the unreleased r25, when `LIGHT-INT` was replaced with a newer version. The `LANTERN` routine is now much more like the ones in Zork I and II.
+* The `GUARDIAN` routine didn't handle actions properly. This appears to be a regression from r25, caused by the value of `M-END` changing.
 
 ### Changes to game mechanics
 
@@ -69,6 +70,12 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The compass rose now has `TURNBIT` to make it easier to trigger the message saying why you can't turn or move it.
 * There is a custom message for "`FOLLOW ROBOT`", but the robot was only visible from the old museum, not the one where you actually encounter it. The robot is now visible from all versions of the museum (once you've seen it), and "`FOLLOW ROBOT`" no longer says the door is closed unless it really is.
 * The condition for when the game things there are guards present in the Royal Museum has been cleaned up a bit. Before, if you knocket on doors before using the time machine you would be told not to draw attention to yourself.
+* You can no longer throw things like your own hands at the Guardians of Zork.
+* Throwing yourself at the Guardians of Zork now make them kill you. Before, it only said that they did.
+* Attacking the Guardians of Zork now checks if they're close enough, before telling you they're not.
+* Telling the dungeon master to kill you no longer kills the dungeon master, only to have him immediately come back to life if he was following you.
+* `BRONZE-DOOR-EXIT` only worked in one direction: from the south corridor to the cell. It also didn't check if the door was actually there, only that it was open. And it didn't set the "it" object if you tried to walk through the closed door. Now everything should work as expected, if you jump through the unlikely hoops required for this situation to arise in the first place.
+* If you get yourself killed in the endgame, put back the dungeon master at the door. Otherwise, he will not be there when he lets you in another time.
 
 ### Stylistic fixes
 

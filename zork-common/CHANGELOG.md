@@ -37,6 +37,7 @@
 * Instead of checking `TRYTAKEBIT` to see if an object can't be automatically picked up, the parser now calls `INHIBIT-AUTO-PICKUP?`. The default implementation is to check `TRYTAKEBIT`, but this will make some other changes so much cleaner.
 * Zork II: Removed the `HAVE` bit from the "`LIGHT` *object*" syntax. We want to keep the automatic taking for consistency with the other games, but we also want to be able the light the fuse without holding it.
 * Zork II: The "Fluoresce" spell now only sets `ONBIT`, not `LIGHTBIT`, and if it's used on the lamp it loses the `LIGHTBIT`. Custom messages have been added for trying to turn enchanted objects on or off.
+* Zork III: The `ATTACK` action no longer requires an indirect object. This was part of making the dungeon master act more sanely when asking him to kill you, but it also makes sense because most creatures you encounter in Zork III are unarmed, and a special case has been added for the one that isn't.
 
 ### Bugfixes
 
