@@ -676,10 +676,12 @@ to the north, and a ">
 
 <DEFMAC E-W ('FX) <FORM OR <FORM ==? .FX 90> <FORM ==? .FX 270>>>
 
-<ROUTINE EWTELL (RM "AUX" (EAST? <>) (M1? <>) MWIN)
+<ROUTINE EWTELL (RM "AUX" (EAST? <>) (GUARDIAN? <>) (M1? <>) MWIN)
 	 <COND (<OR <EQUAL? .RM ,MRAE ,MRBE ,MRCE>
 		    <EQUAL? .RM ,MRGE ,MRCE>>
 		<SET EAST? T>)>
+	 <COND (<OR <EQUAL? .RM ,MRGE ,MRGW>>
+		<SET GUARDIAN? T>)>
 	 <COND (<==? <+ ,MDIR <COND (.EAST? 0) (T 180)>> 180>
 		<SET M1? T>)>
 	 <COND (.M1? <SET MWIN ,MR1-FLAG>) (T <SET MWIN ,MR2-FLAG>)>
@@ -695,7 +697,21 @@ which once contained a mirror.")>
 "The mirror is mounted on a panel which has been opened outward.")
 			    (T "The panel has been opened outward.")>
 		      CR>)>
-	 <TELL "The opposite wall is solid rock." CR>>
+	 <TELL "The opposite wall is solid rock." CR>
+	 <COND (,GUARDIAN?
+		<COND (<OR <AND .M1? ,MIRROR-OPEN-FLAG>
+			   <NOT .MWIN>>
+		       <TELL "To the ">
+		       <COND (.EAST?
+			      <TELL "east">)
+			     (T
+			      <TELL "west">)>
+		       <TELL " is a Guardian of Zork." CR>)
+		      (T
+		       <TELL
+"To the east and west are the Guardians of Zork, in perfect symmetry.
+From here, it's hard to tell which of the two is a reflection!" CR>)>)>
+	 <RTRUE>>
 
 <GLOBAL GUARDIANS-SEEN <>>
 
@@ -818,10 +834,7 @@ hallways to the ">
 		<COND (<==? ,HERE ,MRG>
 		       <LOOK-TO ,MRD ,MRC>)
 		      (T
-		       <EWTELL ,HERE>
-		       <TELL
-"To the east and west are the Guardians of Zork, in perfect symmetry.
-From here, it's hard to tell which of the two is a reflection!" CR>)>)
+		       <EWTELL ,HERE>)>)
 	       (<AND <==? .RARG ,M-ENTER> <NOT ,INVIS>>
 	        <JIGS-UP
 "The Guardians awake, and in perfect unison, pulverize you with
