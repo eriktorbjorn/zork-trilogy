@@ -1477,6 +1477,17 @@ the manual." CR>)>)
 	      (T
 	       <TELL <PICK-ONE ,YUKS> CR>)>>
 
+<ROUTINE PRE-THROW ()
+	 <COND (<EQUAL? ,PRSO ,ME>
+		%<COND (<==? ,ZORK-NUMBER 3>
+			'<COND (<EQUAL? ,PRSI ,GUARDIAN>
+				<RFALSE>)>)
+		       (ELSE '<NULL-F>)>
+		<TELL
+"Why don't you just walk like normal people?" CR>)
+	       (T
+		<PRE-PUT>)>>
+
 <ROUTINE V-THROW ()
 	 <COND (<IDROP>
 		<COND (<EQUAL? ,PRSI ,ME>

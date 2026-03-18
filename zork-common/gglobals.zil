@@ -250,10 +250,6 @@ you!" CR>)
 		       <JIGS-UP "If you insist.... Poof, you're dead!">)
 		      (T
 		       <TELL "Suicide is not the answer." CR>)>)
-	       (<VERB? THROW>
-		<COND (<==? ,PRSO ,ME>
-		       <TELL
-"Why don't you just walk like normal people?" CR>)>)
 	       (<VERB? TAKE>
 		<TELL "How romantic!" CR>)
 	       (<VERB? EXAMINE>
