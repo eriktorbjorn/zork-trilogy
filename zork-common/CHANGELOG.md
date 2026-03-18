@@ -53,6 +53,7 @@
 * Check if you're using your hands in `PRE-MUNG`, so that it can print "your bare hands" instead of the name of the object.
 * `ACCESSIBLE?` now treats object 0 as not accessible. This could happen when referring to "it" after `REMOVE-CAREFULLY` had removed the object.
 * When an actor leaves the room, print the message as long as the player is enclosed by the same room. E.g. in Zork II you will see the robot leave the room even if you order him to leave from within the bucket.
+* \[Zork II Nathan-22, Zork III Nathan-11] Throwing inappropriate objects (e.g. your own hands) is now blocked by a pre-action. This does create a bit of an overlap between `PRE-THROW` and `V-THROW`, but that's not something I'm going to worry about. This is to prevent custom `THROW` actions from doing bad things. Some actions already check for this, and could be simplified, but I'm not optimizing for size at this time.
 
 ### Stylistic changes
 
