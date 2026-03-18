@@ -47,6 +47,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The sword now glows brightly when the man at the cliff is in the same room as you. Before, it would never glow more than dimly for him.
 * The key now has `TOOLBIT`, like all other keys in Zork. This allows "`UNLOCK DOOR`" to infer that you want to use the key.
 * The flaming pit is now a bit more consistent about when it's within reach and when it isn't.
+* When in one of the narrow rooms right next to the Guardians of Zork, the game now checks that there is an unbroken closed mirror there before saying anything about the reflections.
 
 ### Bugfixes
 
@@ -76,6 +77,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * Telling the dungeon master to kill you no longer kills the dungeon master, only to have him immediately come back to life if he was following you.
 * `BRONZE-DOOR-EXIT` only worked in one direction: from the south corridor to the cell. It also didn't check if the door was actually there, only that it was open. And it didn't set the "it" object if you tried to walk through the closed door. Now everything should work as expected, if you jump through the unlikely hoops required for this situation to arise in the first place.
 * If you get yourself killed in the endgame, put back the dungeon master at the door. Otherwise, he will not be there when he lets you in another time.
+* Going southeast or southwest from the Dungeon Entrance now only puts you in a narrow room if the mirror box is there. If you used the invisibility potion and left the mirror behind, it moves you south instead. This is how the other Hallway rooms work.
 
 ### Stylistic fixes
 
@@ -85,6 +87,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
   * When jumping over the beam.
   * When the dungeon master pushes the button while you're in the cell.
   * When spinning the dial at the parapet.
+  * When stepping out of the mirror box.
 * An unused `CPSOLVE-FLAG` has been removed. It was set when climbing up the ladder to exit the puzzle, but not otherwise as far as I could tell. And nothing looked at the value of it.
 * Removed unnecessary linebreak from JIGS-UP.
 * Removed unnecessary line break when using the `FROTZ OZMOO` spell.
