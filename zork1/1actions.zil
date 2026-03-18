@@ -2297,7 +2297,7 @@ artist's masterpieces, you have destroyed one." CR>)
 	       0>>
 
 <ROUTINE LANTERN ()
-	 <COND (<VERB? THROW>
+	 <COND (<AND <VERB? THROW> <==? ,PRSO ,LAMP>>
 		<TELL
 "The lamp has smashed into the floor, and the light has gone out." CR>
 		<DISABLE <INT I-LANTERN>>
