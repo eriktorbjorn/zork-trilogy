@@ -90,7 +90,7 @@
 	       0>>
 
 <ROUTINE LANTERN ()
-	 <COND (<VERB? THROW>
+	 <COND (<AND <VERB? THROW> <==? ,PRSO ,LAMP>>
 		<TELL "The lamp smashes. The light is now out." CR>
 		<DISABLE <INT I-LANTERN>>
 		<REMOVE ,LAMP>
