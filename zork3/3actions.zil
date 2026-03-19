@@ -918,7 +918,8 @@ unison. Satisfied, they resume their posts.">
 	        <TELL
 "You don't see a way to open the mirror here." CR>)
 	       (<VERB? LOOK-INSIDE>
-	        <COND (<OR <AND <==? .MIRROR 1> ,MR1-FLAG> ,MR2-FLAG>
+	        <COND (<OR <AND <==? .MIRROR 1> ,MR1-FLAG>
+			   <AND <==? .MIRROR 2> ,MR2-FLAG>>
 		       <COND (,INVIS
 			      <TELL
 "Amazingly, you have no reflection!" CR>)
