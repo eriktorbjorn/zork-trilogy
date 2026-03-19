@@ -1275,6 +1275,11 @@ structure, crushing you.">
 			      <TELL
 "The structure has reached the end of the stone channel and won't
 budge." CR>)>)
+		      (,WOOD-OPEN-FLAG
+		       <COND (<VERB? OPEN>
+			      <TELL "The pine wall is already open." CR>)
+			     (T
+			      <TELL "Nothing happens." CR>)>)
 		      (T
 		       <TELL "The pine wall swings open." CR>
 		       <COND (<OR <AND <==? ,MLOC ,MRD>
