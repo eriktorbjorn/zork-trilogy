@@ -678,7 +678,7 @@ to the north, and a ">
 
 <ROUTINE EWTELL (RM "AUX" (EAST? <>) (GUARDIAN? <>) (M1? <>) MWIN)
 	 <COND (<OR <EQUAL? .RM ,MRAE ,MRBE ,MRCE>
-		    <EQUAL? .RM ,MRGE ,MRCE>>
+		    <EQUAL? .RM ,MRGE ,MRDE>>
 		<SET EAST? T>)>
 	 <COND (<OR <EQUAL? .RM ,MRGE ,MRGW>>
 		<SET GUARDIAN? T>)>
