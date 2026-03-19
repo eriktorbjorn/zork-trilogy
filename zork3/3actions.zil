@@ -2125,6 +2125,7 @@ moment, you are awakening, as if from a deep slumber." CR>)>
 	 <DISABLE <INT I-MAN-RETURNS>>
 	 <DISABLE <INT I-VIEW-SNAP>>
 	 <DISABLE <INT I-FOLIN>>
+	 <SETG WOOD-OPEN-FLAG <>>
 	 <RTRUE>>
 
 <GLOBAL SCORE-MAX 7>
