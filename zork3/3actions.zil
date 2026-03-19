@@ -915,8 +915,17 @@ unison. Satisfied, they resume their posts.">
  	 <COND (<NOT <SET MIRROR <MIRROR-HERE? ,HERE>>>
 	        <TELL "You can't see any mirror here." CR>)
 	       (<VERB? OPEN MOVE>
-	        <TELL
-"You don't see a way to open the mirror here." CR>)
+		<COND (<AND ,MIRROR-OPEN-FLAG
+			    <==? .MIRROR 1>>
+		       <TELL "The mirror has already been opened." CR>)
+		      (T
+		       <TELL
+"You don't see a way to open the mirror here." CR>)>)
+	       (<AND <VERB? CLOSE>
+		     ,MIRROR-OPEN-FLAG
+		     <==? .MIRROR 1>>
+		<TELL
+"You don't see a way to close the miror here." CR>)
 	       (<VERB? LOOK-INSIDE>
 	        <COND (<OR <AND <==? .MIRROR 1> ,MR1-FLAG>
 			   <AND <==? .MIRROR 2> ,MR2-FLAG>>
