@@ -49,6 +49,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * The flaming pit is now a bit more consistent about when it's within reach and when it isn't.
 * When in one of the narrow rooms right next to the Guardians of Zork, the game now checks that there is an unbroken closed mirror there before saying anything about the reflections.
 * Only break the lamp for "`THROW LAMP AT` _object_", not "`THROW` _object_ `AT LAMP`". This is how Zork II already behaves.
+* Opening the mirror panel would say you couldn't see how even when it was open, and there was no custom response to trying to close the open panel. These cases have both been fixed.
 
 ### Bugfixes
 
@@ -78,10 +79,14 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * `BRONZE-DOOR-EXIT` only worked in one direction: from the south corridor to the cell. It also didn't check if the door was actually there, only that it was open. And it didn't set the "it" object if you tried to walk through the closed door. Now everything should work as expected, if you jump through the unlikely hoops required for this situation to arise in the first place.
 * If you get yourself killed in the endgame, put back the dungeon master at the door. Otherwise, he will not be there when he lets you in another time.
 * Going southeast or southwest from the Dungeon Entrance now only puts you in a narrow room if the mirror box is there. If you used the invisibility potion and left the mirror behind, it moves you south instead. This is how the other Hallway rooms work.
+* The description for `MRDE`, the northernmost narrow room, incorrectly printed that the mirror/panel was to the east, not west.
+* Fixed one case where you could look at your reflection in a broken mirror, as long as the other mirror was still unbroken.
+* Before opening the pine wall, the game now checks if it already is.
+* Fixed bad exit from `MRDW`. It's one of the western narrow rooms, so the exit into the mirror should have been to the east. But in this room, it was to the west.
 
 ### Stylistic fixes
 
-* The game is supposed to print a blank line before the room description if there is a message before moving you to another room. I added a few of those, and some other missing ones:
+* The game is supposed to print a blank line before the room description if there is a message before moving you to another room. I added a few of those, and some other missing ones:z
   * When pushing a wall in the Royal Puzzle.
   * When being forced back to the surface of the lake.
   * When jumping over the beam.
