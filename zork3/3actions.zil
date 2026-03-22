@@ -2651,12 +2651,18 @@ and a dial connected to a display which reads " N ,TM-YEAR "." CR>)
 				     <COND (<EQUAL? ,HERE
 						    ,CP-ANTE ,MID-CP-ANTE>
 					    <TELL
-"However, the machine seems to have sustained some damage as a result
-of going over the stairs." CR>
+"However, the machine seems to have sustained some ">
+					    <COND (,MACHINE-DAMAGED
+						   <TELL "further ">)>
+					    <TELL
+"damage as a result of going over the stairs." CR>
 					    <SETG MACHINE-DAMAGED T>)
 					   (<==? ,HERE ,MUSEUM-ANTE>
 					    <TELL
-"Pushing the machine through the cleft seems to have damaged it." CR>
+"Pushing the machine through the cleft seems to have ">
+					    <COND (,MACHINE-DAMAGED
+						   <TELL "further ">)>
+					    <TELL "damaged it." CR>
 					    <SETG MACHINE-DAMAGED T>)>
 				     <MOVE ,TIME-MACHINE ,HERE>)>
 			      <RTRUE>)>)>)>>
