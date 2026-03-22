@@ -50,6 +50,8 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * When in one of the narrow rooms right next to the Guardians of Zork, the game now checks that there is an unbroken closed mirror there before saying anything about the reflections.
 * Only break the lamp for "`THROW LAMP AT` _object_", not "`THROW` _object_ `AT LAMP`". This is how Zork II already behaves.
 * Opening the mirror panel would say you couldn't see how even when it was open, and there was no custom response to trying to close the open panel. These cases have both been fixed.
+* If you damage the gold machine more than once, the message you get now says the machine gets further damaged.
+* The Royal Puzzle had a custom message for trying to go down, but it was never printed. Now it is.
 
 ### Bugfixes
 
