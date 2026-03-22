@@ -146,6 +146,7 @@
       (NW PER CPEXIT)
       (SE PER CPEXIT)
       (UP PER CPEXIT)
+      (DOWN PER CPEXIT)
       (SW PER CPEXIT)
       (ACTION CP-ROOM)
       (FLAGS RLANDBIT ONBIT)
