@@ -74,7 +74,7 @@ This version is one I'm working on, trying to fix as many of the known bugs as I
 * "`BREAK BEAM WITH BEAM`" no longer says the beam is already breaking the beam.
 * The compass rose now has `TURNBIT` to make it easier to trigger the message saying why you can't turn or move it.
 * There is a custom message for "`FOLLOW ROBOT`", but the robot was only visible from the old museum, not the one where you actually encounter it. The robot is now visible from all versions of the museum (once you've seen it), and "`FOLLOW ROBOT`" no longer says the door is closed unless it really is.
-* The condition for when the game things there are guards present in the Royal Museum has been cleaned up a bit. Before, if you knocket on doors before using the time machine you would be told not to draw attention to yourself.
+* The condition for when the game thinks there are guards present in the Royal Museum has been cleaned up a bit. Before, if you knocket on doors before using the time machine you would be told not to draw attention to yourself.
 * Throwing yourself at the Guardians of Zork now make them kill you. Before, it only said that they did.
 * Attacking the Guardians of Zork now checks if they're close enough, before telling you they're not.
 * Telling the dungeon master to kill you no longer kills the dungeon master, only to have him immediately come back to life if he was following you.
