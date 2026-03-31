@@ -4446,7 +4446,9 @@ gravel, he disappears from sight." CR>
 
 <ROUTINE CHEST-F ()
 	 <COND (,CHEST-OPENED
-		<COND (<AND <VERB? TIE> <==? ,ROPE ,PRSO ,PRSI>>
+		<COND (<AND <VERB? TIE>
+			    <OR <==? ,ROPE ,PRSO ,PRSI>
+				<==? ,GLOBAL-ROPE ,PRSO ,PRSI>>>
 		       <TELL "What's the point?" CR>)
 		      (<AND <VERB? PUT>
 			    <FSET? ,CHEST ,OPENBIT>
