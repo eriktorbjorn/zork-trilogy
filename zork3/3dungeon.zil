@@ -237,7 +237,7 @@ The book itself is very old and the pages dry and brittle.")
 	(ACTION CPWALL-OBJECT)>
 
 <OBJECT CPLADDER		;"defined CPLADDER"
-        (IN GLOBAL-OBJECTS)
+        (IN LOCAL-GLOBALS)
 	(SYNONYM LADDER)
 	(DESC "ladder")
 	(ACTION CPLADDER-OBJECT)>
